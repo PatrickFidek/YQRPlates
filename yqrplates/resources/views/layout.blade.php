@@ -15,11 +15,11 @@
             <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="">YQR Plates</a>
+      <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="">Log In</a></li>
+        <li><a href="login">SIGN IN</a></li>
       </ul>
     </div>
   </div>

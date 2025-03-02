@@ -1,9 +1,3 @@
-@extends ('layout')
-
-@section('title','Restaurants')
-
-@section('content')
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +27,7 @@
     margin-bottom: 30px;
   }  
   .jumbotron {
-    background-color: #f4511e;
+    background-color: #ff7e2e;
     color: #fff;
     padding: 100px 25px;
     font-family: Montserrat, sans-serif;
@@ -45,32 +39,17 @@
     background-color: #f6f6f6;
   }
   .logo-small {
-    color: #f4511e;
+    color: #ff7e2e;
     font-size: 50px;
   }
   .logo {
-    color: #f4511e;
+    color: #ff7e2e;
     font-size: 200px;
   }
   .thumbnail {
     padding: 0 0 15px 0;
     border: none;
     border-radius: 0;
-  }
-  .thumbnail img {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 10px;
-  }
-  .carousel-control.right, .carousel-control.left {
-    background-image: none;
-    color: #f4511e;
-  }
-  .carousel-indicators li {
-    border-color: #f4511e;
-  }
-  .carousel-indicators li.active {
-    background-color: #f4511e;
   }
   .item h4 {
     font-size: 19px;
@@ -83,21 +62,18 @@
     font-style: normal;
   }
   .panel {
-    border: 1px solid #f4511e; 
+    border: 1px solid #79a263; 
     border-radius:0 !important;
     transition: box-shadow 0.5s;
   }
-  .panel:hover {
-    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
-  }
   .panel-footer .btn:hover {
-    border: 1px solid #f4511e;
+    border: 1px solid #ff7e2e;
     background-color: #fff !important;
-    color: #f4511e;
+    color: #ff7e2e;
   }
   .panel-heading {
     color: #fff !important;
-    background-color: #f4511e !important;
+    background-color: #79a263 !important;
     padding: 25px;
     border-bottom: 1px solid transparent;
     border-top-left-radius: 0px;
@@ -117,15 +93,15 @@
   }
   .panel-footer .btn {
     margin: 15px 0;
-    background-color: #f4511e;
+    background-color: #ff7e2e;
     color: #fff;
   }
   .navbar {
     margin-bottom: 0;
-    background-color: #f4511e;
+    background-color: #ff7e2e;
     z-index: 9999;
     border: 0;
-    font-size: 12px !important;
+    font-size: 18px !important;
     line-height: 1.42857143 !important;
     letter-spacing: 4px;
     border-radius: 0;
@@ -135,7 +111,7 @@
     color: #fff !important;
   }
   .navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #f4511e !important;
+    color: #ff7e2e !important;
     background-color: #fff !important;
   }
   .navbar-default .navbar-toggle {
@@ -145,7 +121,7 @@
   footer .glyphicon {
     font-size: 20px;
     margin-bottom: 20px;
-    color: #f4511e;
+    color: #ff7e2e;
   }
   .slideanim {visibility:hidden;}
   .slide {
@@ -193,12 +169,35 @@
   </style>
 </head>
 
+<title>Restaurants</title>
+
+<header>
+    <nav class="p-6">
+        <div class="flex justify-between items-center">
+            <div class="flex justify-between flex-grow">
+            <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="login">SIGN IN</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+            </div>
+        </div>
+    </nav>
+</header>
+
 <div class="jumbotron text-center">
   <h1>Restaurants</h1> 
 </div>
 
 <div id="pricing" class="container-fluid">
-  <div class="row slideanim">
+  <div class="row">
     <div class="col-sm-4 col-xs-12">
       <div class="panel panel-default text-center">
         <div class="panel-heading">
@@ -215,6 +214,9 @@
         </div>
         <div class="panel-footer">
         	<p><strong>Location:</strong> South Albert, East, North</p>
+        </div>
+        <div class="panel-footer">
+          <a class="btn btn-lg" href="restaurantdetails">View More</a>
         </div>
       </div>      
     </div>
@@ -234,6 +236,9 @@
         </div>
         <div class="panel-footer">
         	<p><strong>Location:</strong> South Albert, East, North</p>
+        </div>
+        <div class="panel-footer">
+          <a class="btn btn-lg" href="restaurantdetails">View More</a>
         </div>
       </div>      
     </div> 
@@ -254,6 +259,9 @@
         <div class="panel-footer">
         	<p><strong>Location:</strong> South Albert, East, North</p>
         </div>
+        <div class="panel-footer">
+          <a class="btn btn-lg" href="restaurantdetails">View More</a>
+        </div>
       </div>      
     </div>
     <div class="col-sm-4 col-xs-12">
@@ -273,6 +281,9 @@
         <div class="panel-footer">
         	<p><strong>Location:</strong> South Albert, East, North</p>
         </div>
+        <div class="panel-footer">
+          <a class="btn btn-lg" href="restaurantdetails">View More</a>
+        </div>
       </div>      
     </div>
     <div class="col-sm-4 col-xs-12">
@@ -291,6 +302,9 @@
         </div>
         <div class="panel-footer">
         	<p><strong>Location:</strong> South Albert, East, North</p>
+        </div>
+        <div class="panel-footer">
+          <a class="btn btn-lg" href="restaurantdetails">View More</a>
         </div>
       </div>      
     </div> 
@@ -310,6 +324,9 @@
         </div>
         <div class="panel-footer">
         	<p><strong>Location:</strong> South Albert, East, North</p>
+        </div>
+        <div class="panel-footer">
+          <a class="btn btn-lg" href="restaurantdetails">View More</a>
         </div>
       </div>      
     </div> 
@@ -353,5 +370,3 @@ $(document).ready(function(){
   });
 })
 </script>
-
-@endsection
