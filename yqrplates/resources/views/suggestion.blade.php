@@ -1,9 +1,3 @@
-@extends ('layout')
-
-@section('title','Suggestion Generator')
-
-@section('content')
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,11 +29,11 @@
   .jumbotron {
     background-color: #ff7e2e;
     color: #fff;
-    padding: 100px 25px;
+    padding: 75px;
     font-family: Montserrat, sans-serif;
   }
   .container-fluid {
-    padding: 60px 50px;
+    padding: 30px 50px;
   }
   .bg-grey {
     background-color: #f6f6f6;
@@ -147,7 +141,6 @@
     margin-bottom: 20px;
     color: #ff7e2e;
   }
-  .slideanim {visibility:hidden;}
   .slide {
     animation-name: slide;
     -webkit-animation-name: slide;
@@ -193,19 +186,40 @@
   </style>
 </head>
 
+<title>Suggestion Generator</title>
+
+<header>
+  <nav class="p-6">
+    <div class="flex justify-between items-center">
+      <div class="flex justify-between flex-grow">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="login">SIGN IN</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="jumbotron text-center">
   <h1>Pick Your Plate</h1> 
 </div>
 
-<div id="about" class="container-fluid">
-  <div class="row">
+<div class="container-fluid">
     <div class="text-center">
-      <button class="btn btn-lg" type="button">Pick Your Plate</button>
+      <img src="{{ asset('images/Generate.png') }}" alt="Click to Generate" height="325px"> 
     </div>
-    <div class="text-center"></br>
-      <button class="btn btn-lg" type="button">Restaurants</button>
-    </div>
-  </div>
+    <form>
+      <input type="checkbox" id="filters" name="filters" value="Use Filters">
+    </form>
 </div>
 
 <script>
@@ -231,18 +245,5 @@ $(document).ready(function(){
       });
     } // End if
   });
-  
-  $(window).scroll(function() {
-    $(".slideanim").each(function(){
-      var pos = $(this).offset().top;
-
-      var winTop = $(window).scrollTop();
-        if (pos < winTop + 600) {
-          $(this).addClass("slide");
-        }
-    });
-  });
 })
 </script>
-
-@endsection

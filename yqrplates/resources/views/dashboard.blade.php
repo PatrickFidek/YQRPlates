@@ -35,7 +35,7 @@
   .jumbotron {
     background-color: #ff7e2e;
     color: #fff;
-    padding: 100px 25px;
+    padding: 75px;
     font-family: Montserrat, sans-serif;
   }
   .container-fluid {

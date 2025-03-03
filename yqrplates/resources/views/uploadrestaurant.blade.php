@@ -1,3 +1,11 @@
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
   *,
   *:before,
@@ -112,7 +120,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: #f4511e;
+    background-color: #ff7e2e;
   }
 
   .cont.s--signup .img:before {
@@ -168,7 +176,7 @@
     height: 36px;
     margin: 0 auto;
     background: transparent;
-    background-color: #f4511e;
+    background-color: #ff7e2e;
     color: #fff;
     text-transform: uppercase;
     font-size: 15px;
@@ -259,7 +267,7 @@
   .submit {
     margin-top: 40px;
     margin-bottom: 20px;
-    background: #f4511e;
+    background: #ff7e2e;
     text-transform: uppercase;
   }
 
@@ -320,9 +328,9 @@
   }
 
   .jumbotron {
-    background-color: #f4511e;
+    background-color: #ff7e2e;
     color: #fff;
-    padding: 100px 25px;
+    padding: 75px;
     font-family: Montserrat, sans-serif;
   }
 
@@ -335,12 +343,12 @@
   }
 
   .logo-small {
-    color: #f4511e;
+    color: #ff7e2e;
     font-size: 50px;
   }
 
   .logo {
-    color: #f4511e;
+    color: #ff7e2e;
     font-size: 200px;
   }
 
@@ -359,15 +367,15 @@
   .carousel-control.right,
   .carousel-control.left {
     background-image: none;
-    color: #f4511e;
+    color: #ff7e2e;
   }
 
   .carousel-indicators li {
-    border-color: #f4511e;
+    border-color: #ff7e2e;
   }
 
   .carousel-indicators li.active {
-    background-color: #f4511e;
+    background-color: #ff7e2e;
   }
 
   .item h4 {
@@ -383,7 +391,7 @@
   }
 
   .panel {
-    border: 1px solid #f4511e;
+    border: 1px solid #ff7e2e;
     border-radius: 0 !important;
     transition: box-shadow 0.5s;
   }
@@ -393,14 +401,14 @@
   }
 
   .panel-footer .btn:hover {
-    border: 1px solid #f4511e;
+    border: 1px solid #ff7e2e;
     background-color: #fff !important;
-    color: #f4511e;
+    color: #ff7e2e;
   }
 
   .panel-heading {
     color: #fff !important;
-    background-color: #f4511e !important;
+    background-color: #ff7e2e !important;
     padding: 25px;
     border-bottom: 1px solid transparent;
     border-top-left-radius: 0px;
@@ -424,13 +432,13 @@
 
   .panel-footer .btn {
     margin: 15px 0;
-    background-color: #f4511e;
+    background-color: #ff7e2e;
     color: #fff;
   }
 
   .navbar {
     margin-bottom: 0;
-    background-color: #f4511e;
+    background-color: #ff7e2e;
     z-index: 9999;
     border: 0;
     font-size: 12px !important;
@@ -447,7 +455,7 @@
 
   .navbar-nav li a:hover,
   .navbar-nav li.active a {
-    color: #f4511e !important;
+    color: #ff7e2e !important;
     background-color: #fff !important;
   }
 
@@ -459,7 +467,7 @@
   footer .glyphicon {
     font-size: 20px;
     margin-bottom: 20px;
-    color: #f4511e;
+    color: #ff7e2e;
   }
 
   .slideanim {
@@ -587,7 +595,7 @@
   }
 
   .choices[data-type*=select-one] .choices__button:focus {
-    box-shadow: 0 0 0 2px #f4511e
+    box-shadow: 0 0 0 2px #79a263f
   }
 
   .choices[data-type*=select-one]:after {
@@ -595,7 +603,7 @@
     height: 0;
     width: 0;
     border-style: solid;
-    border-color: #333 transparent transparent transparent;
+    border-color: #fff transparent transparent transparent;
     border-width: 5px;
     position: absolute;
     right: 11.5px;
@@ -632,7 +640,7 @@
     display: inline-block;
     margin: 0 -4px 0 8px;
     padding-left: 16px;
-    border-left: 1px solid #f4511e;
+    border-left: 1px solid #79a263;
     background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
     background-size: 8px;
     width: 8px;
@@ -708,8 +716,8 @@
     font-weight: 500;
     margin-right: 3.75px;
     margin-bottom: 3.75px;
-    background-color: #f4511e;
-    border: 1px solid #f4511e;
+    background-color: #79a263;
+    border: 1px solid #79a263;
     color: #fff;
     word-break: break-all
   }
@@ -724,8 +732,8 @@
   }
 
   .choices__list--multiple .choices__item.is-highlighted {
-    background-color: #a83411;
-    border: 1px #a83411
+    background-color: #448c1d;
+    border: 1px #448c1d;
   }
 
   .is-disabled .choices__list--multiple .choices__item {
@@ -889,6 +897,7 @@
     display: none
   }
 </style>
+<title>Preferences</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
   $(document).ready(function() {
@@ -900,68 +909,98 @@
     });
   })(jQuery);
 </script>
-<div class="jumbotron center">
-  <h1>YQR Plates</h1>
+</head>
+
+<header>
+  <nav class="p-6">
+    <div class="flex justify-between items-center">
+      <div class="flex justify-between flex-grow">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="login">SIGN IN</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="jumbotron text-center">
+  <h1>Enter Your Restaurant</h1>
 </div>
-<br>
-<br>
+
 <div class="center">
-  <h2>Upload your restaurant</h2>
-  <label>
-    <span>Neighbourhood</span>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
-    <div class="row d-flex justify-content-center mt-100">
-      <div class="col-md-6">
-        <select id="choices-multiple-remove-button" multiple>
-          <option value=""></option>
-          <option value="Neighborhood 1">Neighboorhood 1</option>
-          <option value="Neighborhood 2">Neighborhood 2</option>
-          <option value="Neighborhood 3">Neighborhood 3</option>
-        </select>
-      </div>
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4" >
+      <label>
+        <span>Neighbourhood</span>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+        <div class="row d-flex justify-content-center mt-100">
+            <select id="choices-multiple-remove-button" multiple>
+              <option value="Neighborhood 1">Neighboorhood 1</option>
+              <option value="Neighborhood 2">Neighborhood 2</option>
+              <option value="Neighborhood 3">Neighborhood 3</option>
+            </select>
+        </div>
+      </label>
     </div>
-  </label>
-  <label>
-    <span>Food Type</span>
-    <div class="row d-flex justify-content-center mt-100">
-      <div class="col-md-6">
-        <select id="choices-multiple-remove-button" multiple>
-          <option value="Food Type">Food Type 1</option>
-          <option value="Food Type">Food Type</option>
-          <option value="Food Type">Food Type</option>
-        </select>
-      </div>
+    <div class="col-sm-4" >
+      <label>
+        <span>Food Type</span>
+        <div class="row d-flex justify-content-center mt-100">
+            <select id="choices-multiple-remove-button" multiple>
+              <option value="Food Type">Food Type 1</option>
+              <option value="Food Type">Food Type</option>
+              <option value="Food Type">Food Type</option>
+            </select>
+        </div>
+      </label>  
     </div>
-  </label>
-  <label>
-    <span>Restaurant Type</span>
-    <div class="row d-flex justify-content-center mt-100">
-      <div class="col-md-6">
-        <select id="choices-multiple-remove-button" multiple>
-          <option value="Restaurant Type">Restaurant Type</option>
-          <option value="Restaurant Type">Restaurant Type</option>
-          <option value="Restaurant Type">Restaurant Type</option>
-        </select>
-      </div>
+    <div class="col-sm-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4" >
+      <label>
+        <span>Restaurant Type</span>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+        <div class="row d-flex justify-content-center mt-100">
+            <select id="choices-multiple-remove-button" multiple>
+              <option value="Restaurant Type">Restaurant Type</option>
+              <option value="Restaurant Type">Restaurant Type</option>
+              <option value="Restaurant Type">Restaurant Type</option>
+            </select>
+        </div>
+      </label>
     </div>
-  </label>
-  <label>
-    <span>Price Range</span>
-    <div class="row d-flex justify-content-center mt-100">
-      <div class="col-md-6">
-        <select id="choices-multiple-remove-button">
-          <option></option>
+    <div class="col-sm-4" >
+      <label>
+        <span>Price Range</span>
+        <div class="row d-flex justify-content-center mt-100">
+          <select id="choices-multiple-remove-button" defaultValue="">
           <option value="Price Range">Price Range</option>
           <option value="Price Range">Price Range</option>
           <option value="Price Range">Price Range</option>
-        </select>
-      </div>
+            </select>
+        </div>
+      </label>
     </div>
-  </label>
+    <div class="col-sm-2"></div>
+  </div>
   <label>
-    <span>Menu</span>
-    <input type="file" alt="Submit">
+        <span>Upload Menu</span>
+        <input type="file">
   </label>
+
   <button type="button" class="submit" background-color:#fff>Continue</button>
 </div>

@@ -1,4 +1,4 @@
-@extends ('layout') @section('title','Profile') @section('content') <head>
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
     .jumbotron {
       background-color: #ff7e2e;
       color: #fff;
-      padding: 100px 25px;
+      padding: 75px;
       font-family: Montserrat, sans-serif;
     }
 
@@ -227,8 +227,27 @@
     }
   </style>
 </head>
+
+<title>Profile</title>
+
+<header>
+    <nav class="p-6">
+        <div class="flex justify-between items-center">
+            <div class="flex justify-between flex-grow">
+            <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://yqrplates.com">YQR PLATES</a>
+    </div>
+  </div>
+</nav>
+            </div>
+        </div>
+    </nav>
+</header>
+
 <div class="jumbotron text-center">
-  <h1>Users Name</h1>
+  <h1>User's Name</h1>
 </div>
 
 <div id="about" class="container-fluid" style="width: 400px">
@@ -290,4 +309,4 @@
       });
     });
   })
-</script> @endsection
+</script>
