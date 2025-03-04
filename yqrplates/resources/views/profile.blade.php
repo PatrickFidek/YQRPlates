@@ -184,6 +184,23 @@
       visibility: visible;
     }
 
+    .largebtn {
+    background-color: #79a263; 
+    color: #303030;
+    width: 250px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: none;
+    margin: 0 auto;
+  }
+  .largebtn:hover{
+    background-color: #fff;
+    border-width: 3px;
+    border: 3px solid #79a263;
+  }
+
     @keyframes slide {
       0% {
         opacity: 0;
@@ -225,6 +242,7 @@
         font-size: 150px;
       }
     }
+
   </style>
 </head>
 
@@ -270,12 +288,12 @@
         	<p><strong>Location:</strong> South Albert, East, North</p>
         </div>
       </div> 
-      <button class="btn btn-lg" type="button">Update Preferences</button>
+      <button class="btn btn-lg largebtn" type="button">Update Preferences</button>
     </div>
     <div class="text-center">
       </br>
      	
-      <button class="btn btn-lg" type="button">View Dashboard</button>
+      <button class="btn btn-lg largebtn" type="button">View Dashboard</button>
     </div>
   </div>
 </div>

@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 @import 'tailwindcss';
@@ -66,7 +65,6 @@ button {
     display: block;
     width: 100%;
     padding: .375rem 2.25rem .375rem .75rem;
-    font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     color: var(--bs-body-color);
@@ -85,6 +83,48 @@ button {
     text-align: center;
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     color: #818181;
+}
+
+.select{
+    display: block;
+    width: 100%;
+    padding: .375rem 2.25rem .375rem .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-position: right .75rem center;
+    background-size: 16px 12px;
+    border: 2 solid rgb(0, 0, 0);
+    border-radius: 25;
+    transition: border-color .15sease-in-out, box-shadow .15sease-in-out;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    color: #818181;
+}
+
+.form-select {
+    --bs-form-select-bg-img: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e);
+    display: block;
+    width: 100%;
+    padding: .375rem 2.25rem .375rem .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bs-body-bg);
+    background-image: var(--bs-form-select-bg-img), var(--bs-form-select-bg-icon, none);
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px 12px;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15sease-in-out, box-shadow .15sease-in-out;
+}
+
+select {
+    word-wrap: normal;
 }
 
 .sub-cont {
@@ -581,11 +621,11 @@ input {
                     <input type="password" />
                 </label>
                 <label>
-				<span>Customer or Restaurant Owner</span>
-  <select class="form-select" name="type" id="type" style="height: 39.5px">
-  <option value="none" selected disabled hidden> </option>
-  <option value="customer"><span>Customer</span></option>
-  <option value="restaurant owner"><span>Restaurant Owner</span></option>
+                <span>Customer or Restaurant Owner</span>
+                <select name="type" id="type" class="select">
+                <option value="none" selected disabled hidden> </option>
+  <option value="customer">Customer</option>
+  <option value="restaurant owner">Restaurant Owner</option>
 
 </select>
                 </label>

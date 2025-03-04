@@ -920,11 +920,6 @@
             <div class="navbar-header">
               <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="login">SIGN IN</a></li>
-              </ul>
-            </div>
           </div>
         </nav>
       </div>
@@ -933,7 +928,7 @@
 </header>
 
 <div class="jumbotron text-center">
-  <h1>Enter Your Preferences</h1>
+  <h1>Enter Preferences</h1>
 </div>
 
 <div class="center">

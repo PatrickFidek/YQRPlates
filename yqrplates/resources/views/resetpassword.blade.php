@@ -1,3 +1,12 @@
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <style>
 *,
 *:before,
@@ -318,7 +327,7 @@ input {
   .jumbotron {
     background-color: #ff7e2e;
     color: #fff;
-    padding: 100px 25px;
+    padding: 75px;
     font-family: Montserrat, sans-serif;
   }
   .container-fluid {
@@ -477,14 +486,30 @@ input {
   width:120px;   
 }
 </style>
+</head>
+
+<header>
+  <nav class="p-6">
+    <div class="flex justify-between items-center">
+      <div class="flex justify-between flex-grow">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
 <div class="jumbotron text-center">
-  <h1>YQR Plates</h1> 
+  <h1>Reset Password</h1> 
 </div>
-<br>
-<br>
     
         <div class="center">
-            <h2>Reset your password</h2>
             <label>
                 <span>Email</span>
                 <input type="email" />

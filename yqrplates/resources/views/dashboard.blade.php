@@ -1,9 +1,3 @@
-@extends ('layout')
-
-@section('title','Dashboard')
-
-@section('content')
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,7 +77,7 @@
     font-style: normal;
   }
   .panel {
-    border: 1px solid #ff7e2e; 
+    border: 1px solid #79a263;
     border-radius:0 !important;
     transition: box-shadow 0.5s;
   }
@@ -97,7 +91,7 @@
   }
   .panel-heading {
     color: #fff !important;
-    background-color: #ff7e2e !important;
+    background-color: #79a263 !important;
     padding: 25px;
     border-bottom: 1px solid transparent;
     border-top-left-radius: 0px;
@@ -192,13 +186,30 @@
   }
   </style>
 </head>
+<title>Dashboard</title>
+
+<header>
+  <nav class="p-6">
+    <div class="flex justify-between items-center">
+      <div class="flex justify-between flex-grow">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </nav>
+</header>
 
 <div class="jumbotron text-center">
   <h1>Dashboard</h1> 
 </div>
 
 <div id="portfolio" class="container-fluid text-center">
-  <div class="row text-center slideanim">
+  <div class="row text-center ">
   <div class="col-sm-6 col-xs-12">
       <div class="panel panel-default text-center">
         <div class="panel-heading">
@@ -223,7 +234,7 @@
     </div> 
     
   </div><br>
-  <div class="row text-center slideanim">
+  <div class="row text-center ">
   <div class="col-sm-6 col-xs-12">
       <div class="panel panel-default text-center">
         <div class="panel-heading">
@@ -273,17 +284,7 @@ $(document).ready(function(){
     } // End if
   });
   
-  $(window).scroll(function() {
-    $(".slideanim").each(function(){
-      var pos = $(this).offset().top;
 
-      var winTop = $(window).scrollTop();
-        if (pos < winTop + 600) {
-          $(this).addClass("slide");
-        }
-    });
-  });
 })
 </script>
 
-@endsection

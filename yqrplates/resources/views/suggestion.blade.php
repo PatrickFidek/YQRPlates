@@ -183,6 +183,88 @@
       font-size: 150px;
     }
   }
+  .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #79a263;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #79a263;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.btn-check {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+}
+
+.btn-check:active+.btn-primary, .btn-check:checked+.btn-primary, .btn-primary.active, .btn-primary:active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #79a263;
+    border-color: #448c1d;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #448c1d;
+    border-color: #448c1d;
+}
+
+.b
+
   </style>
 </head>
 
@@ -197,9 +279,10 @@
             <div class="navbar-header">
               <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
             </div>
+            <!-- THIS SHOULD ONLY SHOW SIGN IN IF THEY ARENT SIGNED IN IF NOT IT SHOULD HAVE A LINK TO THEIR PROFILE -->
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="login">SIGN IN</a></li>
+                <li><a href="signin">SIGN IN</a></li>
               </ul>
             </div>
           </div>
@@ -217,12 +300,37 @@
     <div class="text-center">
       <img src="{{ asset('images/Generate.png') }}" alt="Click to Generate" height="325px"> 
     </div>
-    <form>
-      <input type="checkbox" id="filters" name="filters" value="Use Filters">
-    </form>
+<div style="text-align: center; padding-top: 15px">
+
+<!-- THIS SHOULD ONLY APPEAR IF THEY ARE SIGNED IN! -->
+<p style="font-size: 18px">Use Prefrences</p>
+
+<label class="switch">
+  <input type="checkbox">
+  <span class="slider round"></span>
+</label>
+
+
+</div>
 </div>
 
 <script>
+  function myFunc() {
+  // Get the checkbox
+  var checkBox = document.getElementById("btn-check-2");
+  // Get the output text
+  var text = document.getElementById("prefences");
+  var text2 = document.getElementById("using");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.style.display = "";
+    text2.style.display = "none";
+  } else {
+    text.style.display = "none";
+    text2.style.display = "";
+  }
+}
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
   $(".navbar a, footer a[href='#myPage']").on('click', function(event) {

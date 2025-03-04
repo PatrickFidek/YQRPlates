@@ -105,7 +105,7 @@
                     <div class="container">
                       <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav navbar-right">
-                          <li><a href="login">SIGN IN</a></li>
+                          <li><a href="signin">SIGN IN</a></li>
                         </u>
                       </div>
                     </div>
