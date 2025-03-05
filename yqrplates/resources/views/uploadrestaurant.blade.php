@@ -1002,7 +1002,8 @@
         removeItemButton: true,
         maxItemCount: 5,
         searchResultLimit: 5,
-        renderChoiceLimit: 5
+        renderChoiceLimit: 5,
+        
       });
     })(jQuery);
   </script>
@@ -1076,8 +1077,8 @@
       <label>
         <span>Price Range</span>
         <div class="row d-flex justify-content-center mt-100">
-          <select id="choices-multiple-remove-button" onChange="priceRange()" >
-            <option value="none" hidden> </option>
+          <select id="choices-multiple-remove-button" onChange="priceRange(this)" >
+            <option value="option" hidden> </option>
             <option value="Price Range">Price Range</option>
             <option value="Price Range">Price Range</option>
             <option value="Price Range">Price Range</option>
@@ -1171,8 +1172,35 @@
     }
   }
 }
-  function priceRange(){
 
+function updateCSSClassStyle2(className, property, value) {
+  // Loop through all the stylesheets
+
+  for (let sheet of document.styleSheets) {
+ 
+    try {
+      
+      // Iterate over the CSS rules in each stylesheet
+      for (let rule of sheet.cssRules) {
+       
+        if (rule.selectorText === className) {
+          
+          rule.style[property] = "none"; // Update the style of the class
+        }
+      }
+    } catch (e) {
+      // This handles cross-origin issues that may arise with external stylesheets
+      console.error(e);
+    }
+  }
+}
+  function priceRange(dropdown){
+
+    if(dropdown.value === ""){
+      updateCSSClassStyle2('.choices__list--single', 'display', 'none');
+    }
+    else{
     updateCSSClassStyle('.choices__list--single', 'display', 'inline-block');
+    }
   }
 </script>
