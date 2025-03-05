@@ -1,14 +1,4 @@
-@extends ('layout')
-
-@section('title','Restaurant Details')
-
-@section('content')
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com -->
-  <title>Bootstrap Theme Company Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -148,6 +138,7 @@
   }
   .glyphicon {
     font-size: 40px;
+    
     color: #79a263;
   }
   .slideanim {visibility:hidden;}
@@ -196,6 +187,31 @@
   </style>
 </head>
 
+<!-- This could also be the restaurant name -->
+<title>Restaurant Details</title>
+
+<header>
+  <nav class="p-6">
+    <div class="flex justify-between items-center">
+      <div class="flex justify-between flex-grow">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
+            </div>
+            <!-- THIS SHOULD ONLY SHOW SIGN IN IF THEY ARENT SIGNED IN IF NOT IT SHOULD HAVE A LINK TO THEIR PROFILE -->
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="signin">SIGN IN</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <div class="jumbotron text-center">
   <h1>Wok Box</h1> 
 </div>
@@ -223,18 +239,20 @@
 
 <div class="container-fluid text-center bg-grey">
   <div class="row">
-    <div class="col-sm-5">
-      <h2>Menu</h2><br>
+    <div class="col-sm-6">
+      <h2>Menu</h2>
       <div class="row text-center">
         <div class="col-sm-12 text-center">
-          <div class="thumbnail align-center">
-            <h1>Input file element here</h1>
+          <div class="align-center">
+            <!-- this needs to be the restaurant menu file name -->
+            <a href="{{ asset('menus/menufile.pdf') }}" download> <h3>Download </h3></a>
+            <embed src="{{ asset('menus/menufile.pdf') }}" width="600px" height="200px" />
           </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-7">
-      <h2>Promotions</h2>
+    <div class="col-sm-6">
+      <h2>Promotions</h2><br>
       <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
 
         <ol class="carousel-indicators">
