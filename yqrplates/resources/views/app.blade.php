@@ -115,7 +115,7 @@
     </nav>
 </header>
 <div class="flex justify-between jumbotron text-center">
-  <img src="{{ asset('images/YQRPlates.png') }}" alt="YQR Plates" height="325px">
+  <img src="{{ asset('images/YQRPlates.png') }}" alt="YQR Plates" height="320px">
 </div>
 <div class="container-fluid">
   <div class="row items-center">

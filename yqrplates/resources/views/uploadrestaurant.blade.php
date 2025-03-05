@@ -649,6 +649,20 @@
       border-radius: 0
     }
 
+    .choices[data-type*=one] .choices__button {
+      position: relative;
+      display: inline-block;
+      margin: 0 -4px 0 8px;
+      padding-left: 16px;
+      border-left: 1px solid #79a263;
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
+      background-size: 8px;
+      width: 8px;
+      line-height: 1;
+      opacity: .75;
+      border-radius: 0
+    }
+
     .choices[data-type*=select-multiple] .choices__button:focus,
     .choices[data-type*=select-multiple] .choices__button:hover,
     .choices[data-type*=text] .choices__button:focus,
@@ -708,6 +722,21 @@
     }
 
     .choices__list--multiple .choices__item {
+      display: inline-block;
+      vertical-align: middle;
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-right: 3.75px;
+      margin-bottom: 3.75px;
+      background-color: #79a263;
+      border: 1px solid #79a263;
+      color: #fff;
+      word-break: break-all
+    }
+
+    .choices__list--single {
       display: inline-block;
       vertical-align: middle;
       border-radius: 20px;
