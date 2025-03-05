@@ -705,7 +705,7 @@
     .choices__list--single {
       display: inline-block;
       padding: 4px 16px 4px 4px;
-      width: 100%
+      width: 100%;
     }
 
     [dir=rtl] .choices__list--single {
@@ -714,7 +714,7 @@
     }
 
     .choices__list--single .choices__item {
-      width: 100%
+      width: 100%;
     }
 
     .choices__list--multiple {
@@ -748,7 +748,9 @@
       background-color: #79a263;
       border: 1px solid #79a263;
       color: #fff;
-      word-break: break-all
+      word-break: break-all;
+      width: 40%;
+      display: none;
     }
 
     .choices__list--multiple .choices__item[data-deletable] {
@@ -1000,7 +1002,8 @@
         removeItemButton: true,
         maxItemCount: 5,
         searchResultLimit: 5,
-        renderChoiceLimit: 5
+        renderChoiceLimit: 5,
+        
       });
     })(jQuery);
   </script>
@@ -1074,8 +1077,8 @@
       <label>
         <span>Price Range</span>
         <div class="row d-flex justify-content-center mt-100">
-          <select id="choices-multiple-remove-button">
-            <option value="none" selected disabled hidden> </option>
+          <select id="choices-multiple-remove-button" onChange="priceRange(this)" >
+            <option value="option" hidden> </option>
             <option value="Price Range">Price Range</option>
             <option value="Price Range">Price Range</option>
             <option value="Price Range">Price Range</option>
@@ -1145,6 +1148,59 @@
       blah.style.display = "none";
       blah2.style.display = "";
       test.style.display = "none"
+    }
+  }
+
+  function updateCSSClassStyle(className, property, value) {
+  // Loop through all the stylesheets
+
+  for (let sheet of document.styleSheets) {
+ 
+    try {
+      
+      // Iterate over the CSS rules in each stylesheet
+      for (let rule of sheet.cssRules) {
+       
+        if (rule.selectorText === className) {
+          
+          rule.style[property] = "inline-block"; // Update the style of the class
+        }
+      }
+    } catch (e) {
+      // This handles cross-origin issues that may arise with external stylesheets
+      console.error(e);
+    }
+  }
+}
+
+function updateCSSClassStyle2(className, property, value) {
+  // Loop through all the stylesheets
+
+  for (let sheet of document.styleSheets) {
+ 
+    try {
+      
+      // Iterate over the CSS rules in each stylesheet
+      for (let rule of sheet.cssRules) {
+       
+        if (rule.selectorText === className) {
+          
+          rule.style[property] = "none"; // Update the style of the class
+        }
+      }
+    } catch (e) {
+      // This handles cross-origin issues that may arise with external stylesheets
+      console.error(e);
+    }
+  }
+}
+  function priceRange(dropdown){
+
+    if(dropdown.value === ""){
+      updateCSSClassStyle2('.choices__list--single', 'display', 'none');
+    }
+    else{
+    updateCSSClassStyle('.choices__list--single', 'display', 'inline-block');
     }
   }
 </script>
