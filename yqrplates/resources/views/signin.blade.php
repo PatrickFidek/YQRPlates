@@ -644,7 +644,8 @@ input {
         <div class="form sign-in">
             <h2>Welcome to YQR Plates</h2>
             <label>
-            <form id="Login" action="signin" method="post">
+            <form action="/preferences" method="post">
+              @csrf
                 <span>Email</span>
                 <input type="email" />
             </label>
@@ -657,51 +658,53 @@ input {
             <button type="button" class="submit" background-color:#fff><input type="submit" value="Sign In" style="border-bottom: none;"/></button>
             </form>
         </div>
+
+
         <div class="sub-cont">
             <div class="img">
                 <div class="img__text m--up">
-                 
                     <h3>Don't have an account? Please Sign up!<h3>
                 </div>
                 <div class="img__text m--in">
-                
                     <h3>If you already have an account, sign in<h3>
                 </div>
                 <div class="img__btn">
                     <span class="m--up">Sign Up</span>
                     <span class="m--in">Sign In</span>
                 </div>
-            </div>
+        </div>
             <div class="form sign-up">
                 <h2>Create your Account</h2>
-                <label>
-                    <span>Name</span>
-                    <input type="text" />
-                </label>
-                <label>
-                    <span>Email</span>
-                    <input type="email" />
-                </label>
-                <label>
-                    <span>Birthday</span>
-                    <input type="date" />
-                </label>
-                <label>
-                    <span>Password</span>
-                    <input type="password" />
-                </label>
-                <label>
-                <span>Customer or Restaurant Owner</span>
-                <select name="type" id="type" class="select">
-                <option value="none" selected disabled hidden> </option>
-  <option value="customer">Customer</option>
-  <option value="restaurant owner">Restaurant Owner</option>
-
-</select>
-                </label>
+                  <form action="/preferences" method="POST">
+                    @csrf
+                    <label>
+                        <span>Name</span>
+                        <input type="text" />
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" />
+                    </label>
+                    <label>
+                        <span>Birthday</span>
+                        <input type="date" />
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input type="password" />
+                    </label>
+                    <label>
+                      <span>Customer or Restaurant Owner</span>
+                        <select name="type" id="type" class="select">
+                          <option value="none" selected disabled hidden> </option>
+                          <option value="customer">Customer</option>
+                          <option value="restaurant owner">Restaurant Owner</option>
+                        </select>
+                    </label>
+                  
                 <!-- based on if customer or restaurant owner is selected this should redirect to either preferences or uploadrestaurant -->
                 <button type="button" class="submit">Sign Up</button>
-                
+                </form>
             </div>
         </div>
     </div>

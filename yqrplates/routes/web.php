@@ -45,3 +45,7 @@ Route::get('/profile', function () {
 Route::get('/passwordreset', function () {
     return view('passwordreset');
 });
+
+Route::post('/preferences', function () {
+    return view('preferences');
+});
