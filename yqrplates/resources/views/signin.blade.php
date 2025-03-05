@@ -644,7 +644,7 @@ input {
         <div class="form sign-in">
             <h2>Welcome to YQR Plates</h2>
             <label>
-            <form action="/preferences" method="post">
+            <form action="/profile" method="post">
               @csrf
                 <span>Email</span>
                 <input type="email" />

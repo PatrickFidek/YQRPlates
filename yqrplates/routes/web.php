@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PreferencesController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('app');
@@ -46,6 +48,6 @@ Route::get('/passwordreset', function () {
     return view('passwordreset');
 });
 
-Route::post('/preferences', function () {
-    return view('preferences');
-});
+Route::post('/preferences', [PreferencesController::class, 'seePreferences']);
+
+Route::post('/profile', [ProfileController::class, 'seeProfile']);
