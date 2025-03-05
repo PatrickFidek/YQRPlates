@@ -41,3 +41,7 @@ Route::get('/uploadrestaurant', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+
+Route::get('/passwordreset', function () {
+    return view('passwordreset');
+});

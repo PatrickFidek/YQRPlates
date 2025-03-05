@@ -266,11 +266,20 @@ input {
 }
 
 .submit {
-    margin-top: 40px;
+    margin-top: 10px;
     margin-bottom: 20px;
     background: #ff7e2e;
     text-transform: uppercase;
 }
+
+.check {
+            height: 50px;
+            width: 18px;
+            border-bottom: 10px solid green;
+            border-right: 10px solid green;
+            transform: rotate(45deg);
+            margin: 20px;
+        }
 
 .fb-btn {
     border: 2px solid #d3dae9;
@@ -315,7 +324,7 @@ input {
     text-transform: uppercase;
     color: #303030;
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
   h4 {
     font-size: 19px;
@@ -450,8 +459,15 @@ input {
 
   p {
     margin: 0 0 10px;
-    color: red;
+    text-align: center
 }
+
+checkbody {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
 
 
   @keyframes slide {
@@ -512,36 +528,15 @@ input {
 </header>
 
 
-<div class="jumbotron text-center">
-  <h1>Reset Password</h1> 
-</div>
     
-        <div class="center">
-            <label>
-                <span>Email</span>
-                <input type="email" />
-            </label>
-                        <label>
-               
-                <span>Confirm your birthday</span>
-                <!-- This should only be displayed if the birthday doesnt match -->
-                <p color="red">Birthday does not match</p>
-                <input type="date" />
-            </label>
-            <label>
-                <!-- this should only be displayed if the passwords dont match -->
-                <p>Please make sure the password and confirm password match</p>
-                <span>New Password</span>
-                <input type="password" />
-            </label>
-                        <label>
-                <span>Confirm New Password</span>
-                <input type="confirm password" />
-            </label>
-            <!-- this should only redirect if the birthday matches, and the password and confirm password match -->
-            <button type="button" class="submit" background-color:#fff onclick="location.href='https://yqrplates.com/passwordreset';">Reset Password</button>
+        <div class="center" style="margin-top: 100px">
+        <p><span class="glyphicon glyphicon-ok" style="font-size: 45px; color: #79a263; "></span></p>    
+            <h2>Password Changed!</h2>
+            <p>Your password has been changed successfully</p>
+            <button type="button" class="submit" background-color:#fff onclick="location.href='https://yqrplates.com/signin';">Sign In</button>
          
         </div>
+   
 
 
                 

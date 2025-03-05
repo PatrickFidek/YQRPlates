@@ -288,12 +288,12 @@
         	<p><strong>Location:</strong> South Albert, East, North</p>
         </div>
       </div> 
-      <button class="btn btn-lg largebtn" type="button">Update Preferences</button>
+         <!-- should say update prfences/update menu depending on restaurant owner or customer -->
+      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/preferences';">Update Preferences</button>
     </div>
-    <div class="text-center">
       </br>
      	
-      <button class="btn btn-lg largebtn" type="button">View Dashboard</button>
+      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/dashboard';">View Dashboard</button>
     </div>
   </div>
 </div>

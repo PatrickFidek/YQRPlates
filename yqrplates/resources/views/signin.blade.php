@@ -583,7 +583,7 @@ input {
                 <span>Password</span>
                 <input type="password" />
             </label>
-            <p class="forgot-pass">Forgot password?</p>
+            <a href="https://www.yqrplates.com/resetpassword"><p class="forgot-pass">Forgot password?</p></a>
             <button type="button" class="submit" background-color:#fff>Sign In</button>
          
         </div>
@@ -629,6 +629,7 @@ input {
 
 </select>
                 </label>
+                <!-- based on if customer or restaurant owner is selected this should redirect to either preferences or uploadrestaurant -->
                 <button type="button" class="submit">Sign Up</button>
                 
             </div>
