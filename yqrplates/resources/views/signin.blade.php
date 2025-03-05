@@ -1,3 +1,71 @@
+<?php
+
+$validate = true;
+$reg_Email = "/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/";
+$reg_Pswd = "/^(\S*)?\d+(\S*)?$/";
+
+$email = "";
+$error = "";
+
+if (isset($_POST["submitted"]) && $_POST["submitted"])
+{
+    $email = trim($_POST["email"]);
+    $password = trim($_POST["password"]);
+    
+    $db = new mysqli("127.0.0.1", "yqrplate_patrick", "gv$;ztUASM9%J(pm", "yqrplate_database_1");
+    if ($db->connect_error)
+    {
+        echo"failed";
+        die ("Connection failed: " . $db->connect_error);
+    }
+    else{
+      echo"connected";
+    }
+
+    //add code here to select * from table User where email = '$email' AND password = '$password'
+    // start with $q = 
+    $q = "SELECT * FROM Users WHERE email = '$email' AND password = '$password'";
+
+    $r = $db->query($q);
+    $row = $r->fetch_assoc();
+    if($email != $row["Email"] && $password != $row["Password"])
+    {
+        $validate = false;
+    }
+    else
+    {
+        $emailMatch = preg_match($reg_Email, $email);
+        if($email == null || $email == "" || $emailMatch == false)
+        {
+            $validate = false;
+        }
+        
+        $pswdLen = strlen($password);
+        $passwordMatch = preg_match($reg_Pswd, $password);
+        if($password == null || $password == "" || $pswdLen < 8 || $passwordMatch == false)
+        {
+            $validate = false;
+        }
+    }
+    
+    if($validate == true)
+    {
+        session_start();
+        $_SESSION["Email"] = $row["Email"];
+        header("Location: app.blade.php");
+        $db->close();
+        exit();
+    }
+    if($validate == false) 
+    {
+        $error = "The email/password combination was incorrect. Login failed.";
+        
+        $db->close();
+    }
+}
+
+?>
+
 
 <head>
   <meta charset="utf-8">
@@ -576,6 +644,7 @@ input {
         <div class="form sign-in">
             <h2>Welcome to YQR Plates</h2>
             <label>
+            <form id="Login" action="signin" method="post">
                 <span>Email</span>
                 <input type="email" />
             </label>
@@ -584,8 +653,9 @@ input {
                 <input type="password" />
             </label>
             <a href="https://www.yqrplates.com/resetpassword"><p class="forgot-pass">Forgot password?</p></a>
-            <button type="button" class="submit" background-color:#fff>Sign In</button>
-         
+            <td><?echo "$error";?></td>
+            <button type="button" class="submit" background-color:#fff><input type="submit" value="Sign In" style="border-bottom: none;"/></button>
+            </form>
         </div>
         <div class="sub-cont">
             <div class="img">
