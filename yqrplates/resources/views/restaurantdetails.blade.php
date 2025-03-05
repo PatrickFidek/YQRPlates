@@ -146,10 +146,9 @@
     border-color: transparent;
     color: #fff !important;
   }
-  footer .glyphicon {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #ff7e2e;
+  .glyphicon {
+    font-size: 40px;
+    color: #79a263;
   }
   .slideanim {visibility:hidden;}
   .slide {
@@ -201,75 +200,73 @@
   <h1>Wok Box</h1> 
 </div>
 
-<!-- Container (Services Section) -->
-<div id="services" class="container-fluid text-center">
+<div class="container-fluid text-center">
   <div class="row">
-    <div class="col-sm-6">
-      <span class="glyphicon glyphicon-off logo-small"></span>
+    <div class="col-sm-3">
+      <span class="glyphicon glyphicon-apple logo-small"></span>
       <h4>Asian</h4>
     </div>
-    <div class="col-sm-6">
-      <span class="glyphicon glyphicon-heart logo-small"></span>
+    <div class="col-sm-3">
+      <span class="glyphicon glyphicon-cutlery logo-small"></span>
       <h4>Dine-In, Take-Out</h4>
     </div>
-  </div>
-  <br><br>
-  <div class="row">
-    <div class="col-sm-6">
-      <span class="glyphicon glyphicon-leaf logo-small"></span>
+    <div class="col-sm-3">
+      <span class="glyphicon glyphicon-usd logo-small"></span>
       <h4>$10 - $15</h4>
     </div>
-    <div class="col-sm-6">
-      <span class="glyphicon glyphicon-certificate logo-small"></span>
+    <div class="col-sm-3">
+      <span class="glyphicon glyphicon-map-marker logo-small"></span>
       <h4>Harbour Landing, East, North</h4>
     </div>
   </div>
 </div>
 
-<!-- Container (Portfolio Section) -->
-<div id="portfolio" class="container-fluid text-center bg-grey">
-  <h2>Menu</h2><br>
-  <div class="row text-center">
-    <div class="col-sm-12 text-center">
-      <div class="thumbnail align-center">
-        <h1>Input file element here</h1>
+<div class="container-fluid text-center bg-grey">
+  <div class="row">
+    <div class="col-sm-5">
+      <h2>Menu</h2><br>
+      <div class="row text-center">
+        <div class="col-sm-12 text-center">
+          <div class="thumbnail align-center">
+            <h1>Input file element here</h1>
+          </div>
+        </div>
       </div>
     </div>
-  </div><br>
-  
-  <h2>Promotions</h2>
-  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
+    <div class="col-sm-7">
+      <h2>Promotions</h2>
+      <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <h4>"This company is the best. I am so happy with the result!"<br><span>Michael Roe, Vice President, Comment Box</span></h4>
-      </div>
-      <div class="item">
-        <h4>"One word... WOW!!"<br><span>John Doe, Salesman, Rep Inc</span></h4>
-      </div>
-      <div class="item">
-        <h4>"Could I... BE any more happy with this company?"<br><span>Chandler Bing, Actor, FriendsAlot</span></h4>
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <h4>Promotion 1<br><span>Double line</span></h4>
+          </div>
+          <div class="item">
+            <h4>Promotion 2</h4>
+          </div>
+          <div class="item">
+            <h4>Promotion 3</h4>
+          </div>
+        </div>
+
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
     </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
   </div>
-</div>
+</div> 
 
 <script>
 $(document).ready(function(){
@@ -293,17 +290,6 @@ $(document).ready(function(){
         window.location.hash = hash;
       });
     } // End if
-  });
-  
-  $(window).scroll(function() {
-    $(".slideanim").each(function(){
-      var pos = $(this).offset().top;
-
-      var winTop = $(window).scrollTop();
-        if (pos < winTop + 600) {
-          $(this).addClass("slide");
-        }
-    });
   });
 })
 </script>
