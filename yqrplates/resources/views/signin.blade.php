@@ -655,6 +655,11 @@ input {
                       <span>Confirm Password</span>
                       <input name="password_confirmation" type='password' />
                     </label>
+
+                    <label>
+                      <span>Confirm Password</span>
+                      <input name="confirmation" type='password' />
+                    </label>
                     <label>
                       <span>Customer or Restaurant Owner</span>
                         <select name="type" id="type" class="select">
@@ -663,7 +668,7 @@ input {
                           <option value="restaurant owner">Restaurant Owner</option>
                         </select>
                     </label>
-                    
+                  
                 <!-- based on if customer or restaurant owner is selected this should redirect to either preferences or uploadrestaurant -->
                 <button type="submit" class="submit">Sign Up</button>
                 </form>

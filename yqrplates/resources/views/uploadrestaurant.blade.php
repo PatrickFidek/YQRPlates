@@ -741,6 +741,8 @@
       vertical-align: middle;
       border-radius: 20px;
       padding: 4px 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
       font-size: 12px;
       font-weight: 500;
       margin-right: 3.75px;
