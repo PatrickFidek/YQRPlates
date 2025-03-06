@@ -322,7 +322,7 @@ input {
     line-height: 1.375em;
     color: #303030;
     font-weight: 400;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }  
   .jumbotron {
     background-color: #ff7e2e;
@@ -356,7 +356,7 @@ input {
   }
   .carousel-control.right, .carousel-control.left {
     background-image: none;
-    color: #ff7e2e;
+    color: #79a263;
   }
   .carousel-indicators li {
     border-color: #ff7e2e;
@@ -370,6 +370,7 @@ input {
     font-weight: 400;
     font-style: italic;
     margin: 70px 0;
+    margin-bottom: 20px;
   }
   .item span {
     font-style: normal;
@@ -495,6 +496,12 @@ textarea {
   #usertype option{
   width:120px;   
 }
+
+@media (min-width: 768px) {
+    .col-sm-6 {
+        width: 100%;
+    }
+}
 </style>
 </head>
 
@@ -514,14 +521,15 @@ textarea {
   </nav>
 </header>
 
+<title>Promotions</title>title>
 
 <div class="jumbotron text-center">
   <h1>Restaurant Name</h1> 
 </div>
-<div class="col-sm-6 text-center">
-      <h2>Current Promotions</h2><br>
+<div class="col-sm-6" style="width 5%">
+      <h2>Promotions</h2><br>
       <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-
+        <br>
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
           <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -529,21 +537,47 @@ textarea {
         </ol>
 
         <div class="carousel-inner" role="listbox">
+          
           <div class="item active">
             <h4>Promotion 1<br><span>Double line</span></h4>
+            <button type="button" class="submit" background-color:#fff style="margin-top: 0px" onclick="location.href='https://yqrplates.com/profile';">Remove Promotion</button>
+            <br>
+            <br>
           </div>
           <div class="item">
             <h4>Promotion 2</h4>
+            <button type="button" class="submit" background-color:#fff style="margin-top: 0px" onclick="location.href='https://yqrplates.com/profile';">Remove Promotion</button>
+            <br>
+            <br>
           </div>
           <div class="item">
             <h4>Promotion 3</h4>
+            <button type="button" class="submit" background-color:#fff style="margin-top: 0px"  onclick="location.href='https://yqrplates.com/profile';">Remove Promotion</button>
+            <br>
+            <br>
           </div>
+          
         </div>
-        <div class="center">
+       
+
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div> 
+        
+<br>
+<br>
+        <div class="text-center">
             <label>
-                <span>Add Promotion</span>
-                
-   
+                <h3>Add New Promotion</h3>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea>
 
             </label>
