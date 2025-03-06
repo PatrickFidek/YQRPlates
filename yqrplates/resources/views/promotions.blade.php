@@ -469,6 +469,14 @@ textarea {
   resize: none;
 }
 
+.modal-footer {
+    padding: 15px;
+    text-align: right;
+    display: inline-flex;
+    width: 100%;
+    border-top: 1px solid #e5e5e5;
+}
+
 
   @keyframes slide {
     0% {
@@ -600,20 +608,22 @@ Remove Promotion
 <br>
 <br>
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document" style="padding-top: 15%">
+  <div class="modal-dialog modal-dialog-centered" role="document" style="padding-top: 15%;">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to remove?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="width: 10px">
           <span aria-hidden="true">&times;</span>
         </button>
+
+        <h2 class="modal-title text-center" id="exampleModalLongTitle">Are you sure you want to remove?</h2>
+
       </div>
       <div class="modal-body">
         Continung will remove this promotion from your Restaurant
       </div>
       <div class="modal-footer">
         <button type="button" class="submit" data-dismiss="modal">Cancel</button>
-        <button type="button" class="submit">Remove Promotion</button>
+        <button type="button" class="submit">Confirm Removal</button>
       </div>
     </div>
   </div>
