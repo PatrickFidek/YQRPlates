@@ -43,7 +43,7 @@ button {
     overflow: hidden;
     position: relative;
     width: 900px;
-    height: 675px;
+    height: 715px;
     margin: 0 auto 100px;
     background: #fff;
     box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.3), 10px 10px 15px rgba(70, 70, 70, 0.15), inset -10px -10px 15px rgba(255, 255, 255, 0.3), inset 10px 10px 15px rgba(70, 70, 70, 0.15);
@@ -308,6 +308,7 @@ h2 {
 label {
     display: block;
     width: 260px;
+    height: 65px;
     margin: 15px auto 0;
     text-align: center;
 }
