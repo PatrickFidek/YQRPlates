@@ -611,41 +611,41 @@ input {
         </div>
             <div class="form sign-up">
                 <h2>Create your Account</h2>
-                <form action="/register" method="POST">
+                <form action="/register" method="POST" id="registration-form">
                     @csrf
 
                     <label>
                         <span>Name</span>
-                        <input name="name" type="text" />
+                        <input name="name" type="text" value="{{ old('name')}}" />
                         @if ($errors->has('name'))
-                          <div class="error-message">
+                          <div id="name-error" class="error-message">
                             {{$errors->first('name')}}
                           </div>
                         @endif
                     </label>
                     <label>
                         <span>Email</span>
-                        <input name="email" type="email" />
+                        <input name="email" type="email" value="{{ old('email')}}" />
                         @if ($errors->has('email'))
-                          <div class="error-message">
+                          <div id="email-error" class="error-message">
                               {{$errors->first('email')}}
                           </div>
                         @endif
                     </label>
                     <label>
                         <span>Birthday</span>
-                        <input name="birthday" type="date" />
+                        <input name="birthday" type="date" value="{{ old('birthday')}}" />
                         @if ($errors->has('birthday'))
-                          <div class="error-message">
+                          <div id="birthday-error" class="error-message">
                               {{$errors->first('birthday')}}
                           </div>
                         @endif
                     </label>
                     <label>
                         <span>Password</span>
-                        <input name="password" type="password" />
+                        <input name="password" type="password" value="{{ old('password')}}" />
                         @if ($errors->has('password'))
-                          <div class="error-message">
+                          <div id="password-error" class="error-message">
                               {{$errors->first('password')}}
                           </div>
                         @endif
@@ -653,20 +653,16 @@ input {
 
                     <label>
                       <span>Confirm Password</span>
-                      <input name="password_confirmation" type='password' />
+                      <input name="password_confirmation" type='password' value="{{ old('password_confirmation')}}" />
                     </label>
 
-                    <label>
-                      <span>Confirm Password</span>
-                      <input name="confirmation" type='password' />
-                    </label>
-                    <label>
                       <span>Customer or Restaurant Owner</span>
                         <select name="type" id="type" class="select">
                           <option value="none" selected disabled hidden> </option>
                           <option value="customer">Customer</option>
                           <option value="restaurant owner">Restaurant Owner</option>
                         </select>
+                        <div class="error-message"></div>
                     </label>
                   
                 <!-- based on if customer or restaurant owner is selected this should redirect to either preferences or uploadrestaurant -->
@@ -678,14 +674,12 @@ input {
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-        document.querySelector('.img__btn').addEventListener('click', function() {
+        document.querySelector('.img__btn').addEventListener('click', function(e) {
+            e.preventDefault();
             document.querySelector('.cont').classList.toggle('s--signup');
         });
         $('input[type="checkbox"]').on('change', function() {
    $('input[type="checkbox"]').not(this).prop('checked', false);
 });
-       
-
-
     </script>
 

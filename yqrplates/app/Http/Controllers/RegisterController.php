@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller 
 {
@@ -19,6 +20,7 @@ class RegisterController extends Controller
         
         ['password.regex' => 'Your password must include an uppercase, lower case, number and a symbol']);
         
+      
         return view('preferences');
     }
 }
