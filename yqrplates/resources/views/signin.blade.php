@@ -1,4 +1,3 @@
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,131 +10,108 @@
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/signin.css') }}">
   <script src="{{ asset('js/signin.js') }}"></script>
 </head>
-
 <title>Sign In</title>
 <header>
-    <nav class="p-6">
-        <div class="flex justify-between items-center">
-            <div class="flex justify-between flex-grow">
-            <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="https://yqrplates.com">YQR PLATES</a>
+  <nav class="p-6">
+    <div class="flex justify-between items-center">
+      <div class="flex justify-between flex-grow">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="https://yqrplates.com">YQR PLATES</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </nav>
+</header>
+<br>
+<br>
+<br>
+<div class="cont">
+  <div class="form sign-in">
+    <h2>Welcome to YQR Plates</h2>
+    <label>
+      <form action="/profile" method="post"> @csrf <span>Email</span>
+        <input type="email" />
+    </label>
+    <label>
+      <span>Password</span>
+      <input type="password" />
+    </label>
+    <a href="https://www.yqrplates.com/resetpassword">
+      <p class="forgot-pass">Forgot password?</p>
+    </a>
+    <td>
+      <?echo "$error";?>
+    </td>
+    <button type="button" class="submit" background-color:#fff>
+      <input type="submit" value="Sign In" style="border-bottom: none;" />
+    </button>
+    </form>
+  </div>
+  <div class="sub-cont">
+    <div class="img">
+      <div class="img__text m--up">
+        <h3>Don't have an account? Please Sign up! <h3>
+      </div>
+      <div class="img__text m--in">
+        <h3>If you already have an account, sign in <h3>
+      </div>
+      <div class="img__btn">
+        <span class="m--up">Sign Up</span>
+        <span class="m--in">Sign In</span>
+      </div>
+    </div>
+    <div class="form sign-up">
+      <h2>Create your Account</h2>
+      <form action="/register" method="POST"> @csrf <label>
+          <span>Name</span>
+          <input name="name" type="text" value="{{ old('name')}}" /> @if ($errors->has('name')) <div id="name-error" class="error-message">
+            {{$errors->first('name')}}
+          </div> @endif </label>
+        <label>
+          <span>Email</span>
+          <input name="email" type="email" value="{{ old('email')}}" /> @if ($errors->has('email')) <div id="email-error" class="error-message">
+            {{$errors->first('email')}}
+          </div> @endif </label>
+        <label>
+          <span>Birthday</span>
+          <input name="birthday" type="date" value="{{ old('birthday')}}" /> @if ($errors->has('birthday')) <div id="birthday-error" class="error-message">
+            {{$errors->first('birthday')}}
+          </div> @endif </label>
+        <label>
+          <span>Password</span>
+          <input name="password" type="password" value="{{ old('password')}}" /> @if ($errors->has('password')) <div id="password-error" class="error-message">
+            {{$errors->first('password')}}
+          </div> @endif </label>
+        <label>
+          <span>Confirm Password</span>
+          <input name="password_confirmation" type='password' value="{{ old('password_confirmation')}}" />
+        </label>
+        <label>
+          <span>Customer or Restaurant Owner</span>
+          <select name="type" id="type" class="select">
+            <option value="none" selected disabled hidden></option>
+            <option value="customer">Customer</option>
+            <option value="restaurant owner">Restaurant Owner</option>
+          </select>
+          <div class="error-message"></div>
+        </label>
+        <!-- based on if customer or restaurant owner is selected this should redirect to either preferences or uploadrestaurant -->
+        <button type="submit" class="submit">Sign Up</button>
+      </form>
     </div>
   </div>
-</nav>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<br>
-<br>
-<br>
-    <div class="cont">
-        <div class="form sign-in">
-            <h2>Welcome to YQR Plates</h2>
-            <label>
-            <form action="/profile" method="post">
-              @csrf
-                <span>Email</span>
-                <input type="email" />
-            </label>
-            <label>
-                <span>Password</span>
-                <input type="password" />
-            </label>
-            <a href="https://www.yqrplates.com/resetpassword"><p class="forgot-pass">Forgot password?</p></a>
-            <td><?echo "$error";?></td>
-            <button type="button" class="submit" background-color:#fff><input type="submit" value="Sign In" style="border-bottom: none;"/></button>
-            </form>
-        </div>
-
-
-        <div class="sub-cont">
-            <div class="img">
-                <div class="img__text m--up">
-                    <h3>Don't have an account? Please Sign up!<h3>
-                </div>
-                <div class="img__text m--in">
-                    <h3>If you already have an account, sign in<h3>
-                </div>
-                <div class="img__btn">
-                    <span class="m--up">Sign Up</span>
-                    <span class="m--in">Sign In</span>
-                </div>
-        </div>
-            <div class="form sign-up">
-                <h2>Create your Account</h2>
-                <form action="/register" method="POST">
-                    @csrf
-
-                    <label>
-                        <span>Name</span>
-                        <input name="name" type="text" value="{{ old('name')}}" />
-                        @if ($errors->has('name'))
-                          <div id="name-error" class="error-message">
-                            {{$errors->first('name')}}
-                          </div>
-                        @endif
-                    </label>
-                    <label>
-                        <span>Email</span>
-                        <input name="email" type="email" value="{{ old('email')}}" />
-                        @if ($errors->has('email'))
-                          <div id="email-error" class="error-message">
-                              {{$errors->first('email')}}
-                          </div>
-                        @endif
-                    </label>
-                    <label>
-                        <span>Birthday</span>
-                        <input name="birthday" type="date" value="{{ old('birthday')}}" />
-                        @if ($errors->has('birthday'))
-                          <div id="birthday-error" class="error-message">
-                              {{$errors->first('birthday')}}
-                          </div>
-                        @endif
-                    </label>
-                    <label>
-                        <span>Password</span>
-                        <input name="password" type="password" value="{{ old('password')}}" />
-                        @if ($errors->has('password'))
-                          <div id="password-error" class="error-message">
-                              {{$errors->first('password')}}
-                          </div>
-                        @endif
-                    </label>
-
-                    <label>
-                      <span>Confirm Password</span>
-                      <input name="password_confirmation" type='password' value="{{ old('password_confirmation')}}" />
-                    </label>
-                    <label>
-                      <span>Customer or Restaurant Owner</span>
-                        <select name="type" id="type" class="select">
-                          <option value="none" selected disabled hidden> </option>
-                          <option value="customer">Customer</option>
-                          <option value="restaurant owner">Restaurant Owner</option>
-                        </select>
-                      <div class="error-message"></div>
-                    </label>
-                  
-                <!-- based on if customer or restaurant owner is selected this should redirect to either preferences or uploadrestaurant -->
-                <button type="submit" class="submit">Sign Up</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-    document.querySelector('.img__btn').addEventListener('click', function(e) {
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+  document.querySelector('.img__btn').addEventListener('click', function(e) {
     e.preventDefault();
     document.querySelector('.cont').classList.toggle('s--signup');
-});
-$('input[type="checkbox"]').on('change', function() {
-$('input[type="checkbox"]').not(this).prop('checked', false);
-});
+  });
+  $('input[type="checkbox"]').on('change', function() {
+    $('input[type="checkbox"]').not(this).prop('checked', false);
+  });
 </script>
-
