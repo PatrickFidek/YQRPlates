@@ -48,6 +48,6 @@ Route::get('/passwordreset', function () {
     return view('passwordreset');
 });
 
-Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/preferences', [PreferencesController::class, 'seePreferences']);
 
 Route::post('/profile', [ProfileController::class, 'seeProfile']);

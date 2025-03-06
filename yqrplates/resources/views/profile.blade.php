@@ -294,6 +294,9 @@
       </br>
      	
       <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/dashboard';">View Dashboard</button>
+      <br>
+      <!-- this should only display if they are restaurant owner -->
+      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/promotions';">Add Promotion</button>
     </div>
   </div>
 </div>
