@@ -662,7 +662,7 @@ input {
                           <option value="customer">Customer</option>
                           <option value="restaurant owner">Restaurant Owner</option>
                         </select>
-                      <!--  <div class="error-message"></div> -->
+                      <div class="error-message"></div>
                     </label>
                   
                 <!-- based on if customer or restaurant owner is selected this should redirect to either preferences or uploadrestaurant -->
