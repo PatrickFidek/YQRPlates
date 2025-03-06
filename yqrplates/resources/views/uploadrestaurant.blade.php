@@ -10,7 +10,6 @@
   <title>Upload Restaurant</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/uploadrestaurant.js') }}"></script>
-
 </head>
 <header>
   <nav class="p-6">
@@ -81,8 +80,8 @@
       <label>
         <span>Price Range</span>
         <div class="row d-flex justify-content-center mt-100">
-          <select id="choices-multiple-remove-button" onChange="priceRange(this)" >
-            <option value="option" hidden> </option>
+          <select id="choices-multiple-remove-button" onChange="priceRange(this)">
+            <option value="option" hidden></option>
             <option value="Price Range">Price Range</option>
             <option value="Price Range">Price Range</option>
             <option value="Price Range">Price Range</option>
@@ -95,21 +94,19 @@
   <label>
     <span id="noMenu">Upload Menu</span>
     <div class="dropzone text-center" style="height: 20%; width: 100%" id="noMenu2">
-      <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" id="test" />
-      <embed id="blah" src="#" width="100%" height="100%" style="display: none" />
-      <img id="blah2" src="#" alt="your image" style="display: none; width: 100%; height 100%; max-height: 160px" />
+      <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" id="displayImage" />
+      <embed id="pdf" src="#" width="100%" height="100%" style="display: none" />
+      <img id="image" src="#" alt="your image" style="display: none; width: 100%; height 100%; max-height: 160px" />
       <label>
-        <span id="ttt">Upload or drop file here</span>
-        <input type="file" class="upload-input" id="imgInp" height="100%" width="100%"/>
+        <span id="prompt">Upload or drop file here</span>
+        <input type="file" class="upload-input" id="imgInp" height="100%" width="100%" />
       </label>
     </div>
   </label>
-  
   <button type="button" class="submit" background-color:#fff>Continue</button>
 </div>
-
 <script>
-function getExtension(filename) {
+  function getExtension(filename) {
     var parts = filename.split('.');
     return parts[parts.length - 1];
   }
@@ -139,28 +136,26 @@ function getExtension(filename) {
     const [file] = imgInp.files
     console.log(file)
     if (isPDF(file.name)) {
-      blah.src = URL.createObjectURL(file)
-      ttt.style.display = "none"
-      blah.style.display = "";
-      blah2.style.display = "none"
-      test.style.display = "none"
+      pdf.src = URL.createObjectURL(file)
+      prompt.style.display = "none"
+      pdf.style.display = "";
+      image.style.display = "none"
+      displayImage.style.display = "none"
     }
     if (isImage(file.name)) {
-      blah2.src = URL.createObjectURL(file)
-      ttt.style.display = "none"
-      blah.style.display = "none";
-      blah2.style.display = "";
-      test.style.display = "none"
+      image.src = URL.createObjectURL(file)
+      prompt.style.display = "none"
+      pdf.style.display = "none";
+      image.style.display = "";
+      displayImage.style.display = "none"
     }
   }
-
   $(document).ready(function() {
     var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
       removeItemButton: true,
       maxItemCount: 5,
       searchResultLimit: 5,
       renderChoiceLimit: 5,
-      
     });
   })(jQuery);
 </script>
