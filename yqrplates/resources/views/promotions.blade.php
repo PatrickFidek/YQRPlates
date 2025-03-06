@@ -403,7 +403,7 @@
     }
 
     .panel {
-      border: 1px solid #ff7e2e;
+      border: 1px solid #79a263;
       border-radius: 0 !important;
       transition: box-shadow 0.5s;
     }
@@ -420,7 +420,7 @@
 
     .panel-heading {
       color: #fff !important;
-      background-color: #ff7e2e !important;
+      background-color: #79a263 !important;
       padding: 25px;
       border-bottom: 1px solid transparent;
       border-top-left-radius: 0px;
@@ -501,6 +501,7 @@
 
     textarea {
       resize: none;
+      outline: 1.5px solid #79a263
     }
 
     .modal-footer {
@@ -671,18 +672,18 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="width: 10px">
               <span aria-hidden="true">&times;</span>
             </button>
-            <h2 class="modal-title text-center" id="exampleModalLongTitle">Are you sure you want to remove?</h2>
+            <h2 class="modal-title text-center" id="exampleModalLongTitle">Are you sure you want to remove</h2>
+            <h3 class="text-center">promo 1?</h3>
           </div>
-          <div class="modal-body"> Continung will remove this promotion from your Restaurant </div>
+          <div class="modal-body text-center"> <p><strong>Doing so will remove this promotion from your restaurant</strong></p> </div>
           <div class="modal-footer">
-            <button type="button" class="submit" data-dismiss="modal">Cancel</button>
-            <button type="button" class="submit">Confirm Removal</button>
+            <button type="button" class="submit" data-dismiss="modal" style="width: 25%">Cancel</button>
+            <button type="button" class="submit" style="width: 40%">Confirm Removal</button>
           </div>
         </div>
       </div>
     </div>
-    <br>
-    <br>
+    
     <div id="about" class="container-fluid" style="width: 400px">
   <div class="row">
     <div class="text-center">
