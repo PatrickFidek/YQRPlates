@@ -463,7 +463,7 @@ input {
 
   p {
     margin: 0 0 10px;
-    color: red;
+    color: black;
 }
 textarea {
   resize: none;
@@ -476,6 +476,22 @@ textarea {
     width: 100%;
     border-top: 1px solid #e5e5e5;
 }
+
+
+        .box {
+
+            background-color: white;
+                border: 1px solid #ff7e2e;
+    border-radius: 0 !important;
+    transition: box-shadow 0.5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        .middle {
+            margin: 0 auto; /* Center the middle box */
+        }
 
 
   @keyframes slide {
@@ -548,65 +564,73 @@ textarea {
 </div>
 
 
-<div class="col-sm-6" style="width 5%">
-      <h2>Promotions</h2><br>
-      <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-        <br>
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
+<div>
 
-        <div class="carousel-inner" role="listbox">
-          
-          <div class="item active">
-            <h4>Promotion 1<br><span>Double line</span></h4>
-<!-- Button trigger modal -->
-<button type="button" class="submit" data-toggle="modal" data-target="#exampleModalCenter">
-Remove Promotion
-</button>
-
-
-<br>
-<br>
-
-          </div>
-          <div class="item">
-            <h4>Promotion 2</h4>
-            <button type="button" class="submit" data-toggle="modal" data-target="#exampleModalCenter">
-Remove Promotion
-</button>
-            <br>
-            <br>
-          </div>
-          <div class="item">
-            <h4>Promotion 3</h4>
-            <button type="button" class="submit" data-toggle="modal" data-target="#exampleModalCenter">
-Remove Promotion
-</button>
-            <br>
-            <br>
-          </div>
-          
+    <div id="pricing" class="container-fluid">
+    <h2>Current Promotions</h2>
+  <div class="row">
+        <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+			<h1>Promo 1</h1>
+         </div>
+         <div class="panel-body">
+         <p><strong>Food was amazing!!</strong><p>
         </div>
-       
-
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
+        <div class="panel-footer">
+             <button type="button" class="submit" data-toggle="modal" data-target="#exampleModalCenter" style="width: 100%">
+Remove Promotion
+</button>
+        </div>
+      </div>      
+    </div>    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+			<h1>Promo 1</h1>
+         </div>
+         <div class="panel-body">
+         <p><strong>Food was amazing!!</strong><p>
+        </div>
+        <div class="panel-footer">
+        <button type="button" class="submit" data-toggle="modal" data-target="#exampleModalCenter" style="width: 100%">
+Remove Promotion
+</button>
+        </div>
+      </div>      
+    </div>    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+			<h1>Promo 1</h1>
+         </div>
+         <div class="panel-body">
+         <p><strong>Food was amazing!!</strong><p>
+        </div>
+        <div class="panel-footer">
+        <button type="button" class="submit" data-toggle="modal" data-target="#exampleModalCenter" style="width: 100%">
+Remove Promotion
+</button>
+        </div>
+      </div>      
+    </div>    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+			<h1>Promo 1</h1>
+         </div>
+         <div class="panel-body">
+         <p><strong>Food was amazing!!</strong><p>
+        </div>
+        <div class="panel-footer">
+        <button type="button" class="submit" data-toggle="modal" data-target="#exampleModalCenter" style="width: 100%">
+Remove Promotion
+</button>
+        </div>
+      </div>      
     </div>
-  </div>
-</div> 
+    </div>
+
+
         <!-- Modal -->
-<br>
-<br>
+
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document" style="padding-top: 15%;">
     <div class="modal-content">
