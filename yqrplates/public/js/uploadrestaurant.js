@@ -1,5 +1,4 @@
-
-  function getExtension(filename) {
+function getExtension(filename) {
     var parts = filename.split('.');
     return parts[parts.length - 1];
   }
@@ -97,15 +96,7 @@ function updateCSSClassStyle2(className, property, value) {
     }
   }
 
-  $(document).ready(function() {
-    var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
-      removeItemButton: true,
-      maxItemCount: 5,
-      searchResultLimit: 5,
-      renderChoiceLimit: 5,
-      
-    });
-  })(jQuery);
+
 
   $(document).ready(function() {
     // Add smooth scrolling to all links in navbar + footer link
