@@ -43,7 +43,7 @@ button {
     overflow: hidden;
     position: relative;
     width: 900px;
-    height: 600px;
+    height: 675px;
     margin: 0 auto 100px;
     background: #fff;
     box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.3), 10px 10px 15px rgba(70, 70, 70, 0.15), inset -10px -10px 15px rgba(255, 255, 255, 0.3), inset 10px 10px 15px rgba(70, 70, 70, 0.15);
@@ -428,6 +428,10 @@ input {
   .carousel-indicators li.active {
     background-color: #ff7e2e;
   }
+  .error-message {
+    font-size: 10px;
+    color: #d9534f;
+  }
   .item h4 {
     font-size: 19px;
     line-height: 1.375em;
@@ -609,21 +613,47 @@ input {
                 <h2>Create your Account</h2>
                 <form action="/register" method="POST">
                     @csrf
+
                     <label>
                         <span>Name</span>
                         <input name="name" type="text" />
+                        @if ($errors->has('name'))
+                          <div class="error-message">
+                            {{$errors->first('name')}}
+                          </div>
+                        @endif
                     </label>
                     <label>
                         <span>Email</span>
                         <input name="email" type="email" />
+                        @if ($errors->has('email'))
+                          <div class="error-message">
+                              {{$errors->first('email')}}
+                          </div>
+                        @endif
                     </label>
                     <label>
                         <span>Birthday</span>
                         <input name="birthday" type="date" />
+                        @if ($errors->has('birthday'))
+                          <div class="error-message">
+                              {{$errors->first('birthday')}}
+                          </div>
+                        @endif
                     </label>
                     <label>
                         <span>Password</span>
                         <input name="password" type="password" />
+                        @if ($errors->has('password'))
+                          <div class="error-message">
+                              {{$errors->first('password')}}
+                          </div>
+                        @endif
+                    </label>
+
+                    <label>
+                      <span>Confirm Password</span>
+                      <input name="password_confirmation" type='password' />
                     </label>
                     <label>
                       <span>Customer or Restaurant Owner</span>
@@ -633,7 +663,7 @@ input {
                           <option value="restaurant owner">Restaurant Owner</option>
                         </select>
                     </label>
-                  
+                    
                 <!-- based on if customer or restaurant owner is selected this should redirect to either preferences or uploadrestaurant -->
                 <button type="submit" class="submit">Sign Up</button>
                 </form>
@@ -653,3 +683,4 @@ input {
 
 
     </script>
+
