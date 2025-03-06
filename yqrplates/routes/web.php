@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RestaurantController;
 
 Route::get('/', function () {
     return view('app');
@@ -48,6 +49,12 @@ Route::get('/passwordreset', function () {
     return view('passwordreset');
 });
 
-Route::post('/preferences', [PreferencesController::class, 'seePreferences']);
+Route::get('/promotions', function () {
+    return view('promotions');
+});
+
+Route::post('/register', [RegisterController::class, 'register']);
 
 Route::post('/profile', [ProfileController::class, 'seeProfile']);
+
+Route::get('/restaurants', [RestaurantController::class, 'show']);
