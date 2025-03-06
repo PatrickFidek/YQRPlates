@@ -43,7 +43,7 @@ button {
     overflow: hidden;
     position: relative;
     width: 900px;
-    height: 675px;
+    height: 700px;
     margin: 0 auto 100px;
     background: #fff;
     box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.3), 10px 10px 15px rgba(70, 70, 70, 0.15), inset -10px -10px 15px rgba(255, 255, 255, 0.3), inset 10px 10px 15px rgba(70, 70, 70, 0.15);
@@ -308,6 +308,7 @@ h2 {
 label {
     display: block;
     width: 260px;
+    height: 65px;
     margin: 15px auto 0;
     text-align: center;
 }
@@ -655,11 +656,6 @@ input {
                       <span>Confirm Password</span>
                       <input name="password_confirmation" type='password' />
                     </label>
-
-                    <label>
-                      <span>Confirm Password</span>
-                      <input name="confirmation" type='password' />
-                    </label>
                     <label>
                       <span>Customer or Restaurant Owner</span>
                         <select name="type" id="type" class="select">
@@ -668,7 +664,7 @@ input {
                           <option value="restaurant owner">Restaurant Owner</option>
                         </select>
                     </label>
-                  
+                    
                 <!-- based on if customer or restaurant owner is selected this should redirect to either preferences or uploadrestaurant -->
                 <button type="submit" class="submit">Sign Up</button>
                 </form>
