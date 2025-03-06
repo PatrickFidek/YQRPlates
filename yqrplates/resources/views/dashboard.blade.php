@@ -6,59 +6,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-  body {
-    font: 400 15px Lato, sans-serif;
-    line-height: 1.8;
-    color: #818181;
-  }
-  .jumbotron {
-    background-color: #ff7e2e;
-    color: #fff;
-    padding: 75px;
-    font-family: Montserrat, sans-serif;
-  }
-  .container-fluid {
-    padding: 60px 50px;
-  }
-  .panel {
-    border: 1px solid #79a263;
-    border-radius:0 !important;
-    transition: box-shadow 0.5s;
-  }
-  .panel-heading {
-    color: #fff !important;
-    background-color: #79a263 !important;
-    padding: 25px;
-    border-bottom: 1px solid transparent;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-  }
-  .navbar {
-    margin-bottom: 0;
-    background-color: #ff7e2e;
-    z-index: 9999;
-    border: 0;
-    font-size: 12px !important;
-    line-height: 1.42857143 !important;
-    letter-spacing: 4px;
-    border-radius: 0;
-    font-family: Montserrat, sans-serif;
-  }
-  .navbar li a, .navbar .navbar-brand {
-    color: #fff !important;
-  }
-  .navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #ff7e2e !important;
-    background-color: #fff !important;
-  }
-  .navbar-default .navbar-toggle {
-    border-color: transparent;
-    color: #fff !important;
-  }
-  </style>
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/dashboard.css') }}">
 </head>
 <title>Dashboard</title>
 
