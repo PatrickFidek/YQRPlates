@@ -9,59 +9,62 @@
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/profile.css') }}">
   <script src="{{ asset('js/profile.js') }}"></script>
 </head>
-
 <title>Profile</title>
-
 <header>
-    <nav class="p-6">
-        <div class="flex justify-between items-center">
-            <div class="flex justify-between flex-grow">
-            <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="https://yqrplates.com">YQR PLATES</a>
-    </div>
-  </div>
-</nav>
+  <nav class="p-6">
+    <div class="flex justify-between items-center">
+      <div class="flex justify-between flex-grow">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="https://yqrplates.com">YQR PLATES</a>
             </div>
-        </div>
-    </nav>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </nav>
 </header>
-
 <div class="jumbotron text-center">
   <h1>User's Name</h1>
 </div>
-
 <div id="about" class="container-fluid" style="width: 400px">
   <div class="row">
     <div class="text-center">
-            <div class="panel panel-default text-center">
+      <div class="panel panel-default text-center">
         <!-- should say their restaurant and list details of it if restaurant owner -->
         <div class="panel-heading">
           <h1>Current Prefences</h1>
         </div>
         <div class="panel-body">
-          <p><strong>Price Range:</strong> $10 - $15</p>
+          <p>
+            <strong>Price Range:</strong> $10 - $15
+          </p>
         </div>
         <div class="panel-footer">
-          <p><strong>Food Type:</strong> Asian</p>
+          <p>
+            <strong>Food Type:</strong> Asian
+          </p>
         </div>
         <div class="panel-footer">
-          <p><strong>Restaurant Type:</strong> Dine-in, Take-out</p>
+          <p>
+            <strong>Restaurant Type:</strong> Dine-in, Take-out
+          </p>
         </div>
         <div class="panel-footer">
-        	<p><strong>Location:</strong> South Albert, East, North</p>
+          <p>
+            <strong>Location:</strong> South Albert, East, North
+          </p>
         </div>
-      </div> 
-         <!-- should say update prfences/update menu/restaurant depending on restaurant owner or customer -->
+      </div>
+      <!-- should say update prfences/update menu/restaurant depending on restaurant owner or customer -->
       <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/preferences';">Update Preferences</button>
     </div>
-      </br>
-     	
-      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/dashboard';">View Dashboard</button>
-      <br>
-      <!-- this should only display if they are restaurant owner -->
-      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/promotions';">Add Promotion</button>
-    </div>
+    </br>
+    <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/dashboard';">View Dashboard</button>
+    <br>
+    <!-- this should only display if they are restaurant owner -->
+    <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/promotions';">Add Promotion</button>
   </div>
+</div>
 </div>
