@@ -673,7 +673,7 @@
           </div>
           <div class="panel-body">
             <p>
-              <strong>Food was amazing!!</strong>
+              <strong>Food was amazing!! test</strong>
             <p>
           </div>
           <div class="panel-footer">
