@@ -611,7 +611,7 @@ input {
         </div>
             <div class="form sign-up">
                 <h2>Create your Account</h2>
-                <form action="/register" method="POST" id="registration-form">
+                <form action="/register" method="POST">
                     @csrf
 
                     <label>
@@ -681,5 +681,8 @@ input {
         $('input[type="checkbox"]').on('change', function() {
    $('input[type="checkbox"]').not(this).prop('checked', false);
 });
+       
+
+
     </script>
 
