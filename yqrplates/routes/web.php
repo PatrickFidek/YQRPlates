@@ -57,4 +57,4 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 Route::post('/profile', [ProfileController::class, 'seeProfile']);
 
-Route::get('/restaurants', [RestaurantController::class, 'show']);
+Route::get('/restaurants', [RestaurantController::class, 'index']);
