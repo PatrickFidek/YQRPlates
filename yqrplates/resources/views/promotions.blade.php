@@ -518,7 +518,27 @@ textarea {
 <div class="jumbotron text-center">
   <h1>Restaurant Name</h1> 
 </div>
-    
+<div class="col-sm-6 text-center">
+      <h2>Current Promotions</h2><br>
+      <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <h4>Promotion 1<br><span>Double line</span></h4>
+          </div>
+          <div class="item">
+            <h4>Promotion 2</h4>
+          </div>
+          <div class="item">
+            <h4>Promotion 3</h4>
+          </div>
+        </div>
         <div class="center">
             <label>
                 <span>Add Promotion</span>
