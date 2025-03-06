@@ -96,3 +96,13 @@ function updateCSSClassStyle2(className, property, value) {
     updateCSSClassStyle('.choices__list--single', 'display', 'inline-block');
     }
   }
+
+  $(document).ready(function() {
+    var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+      removeItemButton: true,
+      maxItemCount: 5,
+      searchResultLimit: 5,
+      renderChoiceLimit: 5,
+      
+    });
+  })(jQuery);

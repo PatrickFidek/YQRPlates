@@ -10,17 +10,7 @@
   <title>Upload Restaurant</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/uploadrestaurant.js') }}"></script>
-  <script>
-    $(document).ready(function() {
-      var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
-        removeItemButton: true,
-        maxItemCount: 5,
-        searchResultLimit: 5,
-        renderChoiceLimit: 5,
-        
-      });
-    })(jQuery);
-  </script>
+
 </head>
 <header>
   <nav class="p-6">
