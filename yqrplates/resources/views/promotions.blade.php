@@ -16,6 +16,18 @@
     padding: 0;
 }
 
+button.close {
+
+    text-align: right;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
 body {
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     background: #ffffff;
@@ -526,6 +538,8 @@ textarea {
 <div class="jumbotron text-center">
   <h1>Restaurant Name</h1> 
 </div>
+
+
 <div class="col-sm-6" style="width 5%">
       <h2>Promotions</h2><br>
       <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
@@ -540,19 +554,29 @@ textarea {
           
           <div class="item active">
             <h4>Promotion 1<br><span>Double line</span></h4>
-            <button type="button" class="submit" background-color:#fff style="margin-top: 0px" onclick="location.href='https://yqrplates.com/profile';">Remove Promotion</button>
-            <br>
-            <br>
+<!-- Button trigger modal -->
+<button type="button" class="submit" data-toggle="modal" data-target="#exampleModalCenter">
+Remove Promotion
+</button>
+
+
+<br>
+<br>
+
           </div>
           <div class="item">
             <h4>Promotion 2</h4>
-            <button type="button" class="submit" background-color:#fff style="margin-top: 0px" onclick="location.href='https://yqrplates.com/profile';">Remove Promotion</button>
+            <button type="button" class="submit" data-toggle="modal" data-target="#exampleModalCenter">
+Remove Promotion
+</button>
             <br>
             <br>
           </div>
           <div class="item">
             <h4>Promotion 3</h4>
-            <button type="button" class="submit" background-color:#fff style="margin-top: 0px"  onclick="location.href='https://yqrplates.com/profile';">Remove Promotion</button>
+            <button type="button" class="submit" data-toggle="modal" data-target="#exampleModalCenter">
+Remove Promotion
+</button>
             <br>
             <br>
           </div>
@@ -572,7 +596,28 @@ textarea {
     </div>
   </div>
 </div> 
-        
+        <!-- Modal -->
+<br>
+<br>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document" style="padding-top: 15%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to remove?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Continung will remove this promotion from your Restaurant
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="submit" data-dismiss="modal">Cancel</button>
+        <button type="button" class="submit">Remove Promotion</button>
+      </div>
+    </div>
+  </div>
+</div>
 <br>
 <br>
         <div class="text-center">
