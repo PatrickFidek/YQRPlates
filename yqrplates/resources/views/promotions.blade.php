@@ -599,6 +599,24 @@
 <title>Promotions</title>title> <div class="jumbotron text-center">
   <h1>Restaurant Name</h1>
 </div>
+<div id="about" class="container-fluid" style="width: 400px">
+  <div class="row">
+    <div class="panel panel-default text-center">
+      <div class="panel-heading">
+        <h1>Add Promotion</h1>
+      </div>
+      <div class="panel-body">
+        <p>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea>
+        </p>
+      </div>
+      <div class="panel-footer">
+        <button type="button" class="submit" background-color:#fff onclick="location.href='https://yqrplates.com/profile';">Add Promotion</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 <div>
   <div id="pricing" class="container-fluid">
     <h2>Current Promotions</h2>
@@ -675,7 +693,11 @@
             <h2 class="modal-title text-center" id="exampleModalLongTitle">Are you sure you want to remove</h2>
             <h3 class="text-center">promo 1?</h3>
           </div>
-          <div class="modal-body text-center"> <p><strong>Doing so will remove this promotion from your restaurant</strong></p> </div>
+          <div class="modal-body text-center">
+            <p>
+              <strong>Doing so will remove this promotion from your restaurant</strong>
+            </p>
+          </div>
           <div class="modal-footer">
             <button type="button" class="submit" data-dismiss="modal" style="width: 25%">Cancel</button>
             <button type="button" class="submit" style="width: 40%">Confirm Removal</button>
@@ -683,19 +705,3 @@
         </div>
       </div>
     </div>
-    
-    <div id="about" class="container-fluid" style="width: 400px">
-  <div class="row">
-    <div class="text-center">
-            <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1>Add Promotion</h1>
-        </div>
-        <div class="panel-body">
-          <p><textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea></p>
-        </div>
-
-        <div class="panel-footer">
-        <button type="button" class="submit" background-color:#fff onclick="location.href='https://yqrplates.com/profile';">Add Promotion</button>
-        </div>
-      </div> 
