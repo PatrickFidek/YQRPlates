@@ -655,14 +655,14 @@ input {
                       <span>Confirm Password</span>
                       <input name="password_confirmation" type='password' value="{{ old('password_confirmation')}}" />
                     </label>
-
+                    <label>
                       <span>Customer or Restaurant Owner</span>
                         <select name="type" id="type" class="select">
                           <option value="none" selected disabled hidden> </option>
                           <option value="customer">Customer</option>
                           <option value="restaurant owner">Restaurant Owner</option>
                         </select>
-                        <div class="error-message"></div>
+                      <div class="error-message"></div>
                     </label>
                   
                 <!-- based on if customer or restaurant owner is selected this should redirect to either preferences or uploadrestaurant -->
