@@ -19,7 +19,7 @@ class RegisterController extends Controller
             'type' => 'required'
         ],
         
-        ['password.regex' => 'Your password must include an uppercase, lower case, number and a symbol']);
+        ['password.regex' => 'Must include : uppercase, lowercase, number and symbol']);
         
         $fields['password'] = bcrypt($fields['password']);
         User::create($fields);
