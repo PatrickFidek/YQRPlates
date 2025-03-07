@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\PreferencesController;
 
 Route::get('/', function () {
     return view('app');
@@ -61,3 +62,5 @@ Route::post('/signin', [SigninController::class, 'signin']);
 Route::post('/profile', [ProfileController::class, 'seeProfile']);
 
 Route::get('/restaurants', [RestaurantController::class, 'seeRestaurants']);
+
+Route::get('/preferences', [PreferencesController::class, 'index'])->middleware('auth');
