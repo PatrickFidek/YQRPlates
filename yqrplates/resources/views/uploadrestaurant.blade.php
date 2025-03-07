@@ -30,6 +30,11 @@
   <h1>Enter Restaurant</h1>
 </div>
 <div class="center">
+  <label>
+    <span>Restaurant Name</span>
+    <input name="name" type="text"/>
+  </label>
+  <br>
   <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-4">
