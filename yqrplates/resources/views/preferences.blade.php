@@ -1,3 +1,5 @@
+
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +13,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/preferences.js') }}"></script>
 </head>
+
+
 <header>
   <nav class="p-6">
     <div class="flex justify-between items-center">
@@ -30,6 +34,10 @@
   <h1>Enter Preferences</h1>
 </div>
 <div class="center">
+
+  @auth
+  <h2>Welcome, {{ auth()->user()->name }}!</h2>
+
   <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-4">
@@ -90,5 +98,10 @@
     </div>
     <div class="col-sm-2"></div>
   </div>
-  <button type="button" class="submit" background-color:#fff>Continue</button>
+  <button type="submit" class="submit" background-color:#fff>Continue</button>
+
+  @else
+  <p>You need to be logged in the view your preferences.</p>
+  @endauth
+
 </div>
