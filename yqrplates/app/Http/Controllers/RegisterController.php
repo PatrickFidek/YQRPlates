@@ -11,7 +11,7 @@ class RegisterController extends Controller
 {
     public function register(Request $request) {
         $fields = $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:1|max:12',
             'email' => 'required|email',
             'birthday' => 'required|date|before_or_equal:today',
             'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/|confirmed',
