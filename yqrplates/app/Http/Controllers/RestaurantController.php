@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Restaurant;
 class RestaurantController extends Controller
 {
-    public function index()
+    public function seeRestaurants()
     {
+
+        
 
         return view('restaurants');
     }
