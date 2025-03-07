@@ -44,9 +44,10 @@
         <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" multiple>
-            <option value="Neighborhood 1">Neighboorhood 1</option>
-            <option value="Neighborhood 2">Neighborhood 2</option>
-            <option value="Neighborhood 3">Neighborhood 3</option>
+            <option value="North West">North West</option>
+            <option value="North East">North East</option>
+            <option value="South West">South West</option>
+            <option value="South West">South East</option>
           </select>
         </div>
       </label>
@@ -86,7 +87,7 @@
         <span>Price Range</span>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" onChange="priceRange(this)">
-            <option value="option" hidden></option>
+            <option value="option" hidden> </option>
             <option value="Price Range">Price Range</option>
             <option value="Price Range">Price Range</option>
             <option value="Price Range">Price Range</option>
@@ -107,6 +108,10 @@
         <input type="file" class="upload-input" id="imgInp" height="100%" width="100%" />
       </label>
     </div>
+  </label>
+  <label>
+    <span>or paste URL link here</span>
+    <input name="name" type="text"/>
   </label>
   <button type="button" class="submit" background-color:#fff>Continue</button>
 </div>
