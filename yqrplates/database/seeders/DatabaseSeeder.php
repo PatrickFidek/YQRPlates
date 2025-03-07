@@ -19,5 +19,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        $this->call(TempDatabaseSeeder::class);//this will run when the database is seeded
+        /* $this->call([
+            TempDatabaseSeeder::class,
+        ]); */ //can also be written this way
     }
 }
