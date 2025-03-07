@@ -22,9 +22,10 @@ class RegisterController extends Controller
         ['password.regex' => 'Must include : uppercase, lowercase, number and symbol']);
         
         $fields['password'] = bcrypt($fields['password']);
-        User::create($fields);
+        $user = User::create($fields);
+        auth()->login($user);
 
-        return view('preferences');
+        return redirect('/preferences');
     }
 }
 
