@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
 
@@ -54,6 +55,8 @@ Route::get('/promotions', function () {
 });
 
 Route::post('/register', [RegisterController::class, 'register']);
+
+Route::post('/signin', [SigninController::class, 'signin']);
 
 Route::post('/profile', [ProfileController::class, 'seeProfile']);
 
