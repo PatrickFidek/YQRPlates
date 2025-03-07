@@ -48,7 +48,7 @@
     <td>
       <?echo "$error";?>
     </td>
-    <button type="button" class="submit" background-color:#fff>
+    <button type="submit" class="submit" background-color:#fff>
       <input type="submit" value="Sign In" style="border-bottom: none;" />
     </button>
     </form>

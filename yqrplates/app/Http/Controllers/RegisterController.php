@@ -20,7 +20,8 @@ class RegisterController extends Controller
         
         ['password.regex' => 'Your password must include an uppercase, lower case, number and a symbol']);
         
-      
+        User::create($fields);
+
         return view('preferences');
     }
 }
