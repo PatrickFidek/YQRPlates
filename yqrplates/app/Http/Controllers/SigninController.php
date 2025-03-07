@@ -10,8 +10,8 @@ class SigninController extends Controller
 {
     public function signin(Request $request) {
         $fields = $request->validate([
-            'email' => 'required',
-            'password' => 'required'
+            'signin_email' => 'required',
+            'signin_password' => 'required'
         ]);
         return view('profile');
     }
