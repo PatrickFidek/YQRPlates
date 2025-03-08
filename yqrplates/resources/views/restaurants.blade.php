@@ -48,7 +48,7 @@
             <h1>{{ $restaurant->name }}</h1>
           </div>
           <div class="panel-footer">
-            <a class="btn btn-lg" href="restaurantdetails">View More</a>
+            <a class="btn btn-lg" href="restaurantdetails">View Details</a>
           </div>
         </div>
       </div>
