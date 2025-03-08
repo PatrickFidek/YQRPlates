@@ -36,28 +36,32 @@
     
         <div class="center">
             <label>
+                <form action="/resetpassword" method="POST"> @csrf
                 <span>Email</span>
-                <input type="email" />
+                <input name='email' type="email" value="{{ old('email')}}"/>
+                @if ($errors->has('email')) 
+                <div id="email-error" class="error-message">
+                  {{$errors->first('email')}}
+                </div> @endif 
             </label>
-                        <label>
-               
-                <span>Confirm your birthday</span>
-                <!-- This should only be displayed if the birthday doesnt match -->
-                <p color="red">Birthday does not match</p>
-                <input type="date" />
-            </label>
+                        
             <label>
-                <!-- this should only be displayed if the passwords dont match -->
-                <p>Please make sure the password and confirm password match</p>
+                <span>Confirm your birthday</span>
+                <input name='birthday' type="date" />
+            </label>
+
+            <label>
                 <span>New Password</span>
-                <input type="password" />
+                <input name='password' type="password" />
             </label>
-                        <label>
+
+            <label>
                 <span>Confirm New Password</span>
-                <input type="confirm password" />
+                <input name='confirm' type="confirm password" />
             </label>
-            <!-- this should only redirect if the birthday matches, and the password and confirm password match -->
-            <button type="button" class="submit" background-color:#fff onclick="location.href='https://yqrplates.com/passwordreset';">Reset Password</button>
+
+            
+            <button type="submit" class="submit">Reset Password</button>
          
         </div>
 
