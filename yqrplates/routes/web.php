@@ -28,9 +28,6 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
-Route::get('/newsignin', function () {
-    return view('newsignin');
-});
 
 
 Route::get('/resetpassword', function () {
