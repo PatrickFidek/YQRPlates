@@ -16,10 +16,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/restaurants', function () {
-    return view('restaurants');
-});
-
 Route::get('/restaurantdetails', function () {
     return view('restaurantdetails');
 });
@@ -60,7 +56,7 @@ Route::get('/promotions', function () {
     return view('promotions');
 });
 
-Route::get('/restaurants', [RestaurantController::class, 'seeRestaurants']);
+Route::resource('restaurants', RestaurantController::class);
 
 Route::get('/preferences', [PreferencesController::class, 'index'])->middleware('auth');
 

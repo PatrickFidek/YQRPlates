@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Restaurant;
+
 class RestaurantController extends Controller
 {
-    public function seeRestaurants()
+    public function index()
     {
-
-        
-
-        return view('restaurants');
+        $restaurants = Restaurant::all();
+        return view('restaurants', compact('restaurants'));
     }
 }
