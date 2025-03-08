@@ -42,13 +42,9 @@
                         <label>
                
                 <span>Confirm your birthday</span>
-                <!-- This should only be displayed if the birthday doesnt match -->
-                <p color="red">Birthday does not match</p>
                 <input type="date" />
             </label>
             <label>
-                <!-- this should only be displayed if the passwords dont match -->
-                <p>Please make sure the password and confirm password match</p>
                 <span>New Password</span>
                 <input type="password" />
             </label>
@@ -57,7 +53,7 @@
                 <input type="confirm password" />
             </label>
             <!-- this should only redirect if the birthday matches, and the password and confirm password match -->
-            <button type="button" class="submit" background-color:#fff onclick="location.href='https://yqrplates.com/passwordreset';">Reset Password</button>
+            <button type="submit" class="submit" background-color:#fff onclick="location.href='https://yqrplates.com/passwordreset';">Reset Password</button>
          
         </div>
 
