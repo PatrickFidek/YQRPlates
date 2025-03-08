@@ -35,6 +35,8 @@
 <div class="jumbotron text-center">
   <h1>Restaurants</h1>
 </div>
+
+
 <div id="pricing" class="container-fluid">
   <div class="row">
     <div class="col-sm-4 col-xs-12">
@@ -42,25 +44,15 @@
         <div class="panel-heading">
           <h1>Wok Box</h1>
         </div>
-        <div class="panel-body">
-          <p>
-            <strong>Price Range:</strong> $10 - $15
-          </p>
-        </div>
         <div class="panel-footer">
-          <p>
-            <strong>Food Type:</strong> Asian
-          </p>
+          <a class="btn btn-lg" href="restaurantdetails">View More</a>
         </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Restaurant Type:</strong> Dine-in, Take-out
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Location:</strong> South Albert, East, North
-          </p>
+      </div>
+    </div>
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h1>Wok Box</h1>
         </div>
         <div class="panel-footer">
           <a class="btn btn-lg" href="restaurantdetails">View More</a>
@@ -72,25 +64,15 @@
         <div class="panel-heading">
           <h1>Wok Box</h1>
         </div>
-        <div class="panel-body">
-          <p>
-            <strong>Price Range:</strong> $10 - $15
-          </p>
-        </div>
         <div class="panel-footer">
-          <p>
-            <strong>Food Type:</strong> Asian
-          </p>
+          <a class="btn btn-lg" href="restaurantdetails">View More</a>
         </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Restaurant Type:</strong> Dine-in, Take-out
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Location:</strong> South Albert, East, North
-          </p>
+      </div>
+    </div>
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h1>Wok Box</h1>
         </div>
         <div class="panel-footer">
           <a class="btn btn-lg" href="restaurantdetails">View More</a>
@@ -102,26 +84,6 @@
         <div class="panel-heading">
           <h1>Wok Box</h1>
         </div>
-        <div class="panel-body">
-          <p>
-            <strong>Price Range:</strong> $10 - $15
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Food Type:</strong> Asian
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Restaurant Type:</strong> Dine-in, Take-out
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Location:</strong> South Albert, East, North
-          </p>
-        </div>
         <div class="panel-footer">
           <a class="btn btn-lg" href="restaurantdetails">View More</a>
         </div>
@@ -131,86 +93,6 @@
       <div class="panel panel-default text-center">
         <div class="panel-heading">
           <h1>Wok Box</h1>
-        </div>
-        <div class="panel-body">
-          <p>
-            <strong>Price Range:</strong> $10 - $15
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Food Type:</strong> Asian
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Restaurant Type:</strong> Dine-in, Take-out
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Location:</strong> South Albert, East, North
-          </p>
-        </div>
-        <div class="panel-footer">
-          <a class="btn btn-lg" href="restaurantdetails">View More</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1>Wok Box</h1>
-        </div>
-        <div class="panel-body">
-          <p>
-            <strong>Price Range:</strong> $10 - $15
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Food Type:</strong> Asian
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Restaurant Type:</strong> Dine-in, Take-out
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Location:</strong> South Albert, East, North
-          </p>
-        </div>
-        <div class="panel-footer">
-          <a class="btn btn-lg" href="restaurantdetails">View More</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <h1>Wok Box</h1>
-        </div>
-        <div class="panel-body">
-          <p>
-            <strong>Price Range:</strong> $10 - $15
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Food Type:</strong> Asian
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Restaurant Type:</strong> Dine-in, Take-out
-          </p>
-        </div>
-        <div class="panel-footer">
-          <p>
-            <strong>Location:</strong> South Albert, East, North
-          </p>
         </div>
         <div class="panel-footer">
           <a class="btn btn-lg" href="restaurantdetails">View More</a>
