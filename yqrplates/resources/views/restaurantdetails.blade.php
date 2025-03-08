@@ -60,20 +60,14 @@
       </div>
     </div>
     <div class="container-fluid text-center bg-grey">
-      <div class="row">
-        <div class="col-sm-6">
+     
           <div class="row text-center">
-            <div class="col-sm-12 text-center">
               <div class="align-center">
-                <h1 style="height: 50%; margin: 15%">View Menu</h1>
+                <h2>View Menu</h2>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
+<br>
           <h2>Promotions</h2>
-          <br>
-          <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+                   <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
               <li data-target="#myCarousel" data-slide-to="1"></li>
