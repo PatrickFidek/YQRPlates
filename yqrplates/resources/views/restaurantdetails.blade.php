@@ -62,15 +62,10 @@
     <div class="container-fluid text-center bg-grey">
       <div class="row">
         <div class="col-sm-6">
-          <h2>Menu</h2>
           <div class="row text-center">
             <div class="col-sm-12 text-center">
               <div class="align-center">
-                <!-- this needs to be the restaurant menu file name -->
-                <a href="{{ asset('menus/menufile.pdf') }}" download>
-                  <h3>Download </h3>
-                </a>
-                <embed src="{{ asset('menus/menufile.pdf') }}" width="600px" height="200px" />
+                <h1 style="height: 50%; margin: 15%">View Menu</h1>
               </div>
             </div>
           </div>
