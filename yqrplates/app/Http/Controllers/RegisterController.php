@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller 
 {
     public function register(Request $request) {
+        //dd($request->all());
         $fields = $request->validate([
             'name' => ['required', 'min:1', 'max:12'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
@@ -22,11 +24,20 @@ class RegisterController extends Controller
         
         ['password.regex' => 'Must include : uppercase, lowercase, number and symbol']);
         
-        $fields['password'] = bcrypt($fields['password']);
+        $fields['password'] = Hash::make($fields['password']);
         $user = User::create($fields);
         auth()->login($user);
 
-        return redirect('/preferences');
+        if ($user->type == 'customer') {
+            return redirect('/preferences');
+        }
+        else {
+            return redirect('/uploadrestaurant');
+        }
+    }
+
+    public function index() {
+        return view ('/preferences');
     }
 }
 

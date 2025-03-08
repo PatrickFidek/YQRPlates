@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class SigninController extends Controller 
 {
@@ -15,14 +13,6 @@ class SigninController extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
-        
-        $user = User::where('email', $fields['email'])->first();
-
-        if ($user && Hash::check($fields['password'], $user->password)) {
-            return redirect('profile');
-        }
-        else {
-            return back()->withErrors(['message' => 'Invalid Credentials']);
-        }
+        return redirect('/profile');
     }
 }

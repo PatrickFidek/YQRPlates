@@ -34,21 +34,13 @@
     <h2>Welcome to YQR Plates</h2>
     <label>
       <form action="/signin" method="POST"> @csrf <span>Email</span>
-        <input name="email" type="email" value="{{ old('email')}}"/> 
-        @if ($errors->has('email')) <div id="email-error" class="error-message">
+        <input name="email" type="email" value="{{ old('email')}}"/> @if ($errors->has('email')) <div id="email-error" class="error-message">
             {{$errors->first('email')}}
-          </div> @endif 
+          </div> @endif  
     </label>
     <label>
       <span>Password</span>
-      <input name="password" type="password"/> 
-        @if ($errors->has('password')) <div id="password-error" class="error-message">
-            {{$errors->first('password')}}
-          </div> @endif 
-      </label>
-        @if ($errors->has('message')) <div class="error-message">
-            {{$errors->first('message')}}
-          </div> @endif 
+      <input name="password" type="password"/></label>
     <a href="https://www.yqrplates.com/resetpassword">
       <p class="forgot-pass">Forgot password?</p>
     </a>
@@ -75,7 +67,7 @@
     </div>
     <div class="form sign-up">
       <h2>Create your Account</h2>
-      <form action="/register" method="POST" id="registration-form"> @csrf <label>
+      <form action="/register" method="POST"> @csrf <label>
           <span>Name</span>
           <input name="name" type="text" value="{{ old('name')}}" /> @if ($errors->has('name')) <div id="name-error" class="error-message">
             {{$errors->first('name')}}
