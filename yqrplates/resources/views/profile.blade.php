@@ -28,7 +28,9 @@
 <div class="jumbotron text-center">
 @auth
 <h2>Welcome, {{ auth()->user()->name }}!</h2>
-
+<form action="/logout" method="POST">
+  @csrf
+  <button class="btn btn-lg largebtn" type="button">Log Out</button>
 </div>
 <div id="about" class="container-fluid" style="width: 400px">
   <div class="row">
@@ -69,7 +71,7 @@
     <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/promotions';">Add Promotion</button>
   </div>
 </div>
-
+  @else
   <p>You need to be logged in the view your profiles.</p>
   @endauth
 </div>
