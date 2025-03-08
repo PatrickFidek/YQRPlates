@@ -36,11 +36,16 @@
     
         <div class="center">
             <label>
+                <form action="/signin" method="POST"> @csrf
                 <span>Email</span>
-                <input type="email" />
+                <input type="email" value="{{ old('email')}}"/>
+                @if ($errors->has('email')) 
+                <div id="email-error" class="error-message">
+                  {{$errors->first('email')}}
+                </div> @endif 
             </label>
-                        <label>
-               
+                        
+            <label>
                 <span>Confirm your birthday</span>
                 <input type="date" />
             </label>
