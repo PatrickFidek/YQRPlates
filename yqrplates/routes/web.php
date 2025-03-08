@@ -6,6 +6,7 @@ use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\PreferencesController;
+use App\Http\Controllers\ResetPasswordController;
 
 Route::get('/', function () {
     return view('app');
@@ -25,6 +26,10 @@ Route::get('/restaurantdetails', function () {
 
 Route::get('/signin', function () {
     return view('signin');
+});
+
+Route::get('/signup', function () {
+    return view('signup');
 });
 
 Route::get('/resetpassword', function () {
@@ -55,12 +60,16 @@ Route::get('/promotions', function () {
     return view('promotions');
 });
 
+Route::get('/restaurants', [RestaurantController::class, 'seeRestaurants']);
+
+Route::get('/preferences', [PreferencesController::class, 'index'])->middleware('auth');
+
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::post('/signin', [SigninController::class, 'signin']);
 
-Route::post('/profile', [ProfileController::class, 'seeProfile']);
+Route::post('/logout', [SigninController::class, 'logout']);
 
-Route::get('/restaurants', [RestaurantController::class, 'seeRestaurants']);
+Route::post('/profile', [ProfileController::class, 'seeProfile'])->middleware('auth');
 
-Route::get('/preferences', [PreferencesController::class, 'index'])->middleware('auth');
+Route::post('/resetpassword', [ResetPasswordController::class, 'resetPassword']);
