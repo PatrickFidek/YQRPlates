@@ -26,7 +26,16 @@ class RegisterController extends Controller
         $user = User::create($fields);
         auth()->login($user);
 
-        return redirect('/preferences');
+        if ($user->type == 'customer') {
+            return redirect('/preferences');
+        }
+        else {
+            return redirect('/uploadrestaurant');
+        }
+    }
+
+    public function index() {
+        return view ('/preferences');
     }
 }
 

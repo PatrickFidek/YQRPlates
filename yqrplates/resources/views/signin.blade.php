@@ -34,14 +34,21 @@
     <h2>Welcome to YQR Plates</h2>
     <label>
       <form action="/signin" method="POST"> @csrf <span>Email</span>
-        <input name="signin_email" type="email" value="{{ old('signin_email')}}"/> @if ($errors->has('signin_email')) <div id="email-error" class="error-message">
-            {{$errors->first('signin_email')}}
-          </div> @endif </label>
+        <input name="email" type="email" value="{{ old('email')}}"/> 
+        @if ($errors->has('email')) <div id="email-error" class="error-message">
+            {{$errors->first('email')}}
+          </div> @endif 
+    </label>
     <label>
       <span>Password</span>
-      <input name="signin_password" type="password"/> @if ($errors->has('signin_password')) <div id="password-error" class="error-message">
-            {{$errors->first('signin_password')}}
-          </div> @endif </label>
+      <input name="password" type="password"/> 
+        @if ($errors->has('password')) <div id="password-error" class="error-message">
+            {{$errors->first('password')}}
+          </div> @endif 
+      </label>
+        @if ($errors->has('message')) <div class="error-message">
+            {{$errors->first('message')}}
+          </div> @endif 
     <a href="https://www.yqrplates.com/resetpassword">
       <p class="forgot-pass">Forgot password?</p>
     </a>
