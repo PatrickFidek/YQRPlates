@@ -59,7 +59,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 Route::post('/signin', [SigninController::class, 'signin']);
 
-Route::post('/profile', [ProfileController::class, 'seeProfile']);
+Route::post('/profile', [ProfileController::class, 'seeProfile'])->middleware('auth');
 
 Route::get('/restaurants', [RestaurantController::class, 'seeRestaurants']);
 
