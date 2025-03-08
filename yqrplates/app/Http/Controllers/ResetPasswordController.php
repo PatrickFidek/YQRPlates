@@ -8,7 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ResetPasswordController extends Controller 
 {
-    public function x() {
-        return 0;
+    public function signin(Request $request) {
+        $fields = $request->validate([
+            'email' => 'required',
+            'birthday' => 'required',
+            'password' => 'required',
+            'confirm' => 'required'
+        ]);
+
     }
 }
