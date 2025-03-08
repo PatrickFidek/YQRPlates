@@ -6,6 +6,7 @@ use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\PreferencesController;
+use App\Http\Controllers\ResetPasswordController;
 
 Route::get('/', function () {
     return view('app');
@@ -67,3 +68,4 @@ Route::post('/logout', [SigninController::class, 'logout']);
 
 Route::post('/profile', [ProfileController::class, 'seeProfile'])->middleware('auth');
 
+Route::post('/resetpassword', [ResetPasswordController::class, 'resetPassword']);

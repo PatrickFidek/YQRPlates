@@ -36,7 +36,7 @@
     
         <div class="center">
             <label>
-                <form action="/signin" method="POST"> @csrf
+                <form action="/resetpassword" method="POST"> @csrf
                 <span>Email</span>
                 <input type="email" value="{{ old('email')}}"/>
                 @if ($errors->has('email')) 
