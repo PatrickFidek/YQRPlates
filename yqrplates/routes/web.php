@@ -55,12 +55,13 @@ Route::get('/promotions', function () {
     return view('promotions');
 });
 
+Route::get('/restaurants', [RestaurantController::class, 'seeRestaurants']);
+
+Route::get('/preferences', [PreferencesController::class, 'index'])->middleware('auth');
+
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::post('/signin', [SigninController::class, 'signin']);
 
 Route::post('/profile', [ProfileController::class, 'seeProfile'])->middleware('auth');
 
-Route::get('/restaurants', [RestaurantController::class, 'seeRestaurants']);
-
-Route::get('/preferences', [PreferencesController::class, 'index'])->middleware('auth');
