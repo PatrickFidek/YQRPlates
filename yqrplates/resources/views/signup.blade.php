@@ -95,3 +95,28 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('registration-form').submit(function(e) {
+      e.preventDefault();
+
+      $.ajax({
+        url: $(this).attr('action'),
+        type: $(this).attr('method'),
+        data: $(this).serialize(),
+        success: function(response) {
+          window.location.href = '/preferences';
+        },
+        error: function(xhr) {
+          var errors = xhr.responseJSON.errors;
+          $('.error-message').empty();
+
+          $.each(errors, function(key, value) {
+            $('#' + key + '-error').text(value[0]);
+          });
+        }
+      });
+    });
+  });
+</script>
