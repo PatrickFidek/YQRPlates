@@ -25,4 +25,9 @@ class SigninController extends Controller
             return back()->withErrors(['message' => 'Invalid Credentials']);
         }
     }
+
+    public function logout() {
+        auth()->logout();
+        return redirect('/signin');
+    }
 }

@@ -39,11 +39,6 @@ class RegisterController extends Controller
     public function index() {
         return view ('/preferences');
     }
-
-    public function logout() {
-        auth()->logout();
-        return redirect('/signin');
-    }
 }
 
 
