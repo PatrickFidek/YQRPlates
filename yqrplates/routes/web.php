@@ -63,5 +63,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 Route::post('/signin', [SigninController::class, 'signin']);
 
+Route::post('/logout', [SigninController::class, 'logout']);
+
 Route::post('/profile', [ProfileController::class, 'seeProfile'])->middleware('auth');
 
