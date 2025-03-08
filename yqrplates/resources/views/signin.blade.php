@@ -75,7 +75,7 @@
     </div>
     <div class="form sign-up">
       <h2>Create your Account</h2>
-      <form action="/register" method="POST"> @csrf <label>
+      <form action="/register" method="POST" id="registration-form"> @csrf <label>
           <span>Name</span>
           <input name="name" type="text" value="{{ old('name')}}" /> @if ($errors->has('name')) <div id="name-error" class="error-message">
             {{$errors->first('name')}}
