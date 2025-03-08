@@ -61,7 +61,7 @@
             </label>
 
             
-            <button type="submit" class="submit" background-color:#fff onclick="location.href='https://yqrplates.com/passwordreset';">Reset Password</button>
+            <button type="submit" class="submit">Reset Password</button>
          
         </div>
 
