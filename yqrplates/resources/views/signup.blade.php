@@ -27,12 +27,12 @@
     </div>
   </nav>
 </header>
-  
+<body>
 <br>
 <br>
 <br>
-
-<div style="width: 60%; margin: 0 auto">
+<br>
+<div style="width: 50%; margin: 0 auto; margin-top: 55px">
   <div class="signup--container">
     <div class="left text-center">
       <h3>If you already have an account, sign in!<h3>
@@ -95,7 +95,7 @@
     </div>
   </div>
 </div>
-
+</body>
 <script>
   $(document).ready(function() {
     $('registration-form').submit(function(e) {
