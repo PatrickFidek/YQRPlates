@@ -28,6 +28,11 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
+Route::get('/newsignin', function () {
+    return view('newsignin');
+});
+
+
 Route::get('/resetpassword', function () {
     return view('resetpassword');
 });
@@ -63,6 +68,8 @@ Route::get('/preferences', [PreferencesController::class, 'index'])->middleware(
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::post('/signin', [SigninController::class, 'signin']);
+
+
 
 Route::post('/logout', [SigninController::class, 'logout']);
 
