@@ -36,7 +36,7 @@
   <div class="signup--container">
     <div class="left text-center">
       <h3>If you already have an account, sign in!<h3>
-      <button class="submit" style="width: 142px" onclick="location.href='https://yqrplates.com/newsignin';">SIGN IN</button>
+      <button class="submit" style="width: 142px" onclick="location.href='https://yqrplates.com/signin';">SIGN IN</button>
     </div>
     <div class="right">
       <h2>CREATE YOUR ACCOUNT</h2>
