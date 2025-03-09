@@ -11,7 +11,7 @@
 </head>
 
 <!-- This could also be the restaurant name -->
-<title>Restaurant Details</title>
+<title>{{ $restaurant->name }}</title>
 
 <html>
   <body>
@@ -50,18 +50,37 @@
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-cutlery logo-small"></span>
           <h4>
-            @if($restaurant->dine_in)
-              Dine-in
-            @endif
-            @if($restaurant->take_out)
-              Take-out
-            @endif
-            @if($restaurant->delivery)
-              Delivery
-            @endif
-            @if($restaurant->drive_thru)
-              Drive-thru
-            @endif
+            <?php
+              $count = 0;
+              $separator = ", ";
+              $types = "";
+              if($restaurant->dine_in){
+                $types .= "Dine-in";
+                $count++;
+              }
+              if($restaurant->take_out){
+                if($count > 0){
+                  $types .= ", ";
+                }
+                $types .= "Take-out";
+                $count++;
+              }
+              if($restaurant->delivery){
+                if($count > 0){
+                  $types .= ", ";
+                }
+                $types .= "Delivery";
+                $count++;
+              }
+              if($restaurant->drive_thru){
+                if($count > 0){
+                  $types .= ", ";
+                }
+                $types .= "Drive-thru";
+                $count++;
+              }
+            ?>
+            {{ $types }}
           </h4>
         </div>
         <div class="col-sm-3">
@@ -71,18 +90,36 @@
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-map-marker logo-small"></span>
           <h4>
-            @if($restaurant->south_east)
-              South-East
-            @endif
-            @if($restaurant->south_west)
-              South-West
-            @endif
-            @if($restaurant->north_east)
-              North-East
-            @endif
-            @if($restaurant->north_west)
-              North-West
-            @endif
+            <?php
+              $count = 0;
+              $separator = ", ";
+              $areas = "";
+              if($restaurant->south_east){
+                $areas .= "South-East";
+                $count++;
+              }
+              if($restaurant->south_west){
+                if($count > 0){
+                  $areas .= $separator;
+                }
+                $areas .= "South-West";
+                $count++;
+              }
+              if($restaurant->north_east){
+                if($count > 0){
+                  $areas .= $separator;
+                }
+                $areas .= "North-East";
+                $count++;
+              }
+              if($restaurant->north_west){
+                if($count > 0){
+                  $areas .= $separator;
+                }
+                $areas .= "North-West";
+              }
+            ?>
+            {{ $areas }}
           </h4>
         </div>
       </div>
@@ -91,7 +128,7 @@
      
           <div class="row text-center">
               <div class="align-center">
-                <a href="{{ $restaurant->menu_link }}"><h2>View Menu</h2></a>
+                <a class="btn btn-lg" href="{{ $restaurant->menu_link }}">View Menu</a>
               </div>
 <br>
           <h2>Promotions</h2>
