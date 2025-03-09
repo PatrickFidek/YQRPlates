@@ -59,12 +59,13 @@
         <span>Food Type</span>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" onChange="foodType(this)">
-            <div class=foodType">
-            <option value="" hidden> </option>
-            <option value="Food Type">Food Type 1</option>
-            <option value="Food Type">Food Type</option>
-            <option value="Food Type">Food Type</option>
-</div>
+            <option value="" disabled> </option>
+            <option value="Fast Food">Fast Food</option>
+            <option value="Canadian">Canadian</option>
+            <option value="Pizza">Pizza</option>
+            <option value="Greek">Greek</option>
+            <option value="Indian">Indian</option>
+            <option value="Sushi">Sushi</option>
           </select>
         </div>
       </label>
@@ -80,10 +81,10 @@
         <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" multiple>
-            <option value="Restaurant Type">Dine In</option>
-            <option value="Restaurant Type">Take Out</option>
-            <option value="Restaurant Type">Delivery</option>
-            <option value="Restaurant Type">Drive Thru</option>
+            <option value="Dine In">Dine In</option>
+            <option value="Take Out">Take Out</option>
+            <option value="Delivery">Delivery</option>
+            <option value="Drive Thru">Drive Thru</option>
           </select>
         </div>
       </label>
@@ -93,13 +94,11 @@
         <span>Price Range</span>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" onChange="priceRange(this)">
-            <div class="priceRange">
-            <option value="" hidden> </option>
-            <option value="Price Range">Low</option>
-            <option value="Price Range">Medium</option>
-            <option value="Price Range">Medium High</option>
-            <option value="Price Range">High</option>
-            </div>
+            <option value="" disabled> </option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="Medium High">Medium High</option>
+            <option value="High">High</option>
           </select>
         </div>
       </label>
@@ -173,9 +172,9 @@
   $(document).ready(function() {
     var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
       removeItemButton: true,
-      maxItemCount: 5,
-      searchResultLimit: 5,
-      renderChoiceLimit: 5,
+      maxItemCount: 15,
+      searchResultLimit: 15,
+      renderChoiceLimit: 15,
     });
   })(jQuery);
 </script>
