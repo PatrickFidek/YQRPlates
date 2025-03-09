@@ -30,6 +30,7 @@
   <h1>Enter Restaurant</h1>
 </div>
 <div class="center">
+<form action="/uploadrestaurant" method="POST" id="restaurant-form"> @csrf
   <label>
     <span>Restaurant Name</span>
     <input name="name" type="text"/>
@@ -50,16 +51,20 @@
             <option value="South West">South East</option>
           </select>
         </div>
+
       </label>
     </div>
     <div class="col-sm-4">
       <label>
         <span>Food Type</span>
         <div class="row d-flex justify-content-center mt-100">
-          <select id="choices-multiple-remove-button" multiple>
+          <select id="choices-multiple-remove-button" onChange="foodType(this)">
+            <div class=foodType">
+            <option value="" hidden> </option>
             <option value="Food Type">Food Type 1</option>
             <option value="Food Type">Food Type</option>
             <option value="Food Type">Food Type</option>
+</div>
           </select>
         </div>
       </label>
@@ -75,9 +80,10 @@
         <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" multiple>
-            <option value="Restaurant Type">Restaurant Type</option>
-            <option value="Restaurant Type">Restaurant Type</option>
-            <option value="Restaurant Type">Restaurant Type</option>
+            <option value="Restaurant Type">Dine In</option>
+            <option value="Restaurant Type">Take Out</option>
+            <option value="Restaurant Type">Delivery</option>
+            <option value="Restaurant Type">Drive Thru</option>
           </select>
         </div>
       </label>
@@ -87,10 +93,13 @@
         <span>Price Range</span>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" onChange="priceRange(this)">
-            <option value="option" hidden> </option>
-            <option value="Price Range">Price Range</option>
-            <option value="Price Range">Price Range</option>
-            <option value="Price Range">Price Range</option>
+            <div class="priceRange">
+            <option value="" hidden> </option>
+            <option value="Price Range">Low</option>
+            <option value="Price Range">Medium</option>
+            <option value="Price Range">Medium High</option>
+            <option value="Price Range">High</option>
+            </div>
           </select>
         </div>
       </label>
@@ -114,6 +123,7 @@
     <input name="name" type="text"/>
   </label>
   <button type="button" class="submit" background-color:#fff>Continue</button>
+</form>
 </div>
 <script>
   function getExtension(filename) {
