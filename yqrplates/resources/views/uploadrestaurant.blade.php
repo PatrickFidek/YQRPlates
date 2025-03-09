@@ -190,7 +190,7 @@
   })(jQuery);
 
   $(document).ready(function() {
-    $('registration-form').submit(function(e) {
+    $('restaurant-form').submit(function(e) {
       e.preventDefault();
 
       $.ajax({
@@ -198,7 +198,7 @@
         type: $(this).attr('method'),
         data: $(this).serialize(),
         success: function(response) {
-          window.location.href = '/preferences';
+          window.location.href = '/profile';
         },
         error: function(xhr) {
           var errors = xhr.responseJSON.errors;

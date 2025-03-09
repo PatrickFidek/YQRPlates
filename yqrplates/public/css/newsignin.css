@@ -24,13 +24,15 @@ body {
 }
 
 .signin--container {
-    display: flex;
-    width: 800px;
-    height: 645px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+  display: flex;
+  width: 800px;
+  height: 743.8px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding-left: 0px;
+  overflow: hidden;
+  margin-top: 85px;
 }
 
 @import 'tailwindcss';

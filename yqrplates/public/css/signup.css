@@ -508,12 +508,15 @@ input {
   
           .signup--container {
             display: flex;
-            width: 800px;
+            width: 50%;
+            margin: 0 auto;
             background: white;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             padding-left: 0px;
             overflow: hidden;
+            margin-top: 85px;
+            
         }
         .left {
             background: #ff7e2e;;

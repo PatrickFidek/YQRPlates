@@ -28,11 +28,6 @@
   </nav>
 </header>
 <body>
-<br>
-<br>
-<br>
-<br>
-<div style="width: 50%; margin: 0 auto; margin-top: 55px">
   <div class="signup--container">
     <div class="left text-center">
       <h3>If you already have an account, sign in!<h3>
@@ -94,7 +89,6 @@
       </form>
     </div>
   </div>
-</div>
 </body>
 <script>
   $(document).ready(function() {

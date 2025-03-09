@@ -15,6 +15,16 @@ class SigninController extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
+        
+
+
+
+
+        //$user = User::where('email', $fields['email'])->first();
+
+        //if ($user && Hash::check($fields['password'], $user->password)) {
+          //  return redirect('profile');
+        //}
 
         if (auth()->attempt(['email' => $fields['email'], 'password' => $fields['password']])) {
             return redirect('/profile');
@@ -27,6 +37,5 @@ class SigninController extends Controller
     public function logout() {
         auth()->logout();
         return redirect('/signin');
-main
     }
 }
