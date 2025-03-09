@@ -10,6 +10,7 @@ class Restaurant extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'name',
         'menu_link',
         'price_range',
