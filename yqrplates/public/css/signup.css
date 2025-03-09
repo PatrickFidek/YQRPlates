@@ -508,14 +508,11 @@ input {
   
           .signup--container {
             display: flex;
-            width: 50%;
-            margin: 0 auto;
             background: white;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            padding-left: 0px;
+            margin-left: 10px;
             overflow: hidden;
-            margin-top: 85px;
             
         }
         .left {
