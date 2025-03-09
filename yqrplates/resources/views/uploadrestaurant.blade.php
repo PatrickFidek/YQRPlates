@@ -27,7 +27,7 @@
   </nav>
 </header>
 <div class="jumbotron text-center">
-  <h1>Enter Restaurant</h1>
+<h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
 <div class="center">
   <form action="/uploadrestaurant" method="POST" id="restaurant-form"> @csrf <label>

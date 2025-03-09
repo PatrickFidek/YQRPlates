@@ -8,6 +8,11 @@ use App\Models\Restaurant;
 
 class UploadRestaurant extends Controller
 {
+    public function index() {
+        return view('uploadrestaurant');
+    }
+
+    
     public function store(Request $request){
         $restaurant = $request->validate([
             'name' => ['required|string|max:255', Rule::unique('restaurants', 'name')],
@@ -26,9 +31,5 @@ class UploadRestaurant extends Controller
         ]);  
 
         $restaurant = Restaurant::create($restaurant);
-    }
-
-    public function index() {
-        return view ('/profile');
     }
 }
