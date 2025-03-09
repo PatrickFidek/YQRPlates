@@ -47,6 +47,12 @@ body {
     height: 100%;
     margin-bottom: 10px;
   }
+  .carousel {
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+}
+
   .carousel-control.right, .carousel-control.left {
     background-image: none;
     color: #ff7e2e;
