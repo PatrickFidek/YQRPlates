@@ -7,10 +7,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/preferences.css') }}">
-  <title>Enter Preferences</title>
+  <title>Preferences</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/preferences.js') }}"></script>
 </head>
+
 <header>
   <nav class="p-6">
     <div class="flex justify-between items-center">
@@ -26,89 +27,92 @@
     </div>
   </nav>
 </header>
+
 <div class="jumbotron text-center">
-  <h1>Welcome, {{ auth()->user()->name }}!</h1>
+  <h1>Enter Your Preferences</h1>
 </div>
-<div class="row">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-4">
-    <label>
-      <span>Neighbourhood</span>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
-      <div class="row d-flex justify-content-center mt-100">
-        <select id="choices-multiple-remove-button" multiple>
-          <option value="North West">North West</option>
-          <option value="North East">North East</option>
-          <option value="South West">South West</option>
-          <option value="South West">South East</option>
-        </select>
-      </div> @if ($errors->has('neighborhoods')) <div id="neighborhood-error" class="error-message">
-        {{$errors->first('neighborhood')}}
-      </div> @endif
-    </label>
+
+<form action="/updatepreferences" method="POST" id="preferences-form"> 
+    @csrf
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+      <label>
+        <span>Neighbourhood</span>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+        <div class="row d-flex justify-content-center mt-100">
+          <select id="choices-multiple-remove-button" name="area" multiple>
+            <option value="North West">North West</option>
+            <option value="North East">North East</option>
+            <option value="South West">South West</option>
+            <option value="South West">South East</option>
+          </select>
+        </div> @if ($errors->has('neighborhoods')) <div id="neighborhood-error" class="error-message">
+          {{$errors->first('neighborhood')}}
+        </div> @endif
+      </label>
+    </div>
+    <div class="col-sm-4">
+      <label>
+        <span>Food Type</span>
+        <div class="row d-flex justify-content-center mt-100">
+          <select id="choices-multiple-remove-button" name="food_type" onChange="foodType(this)">
+            <option value="" disabled></option>
+            <option value="Fast Food">Fast Food</option>
+            <option value="Canadian">Canadian</option>
+            <option value="Pizza">Pizza</option>
+            <option value="Greek">Greek</option>
+            <option value="Indian">Indian</option>
+            <option value="Sushi">Sushi</option>
+          </select>
+        </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
+          {{$errors->first('food_type')}}
+        </div> @endif
+      </label>
+    </div>
+    <div class="col-sm-2"></div>
   </div>
-  <div class="col-sm-4">
-    <label>
-      <span>Food Type</span>
-      <div class="row d-flex justify-content-center mt-100">
-        <select id="choices-multiple-remove-button" onChange="foodType(this)">
-          <option value="" disabled></option>
-          <option value="Fast Food">Fast Food</option>
-          <option value="Canadian">Canadian</option>
-          <option value="Pizza">Pizza</option>
-          <option value="Greek">Greek</option>
-          <option value="Indian">Indian</option>
-          <option value="Sushi">Sushi</option>
-        </select>
-      </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
-        {{$errors->first('food_type')}}
-      </div> @endif
-    </label>
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+      <label>
+        <span>Restaurant Type</span>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+        <div class="row d-flex justify-content-center mt-100">
+          <select id="choices-multiple-remove-button" name="type" multiple>
+            <option value="Dine In">Dine In</option>
+            <option value="Take Out">Take Out</option>
+            <option value="Delivery">Delivery</option>
+            <option value="Drive Thru">Drive Thru</option>
+          </select>
+        </div> @if ($errors->has('restaurant_type')) <div id="restaurant-type-error" class="error-message">
+          {{$errors->first('restaurant-type')}}
+        </div> @endif
+      </label>
+    </div>
+    <div class="col-sm-4">
+      <label>
+        <span>Price Range</span>
+        <div class="row d-flex justify-content-center mt-100">
+          <select id="choices-multiple-remove-button" name="price_range" onChange="priceRange(this)">
+            <option value="" disabled></option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="Medium High">Medium High</option>
+            <option value="High">High</option>
+          </select>
+        </div> @if ($errors->has('price-range')) <div id="price-range-error" class="error-message">
+          {{$errors->first('price-range')}}
+        </div> @endif
+      </label>
+    </div>
+    <div class="col-sm-2"></div>
   </div>
-  <div class="col-sm-2"></div>
-</div>
-<div class="row">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-4">
-    <label>
-      <span>Restaurant Type</span>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
-      <div class="row d-flex justify-content-center mt-100">
-        <select id="choices-multiple-remove-button" multiple>
-          <option value="Dine In">Dine In</option>
-          <option value="Take Out">Take Out</option>
-          <option value="Delivery">Delivery</option>
-          <option value="Drive Thru">Drive Thru</option>
-        </select>
-      </div> @if ($errors->has('restaurant_type')) <div id="restaurant-type-error" class="error-message">
-        {{$errors->first('restaurant-type')}}
-      </div> @endif
-    </label>
-  </div>
-  <div class="col-sm-4">
-    <label>
-      <span>Price Range</span>
-      <div class="row d-flex justify-content-center mt-100">
-        <select id="choices-multiple-remove-button" onChange="priceRange(this)">
-          <option value="" disabled></option>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="Medium High">Medium High</option>
-          <option value="High">High</option>
-        </select>
-      </div> @if ($errors->has('price-range')) <div id="price-range-error" class="error-message">
-        {{$errors->first('price-range')}}
-      </div> @endif
-    </label>
-  </div>
-  <div class="col-sm-2"></div>
-</div>
-<button type="button" class="submit" background-color:#fff>Continue</button>
+  <button type="submit" class="submit">Continue</button>
 </form>
-</div>
-</div>
+
 <script>
   $(document).ready(function() {
     var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
@@ -119,7 +123,7 @@
     });
   })(jQuery);
   $(document).ready(function() {
-    $('restaurant-form').submit(function(e) {
+    $('preferences-form').submit(function(e) {
       e.preventDefault();
       $.ajax({
         url: $(this).attr('action'),
