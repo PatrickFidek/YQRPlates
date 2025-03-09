@@ -44,7 +44,7 @@
     @foreach($restaurants as $restaurant)
       <div class="col-sm-4 col-xs-12">
         <div class="panel panel-default text-center">
-          <div class="panel-heading">
+          <div class="panel-heading" style="height:125px;padding:1px 7px;">
             <h1>{{ $restaurant->name }}</h1>
           </div>
           <div class="panel-footer">
