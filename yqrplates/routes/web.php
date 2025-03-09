@@ -16,10 +16,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/restaurantdetails', function () {
-    return view('restaurantdetails');
-});
-
 Route::get('/signin', function () {
     return view('signin');
 });
@@ -27,8 +23,6 @@ Route::get('/signin', function () {
 Route::get('/signup', function () {
     return view('signup');
 });
-
-
 
 Route::get('/resetpassword', function () {
     return view('resetpassword');
@@ -58,15 +52,14 @@ Route::get('/promotions', function () {
     return view('promotions');
 });
 
-Route::resource('restaurants', RestaurantController::class);
+Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
+Route::get('/restaurants/details', [RestaurantController::class, 'details'])->name(name: 'restaurants.details');
 
 Route::get('/preferences', [PreferencesController::class, 'index'])->middleware('auth');
 
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::post('/signin', [SigninController::class, 'signin']);
-
-
 
 Route::post('/logout', [SigninController::class, 'logout']);
 
