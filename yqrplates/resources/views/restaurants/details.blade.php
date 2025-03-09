@@ -9,8 +9,10 @@
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/restaurantdetails.css') }}">
   <script src="{{ asset('js/restaurantdetails.js') }}"></script>
 </head>
+
 <!-- This could also be the restaurant name -->
 <title>Restaurant Details</title>
+
 <html>
   <body>
     <header>
@@ -37,25 +39,51 @@
       </nav>
     </header>
     <div class="jumbotron text-center">
-      <h1>Wok Box</h1>
+      <h1>{{ $restaurant->name }}</h1>
     </div>
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-apple logo-small"></span>
-          <h4>Asian</h4>
+          <h4>{{ $restaurant->food_type }}</h4>
         </div>
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-cutlery logo-small"></span>
-          <h4>Dine-In, Take-Out</h4>
+          <h4>
+            @if($restaurant->dine_in)
+              Dine-in
+            @endif
+            @if($restaurant->take_out)
+              Take-out
+            @endif
+            @if($restaurant->delivery)
+              Delivery
+            @endif
+            @if($restaurant->drive_thru)
+              Drive-thru
+            @endif
+          </h4>
         </div>
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-usd logo-small"></span>
-          <h4>$10 - $15</h4>
+          <h4>{{ $restaurant->price_range }}</h4>
         </div>
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-map-marker logo-small"></span>
-          <h4>Harbour Landing, East, North</h4>
+          <h4>
+            @if($restaurant->south_east)
+              South-East
+            @endif
+            @if($restaurant->south_west)
+              South-West
+            @endif
+            @if($restaurant->north_east)
+              North-East
+            @endif
+            @if($restaurant->north_west)
+              North-West
+            @endif
+          </h4>
         </div>
       </div>
     </div>
@@ -63,7 +91,7 @@
      
           <div class="row text-center">
               <div class="align-center">
-                <h2>View Menu</h2>
+                <a href="{{ $restaurant->menu_link }}"><h2>View Menu</h2></a>
               </div>
 <br>
           <h2>Promotions</h2>
