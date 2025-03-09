@@ -396,6 +396,8 @@ h4 {
   color: #ff7e2e;
 }
 
+
+
 .panel-heading {
   color: #fff !important;
   background-color: #ff7e2e !important;
@@ -727,13 +729,13 @@ footer .glyphicon {
 }
 
 .choices__list--single {
-  display: inline-block;
+  display: none;
   vertical-align: middle;
   border-radius: 20px;
   padding: 4px 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 500;
   margin-right: 3.75px;
   margin-bottom: 3.75px;
@@ -741,9 +743,33 @@ footer .glyphicon {
   border: 1px solid #79a263;
   color: #fff;
   word-break: break-all;
-  width: 40%;
-  display: none;
+  width: 50%;
 }
+
+.error-message {
+  font-size: 10px;
+  color: #d9534f;
+}
+
+.reveal{
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 20px;
+  padding: 4px 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 10px;
+  font-weight: 500;
+  margin-right: 3.75px;
+  margin-bottom: 3.75px;
+  background-color: #79a263;
+  border: 1px solid #79a263;
+  color: #fff;
+  word-break: break-all;
+  width: 50%;
+}
+
+
 
 .choices__list--multiple .choices__item[data-deletable] {
   padding-right: 5px
