@@ -4,15 +4,16 @@
   // Loop through all the stylesheets
 
   for (let sheet of document.styleSheets) {
- 
+    
     try {
       
       // Iterate over the CSS rules in each stylesheet
       for (let rule of sheet.cssRules) {
        
         if (rule.selectorText === className) {
-          
+      
           rule.style[property] = "inline-block"; // Update the style of the class
+  
         }
       }
     } catch (e) {
@@ -35,6 +36,7 @@ function updateCSSClassStyle2(className, property, value) {
         if (rule.selectorText === className) {
           
           rule.style[property] = "none"; // Update the style of the class
+          
         }
       }
     } catch (e) {
@@ -44,14 +46,29 @@ function updateCSSClassStyle2(className, property, value) {
   }
 }
   function priceRange(dropdown){
-
+    const div2 = document.querySelectorAll('.choices__list--single')[1];
     if(dropdown.value === ""){
-      updateCSSClassStyle2('.choices__list--single', 'display', 'none');
+
+      div2.classList.remove('reveal');
     }
     else{
-    updateCSSClassStyle('.choices__list--single', 'display', 'inline-block');
+
+      div2.classList.add('reveal');
     }
   }
+
+  function foodType(dropdown){
+    const div1 = document.querySelectorAll('.choices__list--single')[0];
+    if(dropdown.value === ""){
+
+      div1.classList.remove('reveal');
+    }
+    else{
+
+      div1.classList.add('reveal');
+    }
+  }
+
 
 
 
@@ -84,3 +101,5 @@ function updateCSSClassStyle2(className, property, value) {
       });
     });
   })
+
+ 
