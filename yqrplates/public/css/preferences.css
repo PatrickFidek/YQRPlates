@@ -242,8 +242,9 @@ input {
   margin-top: 5px;
   padding-bottom: 5px;
   font-size: 16px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.4);
   text-align: center;
+  background-color: #f9f9f9;
 }
 
 .forgot-pass {
@@ -394,6 +395,8 @@ h4 {
   background-color: #fff !important;
   color: #ff7e2e;
 }
+
+
 
 .panel-heading {
   color: #fff !important;
@@ -584,7 +587,7 @@ footer .glyphicon {
 }
 
 .choices[data-type*=select-one] .choices__button:focus {
-  box-shadow: 0 0 0 2px #ff7e2e
+  box-shadow: 0 0 0 2px #79a263;
 }
 
 .choices[data-type*=select-one]:after {
@@ -592,7 +595,7 @@ footer .glyphicon {
   height: 0;
   width: 0;
   border-style: solid;
-  border-color: #333 transparent transparent transparent;
+  border-color: #fff transparent transparent transparent;
   border-width: 5px;
   position: absolute;
   right: 11.5px;
@@ -625,6 +628,20 @@ footer .glyphicon {
 
 .choices[data-type*=select-multiple] .choices__button,
 .choices[data-type*=text] .choices__button {
+  position: relative;
+  display: inline-block;
+  margin: 0 -4px 0 8px;
+  padding-left: 16px;
+  border-left: 1px solid #79a263;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
+  background-size: 8px;
+  width: 8px;
+  line-height: 1;
+  opacity: .75;
+  border-radius: 0
+}
+
+.choices[data-type*=one] .choices__button {
   position: relative;
   display: inline-block;
   margin: 0 -4px 0 8px;
@@ -680,7 +697,7 @@ footer .glyphicon {
 .choices__list--single {
   display: inline-block;
   padding: 4px 16px 4px 4px;
-  width: 100%
+  width: 100%;
 }
 
 [dir=rtl] .choices__list--single {
@@ -689,7 +706,7 @@ footer .glyphicon {
 }
 
 .choices__list--single .choices__item {
-  width: 100%
+  width: 100%;
 }
 
 .choices__list--multiple {
@@ -710,6 +727,49 @@ footer .glyphicon {
   color: #fff;
   word-break: break-all
 }
+
+.choices__list--single {
+  display: none;
+  vertical-align: middle;
+  border-radius: 20px;
+  padding: 4px 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 10px;
+  font-weight: 500;
+  margin-right: 3.75px;
+  margin-bottom: 3.75px;
+  background-color: #79a263;
+  border: 1px solid #79a263;
+  color: #fff;
+  word-break: break-all;
+  width: 50%;
+}
+
+.error-message {
+  font-size: 10px;
+  color: #d9534f;
+}
+
+.reveal{
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 20px;
+  padding: 4px 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 10px;
+  font-weight: 500;
+  margin-right: 3.75px;
+  margin-bottom: 3.75px;
+  background-color: #79a263;
+  border: 1px solid #79a263;
+  color: #fff;
+  word-break: break-all;
+  width: 50%;
+}
+
+
 
 .choices__list--multiple .choices__item[data-deletable] {
   padding-right: 5px
@@ -884,4 +944,82 @@ footer .glyphicon {
 .choices[data-type*=select-one] .choices__input.is-hidden,
 .choices__input.is-hidden {
   display: none
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+  box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: linear-gradient(to top right, darkmagenta 0%, hotpink 100%);
+  color: #333;
+  font-family: "Open Sans", Helvetica, sans-serif;
+}
+
+.title {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #999;
+  text-align: center;
+}
+
+
+
+.dropzone {
+  width: 100px;
+  height: 80px;
+  border: 1px dashed #999;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.upload-icon {
+  margin: 25px 2px 2px 2px;
+}
+
+.upload-input {
+  position: relative;
+  top: -62px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.btn {
+  display: block;
+  width: 140px;
+  height: 40px;
+  background: darkmagenta;
+  color: #fff;
+  border-radius: 3px;
+  border: 0;
+  box-shadow: 0 3px 0 0 hotpink;
+  transition: all 0.3s ease-in-out;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background: rebeccapurple;
+  box-shadow: 0 3px 0 0 deeppink;
+}
+
+.message {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  white-space: nowrap;
 }
