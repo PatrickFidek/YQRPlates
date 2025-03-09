@@ -12,8 +12,9 @@ class RestaurantController extends Controller
         return view('restaurants.index', compact('restaurants'));
     }
 
-    public function details(Restaurant $restaurant)
+    public function details(Restaurant $restaurantid)
     {
+        $restaurant = Restaurant::find(2);
         return view('restaurants.details', compact('restaurant'));
     }
 }
