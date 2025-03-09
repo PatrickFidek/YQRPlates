@@ -53,7 +53,7 @@ Route::get('/promotions', function () {
 });
 
 Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
-Route::get('/restaurants/details', [RestaurantController::class, 'details'])->name(name: 'restaurants.details');
+Route::get('/restaurants/details/{restaurantid}', [RestaurantController::class, 'details'])->name(name: 'restaurants.details');
 
 Route::get('/preferences', [PreferencesController::class, 'index'])->middleware('auth');
 

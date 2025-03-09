@@ -48,7 +48,7 @@
             <h1>{{ $restaurant->name }}</h1>
           </div>
           <div class="panel-footer">
-            <a class="btn btn-lg" href="{{ route('restaurants.details', ['restaurantid' => $restaurant->id]) }}">View Details</a>
+            <a class="btn btn-lg" href="{{ url('/restaurants/details/' . $restaurant->id) }}">View Details</a>
           </div>
         </div>
       </div>
