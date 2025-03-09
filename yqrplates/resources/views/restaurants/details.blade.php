@@ -63,7 +63,7 @@
       <div class="row">
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-apple logo-small"></span>
-          <h4>{{ $restaurant->food_type }}</h4>
+          <h4>{{ ucwords($restaurant->food_type) }}</h4>
         </div>
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-cutlery logo-small"></span>
@@ -103,7 +103,7 @@
         </div>
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-usd logo-small"></span>
-          <h4>{{ $restaurant->price_range }}</h4>
+          <h4>{{ ucwords($restaurant->price_range) }}</h4>
         </div>
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-map-marker logo-small"></span>
