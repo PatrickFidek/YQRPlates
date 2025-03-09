@@ -8,6 +8,24 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/restaurantdetails.css') }}">
   <script src="{{ asset('js/restaurantdetails.js') }}"></script>
+  <style>
+    .largebtn {
+    background-color: #ff7e2e !important; 
+    color: #fff;
+    width: 250px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: none;
+    margin: 0 auto;
+  }
+  .largebtn:hover{
+    background-color: #fff !important;
+    border-width: 3px;
+    border: 3px solid #79a263;
+  }
+  </style>
 </head>
 
 <!-- This could also be the restaurant name -->
@@ -128,8 +146,9 @@
      
           <div class="row text-center">
               <div class="align-center">
-                <a class="btn btn-lg largebtn" href="{{ $restaurant->menu_link }}" target="_blank">View Menu
-                </a>
+                
+              <a class="largebtn btn btn-lg" href="{{ $restaurant->menu_link }}" target="_blank">View Menu</a>
+                
               </div>
 <br>
           <h2>Promotions</h2>
