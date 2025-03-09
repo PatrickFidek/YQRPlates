@@ -20,7 +20,7 @@ body {
   .jumbotron {
     background-color: #ff7e2e;
     color: #fff;
-    padding: 100px 25px;
+    padding: 75px;
     font-family: Montserrat, sans-serif;
   }
   .container-fluid {
@@ -74,15 +74,10 @@ body {
     font-style: normal;
   }
   .panel {
-    border: 1px solid #ff7e2e; 
     border-radius:0 !important;
     transition: box-shadow 0.5s;
   }
-  .panel:hover {
-    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
-  }
   .panel-footer .btn:hover {
-    border: 1px solid #ff7e2e;
     background-color: #fff !important;
     color: #ff7e2e;
   }
@@ -90,14 +85,13 @@ body {
     color: #fff !important;
     background-color: #ff7e2e !important;
     padding: 25px;
-    border-bottom: 1px solid transparent;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
   }
   .panel-footer {
-    background-color: white !important;
+    background-color: #f6f6f6 !important;
   }
   .panel-footer h3 {
     font-size: 32px;
@@ -107,7 +101,7 @@ body {
     font-size: 14px;
   }
   .panel-footer .btn {
-    margin: 15px 0;
+    margin: 25px 5;
     background-color: #ff7e2e;
     color: #fff;
   }
@@ -138,13 +132,21 @@ body {
     
     color: #79a263;
   }
-  .slideanim {visibility:hidden;}
-  .slide {
-    animation-name: slide;
-    -webkit-animation-name: slide;
-    animation-duration: 1s;
-    -webkit-animation-duration: 1s;
-    visibility: visible;
+  .largebtn {
+    background-color: #ff7e2e !important; 
+    color: #fff;
+    width: 250px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: none;
+    margin: 0 auto;
+  }
+  .largebtn:hover{
+    background-color: #fff !important;
+    border-width: 3px;
+    border: 3px solid #79a263;
   }
   @keyframes slide {
     0% {

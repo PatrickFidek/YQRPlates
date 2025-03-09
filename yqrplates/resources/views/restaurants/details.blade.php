@@ -128,7 +128,8 @@
      
           <div class="row text-center">
               <div class="align-center">
-                <a class="btn btn-lg" href="{{ $restaurant->menu_link }}">View Menu</a>
+                <a class="btn btn-lg largebtn" href="{{ $restaurant->menu_link }}" target="_blank">View Menu
+                </a>
               </div>
 <br>
           <h2>Promotions</h2>
