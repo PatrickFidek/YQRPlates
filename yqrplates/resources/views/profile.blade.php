@@ -38,7 +38,14 @@
       <div class="panel panel-default text-center">
         <!-- should say their restaurant and list details of it if restaurant owner -->
         <div class="panel-heading">
-          <h1>Current Prefences</h1>
+          <h1>
+              @if(auth()->user()->type == "customer")
+                Current Preferences
+              @endif
+              @if(auth()->user()->type == "restuarant owner")
+                Restaurant Details
+              @endif
+          </h1>
         </div>
         <div class="panel-body">
           <p>
