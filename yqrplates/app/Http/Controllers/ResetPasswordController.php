@@ -28,5 +28,6 @@ class ResetPasswordController extends Controller
         }
         
         auth()->login($user);
+        return redirect('/profile');
     }
 }
