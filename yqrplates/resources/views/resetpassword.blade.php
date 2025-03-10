@@ -33,15 +33,22 @@
 <div class="jumbotron text-center">
   <h1>Reset Password</h1> 
 </div>
-    <form action="/resetpassword" method="POST" id="reset-password-form"> @csrf
+    <form action="/resetpassword" method="POST" id="reset-password-form"> 
+      @csrf
         <div class="center">
+            @if ($errors->any())
+              <div class="error-message">
+                {{ $errors->first() }} 
+              </div>
+            @endif
             <label>
                 <span>Email</span>
                 <input name='email' type="email" value="{{ old('email')}}"/>
                 @if ($errors->has('email')) 
                 <div id="email-error" class="error-message">
                   {{$errors->first('email')}}
-                </div> @endif 
+                </div> 
+                @endif 
             </label>
                         
             <label>
@@ -76,7 +83,6 @@
 
             
             <button type="submit" class="submit">Reset Password</button>
-         
         </div>
       </form>
 
