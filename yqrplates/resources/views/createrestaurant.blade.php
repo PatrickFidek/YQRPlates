@@ -30,7 +30,7 @@
   <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
 <div class="center">
-  <form action="/storerestaurant" method="POST" id="restaurant-form"> 
+  <form action="/storerestaurant" method="POST" id="restaurant-form" enctype="multipart/form-data"> 
     @csrf 
     <input class="hidden" name="user_id" value={{ auth()->user()->id }} />
     <label>
@@ -131,9 +131,7 @@
           <span id="prompt">Upload or drop file here</span>
           <input type="file" class="upload-input" id="menu" name="menuimage" height="100%" width="100%" />
         </label>
-      </div>   @if ($errors->has('menuimage')) <div id="menu-error" class="error-message">
-
-      </div> @endif 
+      </div>  
     </label>
     <label>
       <span>or paste URL link here</span>

@@ -42,14 +42,26 @@ class UploadRestaurant extends Controller
         $delivery = in_array("Delivery", $request->input('restaurant_type'));
         $drive_thru = in_array("Drive Thru", $request->input('restaurant_type'));
 
-        if ($request->input('menuimage') != NULL ){
-            $menu_link = $request->file('menuimage')->store('menus', 'public');
+        if($request->hasFile('menuimage')){
+        $filePath = $request->file('menuimage')->store('menus', 'public');
         }
+        if ($request->hasFile('menuimage') ){
+            $menu_image = $request->file('menuimage');
+
+            $extension = $menu_image->getClientOriginalExtension();
+            $menu_image_name = time().'.'.$extension;
+            $path ='public/menus/';
+            $menu_image->move($path,$menu_image_name);
+             
+            $menu_link = 'https://www.yqrplates.com/storage/' . $filePath;
+        }
+
         if($request->input('menulink') != NULL) {
             $menu_link = $request->input('menulink');
         }
 
-        dd($menu_link);
+     
+        
  
 
 
@@ -66,7 +78,7 @@ class UploadRestaurant extends Controller
             'dine_in' => $dine_in,
             'take_out' => $take_out,
             'delivery' => $delivery,
-            'drive_thru' => $drive_thru
+            'drive_thru' => $drive_thru,
         ]);
 
         return redirect('profile');
@@ -86,7 +98,8 @@ class UploadRestaurant extends Controller
             'dine_in' => 'boolean',
             'take_out' => 'boolean',
             'delivery' => 'boolean',
-            'drive_thru' => 'boolean',
+            'drive_thru' => 'boolean'
+
         ]); 
         
     }

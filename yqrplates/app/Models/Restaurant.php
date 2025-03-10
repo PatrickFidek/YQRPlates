@@ -10,9 +10,9 @@ class Restaurant extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
         'user_id',
         'name',
+        'menu_link',
         'price_range',
         'food_type',
         'south_east',
@@ -22,7 +22,7 @@ class Restaurant extends Model
         'dine_in',
         'take_out',
         'delivery',
-        'drive_thru'
+        'drive_thru',
     ];
 
     public function user()
