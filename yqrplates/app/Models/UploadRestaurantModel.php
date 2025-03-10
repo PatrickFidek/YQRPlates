@@ -9,6 +9,7 @@ class UploadRestaurantModel extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'menu_link',
         'price_range',
         'food_type',
         'south_east',
@@ -18,6 +19,6 @@ class UploadRestaurantModel extends Model
         'dine_in',
         'take_out',
         'delivery',
-        'drive_thru'
+        'drive_thru',
     ];
 }
