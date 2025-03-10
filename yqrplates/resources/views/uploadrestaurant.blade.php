@@ -27,10 +27,10 @@
   </nav>
 </header>
 <div class="jumbotron text-center">
-  <h1>Enter Restaurant</h1>
+<h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
 <div class="center">
-  <form action="/uploadrestaurant" method="POST" id="restaurant-form"> @csrf <label>
+  <form action="/updaterestaurant" method="POST" id="restaurant-form"> @csrf <label>
       <span>Restaurant Name</span>
       <input name="name" type="text" /> @if ($errors->has('name')) <div id="name-error" class="error-message">
         {{$errors->first('name')}}
