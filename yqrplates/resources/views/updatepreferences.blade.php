@@ -35,7 +35,8 @@
 
 <form action="/updatepreferences" method="POST" id="preferences-form"> 
     @csrf
-  <div class="row">
+    <input class="hidden" name="user_id" value={{ auth()->user()->id }}/>
+    <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-4">
       <label>
@@ -43,7 +44,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
         <div class="row d-flex justify-content-center mt-100">
-          <select id="choices-multiple-remove-button" name="area" multiple>
+          <select id="choices-multiple-remove-button" name="neighborhood[]" multiple>
             <option value="North West">North West</option>
             <option value="North East">North East</option>
             <option value="South West">South West</option>
@@ -85,7 +86,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
         <div class="row d-flex justify-content-center mt-100">
-          <select id="choices-multiple-remove-button" name="type" multiple>
+          <select id="choices-multiple-remove-button" name="restaurant_type[]" multiple>
             <option value="Dine In">Dine In</option>
             <option value="Take Out">Take Out</option>
             <option value="Delivery">Delivery</option>

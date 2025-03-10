@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 
 class PreferencesController extends Controller{
     public function index() {
-        return view('preferences');
+        return view('updatepreferences');
     }
 
     public function create() {
@@ -41,7 +41,7 @@ class PreferencesController extends Controller{
             'drive_thru' => $drive_thru
         ]);
 
-        return view('profile');
+        return redirect('profile');
     }
 
     public function update(Request $request) {
@@ -60,6 +60,5 @@ class PreferencesController extends Controller{
             'delivery' => 'boolean',
             'drive_thru' => 'boolean',
         ]); 
-        
     }
 }

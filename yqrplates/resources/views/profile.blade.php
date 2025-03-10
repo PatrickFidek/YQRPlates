@@ -144,7 +144,7 @@
         </div>
       </div>
       <!-- should say update prfences/update menu/restaurant depending on restaurant owner or customer -->
-      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/preferences';">
+      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/{{ auth()->user()->type == "customer" ? 'preferences' : 'uploadrestaurant' }}';">
         @if(auth()->user()->type == "customer")
           Update Preferences
         @endif
