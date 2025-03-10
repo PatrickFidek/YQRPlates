@@ -18,11 +18,5 @@ class ResetPasswordController extends Controller
             'confirm' => 'required'
         ]);
 
-        if (auth()->attempt(['email' => $fields['email'], 'birthday' => $fields['birthday']])) {
-            return redirect('/profile');
-        } 
-        else {
-            return back()->withErrors(['message' => 'Invalid Credentials']);
-        }
     }
 }
