@@ -39,21 +39,34 @@
         <!-- should say their restaurant and list details of it if restaurant owner -->
         <div class="panel-heading">
           <h1>
-              @if(auth()->user()->type == "customer")
-                Current Preferences
-              @endif
-              @if(auth()->user()->type == "restuarant owner")
-                Restaurant Details
-              @endif
+              <?php
+              $title = "";
+              if(auth()->user()->type == "customer"){
+                $title = "Current Preferences";
+}
+              if(auth()->user()->type == "restaurant owner"){
+                $title= "Restaurant Details";
+              }
+?>
+          {{ $title }}
           </h1>
         </div>
+        @if(auth()->user()->type == "restaurant owner")
         <div class="panel-body">
+          <p>
+            <strong>Name: </strong> 
+                {{ auth()->user()->restaurant->name }}
+              
+          </p>
+        </div>
+        @endif
+        <div class="panel-footer">
           <p>
             <strong>Price Range: </strong> 
               @if(auth()->user()->type == "customer")
                 {{ auth()->user()->preference->price_range }}
               @endif
-              @if(auth()->user()->type == "restuarant owner")
+              @if(auth()->user()->type == "restaurant owner")
                 {{ auth()->user()->restaurant->price_range }}
               @endif
           </p>
@@ -64,7 +77,7 @@
               @if(auth()->user()->type == "customer")
                 {{ auth()->user()->preference->food_type }}
               @endif
-              @if(auth()->user()->type == "restuarant owner")
+              @if(auth()->user()->type == "restaurant owner")
                 {{ auth()->user()->restaurant->food_type }}
               @endif
           </p>
@@ -148,7 +161,7 @@
         @if(auth()->user()->type == "customer")
           Update Preferences
         @endif
-        @if(auth()->user()->type == "restuarant owner")
+        @if(auth()->user()->type == "restaurant owner")
           Update Restaurant Details
         @endif
       </button>
@@ -157,7 +170,7 @@
     <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/dashboard';">View Dashboard</button>
     <br>
     <!-- this should only display if they are restaurant owner -->
-    @if(auth()->user()->type == "restuarant owner")
+    @if(auth()->user()->type == "restaurant owner")
       <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/promotions';">Add Promotion</button>
     @endif
   </div>
