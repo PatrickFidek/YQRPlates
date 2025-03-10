@@ -54,32 +54,12 @@
         @if(auth()->user()->type == "restaurant owner")
         <div class="panel-body">
           <p>
-            <strong>Name: </strong> 
-                {{ auth()->user()->restaurant->name }}
-              
-          </p>
-        </div>
-        @endif
-        <div class="panel-footer">
-          <p>
-            <strong>Price Range: </strong> 
-              @if(auth()->user()->type == "customer")
-                {{ auth()->user()->preference->price_range }}
-              @endif
-              @if(auth()->user()->type == "restaurant owner")
-                {{ auth()->user()->restaurant->price_range }}
-              @endif
+            <strong>Price Range:</strong> $10 - $15
           </p>
         </div>
         <div class="panel-footer">
           <p>
-            <strong>Food Type: </strong> 
-              @if(auth()->user()->type == "customer")
-                {{ auth()->user()->preference->food_type }}
-              @endif
-              @if(auth()->user()->type == "restaurant owner")
-                {{ auth()->user()->restaurant->food_type }}
-              @endif
+            <strong>Food Type:</strong> Asian
           </p>
         </div>
         <div class="panel-footer">
@@ -157,22 +137,13 @@
         </div>
       </div>
       <!-- should say update prfences/update menu/restaurant depending on restaurant owner or customer -->
-      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/{{ auth()->user()->type == "customer" ? 'preferences' : 'uploadrestaurant' }}';">
-        @if(auth()->user()->type == "customer")
-          Update Preferences
-        @endif
-        @if(auth()->user()->type == "restaurant owner")
-          Update Restaurant Details
-        @endif
-      </button>
+      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/preferences';">Update Preferences</button>
     </div>
     </br>
     <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/dashboard';">View Dashboard</button>
     <br>
     <!-- this should only display if they are restaurant owner -->
-    @if(auth()->user()->type == "restaurant owner")
-      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/promotions';">Add Promotion</button>
-    @endif
+    <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/promotions';">Add Promotion</button>
   </div>
 </div>
   @else
