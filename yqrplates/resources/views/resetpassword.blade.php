@@ -50,8 +50,9 @@
                 <input name="birthday" type="date" value="{{ old('birthday')}}" />
                 @if ($errors->has('birthday')) 
                 <div id="date-error" class="error-message">
-                {{$errors->first('date')}}
-                </div> @endif 
+                {{$errors->first('birthday')}}
+                </div> 
+                @endif 
             </label>
 
             <label>
