@@ -49,33 +49,117 @@
         </div>
         <div class="panel-body">
           <p>
-            <strong>Price Range:</strong> $10 - $15
+            <strong>Price Range: </strong> 
+              @if(auth()->user()->type == "customer")
+                {{ auth()->user()->preference->price_range }}
+              @endif
+              @if(auth()->user()->type == "restuarant owner")
+                {{ auth()->user()->restaurant->price_range }}
+              @endif
           </p>
         </div>
         <div class="panel-footer">
           <p>
-            <strong>Food Type:</strong> Asian
+            <strong>Food Type: </strong> 
+              @if(auth()->user()->type == "customer")
+                {{ auth()->user()->preference->food_type }}
+              @endif
+              @if(auth()->user()->type == "restuarant owner")
+                {{ auth()->user()->restaurant->food_type }}
+              @endif
           </p>
         </div>
         <div class="panel-footer">
           <p>
-            <strong>Restaurant Type:</strong> Dine-in, Take-out
+            <strong>Restaurant Type: </strong> 
+            <?php
+              $count = 0;
+              $separator = ", ";
+              $types = "";
+              $object = auth()->user()->type == "customer" ? auth()->user()->preference : auth()->user()->restaurant;
+              if($object->dine_in){
+                $types .= "Dine-in";
+                $count++;
+              }
+              if($object->take_out){
+                if($count > 0){
+                  $types .= ", ";
+                }
+                $types .= "Take-out";
+                $count++;
+              }
+              if($object->delivery){
+                if($count > 0){
+                  $types .= ", ";
+                }
+                $types .= "Delivery";
+                $count++;
+              }
+              if($object->drive_thru){
+                if($count > 0){
+                  $types .= ", ";
+                }
+                $types .= "Drive-thru";
+                $count++;
+              }
+            ?>
+            {{ $types }}
           </p>
         </div>
         <div class="panel-footer">
           <p>
-            <strong>Location:</strong> South Albert, East, North
+            <strong>Location: </strong> 
+            <?php
+              $count = 0;
+              $separator = ", ";
+              $areas = "";
+              $object = auth()->user()->type == "customer" ? auth()->user()->preference : auth()->user()->restaurant;
+              if($object->south_east){
+                $areas .= "South-East";
+                $count++;
+              }
+              if($object->south_west){
+                if($count > 0){
+                  $areas .= $separator;
+                }
+                $areas .= "South-West";
+                $count++;
+              }
+              if($object->north_east){
+                if($count > 0){
+                  $areas .= $separator;
+                }
+                $areas .= "North-East";
+                $count++;
+              }
+              if($object->north_west){
+                if($count > 0){
+                  $areas .= $separator;
+                }
+                $areas .= "North-West";
+              }
+            ?>
+            {{ $areas }}
           </p>
         </div>
       </div>
       <!-- should say update prfences/update menu/restaurant depending on restaurant owner or customer -->
-      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/preferences';">Update Preferences</button>
+      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/preferences';">
+        @if(auth()->user()->type == "customer")
+          Update Preferences
+        @endif
+        @if(auth()->user()->type == "restuarant owner")
+          Update Restaurant Details
+        @endif
+      </button>
     </div>
     </br>
     <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/dashboard';">View Dashboard</button>
     <br>
     <!-- this should only display if they are restaurant owner -->
-    <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/promotions';">Add Promotion</button>
+    @if(auth()->user()->type == "restuarant owner")
+      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/promotions';">Add Promotion</button>
+    @endif
   </div>
 </div>
   @else
