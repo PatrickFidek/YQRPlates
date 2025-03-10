@@ -34,7 +34,8 @@
       <span>Restaurant Name</span>
       <input name="name" type="text" /> @if ($errors->has('name')) <div id="name-error" class="error-message">
         {{$errors->first('name')}}
-      </div> @endif </label>
+      </div> @endif 
+    </label>
     <br>
     <div class="row">
       <div class="col-sm-2"></div>
