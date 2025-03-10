@@ -67,11 +67,7 @@ Route::post('/updaterestaurant', [UploadRestaurant::class,'update'])->middleware
 Route::post('/storerestaurant', [UploadRestaurant::class,'store'])->middleware('auth');
 
 Route::post('/register', [RegisterController::class, 'register']);
-
 Route::post('/signin', [SigninController::class, 'signin']);
-
 Route::post('/logout', [SigninController::class, 'logout']);
-
 Route::post('/profile', [ProfileController::class, 'seeProfile'])->middleware('auth');
-
 Route::post('/resetpassword', [ResetPasswordController::class, 'resetPassword']);
