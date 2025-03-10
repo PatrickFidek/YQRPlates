@@ -83,7 +83,7 @@
 
       <script>
   $(document).ready(function() {
-    $('registration-form').submit(function(e) {
+    $('#registration-form').submit(function(e) {
       e.preventDefault();
 
       $.ajax({
