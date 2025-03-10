@@ -68,6 +68,11 @@
             <label>
                 <span>Confirm New Password</span>
                 <input name='confirm' type="confirm password" />
+                @if ($errors->has('confirm')) 
+                <div id="password-error" class="error-message">
+                  {{$errors->first('password')}}
+                </div> 
+              @endif
             </label>
 
             
