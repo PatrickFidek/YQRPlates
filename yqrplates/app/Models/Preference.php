@@ -10,6 +10,7 @@ class Preference extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'price_range',
         'food_type',
         'south_east',

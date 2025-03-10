@@ -27,8 +27,8 @@ class PreferencesController extends Controller{
         $delivery = in_array("Delivery", $request->input('restaurant_type'));
         $drive_thru = in_array("Drive Thru", $request->input('restaurant_type'));
         
-        return Preference::create([
-            'user_id' => $request->input('user_id'),
+        Preference::create([
+            'user_id' => (int)$request->input('user_id'),
             'price_range' => $request->input('price_range'),
             'food_type' => $request->input('food_type'),
             'south_east' => $south_east,
@@ -40,6 +40,8 @@ class PreferencesController extends Controller{
             'delivery' => $delivery,
             'drive_thru' => $drive_thru
         ]);
+
+        return view('profile');
     }
 
     public function update(Request $request) {
