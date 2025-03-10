@@ -47,8 +47,8 @@
                         
             <label>
                 <span>Confirm your birthday</span>
-                <input name='birthday' type="date" value="{{ old('date')}}" />
-                @if ($errors->has('date')) 
+                <input name="birthday" type="date" value="{{ old('birthday')}}" />
+                @if ($errors->has('birthday')) 
                 <div id="date-error" class="error-message">
                 {{$errors->first('date')}}
                 </div> @endif 
