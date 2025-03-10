@@ -47,4 +47,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function preference()
+    {
+        return $this->hasOne(Preference::class);
+    }
+
+    public function restaurant()
+    {
+        return $this->hasOne(Restaurant::class);
+    }
 }

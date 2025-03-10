@@ -2,15 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Restaurant extends Model
+class UploadRestaurantModel extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'id',
         'user_id',
         'name',
         'price_range',
@@ -24,9 +20,4 @@ class Restaurant extends Model
         'delivery',
         'drive_thru'
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

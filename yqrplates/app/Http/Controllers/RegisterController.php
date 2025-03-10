@@ -29,10 +29,10 @@ class RegisterController extends Controller
         auth()->login($user);
 
         if ($user->type == 'customer') {
-            return redirect('/preferences');
+            return redirect('/createpreferences');
         }
         else {
-            return redirect('/uploadrestaurant');
+            return redirect('/createrestaurant');
         }
     }
 

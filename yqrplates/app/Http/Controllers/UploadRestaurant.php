@@ -1,22 +1,37 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Preference;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
+use App\Models\Restaurant;
 
-
-class PreferencesController extends Controller{
+class UploadRestaurant extends Controller
+{
     public function index() {
-        return view('updatepreferences');
+        return view('uploadrestaurant');
     }
 
     public function create() {
-        return view('createpreferences');
+        return view('createrestaurant');
     }
 
     public function store(Request $request){
+        
+
+
+        $request->validate([ 
+            'restaurant_name' => ['required', Rule::unique('restaurants', 'name')],
+            'user_id' => ['required', Rule::unique('restaurants', 'user_id')],
+            'menulink' => 'nullable|url|required_without:menuimage',
+            'menuimage' => 'nullable|file|mimes:jpeg,png,pdf|max:2048|required_without:menulink',
+            'neighborhood' => 'required',
+            'restaurant_type' => 'required',
+            'price_range' => ['required', Rule::in(['Low', 'Medium', 'Medium High', 'High'])],
+            'food_type' => ['required', Rule::in(['Fast Food', 'Canadian', 'Pizza', 'Greek', 'Indian', 'Sushi', 'Italian', 'Asian', 'Chinese'])],
+        ]);
+
+        $menu_link = '';
         $south_east = in_array("South East", $request->input('neighborhood'));
         $south_west = in_array("South West", $request->input('neighborhood'));
         $north_east = in_array("North East", $request->input('neighborhood'));
@@ -26,9 +41,22 @@ class PreferencesController extends Controller{
         $take_out = in_array("Take Out", $request->input('restaurant_type'));
         $delivery = in_array("Delivery", $request->input('restaurant_type'));
         $drive_thru = in_array("Drive Thru", $request->input('restaurant_type'));
-        
-        Preference::create([
+
+        if ($request->input('menuimage') != NULL ){
+            $menu_link = $request->file('menuimage')->store('menus', 'public');
+        }
+        if($request->input('menulink') != NULL) {
+            $menu_link = $request->input('menulink');
+        }
+
+        dd($menu_link);
+ 
+
+
+        Restaurant::create([
             'user_id' => (int)$request->input('user_id'),
+            'name' => $request->input('restaurant_name'),
+            'menu_link' => $menu_link,
             'price_range' => $request->input('price_range'),
             'food_type' => $request->input('food_type'),
             'south_east' => $south_east,
@@ -60,5 +88,6 @@ class PreferencesController extends Controller{
             'delivery' => 'boolean',
             'drive_thru' => 'boolean',
         ]); 
+        
     }
 }

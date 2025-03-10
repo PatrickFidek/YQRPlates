@@ -8,9 +8,29 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/restaurantdetails.css') }}">
   <script src="{{ asset('js/restaurantdetails.js') }}"></script>
+  <style>
+    .largebtn {
+    background-color: #ff7e2e !important; 
+    color: #fff;
+    width: 250px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: none;
+    margin: 0 auto;
+  }
+  .largebtn:hover{
+    background-color: #fff !important;
+    border-width: 3px;
+    border: 3px solid #79a263;
+  }
+  </style>
 </head>
+
 <!-- This could also be the restaurant name -->
-<title>Restaurant Details</title>
+<title>{{ $restaurant->name }}</title>
+
 <html>
   <body>
     <header>
@@ -37,48 +57,102 @@
       </nav>
     </header>
     <div class="jumbotron text-center">
-      <h1>Wok Box</h1>
+      <h1>{{ $restaurant->name }}</h1>
     </div>
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-apple logo-small"></span>
-          <h4>Asian</h4>
+          <h4>{{ ucwords($restaurant->food_type) }}</h4>
         </div>
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-cutlery logo-small"></span>
-          <h4>Dine-In, Take-Out</h4>
+          <h4>
+            <?php
+              $count = 0;
+              $separator = ", ";
+              $types = "";
+              if($restaurant->dine_in){
+                $types .= "Dine-in";
+                $count++;
+              }
+              if($restaurant->take_out){
+                if($count > 0){
+                  $types .= ", ";
+                }
+                $types .= "Take-out";
+                $count++;
+              }
+              if($restaurant->delivery){
+                if($count > 0){
+                  $types .= ", ";
+                }
+                $types .= "Delivery";
+                $count++;
+              }
+              if($restaurant->drive_thru){
+                if($count > 0){
+                  $types .= ", ";
+                }
+                $types .= "Drive-thru";
+                $count++;
+              }
+            ?>
+            {{ $types }}
+          </h4>
         </div>
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-usd logo-small"></span>
-          <h4>$10 - $15</h4>
+          <h4>{{ ucwords($restaurant->price_range) }}</h4>
         </div>
         <div class="col-sm-3">
           <span class="glyphicon glyphicon-map-marker logo-small"></span>
-          <h4>Harbour Landing, East, North</h4>
+          <h4>
+            <?php
+              $count = 0;
+              $separator = ", ";
+              $areas = "";
+              if($restaurant->south_east){
+                $areas .= "South-East";
+                $count++;
+              }
+              if($restaurant->south_west){
+                if($count > 0){
+                  $areas .= $separator;
+                }
+                $areas .= "South-West";
+                $count++;
+              }
+              if($restaurant->north_east){
+                if($count > 0){
+                  $areas .= $separator;
+                }
+                $areas .= "North-East";
+                $count++;
+              }
+              if($restaurant->north_west){
+                if($count > 0){
+                  $areas .= $separator;
+                }
+                $areas .= "North-West";
+              }
+            ?>
+            {{ $areas }}
+          </h4>
         </div>
       </div>
     </div>
     <div class="container-fluid text-center bg-grey">
-      <div class="row">
-        <div class="col-sm-6">
-          <h2>Menu</h2>
+     
           <div class="row text-center">
-            <div class="col-sm-12 text-center">
               <div class="align-center">
-                <!-- this needs to be the restaurant menu file name -->
-                <a href="{{ asset('menus/menufile.pdf') }}" download>
-                  <h3>Download </h3>
-                </a>
-                <embed src="{{ asset('menus/menufile.pdf') }}" width="600px" height="200px" />
+                
+              <a class="largebtn btn btn-lg" href="{{ $restaurant->menu_link }}" target="_blank">View Menu</a>
+                
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
+<br>
           <h2>Promotions</h2>
-          <br>
-          <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+                   <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
               <li data-target="#myCarousel" data-slide-to="1"></li>

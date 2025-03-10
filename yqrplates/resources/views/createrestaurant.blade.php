@@ -27,13 +27,17 @@
   </nav>
 </header>
 <div class="jumbotron text-center">
-<h1>Welcome, {{ auth()->user()->name }}!</h1>
+  <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
 <div class="center">
-  <form action="/updaterestaurant" method="POST" id="restaurant-form"> @csrf <label>
+  <form action="/storerestaurant" method="POST" id="restaurant-form"> 
+    @csrf 
+    <input class="hidden" name="user_id" value={{ auth()->user()->id }} />
+    <label>
       <span>Restaurant Name</span>
-      <input name="name" type="text" /> @if ($errors->has('name')) <div id="name-error" class="error-message">
-        {{$errors->first('name')}}
+      <input name="restaurant_name" id="restaurant_name" type="text" /> 
+      @if ($errors->has('restaurant_name')) <div id="name-error" class="error-message">
+        {{$errors->first('restaurant_name')}}
       </div> @endif 
     </label>
     <br>
@@ -45,13 +49,13 @@
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
           <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
           <div class="row d-flex justify-content-center mt-100">
-            <select id="choices-multiple-remove-button" multiple>
-              <option value="North West">North West</option>
-              <option value="North East">North East</option>
-              <option value="South West">South West</option>
-              <option value="South West">South East</option>
-            </select>
-          </div> @if ($errors->has('neighborhoods')) <div id="neighborhood-error" class="error-message">
+          <select id="choices-multiple-remove-button" name="neighborhood[]" multiple>
+            <option value="North West">North West</option>
+            <option value="North East">North East</option>
+            <option value="South West">South West</option>
+            <option value="South East">South East</option>
+          </select>
+          </div> @if ($errors->has('neighborhood')) <div id="neighborhood-error" class="error-message">
             {{$errors->first('neighborhood')}}
           </div> @endif
         </label>
@@ -60,8 +64,8 @@
         <label>
           <span>Food Type</span>
           <div class="row d-flex justify-content-center mt-100">
-            <select id="choices-multiple-remove-button" onChange="foodType(this)">
-              <option value="" disabled></option>
+            <select id="choices-multiple-remove-button" name="food_type" onChange="foodType(this)">
+            <option value="none" selected disabled hidden></option>
               <option value="Fast Food">Fast Food</option>
               <option value="Canadian">Canadian</option>
               <option value="Pizza">Pizza</option>
@@ -69,11 +73,11 @@
               <option value="Indian">Indian</option>
               <option value="Sushi">Sushi</option>
               <option value="Italian">Italian</option>
-            <option value="Asian">Asian</option>
-            <option value="Chinese">Chinese</option>
+              <option value="Asian">Asian</option>
+              <option value="Chinese">Chinese</option>
             </select>
           </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
-            {{$errors->first('food_type')}}
+            The food type field is required
           </div> @endif
         </label>
       </div>
@@ -87,14 +91,14 @@
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
           <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
           <div class="row d-flex justify-content-center mt-100">
-            <select id="choices-multiple-remove-button" multiple>
-              <option value="Dine In">Dine In</option>
-              <option value="Take Out">Take Out</option>
-              <option value="Delivery">Delivery</option>
-              <option value="Drive Thru">Drive Thru</option>
-            </select>
+          <select id="choices-multiple-remove-button" name="restaurant_type[]" multiple>
+            <option value="Dine In">Dine In</option>
+            <option value="Take Out">Take Out</option>
+            <option value="Delivery">Delivery</option>
+            <option value="Drive Thru">Drive Thru</option>
+          </select>
           </div> @if ($errors->has('restaurant_type')) <div id="restaurant-type-error" class="error-message">
-            {{$errors->first('restaurant-type')}}
+          {{$errors->first('restaurant_type')}}
           </div> @endif
         </label>
       </div>
@@ -102,15 +106,16 @@
         <label>
           <span>Price Range</span>
           <div class="row d-flex justify-content-center mt-100">
-            <select id="choices-multiple-remove-button" onChange="priceRange(this)">
-              <option value="" disabled></option>
+            <select id="choices-multiple-remove-button" name="price_range" onChange="priceRange(this)">
+            <option value="none" selected disabled hidden></option>
               <option value="Low">Low</option>
               <option value="Medium">Medium</option>
               <option value="Medium High">Medium High</option>
               <option value="High">High</option>
             </select>
-          </div> @if ($errors->has('price-range')) <div id="price-range-error" class="error-message">
-            {{$errors->first('price-range')}}
+          </div> 
+          @if ($errors->has('price_range')) <div id="price-range-error" class="error-message">
+            The price range field is required
           </div> @endif
         </label>
       </div>
@@ -124,22 +129,31 @@
         <img id="image" src="#" alt="your image" style="display: none; width: 100%; height 100%; max-height: 160px" />
         <label>
           <span id="prompt">Upload or drop file here</span>
-          <input type="file" class="upload-input" id="imgInp" height="100%" width="100%" />
+          <input type="file" class="upload-input" id="menu" name="menuimage" height="100%" width="100%" />
         </label>
-      </div> @if ($errors->has('menu')) <div id="menu-error" class="error-message">
-            {{$errors->first('menu')}}
-          </div> @endif
+      </div>   @if ($errors->has('menuimage')) <div id="menu-error" class="error-message">
+
+      </div> @endif 
     </label>
     <label>
       <span>or paste URL link here</span>
-      <input name="name" type="text" /> @if ($errors->has('menu')) <div id="menu-error" class="error-message">
-            {{$errors->first('menu')}}
-          </div> @endif
+      <input type="text" id="menuLink" name="menulink" />
+      @if ($errors->has('menulink') && $errors->has('menuimage'))
+    <div id="menu-error" class="error-message">
+        A menu is required to upload a restaurant.
+    </div>
+@endif
     </label>
-    <button type="button" class="submit" background-color:#fff>Continue</button>
+    </div>
+    <button type="submit" class="submit">Continue</button>
   </form>
-</div>
+
+
 <script>
+  const pdf = document.getElementById('pdf');
+const image = document.getElementById('image');
+const displayImage = document.getElementById('displayImage');
+const prompt = document.getElementById('prompt');
   function getExtension(filename) {
     var parts = filename.split('.');
     return parts[parts.length - 1];
@@ -166,13 +180,13 @@
     }
     return false;
   }
-  imgInp.onchange = evt => {
-    const [file] = imgInp.files
+  menu.onchange = evt => {
+    const [file] = menu.files
     console.log(file)
     if (isPDF(file.name)) {
       pdf.src = URL.createObjectURL(file)
       prompt.style.display = "none"
-      pdf.style.display = "";
+      pdf.style.display = "inline-block"
       image.style.display = "none"
       displayImage.style.display = "none"
     }
@@ -192,11 +206,12 @@
       renderChoiceLimit: 15,
     });
   })(jQuery);
+  
+
 
   $(document).ready(function() {
-    $('restaurant-form').submit(function(e) {
+    $('#restaurant-form').submit(function(e) {
       e.preventDefault();
-
       $.ajax({
         url: $(this).attr('action'),
         type: $(this).attr('method'),
@@ -207,7 +222,6 @@
         error: function(xhr) {
           var errors = xhr.responseJSON.errors;
           $('.error-message').empty();
-
           $.each(errors, function(key, value) {
             $('#' + key + '-error').text(value[0]);
           });
