@@ -42,9 +42,7 @@ class UploadRestaurant extends Controller
         $delivery = in_array("Delivery", $request->input('restaurant_type'));
         $drive_thru = in_array("Drive Thru", $request->input('restaurant_type'));
 
-        if (!$request->hasFile('menuimage') && empty($request->menulink)) {
-            return back()->withErrors(['menuimage' => 'A menu is required to upload a restaurant.'])->withInput();
-        }
+        $filePath = $request->file('menuimage')->store('menus', 'public');
         
         if ($request->hasFile('menuimage') ){
             $menu_image = $request->file('menuimage');
@@ -54,7 +52,7 @@ class UploadRestaurant extends Controller
             $path ='public/menus/';
             $menu_image->move($path,$menu_image_name);
              
-            $menu_link = $path.$menu_image_name;
+            $menu_link = 'https://www.yqrplates.com/menus/' . $menu_image_name;
         }
 
         if($request->input('menulink') != NULL) {
@@ -62,7 +60,7 @@ class UploadRestaurant extends Controller
         }
 
      
-        dd($menu_link);
+        
  
 
 
