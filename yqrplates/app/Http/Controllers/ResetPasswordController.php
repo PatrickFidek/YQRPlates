@@ -22,7 +22,10 @@ class ResetPasswordController extends Controller
                     ->where('birthday', $fields['birthday'])
                     ->first();
 
-
+        if ($user) {
+            $user->password = Hash::make($fields['password']);
+            $user->save();
+        }
         
     }
 }
