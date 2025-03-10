@@ -29,7 +29,6 @@
   </nav>
 </header>
 
-
 <div class="jumbotron text-center">
   <h1>Reset Password</h1> 
 </div>
@@ -50,7 +49,7 @@
                 </div> 
                 @endif 
             </label>
-                        
+           
             <label>
                 <span>Confirm your birthday</span>
                 <input name="birthday" type="date" value="{{ old('birthday')}}" />
@@ -79,9 +78,7 @@
                   {{$errors->first('password')}}
                 </div> 
               @endif
-            </label>
-
-            
+            </label> 
             <button type="submit" class="submit">Reset Password</button>
         </div>
       </form>
