@@ -25,9 +25,12 @@ class ResetPasswordController extends Controller
         if ($user) {
             $user->password = Hash::make($fields['password']);
             $user->save();
-        }
         
         auth()->login($user);
         return redirect('/profile');
+        }
+        else {
+            return back()->withErrors(['message' => 'Email and Birthday do not match our records.']);
+        }
     }
 }
