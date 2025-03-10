@@ -24,6 +24,5 @@ class ResetPasswordController extends Controller
         else {
             return back()->withErrors(['message' => 'Invalid Credentials']);
         }
-
     }
 }
