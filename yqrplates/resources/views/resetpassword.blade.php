@@ -87,7 +87,7 @@
       e.preventDefault();
 
       $.ajax({
-        url: $(this).attr('action'),
+        url: '/resetpassword',
         type: $(this).attr('method'),
         data: $(this).serialize(),
         success: function(response) {
