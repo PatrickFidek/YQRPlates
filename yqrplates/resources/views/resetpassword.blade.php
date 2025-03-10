@@ -82,7 +82,7 @@
 
       <script>
         $(document).ready(function() {
-          $('#reseet-password-form').submit(function(e) {
+          $('#reset-password-form').submit(function(e) {
             e.preventDefault();
 
         $.ajax({
