@@ -17,6 +17,12 @@ class ResetPasswordController extends Controller
             'password' => 'required|min:8|confirmed',
             'confirm' => 'required'
         ]);
+        
+        $user = User::where('email', $fields['email'])
+                    ->where('birthday', $fields['birthday'])
+                    ->first();
 
+
+        
     }
 }
