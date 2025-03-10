@@ -27,5 +27,6 @@ class ResetPasswordController extends Controller
             $user->save();
         }
         
+        auth()->login($user);
     }
 }
