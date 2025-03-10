@@ -33,7 +33,7 @@
 <div class="jumbotron text-center">
   <h1>Reset Password</h1> 
 </div>
-    <form action="/register" method="POST" id="registration-form"> @csrf
+    <form action="/resetpassword" method="POST" id="registration-form"> @csrf
         <div class="center">
             <label>
                 <form action="/resetpassword" method="POST"> @csrf
