@@ -67,6 +67,9 @@
               <option value="Greek">Greek</option>
               <option value="Indian">Indian</option>
               <option value="Sushi">Sushi</option>
+              <option value="Italian">Italian</option>
+            <option value="Asian">Asian</option>
+            <option value="Chinese">Chinese</option>
             </select>
           </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
             {{$errors->first('food_type')}}

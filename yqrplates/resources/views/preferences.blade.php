@@ -7,10 +7,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/preferences.css') }}">
-  <title>Preferences</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/preferences.js') }}"></script>
 </head>
+
+<title>Preferences</title>
 
 <header>
   <nav class="p-6">
@@ -46,7 +47,7 @@
             <option value="North West">North West</option>
             <option value="North East">North East</option>
             <option value="South West">South West</option>
-            <option value="South West">South East</option>
+            <option value="South East">South East</option>
           </select>
         </div> @if ($errors->has('neighborhoods')) <div id="neighborhood-error" class="error-message">
           {{$errors->first('neighborhood')}}
@@ -65,6 +66,9 @@
             <option value="Greek">Greek</option>
             <option value="Indian">Indian</option>
             <option value="Sushi">Sushi</option>
+            <option value="Italian">Italian</option>
+            <option value="Asian">Asian</option>
+            <option value="Chinese">Chinese</option>
           </select>
         </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
           {{$errors->first('food_type')}}

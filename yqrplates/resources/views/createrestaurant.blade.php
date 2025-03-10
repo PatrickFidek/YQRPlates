@@ -27,11 +27,13 @@
   </nav>
 </header>
 <div class="jumbotron text-center">
-<h1>Welcome, {{ auth()->user()->name }}!</h1>
+  <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
 <div class="center">
-  <form action="/storerestaurant" method="POST" id="restaurant-form"> @csrf <label>
-      @csrf
+  <form action="/storerestaurant" method="POST" id="restaurant-form"> 
+    @csrf 
+    <input class="hidden" name="user_id" value={{ auth()->user()->id }} />
+    <label>
       <span>Restaurant Name</span>
       <input name="name" type="text" /> @if ($errors->has('name')) <div id="name-error" class="error-message">
         {{$errors->first('name')}}
@@ -68,6 +70,9 @@
               <option value="Greek">Greek</option>
               <option value="Indian">Indian</option>
               <option value="Sushi">Sushi</option>
+              <option value="Italian">Italian</option>
+              <option value="Asian">Asian</option>
+              <option value="Chinese">Chinese</option>
             </select>
           </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
             {{$errors->first('food_type')}}
@@ -124,16 +129,16 @@
           <input type="file" class="upload-input" id="imgInp" height="100%" width="100%" />
         </label>
       </div> @if ($errors->has('menu')) <div id="menu-error" class="error-message">
-            {{$errors->first('menu')}}
-          </div> @endif
+        {{$errors->first('menu')}}
+      </div> @endif
     </label>
     <label>
       <span>or paste URL link here</span>
       <input name="name" type="text" /> @if ($errors->has('menu')) <div id="menu-error" class="error-message">
-            {{$errors->first('menu')}}
-          </div> @endif
+        {{$errors->first('menu')}}
+      </div> @endif 
     </label>
-    <button type="button" class="submit" background-color:#fff>Continue</button>
+    <button type="button" class="submit">Continue</button>
   </form>
 </div>
 <script>
@@ -189,11 +194,10 @@
       renderChoiceLimit: 15,
     });
   })(jQuery);
-
+  
   $(document).ready(function() {
     $('restaurant-form').submit(function(e) {
       e.preventDefault();
-
       $.ajax({
         url: $(this).attr('action'),
         type: $(this).attr('method'),
@@ -204,7 +208,6 @@
         error: function(xhr) {
           var errors = xhr.responseJSON.errors;
           $('.error-message').empty();
-
           $.each(errors, function(key, value) {
             $('#' + key + '-error').text(value[0]);
           });

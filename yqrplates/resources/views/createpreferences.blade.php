@@ -7,10 +7,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/preferences.css') }}">
-  <title>Preferences</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/preferences.js') }}"></script>
 </head>
+
+<title>Preferences</title>
 
 <header>
   <nav class="p-6">
@@ -47,7 +48,7 @@
             <option value="North West">North West</option>
             <option value="North East">North East</option>
             <option value="South West">South West</option>
-            <option value="South Eest">South East</option>
+            <option value="South East">South East</option>
           </select>
         </div> @if ($errors->has('neighborhoods')) <div id="neighborhood-error" class="error-message">
           {{$errors->first('neighborhood')}}
@@ -66,6 +67,9 @@
             <option value="Greek">Greek</option>
             <option value="Indian">Indian</option>
             <option value="Sushi">Sushi</option>
+            <option value="Italian">Italian</option>
+            <option value="Asian">Asian</option>
+            <option value="Chinese">Chinese</option>
           </select>
         </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
           {{$errors->first('food_type')}}
@@ -82,7 +86,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
         <div class="row d-flex justify-content-center mt-100">
-          <select id="choices-multiple-remove-button" name="restuarant_type[]" multiple>
+          <select id="choices-multiple-remove-button" name="restaurant_type[]" multiple>
             <option value="Dine In">Dine In</option>
             <option value="Take Out">Take Out</option>
             <option value="Delivery">Delivery</option>

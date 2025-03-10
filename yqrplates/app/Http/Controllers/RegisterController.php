@@ -32,7 +32,7 @@ class RegisterController extends Controller
             return redirect('/createpreferences');
         }
         else {
-            return redirect('/uploadrestaurant');
+            return redirect('/createrestaurant');
         }
     }
 
