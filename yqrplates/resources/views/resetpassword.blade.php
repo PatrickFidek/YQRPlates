@@ -58,6 +58,11 @@
             <label>
                 <span>New Password</span>
                 <input name='password' type="password" />
+                @if ($errors->has('password')) 
+                <div id="password-error" class="error-message">
+                  {{$errors->first('password')}}
+                </div> 
+              @endif
             </label>
 
             <label>
