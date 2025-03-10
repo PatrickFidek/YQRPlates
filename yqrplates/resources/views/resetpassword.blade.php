@@ -33,7 +33,7 @@
 <div class="jumbotron text-center">
   <h1>Reset Password</h1> 
 </div>
-    <form action="/resetpassword" method="POST" id="registration-form"> @csrf
+    <form action="/resetpassword" method="POST" id="reset-password-form"> @csrf
         <div class="center">
             <label>
                 <span>Email</span>
@@ -81,11 +81,11 @@
       </form>
 
       <script>
-  $(document).ready(function() {
-    $('#registration-form').submit(function(e) {
-      e.preventDefault();
+        $(document).ready(function() {
+          $('#registration-form').submit(function(e) {
+            e.preventDefault();
 
-      $.ajax({
+        $.ajax({
         url: '/resetpassword',
         type: $(this).attr('method'),
         data: $(this).serialize(),
