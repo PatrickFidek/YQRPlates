@@ -66,7 +66,7 @@
 
             <label>
                 <span>Confirm New Password</span>
-                <input name='confirm' type="confirm password" value="{{ old('confirm')}}"/>
+                <input name='confirm' type="password" value="{{ old('confirm')}}"/>
                 @if ($errors->has('confirm')) 
                 <div id="password-error" class="error-message">
                   {{$errors->first('password')}}
@@ -82,7 +82,7 @@
 
       <script>
         $(document).ready(function() {
-          $('#registration-form').submit(function(e) {
+          $('#reseet-password-form').submit(function(e) {
             e.preventDefault();
 
         $.ajax({
