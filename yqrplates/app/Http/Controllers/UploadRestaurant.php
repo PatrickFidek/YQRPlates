@@ -12,9 +12,11 @@ class UploadRestaurant extends Controller
         return view('uploadrestaurant');
     }
 
+
     public function create() {
         return view('createrestaurant');
     }
+
 
     public function store(Request $request){
         $input = $request->body;;
@@ -60,7 +62,10 @@ class UploadRestaurant extends Controller
             'take_out' => 'boolean',
             'delivery' => 'boolean',
             'drive_thru' => 'boolean',
-        ]); 
-        
+
+        ]);  
+
+        $restaurant = Restaurant::create($restaurant);
+
     }
 }
