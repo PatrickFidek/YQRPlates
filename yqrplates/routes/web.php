@@ -62,9 +62,9 @@ Route::post('/updatepreferences', [PreferencesController::class,'update'])->midd
 Route::post('/storepreferences', [PreferencesController::class,'store'])->middleware('auth');
 
 Route::get('/uploadrestaurant', [UploadRestaurant::class, 'index'])->middleware('auth');
-Route::get('/createpreferences', [UploadRestaurant::class,'create'])->middleware('auth');
-Route::post('/updatepreferences', [UploadRestaurant::class,'update'])->middleware('auth');
-Route::post('/storepreferences', [UploadRestaurant::class,'store'])->middleware('auth');
+Route::get('/createrestaurant', [UploadRestaurant::class,'create'])->middleware('auth');
+Route::post('/updaterestaurant', [UploadRestaurant::class,'update'])->middleware('auth');
+Route::post('/storerestaurant', [UploadRestaurant::class,'store'])->middleware('auth');
 
 Route::post('/register', [RegisterController::class, 'register']);
 
