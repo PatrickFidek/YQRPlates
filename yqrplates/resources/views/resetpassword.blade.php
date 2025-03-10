@@ -57,7 +57,7 @@
 
             <label>
                 <span>New Password</span>
-                <input name='password' type="password" />
+                <input name='password' type="password" value="{{ old('password')}}"/>
                 @if ($errors->has('password')) 
                 <div id="password-error" class="error-message">
                   {{$errors->first('password')}}
@@ -67,7 +67,7 @@
 
             <label>
                 <span>Confirm New Password</span>
-                <input name='confirm' type="confirm password" />
+                <input name='confirm' type="confirm password" value="{{ old('confirm')}}"/>
                 @if ($errors->has('confirm')) 
                 <div id="password-error" class="error-message">
                   {{$errors->first('password')}}
