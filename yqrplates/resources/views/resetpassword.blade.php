@@ -35,11 +35,6 @@
     <form action="/resetpassword" method="POST" id="reset-password-form"> 
       @csrf
         <div class="center">
-            @if ($errors->any())
-              <div class="error-message">
-                {{ $errors->first() }} 
-              </div>
-            @endif
             <label>
                 <span>Email</span>
                 <input name='email' type="email" value="{{ old('email')}}"/>
@@ -85,11 +80,11 @@
 
       <script>
         $(document).ready(function() {
-          $('#reset-password-form').submit(function(e) {
+          $('reset-password-form').submit(function(e) {
             e.preventDefault();
 
         $.ajax({
-        url: '/resetpassword',
+        url: $(this).attr('action'),
         type: $(this).attr('method'),
         data: $(this).serialize(),
         success: function(response) {
