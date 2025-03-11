@@ -23,8 +23,11 @@ class ResetPasswordController extends Controller
                     
 
         if ($user) {
-            $user->password = Hash::make($fields['password']);
-            $user->save();
+            if (
+                $user->password = Hash::make($fields['password']);
+                $user->save();
+            )
+            
         
         auth()->login($user);
         return redirect('/profile');
