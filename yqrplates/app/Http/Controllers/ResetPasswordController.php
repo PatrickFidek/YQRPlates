@@ -16,8 +16,10 @@ class ResetPasswordController extends Controller
             'birthday' => 'required|date',
             'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/|confirmed',
             'password_confirmation' => 'required'
-        ]);
+        ],
         
+        ['password.regex' => 'Must include : uppercase, lowercase, number and symbol']);
+
         $user = User::where('email', $fields['email'])
                     ->where('birthday', $fields['birthday'])
                     ->first();
