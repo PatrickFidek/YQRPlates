@@ -25,16 +25,86 @@
     </div>
   </nav>
 </header>
+
+
+
+
 <div class="jumbotron text-center">
 @auth
 <h2>Welcome, {{ auth()->user()->name }}!</h2>
 </div>
+@if(auth()->user()->type == "customer")
+<?php
+$food_types = 0;
+$restaurant_types = 0;
+$neighborhoods = 0;
+$price_ranges = 0;
+foreach($restaurants as $restaurant){
+  if($restaurant->food_type == auth()->user()->preference->food_type)
+      $food_types++;
+  if($restaurant->price_range == auth()->user()->preference->price_range)
+        $price_ranges++;
+  if($restaurant->south_west && auth()->user()->preference->south_west)
+        $neighborhoods++;
+  elseif($restaurant->south_east && auth()->user()->preference->south_east)
+        $neighborhoods++;
+  elseif($restaurant->north_west && auth()->user()->preference->north_west)
+        $neighborhoods++;
+  elseif($restaurant->north_east && auth()->user()->preference->north_east)
+        $neighborhoods++;
+        if ($restaurant->dine_in && auth()->user()->preference->dine_in)
+        $restaurant_types++;
+elseif ($restaurant->drive_thru && auth()->user()->preference->drive_thru)
+        $restaurant_types++;
+elseif ($restaurant->delivery && auth()->user()->preference->delivery)
+        $restaurant_types++;
+elseif ($restaurant->take_out && auth()->user()->preference->take_out)
+        $restaurant_types++;
+}
+?>
+@endif
+@if(auth()->user()->type == "restaurant owner")
+<?php
+$food_types = 0;
+$restaurant_types = 0;
+$neighborhoods = 0;
+$price_ranges = 0;
+foreach($preferences as $preference){
+  if($preference->food_type == auth()->user()->restaurant->food_type)
+      $food_types++;
+  if($preference->price_range == auth()->user()->restaurant->price_range)
+        $price_ranges++;
+  if($preference->south_west && auth()->user()->restaurant->south_west)
+        $neighborhoods++;
+  elseif($preference->south_east && auth()->user()->restaurant->south_east)
+        $neighborhoods++;
+  elseif($preference->north_west && auth()->user()->restaurant->north_west)
+        $neighborhoods++;
+  elseif($preference->north_east && auth()->user()->restaurant->north_east)
+        $neighborhoods++;
+        if ($preference->dine_in && auth()->user()->restaurant->dine_in)
+        $restaurant_types++;
+elseif ($preference->drive_thru && auth()->user()->restaurant->drive_thru)
+        $restaurant_types++;
+elseif ($preference->delivery && auth()->user()->restaurant->delivery)
+        $restaurant_types++;
+elseif ($preference->take_out && auth()->user()->restaurant->take_out)
+        $restaurant_types++;
+}
+?>
+@endif
 <div id="portfolio" class="container-fluid text-center">
   <div class="row text-center ">
     <div class="col-sm-6 col-xs-12">
       <div class="panel panel-default text-center">
         <div class="panel-heading">
-          <h1>12</h1>
+          <h1>  {{ $neighborhoods }}</h1>
+          @if(auth()->user()->type == "restaurant owner")
+          <p>Customers</p>
+          @endif
+          @if(auth()->user()->type == "customer")
+          <p>Restaurants</p>
+          @endif
         </div>
         <div class="panel-body">
           <h3>
@@ -79,7 +149,14 @@
     <div class="col-sm-6 col-xs-12">
       <div class="panel panel-default text-center">
         <div class="panel-heading">
-          <h1>12</h1>
+          <h1>  {{ $food_types }}</h1>
+          @if(auth()->user()->type == "restaurant owner")
+          <p>Customers</p>
+          @endif
+          @if(auth()->user()->type == "customer")
+          <p>Restaurants</p>
+          @endif
+          <p></p>
         </div>
         <div class="panel-body">
           <h3>
@@ -91,7 +168,8 @@
               @endif
               @if(auth()->user()->type == "restaurant owner")
                 {{ auth()->user()->restaurant->food_type }}
-              @endif</strong>
+              @endif
+            </strong>
           </p>
         </div>
       </div>
@@ -102,14 +180,21 @@
     <div class="col-sm-6 col-xs-12">
       <div class="panel panel-default text-center">
         <div class="panel-heading">
-          <h1>12</h1>
+          <h1>  {{ $restaurant_types }}</h1>
+          @if(auth()->user()->type == "restaurant owner")
+          <p>Customers</p>
+          @endif
+          @if(auth()->user()->type == "customer")
+          <p>Restaurants</p>
+          @endif
         </div>
         <div class="panel-body">
           <h3>
             <strong>Restaurant Type</strong>
           </h3>
           <p>
-            <strong>            <?php
+            <strong>            
+              <?php
               $count = 0;
               $separator = ", ";
               $types = "";
@@ -148,7 +233,13 @@
     <div class="col-sm-6 col-xs-12">
       <div class="panel panel-default text-center">
         <div class="panel-heading">
-          <h1>12</h1>
+          <h1>  {{ $price_ranges }}</h1>
+          @if(auth()->user()->type == "restaurant owner")
+          <p>Customers</p>
+          @endif
+          @if(auth()->user()->type == "customer")
+          <p>Restaurants</p>
+          @endif
         </div>
         <div class="panel-body">
           <h3>
@@ -160,14 +251,16 @@
               @endif
               @if(auth()->user()->type == "restaurant owner")
                 {{ auth()->user()->restaurant->price_range }}
-              @endif</strong>
+              @endif
+            </strong>
           </p>
         </div>
       </div>
     </div>
   </div>
 </div>
-@else
+
+  @else
   <p>You need to be logged in order to view your dashboard</p>
   @endauth
 </div>
