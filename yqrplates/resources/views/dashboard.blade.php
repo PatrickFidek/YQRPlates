@@ -30,37 +30,38 @@
 
 <div class="jumbotron text-center">
 @auth
-<h2>Welcome, {{ auth()->user()->name }}!</h2>
+<h2>{{ auth()->user()->name }}'s Dashboard</h2>
 </div>
+@csrf
 @if(auth()->user()->type == "customer")
-<?php
-$food_types = 0;
-$restaurant_types = 0;
-$neighborhoods = 0;
-$price_ranges = 0;
-foreach($restaurants as $restaurant){
-  if($restaurant->food_type == auth()->user()->preference->food_type)
+  <?php
+  $food_types = 0;
+  $restaurant_types = 0;
+  $neighborhoods = 0;
+  $price_ranges = 0;
+  foreach($restaurants as $restaurant){
+    if($restaurant->food_type == auth()->user()->preference->food_type)
       $food_types++;
-  if($restaurant->price_range == auth()->user()->preference->price_range)
-        $price_ranges++;
-  if($restaurant->south_west && auth()->user()->preference->south_west)
-        $neighborhoods++;
-  elseif($restaurant->south_east && auth()->user()->preference->south_east)
-        $neighborhoods++;
-  elseif($restaurant->north_west && auth()->user()->preference->north_west)
-        $neighborhoods++;
-  elseif($restaurant->north_east && auth()->user()->preference->north_east)
-        $neighborhoods++;
-        if ($restaurant->dine_in && auth()->user()->preference->dine_in)
-        $restaurant_types++;
-elseif ($restaurant->drive_thru && auth()->user()->preference->drive_thru)
-        $restaurant_types++;
-elseif ($restaurant->delivery && auth()->user()->preference->delivery)
-        $restaurant_types++;
-elseif ($restaurant->take_out && auth()->user()->preference->take_out)
-        $restaurant_types++;
-}
-?>
+    if($restaurant->price_range == auth()->user()->preference->price_range)
+      $price_ranges++;
+    if($restaurant->south_west && auth()->user()->preference->south_west)
+      $neighborhoods++;
+    elseif($restaurant->south_east && auth()->user()->preference->south_east)
+      $neighborhoods++;
+    elseif($restaurant->north_west && auth()->user()->preference->north_west)
+      $neighborhoods++;
+    elseif($restaurant->north_east && auth()->user()->preference->north_east)
+      $neighborhoods++;
+    if ($restaurant->dine_in && auth()->user()->preference->dine_in)
+      $restaurant_types++;
+    elseif ($restaurant->drive_thru && auth()->user()->preference->drive_thru)
+      $restaurant_types++;
+    elseif ($restaurant->delivery && auth()->user()->preference->delivery)
+      $restaurant_types++;
+    elseif ($restaurant->take_out && auth()->user()->preference->take_out)
+      $restaurant_types++;
+  }
+  ?>
 @endif
 @if(auth()->user()->type == "restaurant owner")
 <?php
@@ -99,10 +100,10 @@ elseif ($preference->take_out && auth()->user()->restaurant->take_out)
         <div class="panel-heading">
           <h1>  {{ $neighborhoods }}</h1>
           @if(auth()->user()->type == "restaurant owner")
-          <p>Customers</p>
+            <p>Customers</p>
           @endif
           @if(auth()->user()->type == "customer")
-          <p>Restaurants</p>
+            <p>Restaurants</p>
           @endif
         </div>
         <div class="panel-body">
@@ -110,36 +111,37 @@ elseif ($preference->take_out && auth()->user()->restaurant->take_out)
             <strong>Neighborhood</strong>
           </h3>
           <p>
-            <strong>       <?php
-              $count = 0;
-              $separator = ", ";
-              $areas = "";
-              $object = auth()->user()->type == "customer" ? auth()->user()->preference : auth()->user()->restaurant;
-              if($object->south_east){
-                $areas .= "South-East";
-                $count++;
-              }
-              if($object->south_west){
-                if($count > 0){
-                  $areas .= $separator;
+            <strong>       
+              <?php
+                $count = 0;
+                $separator = ", ";
+                $areas = "";
+                $object = auth()->user()->type == "customer" ? auth()->user()->preference : auth()->user()->restaurant;
+                if($object->south_east){
+                  $areas .= "South-East";
+                  $count++;
                 }
-                $areas .= "South-West";
-                $count++;
-              }
-              if($object->north_east){
-                if($count > 0){
-                  $areas .= $separator;
+                if($object->south_west){
+                  if($count > 0){
+                    $areas .= $separator;
+                  }
+                  $areas .= "South-West";
+                  $count++;
                 }
-                $areas .= "North-East";
-                $count++;
-              }
-              if($object->north_west){
-                if($count > 0){
-                  $areas .= $separator;
+                if($object->north_east){
+                  if($count > 0){
+                    $areas .= $separator;
+                  }
+                  $areas .= "North-East";
+                  $count++;
                 }
-                $areas .= "North-West";
-              }
-            ?>
+                if($object->north_west){
+                  if($count > 0){
+                    $areas .= $separator;
+                  }
+                  $areas .= "North-West";
+                }
+              ?>
             {{ $areas }}</strong>
           </p>
         </div>
@@ -162,7 +164,8 @@ elseif ($preference->take_out && auth()->user()->restaurant->take_out)
             <strong>Food Type</strong>
           </h3>
           <p>
-            <strong>              @if(auth()->user()->type == "customer")
+            <strong>              
+              @if(auth()->user()->type == "customer")
                 {{ auth()->user()->preference->food_type }}
               @endif
               @if(auth()->user()->type == "restaurant owner")
@@ -245,7 +248,8 @@ elseif ($preference->take_out && auth()->user()->restaurant->take_out)
             <strong>Price Range</strong>
           </h3>
           <p>
-            <strong>        @if(auth()->user()->type == "customer")
+            <strong>        
+              @if(auth()->user()->type == "customer")
                 {{ auth()->user()->preference->price_range }}
               @endif
               @if(auth()->user()->type == "restaurant owner")
@@ -258,7 +262,6 @@ elseif ($preference->take_out && auth()->user()->restaurant->take_out)
     </div>
   </div>
 </div>
-
   @else
   <p>You need to be logged in order to view your dashboard</p>
   @endauth
