@@ -37,7 +37,7 @@
         @csrf
         <div class="panel-body">
           <p>
-            <textarea name="promotion-entry" class="form-control" id="exampleFormControlTextarea1" rows="3" style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea>
+            <textarea name="promotion-entry" value="{{ old('promotionn-entry')}}" class="form-control" id="exampleFormControlTextarea1" rows="3" style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea>
             @if ($errors->has('promotion-entry')) 
               <div id="promotion-error" class="error-message">
                 {{$errors->first('promotion-entry')}}
