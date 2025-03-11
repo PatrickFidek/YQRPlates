@@ -38,6 +38,11 @@
         <div class="panel-body">
           <p>
             <textarea name="promotion-entry" class="form-control" id="exampleFormControlTextarea1" rows="3" style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea>
+            @if ($errors->has('promotion-entry')) 
+              <div id="promotion-error" class="error-message">
+                {{$errors->first('promotion-entry')}}
+              </div> 
+            @endif 
           </p>
         </div>
         <div class="panel-footer">
