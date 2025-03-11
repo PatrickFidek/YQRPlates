@@ -24,7 +24,8 @@
     </div>
   </nav>
 </header>
-<title>Promotions</title>title> <div class="jumbotron text-center">
+
+<title>Promotions</title><div class="jumbotron text-center">
   <h1>Restaurant Name</h1>
 </div>
 <div id="about" class="container-fluid" style="width: 400px">
@@ -33,14 +34,14 @@
       <div class="panel-heading">
         <h1>Add Promotion</h1>
       </div>
-      <form action="/promotions" method="POST"> 
+      <form action="{{ url('/promotions') }}" method="POST"> 
         @csrf
         <div class="panel-body">
           <p>
-            <textarea name="promotion-entry" value="{{ old('promotion-entry')}}" class="form-control" id="exampleFormControlTextarea1" rows="3" style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea>
-            @if ($errors->has('promotion-entry')) 
+            <textarea name="promotion_entry" value="{{ old('promotion_entry')}}" class="form-control" id="exampleFormControlTextarea1" rows="3" style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea>
+            @if ($errors->has('promotion_entry')) 
               <div id="promotion-error" class="error-message">
-                {{$errors->first('promotion-entry')}}
+                {{$errors->first('promotion_entry')}}
               </div> 
             @endif 
           </p>
@@ -53,6 +54,68 @@
   </div>
 </div>
 </div>
+<div>
+  <div id="pricing" class="container-fluid">
+    <h2>Current Promotions</h2>
+    <div class="row">
+     @forelse($promotions as $promotion)
+      <div class="col-sm-4 col-xs-12">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1>Promotions</h1>
+          </div>
+          <div class="panel-body">
+            <p>
+              <strong>{{ $promotion->promotion }}</strong>
+            </p>
+          </div>
+          <div class="panel-footer">
+            <button type="button" class="submit" data-toggle="modal" data-target="#exampleModalCenter"  data-id="{{ $promotion->id }}" 
+            data-text="{{ $promotion->promotion }}" style="width: 100%"> Remove Promotion </button>
+           </form>
+          </div>
+        </div>
+      </div>
+      @empty
+        <div class="col-xs-12 text-center">
+          <p>No promotions added yet.</p>
+        </div>
+      @endforelse
+    </div>
+ </div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document" style="padding-top: 15%;">
+        <div class="modal-content">
+        <form method="POST" action="{{ url('/promotions')}}">
+          @csrf
+          @method('DELETE')
+          <input type="hidden" name="promotion_id" id="deletePromotionId"> 
+        <!--  <input type="hidden" name="restaurant_id" value="{{ auth()->user()->restaurant->id }}"> -->
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="width: 10px">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h2 class="modal-title text-center" id="exampleModalLongTitle">Are you sure you want to remove</h2>
+            <h3 class="text-center" id="promotionText"></h3>
+          </div>
+          <div class="modal-body text-center">
+            <p>
+              <strong>Doing so will remove this promotion from your restaurant</strong>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="submit" data-dismiss="modal" style="width: 25%">Cancel</button>
+            <button type="submit" class="submit" style="width: 40%">Confirm Removal</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
 <div>
   <div id="pricing" class="container-fluid">
     <h2>Current Promotions</h2>
@@ -118,7 +181,11 @@
         </div>
       </div>
     </div>
-    <!-- Modal -->
+
+-->
+
+<!-- 
+   Modal
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document" style="padding-top: 15%;">
         <div class="modal-content">
@@ -143,3 +210,15 @@
     </div>
   </div>
 </div>
+-->
+  <script>
+    $('#exampleModalCenter').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      var id = button.data('id');
+      var text = button.data('text');
+      
+      var modal = $(this);
+      modal.find('#deletePromotionId').val(id);
+      modal.find('#promotionText').text(text);
+    });
+  </script>
