@@ -17,6 +17,6 @@ class PromotionsController extends Controller
         $promotion->promotion = $fields['promotion-entry'];
         $promotion->save();
 
-        $fields['promotion-entry'] = make($fields['promotion']);
+        
     }
 }
