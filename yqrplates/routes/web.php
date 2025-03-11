@@ -6,8 +6,9 @@ use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\PreferencesController;
-use App\Http\Controllers\UploadRestaurant;
+use App\Http\Controllers\UploadRestaurantController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('app');
@@ -61,10 +62,12 @@ Route::get('/createpreferences', [PreferencesController::class,'create'])->middl
 Route::post('/updatepreferences', [PreferencesController::class,'update'])->middleware('auth');
 Route::post('/storepreferences', [PreferencesController::class,'store'])->middleware('auth');
 
-Route::get('/editrestaurant', [UploadRestaurant::class, 'index'])->middleware('auth');
-Route::get('/createrestaurant', [UploadRestaurant::class,'create'])->middleware('auth');
-Route::post('/updaterestaurant', [UploadRestaurant::class,'update'])->middleware('auth');
-Route::post('/storerestaurant', [UploadRestaurant::class,'store'])->middleware('auth');
+Route::get('/editrestaurant', [UploadRestaurantController::class, 'index'])->middleware('auth');
+Route::get('/createrestaurant', [UploadRestaurantController::class,'create'])->middleware('auth');
+Route::post('/updaterestaurant', [UploadRestaurantController::class,'update'])->middleware('auth');
+Route::post('/storerestaurant', [UploadRestaurantController::class,'store'])->middleware('auth');
+
+Route::post('/dashboard', [DashboardController::class, 'seeDashboard'])->middleware('auth');
 
 Route::post('/register', [RegisterController::class, 'register']);
 
