@@ -14,7 +14,7 @@ class PromotionsController extends Controller
         ]);
 
         $promotion = new Promotion;
-    
+        $promotion->promotion = $fields['promotion-entry'];
 
         $fields['promotion-entry'] = make($fields['promotion']);
     }
