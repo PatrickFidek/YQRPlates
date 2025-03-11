@@ -26,16 +26,16 @@ class ResetPasswordController extends Controller
             if ($user>birthday->format('Y-m-d') == $fields['birthday']) {
                 $user->password = Hash::make($fields['password']);
                 $user->save();
-            }
                 
-            
-            
-        
-        auth()->login($user);
-        return redirect('/profile');
+            auth()->login($user);
+            return redirect('/profile');
+            }
+            else {
+                return back()->withErrors(['message' => 'Email and Birthday do not match our records.']);
+            }
         }
         else {
-            return back()->withErrors(['message' => 'Email and Birthday do not match our records.']);
+            
         }
     }
 }
