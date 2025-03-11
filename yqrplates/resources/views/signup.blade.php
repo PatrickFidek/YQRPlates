@@ -40,7 +40,6 @@
         </div>
         <div class="right">
           <h2>CREATE YOUR ACCOUNT</h2>
-          
           <form action="/register" method="POST" id="registration-form"> @csrf
             <label>
               <span>Name</span>
