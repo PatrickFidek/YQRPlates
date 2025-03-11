@@ -17,6 +17,6 @@ class PromotionsController extends Controller
         $promotion->promotion = $fields['promotion-entry'];
         $promotion->save();
 
-        
+        return redirect()->back()->with('success', 'Promotion added successfully.');
     }
 }
