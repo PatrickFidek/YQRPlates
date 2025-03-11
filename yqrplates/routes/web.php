@@ -10,6 +10,7 @@ use App\Http\Controllers\UploadRestaurantController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SuggestionController;
+use App\Http\Controllers\PromotionsController;
 
 Route::get('/', function () {
     return view('app');
