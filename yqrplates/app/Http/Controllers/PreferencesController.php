@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 
 class PreferencesController extends Controller{
     public function index() {
-        return view('updatepreferences');
+        return view('editpreferences');
     }
 
     public function create() {

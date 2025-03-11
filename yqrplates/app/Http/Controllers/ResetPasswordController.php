@@ -37,7 +37,7 @@ class ResetPasswordController extends Controller
             return redirect('/profile');
             }
             else {
-                return back()->withErrors(['birthday' => 'birthday does not match our records.']);
+                return back()->withErrors(['birthday' => 'Birthday does not match our records.']);
             }
         }
         else {
