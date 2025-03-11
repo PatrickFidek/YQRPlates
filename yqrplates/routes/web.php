@@ -9,6 +9,7 @@ use App\Http\Controllers\PreferencesController;
 use App\Http\Controllers\UploadRestaurantController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SuggestionController;
 
 Route::get('/', function () {
     return view('app');
@@ -67,7 +68,10 @@ Route::get('/createrestaurant', [UploadRestaurantController::class,'create'])->m
 Route::post('/updaterestaurant', [UploadRestaurantController::class,'update'])->middleware('auth');
 Route::post('/storerestaurant', [UploadRestaurantController::class,'store'])->middleware('auth');
 
-Route::post('/dashboard', [DashboardController::class, 'seeDashboard'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'seeDashboard'])->middleware('auth')->name('dashboard');
+
+Route::get('/suggestion', [SuggestionController::class, 'getSuggestion'])->middleware('auth')->name('suggestion');
+
 
 Route::post('/register', [RegisterController::class, 'register']);
 

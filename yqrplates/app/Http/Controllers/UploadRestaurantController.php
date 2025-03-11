@@ -70,6 +70,7 @@ class UploadRestaurantController extends Controller
             'name' => ['required|string|max:255', Rule::unique('restaurants', 'name')],
             'user_id' => 'required|exists:users,id',
             'menu_link' => 'required|url',
+        //    'menuimage' => 'nullable|file|mimes:jpeg,png,pdf|max:2048|required_without:menulink',
             'restaurant_type' => 'required|string|max:255',
             'price_range' => 'required|string|max:255',
             'south_east' => 'boolean',
