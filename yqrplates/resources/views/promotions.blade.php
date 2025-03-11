@@ -39,7 +39,7 @@
         </p>
       </div>
       <div class="panel-footer">
-        <button type="button" class="submit" background-color:#fff onclick="location.href='https://yqrplates.com/profile';">Add Promotion</button>
+        <button type="submit" class="submit" background-color:#fff onclick="location.href='https://yqrplates.com/profile';">Add Promotion</button>
       </div>
     </div>
   </div>
