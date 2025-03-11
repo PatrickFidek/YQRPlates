@@ -15,10 +15,6 @@ class Promotion extends Model {
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'type',
-        'birthday'
+        'promotion'
     ];
 }
