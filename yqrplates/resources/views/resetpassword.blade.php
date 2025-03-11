@@ -83,25 +83,31 @@
           $('#reset-password-form').submit(function(e) {
             e.preventDefault();
 
-          $.ajax({
+            $.ajax({
             url: $(this).attr('action'),
             type: $(this).attr('method'),
             data: $(this).serialize(),
             success: function(response) {
-              window.location.href = '/profile';
-        },
-        error: function(xhr) {
-          var errors = xhr.responseJSON.errors;
-          $('.error-message').empty();
+                window.location.href = '/profile';
+              },
+              error: function(xhr) {
+                var errors = xhr.responseJSON.errors;
+                $('.error-message').empty();
 
-          $.each(errors, function(key, value) {
-            $('#' + key + '-error').text(value[0]);
+                if (errors) {
+                  $.each(errors, function(key, value) {
+                  $('#' + key + '-error').text(value[0]);
+                });
+                }
+
+                else {
+                  consol.error("unexpected error format: ", xhr);
+                }
+              }
+            });
           });
-        }
-      });
-    });
-  });
-</script>
+        });
+      </script>
 
 
                 
