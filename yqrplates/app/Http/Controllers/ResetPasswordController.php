@@ -7,10 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller 
 {
     public function resetPassword(Request $request) {
+
+        $email = $request->input('email');
+
         $fields = $request->validate([
             'email' => 'required|email',
             'birthday' => 'required|date',
@@ -21,17 +25,16 @@ class ResetPasswordController extends Controller
 
         $user = User::where('email', $fields['email'])->first();
                     
-
         if ($user) {
             if ($user->birthday->format('Y-m-d') == $fields['birthday']) {
                 $user->password = Hash::make($fields['password']);
                 $user->save();
                 
             auth()->login($user);
-            return redirect('/profile');
+            return redirect('/profile')->with('password_reset_success', 'Your password has been reset.');
             }
             else {
-                return back()->withErrors(['birthday' => 'Email does not match our records.']);
+                return back()->withErrors(['birthday' => 'Birthday does not match our records.']);
             }
         }
         else {
