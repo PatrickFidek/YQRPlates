@@ -32,11 +32,19 @@
   @csrf
   <button class="btn btn-lg largebtn" type="submit">Log Out</button>
 </div>
+
+@if (session('success'))
+  <div class="flash-message" id="flash-message">
+    {{ session('success') }}
+</div>
+@endif
+
+
+
 <div id="about" class="container-fluid" style="width: 400px">
   <div class="row">
     <div class="text-center">
       <div class="panel panel-default text-center">
-        <!-- should say their restaurant and list details of it if restaurant owner -->
         <div class="panel-heading">
           <h1>
               <?php
