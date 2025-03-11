@@ -29,11 +29,11 @@
   </nav>
 </header>
 
-
 <div class="jumbotron text-center">
   <h1>Reset Password</h1> 
 </div>
-    <form action="/resetpassword" method="POST" id="registration-form"> @csrf
+    <form action="/resetpassword" method="POST" id="reset-password-form"> 
+      @csrf
         <div class="center">
             <label>
                 <span>Email</span>
@@ -41,9 +41,10 @@
                 @if ($errors->has('email')) 
                 <div id="email-error" class="error-message">
                   {{$errors->first('email')}}
-                </div> @endif 
+                </div> 
+                @endif 
             </label>
-                        
+           
             <label>
                 <span>Confirm your birthday</span>
                 <input name="birthday" type="date" value="{{ old('birthday')}}" />
@@ -66,44 +67,47 @@
 
             <label>
                 <span>Confirm New Password</span>
-                <input name='confirm' type="confirm password" value="{{ old('confirm')}}"/>
-                @if ($errors->has('confirm')) 
-                <div id="password-error" class="error-message">
+                <input name='password_confirmation' type="password" value="{{ old('password_confirmation')}}"/>
+                @if ($errors->has('password_confirmation')) 
+                <div id="confirm-password-error" class="error-message">
                   {{$errors->first('password')}}
                 </div> 
               @endif
-            </label>
-
-            
+            </label> 
             <button type="submit" class="submit">Reset Password</button>
-         
         </div>
       </form>
 
       <script>
-  $(document).ready(function() {
-    $('#registration-form').submit(function(e) {
-      e.preventDefault();
+        $(document).ready(function() {
+          $('reset-password-form').submit(function(e) {
+            e.preventDefault();
 
-      $.ajax({
-        url: '/resetpassword',
-        type: $(this).attr('method'),
-        data: $(this).serialize(),
-        success: function(response) {
-          window.location.href = '/profile';
-        },
-        error: function(xhr) {
-          var errors = xhr.responseJSON.errors;
-          $('.error-message').empty();
+            $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            data: $(this).serialize(),
+            success: function(response) {
+                window.location.href = '/profile';
+              },
+              error: function(xhr) {
+                var errors = xhr.responseJSON.errors;
+                $('.error-message').empty();
 
-          $.each(errors, function(key, value) {
-            $('#' + key + '-error').text(value[0]);
+                if (errors) {
+                  $.each(errors, function(key, value) {
+                  $('#' + key + '-error').text(value[0]);
+                });
+                }
+
+                else {
+                  consol.error("unexpected error format: ", xhr);
+                }
+              }
+            });
           });
-        }
-      });
-    });
-  });
-</script>
+        });
+      </script>
 
 
                 
