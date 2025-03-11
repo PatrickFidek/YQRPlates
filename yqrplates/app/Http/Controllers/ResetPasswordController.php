@@ -31,11 +31,11 @@ class ResetPasswordController extends Controller
             return redirect('/profile');
             }
             else {
-                return back()->withErrors(['message' => 'Email and Birthday do not match our records.']);
+                return back()->withErrors(['message' => 'Email does not match our records.']);
             }
         }
         else {
-            
+            return back()->withErrors(['email' => 'Email does not match our records.']);
         }
     }
 }
