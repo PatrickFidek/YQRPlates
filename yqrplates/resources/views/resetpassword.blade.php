@@ -88,7 +88,7 @@
             type: $(this).attr('method'),
             data: $(this).serialize(),
             success: function(response) {
-                window.location.href = '/passwordreset';
+                window.location.href = '/profile';
               },
               error: function(xhr) {
                 var errors = xhr.responseJSON.errors;
