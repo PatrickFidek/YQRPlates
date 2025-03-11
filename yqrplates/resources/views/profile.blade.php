@@ -28,18 +28,18 @@
 <div class="jumbotron text-center">
 @auth
 <h2>Welcome, {{ auth()->user()->name }}!</h2>
-<form action="/logout" method="POST">
-  @csrf
-  <button class="btn btn-lg largebtn" type="submit">Log Out</button>
-</div>
+  <div class="logout-flash-container">
+    <form action="/logout" method="POST">
+      @csrf
+      <button class="btn btn-lg largebtn" type="submit">Log Out</button>
+    </form>
 
-@if (session('password_reset_success'))
-  <div class="flash-message" id="flash-message">
-    {{ session('password_reset_success') }}
-</div>
-@endif
-
-
+    @if (session('password_reset_success'))
+      <div class="flash-message" id="flash-message">
+      {{ session('password_reset_success') }}
+      </div>
+    @endif
+  </div>
 
 <div id="about" class="container-fluid" style="width: 400px">
   <div class="row">
