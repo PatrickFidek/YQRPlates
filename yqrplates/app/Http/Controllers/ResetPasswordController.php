@@ -12,25 +12,30 @@ class ResetPasswordController extends Controller
 {
     public function resetPassword(Request $request) {
         $fields = $request->validate([
-            'email' => 'required',
+            'email' => 'required|email',
             'birthday' => 'required|date',
-            'password' => 'required|min:8|confirmed',
-            'confirm' => 'required'
-        ]);
-        
-        $user = User::where('email', $fields['email'])
-                    ->where('birthday', $fields['birthday'])
-                    ->first();
+            'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/|confirmed',
+            'password_confirmation' => 'required'
+        ],
+        ['password.regex' => 'Must include : uppercase, lowercase, number and symbol']);
+
+        $user = User::where('email', $fields['email'])->first();
+                    
 
         if ($user) {
-            $user->password = Hash::make($fields['password']);
-            $user->save();
-        
-        auth()->login($user);
-        return redirect('/profile');
+            if ($user->birthday->format('Y-m-d') == $fields['birthday']) {
+                $user->password = Hash::make($fields['password']);
+                $user->save();
+                
+            auth()->login($user);
+            return redirect('/profile');
+            }
+            else {
+                return back()->withErrors(['birthday' => 'Email does not match our records.']);
+            }
         }
         else {
-            return back()->withErrors(['message' => 'Email and Birthday do not match our records.']);
+            return back()->withErrors(['email' => 'Email does not match our records.']);
         }
     }
 }
