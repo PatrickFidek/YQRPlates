@@ -11,6 +11,12 @@ use App\Models\User;
 class ResetPasswordController extends Controller 
 {
     public function resetPassword(Request $request) {
+
+        $email = $request->input('email');
+
+     
+
+
         $fields = $request->validate([
             'email' => 'required|email',
             'birthday' => 'required|date',
@@ -19,11 +25,11 @@ class ResetPasswordController extends Controller
         ],
         ['password.regex' => 'Must include : uppercase, lowercase, number and symbol']);
 
+
         $user = User::where('email', $fields['email'])->first();
                     
-
         if ($user) {
-            if ($user>birthday->format('M-d-y') == $fields['birthday']) {
+            if ($user->birthday->format('Y-m-d') == $fields['birthday']) {
                 $user->password = Hash::make($fields['password']);
                 $user->save();
                 
@@ -31,7 +37,7 @@ class ResetPasswordController extends Controller
             return redirect('/profile');
             }
             else {
-                return back()->withErrors(['message' => 'Email does not match our records.']);
+                return back()->withErrors(['birthday' => 'birthday does not match our records.']);
             }
         }
         else {
