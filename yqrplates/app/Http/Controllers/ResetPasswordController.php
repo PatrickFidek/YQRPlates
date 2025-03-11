@@ -31,7 +31,7 @@ class ResetPasswordController extends Controller
                 $user->save();
                 
             auth()->login($user);
-            return redirect('/profile')->with('password_reset_success', 'Your password has been reset.');
+            return redirect('/passwordreset')->with('password_reset_success', 'Your password has been reset.');
             }
             else {
                 return back()->withErrors(['birthday' => 'Birthday does not match our records.']);
