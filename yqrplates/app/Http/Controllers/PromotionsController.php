@@ -10,5 +10,7 @@ use App\Models\User;
 
 class PromotionsController extends Controller 
 {
-    
+    public function addPromotion(Request $request) {
+        
+    }
 }
