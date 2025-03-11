@@ -12,5 +12,7 @@ class PromotionsController extends Controller
         $fields = $request->validate([
             'promotion-entry' => ['required', 'min:5', 'max:255']
         ]);
+
+        $fields['promotion-entry'] = make($fields['promotion']);
     }
 }
