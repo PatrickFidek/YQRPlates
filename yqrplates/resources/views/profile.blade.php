@@ -33,13 +33,25 @@
   <button class="btn btn-lg largebtn" type="submit">Log Out</button>
 </div>
 
-@if (session('success'))
+@if (session('password_reset_success'))
   <div class="flash-message" id="flash-message">
-    {{ session('success') }}
+    {{ session('password_reset_success') }}
 </div>
 @endif
 
-
+<script>
+  document.addEventListener('DOMContentKiaded', function() {
+    const flashMessage = document.getElementById('flash-message');
+    if (flashMessage) {
+      setTimeout(function() {
+        flashMessage.style.ocapacity = '0';
+        setTimeout(function() {
+          flashMessage.style.display = 'none';
+        }, 500);
+      }, 3000);
+    }
+  })
+</script>
 
 <div id="about" class="container-fluid" style="width: 400px">
   <div class="row">
@@ -184,6 +196,6 @@
   </div>
 </div>
   @else
-  <p>You need to be logged in order to view your profile</p>
+  <p>You need to be logged in the view your profiles.</p>
   @endauth
 </div>
