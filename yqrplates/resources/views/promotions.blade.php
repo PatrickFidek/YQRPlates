@@ -33,14 +33,17 @@
       <div class="panel-heading">
         <h1>Add Promotion</h1>
       </div>
-      <div class="panel-body">
-        <p>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea>
-        </p>
-      </div>
-      <div class="panel-footer">
-        <button type="submit" class="submit" background-color:#fff onclick="location.href='https://yqrplates.com/profile';">Add Promotion</button>
-      </div>
+      <form action="/promotions" method="POST"> 
+        @csrf
+        <div class="panel-body">
+          <p>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea>
+          </p>
+        </div>
+        <div class="panel-footer">
+          <button type="submit" class="submit" background-color:#fff onclick="location.href='https://yqrplates.com/profile';">Add Promotion</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
