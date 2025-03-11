@@ -26,13 +26,21 @@
     </div>
   </nav>
 </header>
+
+
+
 <div class="jumbotron text-center">
+@auth
+@if(auth()->user()->type == "restaurant owner")
   <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
 <div class="center">
   <form action="/storerestaurant" method="POST" id="restaurant-form" enctype="multipart/form-data"> 
     @csrf 
     <input class="hidden" name="user_id" value={{ auth()->user()->id }} />
+    @if ($errors->has('user_id')) <div id="name-error" class="error-message text-center">
+        <h5>You already own a restaurant, please <a href="/editrestaurant" style="color: inherit; text-decoration: none">edit your restaurant</a></h5>
+      </div> @endif 
     <label>
       <span>Restaurant Name</span>
       <input name="restaurant_name" id="restaurant_name" type="text" /> 
@@ -145,6 +153,13 @@
     </div>
     <button type="submit" class="submit">Continue</button>
   </form>
+@endif
+@if(auth()->user()->type == "customer")
+  <h1>Sorry only restaurant owners can create restaurants<h1>
+@endif
+@else 
+  <h1>Please log in<h1>
+@endauth
 
 
 <script>
