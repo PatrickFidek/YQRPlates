@@ -37,16 +37,13 @@ body {
 
   .flash-message {
     position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #4CAF50;
-    color: white;
+    color: rgb(8, 100, 13);
     padding: 15px 20px;
     border-radius: 5px;
     z-index: 1000;
     opacity: 1;
-    transition:mocapacity 0.5s ease-out;
+    transition: ocapacity 0.5s ease-out;
+    text-align: center;
   }
 
   .logo-small {

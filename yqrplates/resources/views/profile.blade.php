@@ -39,19 +39,7 @@
 </div>
 @endif
 
-<script>
-  document.addEventListener('DOMContentKiaded', function() {
-    const flashMessage = document.getElementById('flash-message');
-    if (flashMessage) {
-      setTimeout(function() {
-        flashMessage.style.ocapacity = '0';
-        setTimeout(function() {
-          flashMessage.style.display = 'none';
-        }, 500);
-      }, 3000);
-    }
-  })
-</script>
+
 
 <div id="about" class="container-fluid" style="width: 400px">
   <div class="row">
@@ -199,3 +187,17 @@
   <p>You need to be logged in the view your profiles.</p>
   @endauth
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const flashMessage = document.getElementById('flash-message');
+    if (flashMessage) {
+      setTimeout(function() {
+        flashMessage.style.opacity = '0';
+        setTimeout(function() {
+          flashMessage.style.display = 'none';
+        }, 500);
+      }, 3000);
+    }
+  })
+</script>
