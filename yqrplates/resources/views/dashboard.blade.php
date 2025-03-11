@@ -26,7 +26,8 @@
   </nav>
 </header>
 <div class="jumbotron text-center">
-  <h1>Dashboard</h1>
+@auth
+<h2>Welcome, {{ auth()->user()->name }}!</h2>
 </div>
 <div id="portfolio" class="container-fluid text-center">
   <div class="row text-center ">
@@ -37,10 +38,40 @@
         </div>
         <div class="panel-body">
           <h3>
-            <strong>Type of Food</strong>
+            <strong>Neighborhood</strong>
           </h3>
           <p>
-            <strong>Chinese, Italian</strong>
+            <strong>       <?php
+              $count = 0;
+              $separator = ", ";
+              $areas = "";
+              $object = auth()->user()->type == "customer" ? auth()->user()->preference : auth()->user()->restaurant;
+              if($object->south_east){
+                $areas .= "South-East";
+                $count++;
+              }
+              if($object->south_west){
+                if($count > 0){
+                  $areas .= $separator;
+                }
+                $areas .= "South-West";
+                $count++;
+              }
+              if($object->north_east){
+                if($count > 0){
+                  $areas .= $separator;
+                }
+                $areas .= "North-East";
+                $count++;
+              }
+              if($object->north_west){
+                if($count > 0){
+                  $areas .= $separator;
+                }
+                $areas .= "North-West";
+              }
+            ?>
+            {{ $areas }}</strong>
           </p>
         </div>
       </div>
@@ -52,10 +83,15 @@
         </div>
         <div class="panel-body">
           <h3>
-            <strong>Type of Food</strong>
+            <strong>Food Type</strong>
           </h3>
           <p>
-            <strong>Chinese, Italian</strong>
+            <strong>              @if(auth()->user()->type == "customer")
+                {{ auth()->user()->preference->food_type }}
+              @endif
+              @if(auth()->user()->type == "restaurant owner")
+                {{ auth()->user()->restaurant->food_type }}
+              @endif</strong>
           </p>
         </div>
       </div>
@@ -70,10 +106,41 @@
         </div>
         <div class="panel-body">
           <h3>
-            <strong>Type of Food</strong>
+            <strong>Restaurant Type</strong>
           </h3>
           <p>
-            <strong>Chinese, Italian</strong>
+            <strong>            <?php
+              $count = 0;
+              $separator = ", ";
+              $types = "";
+              $object = auth()->user()->type == "customer" ? auth()->user()->preference : auth()->user()->restaurant;
+              if($object->dine_in){
+                $types .= "Dine-in";
+                $count++;
+              }
+              if($object->take_out){
+                if($count > 0){
+                  $types .= ", ";
+                }
+                $types .= "Take-out";
+                $count++;
+              }
+              if($object->delivery){
+                if($count > 0){
+                  $types .= ", ";
+                }
+                $types .= "Delivery";
+                $count++;
+              }
+              if($object->drive_thru){
+                if($count > 0){
+                  $types .= ", ";
+                }
+                $types .= "Drive-thru";
+                $count++;
+              }
+            ?>
+            {{ $types }}</strong>
           </p>
         </div>
       </div>
@@ -85,13 +152,22 @@
         </div>
         <div class="panel-body">
           <h3>
-            <strong>Type of Food</strong>
+            <strong>Price Range</strong>
           </h3>
           <p>
-            <strong>Chinese, Italian</strong>
+            <strong>        @if(auth()->user()->type == "customer")
+                {{ auth()->user()->preference->price_range }}
+              @endif
+              @if(auth()->user()->type == "restaurant owner")
+                {{ auth()->user()->restaurant->price_range }}
+              @endif</strong>
           </p>
         </div>
       </div>
     </div>
   </div>
+</div>
+@else
+  <p>You need to be logged in order to view your dashboard</p>
+  @endauth
 </div>
