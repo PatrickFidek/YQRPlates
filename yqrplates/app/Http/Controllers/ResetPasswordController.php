@@ -7,15 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller 
 {
     public function resetPassword(Request $request) {
 
         $email = $request->input('email');
-
-     
-
 
         $fields = $request->validate([
             'email' => 'required|email',
@@ -24,7 +22,6 @@ class ResetPasswordController extends Controller
             'password_confirmation' => 'required'
         ],
         ['password.regex' => 'Must include : uppercase, lowercase, number and symbol']);
-
 
         $user = User::where('email', $fields['email'])->first();
                     
