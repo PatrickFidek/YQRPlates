@@ -15,6 +15,7 @@ class Promotion extends Model {
      * @var list<string>
      */
     protected $fillable = [
+        'restaurant_id',
         'promotion'
     ];
 }
