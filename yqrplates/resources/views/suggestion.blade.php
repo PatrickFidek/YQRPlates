@@ -35,46 +35,30 @@
     </div>
   </nav>
 </header>
-
-
-
-
-
-
 <div class="jumbotron text-center">
   @auth
   @if(auth()->user()->type == "customer")
   <h1>Pick Your Plate</h1>
 </div>
-
 <?php
 $test = 0;
 $userRestaurants = [];
 foreach($restaurants as $restaurant){
-
-if($restaurant->food_type == auth()->user()->preference->food_type && 
-$restaurant->price_range == auth()->user()->preference->price_type 
-&& 
-(
-  ($restaurant->south_west && auth()->user()->south_west)
-||  ($restaurant->south_east && auth()->user()->south_east)
-|| ($restaurant->north_west && auth()->user()->north_west)
-|| ($restaurant->north_east && auth()->user()->north_east)
-)
-&& 
-(
-  ($restaurant->dine_in && auth()->user()->dine_in)
-|| ($restaurant->drive_thru && auth()->user()->drive_thru)
-|| ($restaurant->take_out && auth()->user()->take_out)
-|| ($restaurant->delivery && auth()->user()->delivery)
-)
-){
-  $test .= 1;
+if(
+  (ucwords($restaurant->food_type) == ucwords(auth()->user()->preference->food_type)) &&
+  (ucwords($restaurant->price_range) == ucwords(auth()->user()->preference->price_range))
+  &&(($restaurant->south_east && auth()->user()->preference->south_east) || 
+  ($restaurant->south_west && auth()->user()->preference->south_west) ||
+  ($restaurant->north_east && auth()->user()->preference->north_east) || 
+  ($restaurant->north_west && auth()->user()->preference->north_west)) 
+  &&(($restaurant->dine_in && auth()->user()->preference->dine_in) ||
+   ($restaurant->take_out && auth()->user()->preference->take_out) ||
+   ($restaurant->delivery && auth()->user()->preference->delivery) ||
+   ($restaurant->drive_thru && auth()->user()->prefernece->drive_thru))
+  )
+  {
   $userRestaurants[] = $restaurant;
 }
-
-dd($userRestaurants);
-
 }
 
 ?> 
