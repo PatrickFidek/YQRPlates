@@ -13,6 +13,9 @@ class PromotionsController extends Controller
             'promotion-entry' => ['required', 'min:5', 'max:255']
         ]);
 
+        $promotion = new Promotion;
+    
+
         $fields['promotion-entry'] = make($fields['promotion']);
     }
 }
