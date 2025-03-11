@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller 
 {
     public function register(Request $request) {
-        //dd($request->all());
+        
         $fields = $request->validate([
             'name' => ['required', 'min:1', 'max:12'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
