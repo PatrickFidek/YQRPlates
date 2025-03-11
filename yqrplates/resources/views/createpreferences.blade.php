@@ -11,7 +11,7 @@
   <script src="{{ asset('js/preferences.js') }}"></script>
 </head>
 
-<title>Preferences</title>
+<title>Create Preferences</title>
 
 <header>
   <nav class="p-6">
@@ -30,7 +30,9 @@
 </header>
 
 <div class="jumbotron text-center">
-  <h1>Enter Your Preferences</h1>
+@auth
+@if(auth()->user()->type == "customer")
+  <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
 
 <form action="/storepreferences" method="POST" id="preferences-form"> 
@@ -117,6 +119,13 @@
   </div>
   <button type="submit" class="submit">Continue</button>
 </form>
+
+@elseif(auth()->user()->type == "restaurant owner")
+  <h1>Sorry only customers can add preferences<h1>
+@else
+  <h1>Please log in<h1>
+@endauth
+</div>
 
 <script>
   $(document).ready(function() {

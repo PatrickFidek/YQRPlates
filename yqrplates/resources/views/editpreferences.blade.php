@@ -11,7 +11,7 @@
   <script src="{{ asset('js/preferences.js') }}"></script>
 </head>
 
-<title>Preferences</title>
+<title>Edit Preferences</title>
 
 <header>
   <nav class="p-6">

@@ -7,7 +7,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/uploadrestaurant.css') }}">
-  <title>Upload Restaurant</title>
+  <title>Create Restaurant</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/uploadrestaurant.js') }}"></script>
 </head>
@@ -26,9 +26,6 @@
     </div>
   </nav>
 </header>
-
-
-
 <div class="jumbotron text-center">
 @auth
 @if(auth()->user()->type == "restaurant owner")
@@ -153,13 +150,14 @@
     </div>
     <button type="submit" class="submit">Continue</button>
   </form>
-@endif
-@if(auth()->user()->type == "customer")
+
+@elseif(auth()->user()->type == "customer")
   <h1>Sorry only restaurant owners can create restaurants<h1>
-@endif
-@else 
+@else
   <h1>Please log in<h1>
 @endauth
+</div>
+
 
 
 <script>

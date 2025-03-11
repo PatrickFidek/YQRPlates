@@ -6,7 +6,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 
-class UploadRestaurant extends Controller
+class UploadRestaurantController extends Controller
 {
     public function index() {
         return view('editrestaurant');
@@ -17,9 +17,6 @@ class UploadRestaurant extends Controller
     }
 
     public function store(Request $request){
-        
-
-
         $request->validate([ 
             'restaurant_name' => ['required', Rule::unique('restaurants', 'name')],
             'user_id' => ['required', Rule::unique('restaurants', 'user_id')],
@@ -44,26 +41,11 @@ class UploadRestaurant extends Controller
 
         if($request->hasFile('menuimage')){
         $filePath = $request->file('menuimage')->store('menus', 'public');
+        $menu_link = 'https://www.yqrplates.com/storage/' . $filePath;
         }
-        if ($request->hasFile('menuimage') ){
-            $menu_image = $request->file('menuimage');
-
-            $extension = $menu_image->getClientOriginalExtension();
-            $menu_image_name = time().'.'.$extension;
-            $path ='public/menus/';
-            $menu_image->move($path,$menu_image_name);
-             
-            $menu_link = 'https://www.yqrplates.com/storage/' . $filePath;
-        }
-
         if($request->input('menulink') != NULL) {
             $menu_link = $request->input('menulink');
         }
-
-     
-        
- 
-
 
         Restaurant::create([
             'user_id' => (int)$request->input('user_id'),
@@ -80,7 +62,6 @@ class UploadRestaurant extends Controller
             'delivery' => $delivery,
             'drive_thru' => $drive_thru,
         ]);
-
         return redirect('profile');
     }
 
@@ -99,8 +80,6 @@ class UploadRestaurant extends Controller
             'take_out' => 'boolean',
             'delivery' => 'boolean',
             'drive_thru' => 'boolean'
-
-        ]); 
-        
+        ]);       
     }
 }
