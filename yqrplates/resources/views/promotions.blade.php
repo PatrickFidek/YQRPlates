@@ -33,8 +33,8 @@
       <div class="panel-heading">
         <h1>Add Promotion</h1>
       </div>
-      <form action="/promotions" method="POST"> 
-        @csrf
+      <form action="/promotions" method="POST"> @csrf
+        
         <div class="panel-body">
           <p>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea>
