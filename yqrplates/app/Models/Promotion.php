@@ -10,7 +10,7 @@ class Promotion extends Model {
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * Mass assignable attributes.
      *
      * @var list<string>
      */
@@ -18,4 +18,13 @@ class Promotion extends Model {
         'restaurant_id',
         'promotion'
     ];
+
+    /**
+     * Relationship with Restaurant model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function restaurant() {
+        return $this->belongsTo(Restaurant::class);
+    }
 }
