@@ -80,7 +80,7 @@
 
       <script>
         $(document).ready(function() {
-          $('reset-password-form').submit(function(e) {
+          $('#reset-password-form').submit(function(e) {
             e.preventDefault();
 
         $.ajax({
