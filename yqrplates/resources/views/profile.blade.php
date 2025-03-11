@@ -176,6 +176,6 @@
   </div>
 </div>
   @else
-  <p>You need to be logged in the view your profiles.</p>
+  <p>You need to be logged in order to view your profile</p>
   @endauth
 </div>
