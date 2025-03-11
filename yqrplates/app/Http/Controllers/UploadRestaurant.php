@@ -9,7 +9,7 @@ use App\Models\Restaurant;
 class UploadRestaurant extends Controller
 {
     public function index() {
-        return view('uploadrestaurant');
+        return view('editrestaurant');
     }
 
     public function create() {
