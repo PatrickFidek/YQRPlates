@@ -41,9 +41,11 @@
   <h1>Pick Your Plate</h1>
 </div>
 <?php
-$test = 0;
+
 $userRestaurants = [];
+$allRestaurants = [];
 foreach($restaurants as $restaurant){
+$allRestaurants[] = $restaurant;
 if(
   (ucwords($restaurant->food_type) == ucwords(auth()->user()->preference->food_type)) &&
   (ucwords($restaurant->price_range) == ucwords(auth()->user()->preference->price_range))
@@ -61,23 +63,45 @@ if(
 }
 }
 
+$arrayLength = count($userRestaurants);
+$randomIndex = rand(0, $arrayLength - 1);
+$randomUserRestaurant = $userRestaurants[$randomIndex];
+
+$count = count($allRestaurants);
+$randomNumber = rand(0, $count);
+$randomRestaurant = $allRestaurants[$randomNumber];
+$generated = $randomRestaurant->id;
 ?> 
 
-@foreach($userRestaurants as $userRestaurant)
-<h1> {{ $userRestaurant->name }}</h1>
-@endforeach
-
+{{ $randomUserRestaurant->id }}
+{{ $generated }}
 <div class="container-fluid">
   <div class="text-center">
+    <button style="
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+" onclick="window.location.href='/restaurants/details/{{ $generated}}';">
     <img src="{{ asset('images/Generate.png') }}" alt="Click to Generate" height="325px">
+    </button>
   </div>
   <div style="text-align: center; padding-top: 15px">
-    <!-- THIS SHOULD ONLY APPEAR IF THEY ARE SIGNED IN! -->
+    @if(auth()->user())
     <p style="font-size: 18px">Use Prefrences</p>
+    @endif
+    <form action="POST" action="{{ url()->current() }}">
     <label class="switch">
-      <input type="checkbox">
+      <input type="checkbox" id="preferences">
       <span class="slider round"></span>
     </label>
+</form>
+    <?php
+
+if (isset($_POST['preferences'])) {
+    $generated = $randomUserRestaurant->id;
+}
+?>
   </div>
 </div>
 @endif
