@@ -23,7 +23,7 @@ class ResetPasswordController extends Controller
                     
 
         if ($user) {
-            if ($user>birthday->format('Y-m-d') == $fields['birthday']) {
+            if ($user>birthday->format('M-d-y') == $fields['birthday']) {
                 $user->password = Hash::make($fields['password']);
                 $user->save();
                 
