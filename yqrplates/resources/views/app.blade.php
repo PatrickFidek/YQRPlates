@@ -18,9 +18,11 @@
           <div class="container">
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-right">
+                @guest
                 <li>
                   <a href="signin">SIGN IN</a>
                 </li>
+                @endguest
                 </u>
             </div>
           </div>
