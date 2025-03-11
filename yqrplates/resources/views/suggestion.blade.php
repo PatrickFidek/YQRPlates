@@ -36,28 +36,53 @@
   </nav>
 </header>
 
-<?php
-foreach($restaurants as $restaurant)
-$userRestaurants = [];
-if($restaurant->food_type == auth()->user()->preference->food_type && 
-$restaurant->price_range == auth()->user()->preference->price_type 
-&& ($restaurant->south_west && auth()->user()->south_west 
-||  $restaurant->south_east && auth()->user()->south_east 
-|| $restaurant->north_west && auth()->user()->north_west
-|| $restaurant->north_east && auth()->user()->north_east)
-&& ($restaurant->dine_in && auth()->user()->dine_in
-|| $restaurant->drive_thru && auth()->user()->drive_thru
-|| $restaurant->take_out && auth()->user()->take_out
-|| $restaurant->delivery && auth()->user()->delivery)
-)
-$userRestaurants[] = $restaurant;
-?>
+
+
+
+
 
 <div class="jumbotron text-center">
   @auth
   @if(auth()->user()->type == "customer")
   <h1>Pick Your Plate</h1>
 </div>
+
+<?php
+$test = 0;
+$userRestaurants = [];
+foreach($restaurants as $restaurant){
+
+if($restaurant->food_type == auth()->user()->preference->food_type && 
+$restaurant->price_range == auth()->user()->preference->price_type 
+&& 
+(
+  ($restaurant->south_west && auth()->user()->south_west)
+||  ($restaurant->south_east && auth()->user()->south_east)
+|| ($restaurant->north_west && auth()->user()->north_west)
+|| ($restaurant->north_east && auth()->user()->north_east)
+)
+&& 
+(
+  ($restaurant->dine_in && auth()->user()->dine_in)
+|| ($restaurant->drive_thru && auth()->user()->drive_thru)
+|| ($restaurant->take_out && auth()->user()->take_out)
+|| ($restaurant->delivery && auth()->user()->delivery)
+)
+){
+  $test .= 1;
+  $userRestaurants[] = $restaurant;
+}
+
+dd($userRestaurants);
+
+}
+
+?> 
+
+@foreach($userRestaurants as $userRestaurant)
+<h1> {{ $userRestaurant->name }}</h1>
+@endforeach
+
 <div class="container-fluid">
   <div class="text-center">
     <img src="{{ asset('images/Generate.png') }}" alt="Click to Generate" height="325px">
