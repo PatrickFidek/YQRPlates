@@ -47,6 +47,11 @@ button {
   box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.3), 10px 10px 15px rgba(70, 70, 70, 0.15), inset -10px -10px 15px rgba(255, 255, 255, 0.3), inset 10px 10px 15px rgba(70, 70, 70, 0.15);
 }
 
+.error-message {
+  font-size: 10px;
+  color: #d9534f;
+}
+
 .form {
   position: relative;
   width: 640px;
