@@ -73,8 +73,6 @@ $randomRestaurant = $allRestaurants[$randomNumber];
 $generated = $randomRestaurant->id;
 ?> 
 
-{{ $randomUserRestaurant->id }}
-{{ $generated }}
 <div class="container-fluid">
   <div class="text-center">
     <button style="
