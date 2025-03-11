@@ -9,7 +9,9 @@
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/profile.css') }}">
   <script src="{{ asset('js/profile.js') }}"></script>
 </head>
+
 <title>Profile</title>
+
 <header>
   <nav class="p-6">
     <div class="flex justify-between items-center">
@@ -25,6 +27,7 @@
     </div>
   </nav>
 </header>
+
 <div class="jumbotron text-center">
 @auth
 <h2>Welcome, {{ auth()->user()->name }}!</h2>
@@ -39,24 +42,23 @@
 
         <div class="panel-heading">
           <h1>
-              <?php
+            <?php
               $title = "";
               if(auth()->user()->type == "customer"){
                 $title = "Current Preferences";
-}
+              }
               if(auth()->user()->type == "restaurant owner"){
                 $title= "Restaurant Details";
               }
-?>
-          {{ $title }}
+            ?>
+            {{ $title }}
           </h1>
         </div>
         @if(auth()->user()->type == "restaurant owner")
         <div class="panel-body">
           <p>
             <strong>Name: </strong> 
-                {{ auth()->user()->restaurant->name }}
-              
+              {{ auth()->user()->restaurant->name }}
           </p>
         </div>
         @endif
@@ -156,8 +158,7 @@
           </p>
         </div>
       </div>
-      <!-- should say update prfences/update menu/restaurant depending on restaurant owner or customer -->
-      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/{{ auth()->user()->type == "customer" ? 'preferences' : 'uploadrestaurant' }}';">
+      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/{{ auth()->user()->type == "customer" ? 'editpreferences' : 'editrestaurant' }}';">
         @if(auth()->user()->type == "customer")
           Update Preferences
         @endif
@@ -167,15 +168,16 @@
       </button>
     </div>
     </br>
-    <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/dashboard';">View Dashboard</button>
+    <a class="btn btn-lg largebtn" href="dashboard">View Dashboard</a>
     <br>
-    <!-- this should only display if they are restaurant owner -->
     @if(auth()->user()->type == "restaurant owner")
-      <button class="btn btn-lg largebtn" type="button" onclick="location.href='https://yqrplates.com/promotions';">Add Promotion</button>
+      <a class="btn btn-lg" href="promotions">Add Promotion</a>
     @endif
   </div>
 </div>
   @else
-  <p>You need to be logged in the view your profiles.</p>
+  <p>You need to be logged in the view your profile.</p>
+  <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
+
   @endauth
 </div>

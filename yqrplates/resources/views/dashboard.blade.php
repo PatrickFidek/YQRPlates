@@ -9,7 +9,9 @@
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/dashboard.css') }}">
   <script src="{{ asset('js/dashboard.js') }}"></script>
 </head>
+
 <title>Dashboard</title>
+
 <header>
   <nav class="p-6">
     <div class="flex justify-between items-center">
@@ -25,9 +27,6 @@
     </div>
   </nav>
 </header>
-
-
-
 
 <div class="jumbotron text-center">
 @auth
