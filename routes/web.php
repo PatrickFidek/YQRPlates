@@ -16,10 +16,6 @@ Route::get('/', function () {
     return view('app');
 });
 
-Route::get('/login', function () {
-    return redirect()->route('signin');
-    //return view('signin');
-});
 
 
 Route::get('/dashboard', function () {
@@ -75,6 +71,10 @@ Route::get('/createrestaurant', [UploadRestaurantController::class,'create'])->m
 Route::post('/updaterestaurant', [UploadRestaurantController::class,'update'])->middleware('auth');
 Route::post('/storerestaurant', [UploadRestaurantController::class,'store'])->middleware('auth');
 
+Route::get('/promotions', [PromotionsController::class, 'index'])->middleware('auth');
+Route::post('/promotions', [PromotionsController::class, 'addPromotion'])->middleware('auth');
+Route::delete('/promotions', [PromotionsController::class, 'removePromotion'])->middleware('auth');
+
 Route::get('/dashboard', [DashboardController::class, 'seeDashboard'])->middleware('auth')->name('dashboard');
 
 Route::get('/suggestion', [SuggestionController::class, 'getSuggestion'])->middleware('auth')->name('suggestion');
@@ -88,9 +88,6 @@ Route::post('/logout', [SigninController::class, 'logout']);
 
 Route::post('/profile', [ProfileController::class, 'seeProfile'])->middleware('auth');
 
-Route::get('/promotions', [PromotionsController::class, 'index'])->middleware('auth');
-Route::post('/promotions', [PromotionsController::class, 'addPromotion'])->middleware('auth');
-Route::delete('/promotions', [PromotionsController::class, 'removePromotion'])->middleware('auth');
 
 Route::post('/resetpassword', [ResetPasswordController::class, 'resetPassword']);
 
