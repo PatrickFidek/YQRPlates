@@ -28,23 +28,15 @@
 <div class="jumbotron text-center">
 @auth
 <h2>Welcome, {{ auth()->user()->name }}!</h2>
-    <form action="/logout" method="POST">
-      @csrf
-      <button class="btn btn-lg largebtn" type="submit">Log Out</button>
-    </form>
-
-<div id="Psuccess" class="Psuccess">
-    @if (session('password_reset_success'))
-      <div class="flash-message" id="flash-message">
-      {{ session('password_reset_success') }}
-      </div>
-    @endif
+<form action="/logout" method="POST">
+  @csrf
+  <button class="btn btn-lg largebtn" type="submit">Log Out</button>
 </div>
-
 <div id="about" class="container-fluid" style="width: 400px">
   <div class="row">
     <div class="text-center">
       <div class="panel panel-default text-center">
+
         <div class="panel-heading">
           <h1>
               <?php
@@ -187,17 +179,3 @@
   <p>You need to be logged in the view your profiles.</p>
   @endauth
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const flashMessage = document.getElementById('flash-message');
-    if (flashMessage) {
-      setTimeout(function() {
-        flashMessage.style.opacity = '0';
-        setTimeout(function() {
-          flashMessage.style.display = 'none';
-        }, 500);
-      }, 3000);
-    }
-  })
-</script>

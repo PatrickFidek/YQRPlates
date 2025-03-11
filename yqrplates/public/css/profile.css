@@ -35,27 +35,6 @@ body {
     background-color: #f6f6f6;
   }
 
-  .Psuccess {
-    position: relative;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .flash-message {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform:translateX(-50%);
-    color: rgb(8, 100, 13);
-    padding: 15px 20px;
-    border-radius: 5px;
-    z-index: 1000;
-    opacity: 1;
-    transition: ocapacity 0.5s ease-out;
-    width: 300px;
-    text-align: center;
-  }
-
   .logo-small {
     color: #ff7e2e;
     font-size: 50px;
