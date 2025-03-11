@@ -9,6 +9,8 @@
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/suggestion.css') }}">
   <script src="{{ asset('js/suggestion.js') }}"></script>
 </head>
+
+
 <title>Suggestion Generator</title>
 <header>
   <nav class="p-6">
@@ -33,7 +35,27 @@
     </div>
   </nav>
 </header>
+
+<?php
+foreach($restaurants as $restaurant)
+$userRestaurants = [];
+if($restaurant->food_type == auth()->user()->preference->food_type && 
+$restaurant->price_range == auth()->user()->preference->price_type 
+&& ($restaurant->south_west && auth()->user()->south_west 
+||  $restaurant->south_east && auth()->user()->south_east 
+|| $restaurant->north_west && auth()->user()->north_west
+|| $restaurant->north_east && auth()->user()->north_east)
+&& ($restaurant->dine_in && auth()->user()->dine_in
+|| $restaurant->drive_thru && auth()->user()->drive_thru
+|| $restaurant->take_out && auth()->user()->take_out
+|| $restaurant->delivery && auth()->user()->delivery)
+)
+$userRestaurants[] = $restaurant;
+?>
+
 <div class="jumbotron text-center">
+  @auth
+  @if(auth()->user()->type == "customer")
   <h1>Pick Your Plate</h1>
 </div>
 <div class="container-fluid">
@@ -49,3 +71,12 @@
     </label>
   </div>
 </div>
+@endif
+@if(auth()->user()->type == "restaurant owner")
+<h1>Only Customers Can Use The Suggestion Generator</h1>
+</div>
+@endif
+@else
+<h1>Please sign in to use suggestion generator</h1>
+</div>
+@endauth
