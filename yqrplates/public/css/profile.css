@@ -35,6 +35,20 @@ body {
     background-color: #f6f6f6;
   }
 
+  .flash-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    opacity: 1;
+    transition:mocapacity 0.5s ease-out;
+  }
+
   .logo-small {
     color: #ff7e2e;
     font-size: 50px;
