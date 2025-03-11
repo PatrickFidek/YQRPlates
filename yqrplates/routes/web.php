@@ -81,4 +81,6 @@ Route::post('/logout', [SigninController::class, 'logout']);
 
 Route::post('/profile', [ProfileController::class, 'seeProfile'])->middleware('auth');
 
+Route::post('/promotions', [PromotionsController::class, 'addPromotion']);
+
 Route::post('/resetpassword', [ResetPasswordController::class, 'resetPassword']);
