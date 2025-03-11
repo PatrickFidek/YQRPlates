@@ -29,16 +29,16 @@ Route::get('/resetpassword', function () {
     return view('resetpassword');
 });
 
-Route::get('/preferences', function () {
-    return view('preferences');
+Route::get('/editpreferences', function () {
+    return view('editpreferences');
 });
 
 Route::get('/suggestion', function () {
     return view('suggestion');
 });
 
-Route::get('/uploadrestaurant', function () {
-    return view('uploadrestaurant');
+Route::get('/editrestaurant', function () {
+    return view('editrestaurant');
 });
 
 Route::get('/profile', function () {
@@ -56,18 +56,22 @@ Route::get('/promotions', function () {
 Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
 Route::get('/restaurants/details/{restaurantid}', [RestaurantController::class, 'details'])->name(name: 'restaurants.details');
 
-Route::get('/preferences', [PreferencesController::class, 'index'])->middleware('auth');
+Route::get('/editpreferences', [PreferencesController::class, 'index'])->middleware('auth');
 Route::get('/createpreferences', [PreferencesController::class,'create'])->middleware('auth');
 Route::post('/updatepreferences', [PreferencesController::class,'update'])->middleware('auth');
 Route::post('/storepreferences', [PreferencesController::class,'store'])->middleware('auth');
 
-Route::get('/uploadrestaurant', [UploadRestaurant::class, 'index'])->middleware('auth');
+Route::get('/editrestaurant', [UploadRestaurant::class, 'index'])->middleware('auth');
 Route::get('/createrestaurant', [UploadRestaurant::class,'create'])->middleware('auth');
 Route::post('/updaterestaurant', [UploadRestaurant::class,'update'])->middleware('auth');
 Route::post('/storerestaurant', [UploadRestaurant::class,'store'])->middleware('auth');
 
 Route::post('/register', [RegisterController::class, 'register']);
+
 Route::post('/signin', [SigninController::class, 'signin']);
+
 Route::post('/logout', [SigninController::class, 'logout']);
+
 Route::post('/profile', [ProfileController::class, 'seeProfile'])->middleware('auth');
+
 Route::post('/resetpassword', [ResetPasswordController::class, 'resetPassword']);
