@@ -65,7 +65,7 @@
               </div> 
               
               @error('neighborhood')
-              <div id="neighborhood-error" class="error-message">
+              <div id="neighborhood-error" class="error-message alert alert-danger">
                 {{$errors->first('neighborhood')}}
               @enderror
               </div> 
