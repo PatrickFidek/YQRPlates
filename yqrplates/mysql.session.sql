@@ -44,10 +44,6 @@ CREATE TABLE preferences (
     drive_thru BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    d_food_type INT(11) DEFAULT NULL,
-    d_neighborhoods INT(11) DEFAULT NULL,
-    d_price_range INT(11) DEFAULT NULL,
-    d_restaurant_types INT(11) DEFAULT NULL,
 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
@@ -59,3 +55,15 @@ CREATE TABLE promotions (
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 FOREIGN KEY (restaurant_id) REFERENCES restaurants(id) ON DELETE CASCADE
 );
+
+CREATE TABLE dashboards {
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL
+    d_food_type INT,
+    d_neighborhoods INT,
+    d_restaurant_types INT,
+    d_price_range INT,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+};
