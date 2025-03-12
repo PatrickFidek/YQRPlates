@@ -52,7 +52,7 @@
             <option value="South West">South West</option>
             <option value="South East">South East</option>
           </select>
-        </div> @if ($errors->has('neighborhoods')) <div id="neighborhood-error" class="error-message">
+        </div> @if ($errors->has('neighborhood')) <div id="neighborhood-error" class="error-message">
           {{$errors->first('neighborhood')}}
         </div> @endif
       </label>
