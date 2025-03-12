@@ -36,6 +36,7 @@
 <form action="/updatepreferences" method="POST" id="preferences-form"> 
     @csrf
     <input class="hidden" name="user_id" value={{ auth()->user()->id }}/>
+    <input class="hidden" name="id" value={{ auth()->user()->preference->id }}/>
     <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-4">
@@ -45,10 +46,27 @@
         <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" name="neighborhood[]" multiple>
-            <option value="North West">North West</option>
-            <option value="North East">North East</option>
-            <option value="South West">South West</option>
-            <option value="South East">South East</option>
+          @if (auth()->user()->preference->north_west == TRUE)
+              <option value="North West" selected>North West</option>
+              @else
+              <option value="North West">North West</option>
+              @endif
+
+              @if (auth()->user()->preference->north_east == TRUE )
+              <option value="North East" selected>North East</option>
+              @else
+              <option value="North East">North East</option>
+              @endif
+              @if  (auth()->user()->preference->south_west == TRUE )
+              <option value="South West" selected>South West</option>
+              @else
+              <option value="South West">South West</option>
+              @endif
+              @if ( auth()->user()->preference->south_east == TRUE )
+              <option value="South West" selected>South East</option>
+              @else
+              <option value="South West">South East</option>
+              @endif
           </select>
         </div> @if ($errors->has('neighborhoods')) <div id="neighborhood-error" class="error-message">
           {{$errors->first('neighborhood')}}
@@ -61,15 +79,51 @@
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" name="food_type" onChange="foodType(this)">
             <option value="" disabled></option>
-            <option value="Fast Food">Fast Food</option>
-            <option value="Canadian">Canadian</option>
-            <option value="Pizza">Pizza</option>
-            <option value="Greek">Greek</option>
-            <option value="Indian">Indian</option>
-            <option value="Sushi">Sushi</option>
-            <option value="Italian">Italian</option>
-            <option value="Asian">Asian</option>
-            <option value="Chinese">Chinese</option>
+            @if(auth()->user()->preference->food_type == "Fast Food")
+              <option value="Fast Food" selected>Fast Food</option>
+              @else
+              <option value="Fast Food" selected>Fast Food</option>
+              @endif
+              @if(auth()->user()->preference->food_type === "Canadian")
+              <option value="Canadian" selected>Canadian</option>
+              @else
+              <option value="Canadian">Canadian</option>
+              @endif
+              @if(auth()->user()->preference->food_type === "Pizza")
+              <option value="Pizza" selected>Pizza</option>
+              @else
+              <option value="Pizza">Pizza</option>
+              @endif
+              @if(auth()->user()->preference->food_type === "Greek")
+              <option value="Greek" selected>Greek</option>
+              @else
+              <option value="Greek">Greek</option>
+              @endif
+              @if(auth()->user()->preference->food_type === "Indian")
+              <option value="Indian" selected>Indian</option>
+              @else
+              <option value="Indian">Indian</option>
+              @endif
+              @if(auth()->user()->preference->food_type === "Sushi")
+
+              @else
+              <option value="Sushi">Sushi</option>
+              @endif
+              @if(auth()->user()->preference->food_type === "Italian")
+              <option value="Italian" selected>Italian</option>
+              @else
+              <option value="Italian">Italian</option>
+              @endif
+              @if(auth()->user()->preference->food_type === "Asian")
+              <option value="Asian" selected>Asian</option>
+              @else
+              <option value="Asian">Asian</option>
+              @endif
+              @if(auth()->user()->preference->food_type === "Chinese")
+              <option value="Chinese" selected>Chinese<option>
+              @else
+              <option value="Chinese">Chinese<option>
+              @endif
           </select>
         </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
           {{$errors->first('food_type')}}
@@ -87,10 +141,26 @@
         <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" name="restaurant_type[]" multiple>
-            <option value="Dine In">Dine In</option>
-            <option value="Take Out">Take Out</option>
-            <option value="Delivery">Delivery</option>
-            <option value="Drive Thru">Drive Thru</option>
+          @if(auth()->user()->preference->dine_in == TRUE)
+              <option value="Dine In" selected>Dine In</option>
+              @else
+              <option value="Dine In">Dine In</option>
+              @endif
+              @if(auth()->user()->preference->take_out == TRUE)
+              <option value="Take Out" selected>Take Out</option>
+              @else
+              <option value="Take Out">Take Out</option>
+              @endif
+              @if(auth()->user()->preference->delivery == TRUE)
+              <option value="Delivery" selected>Delivery</option>
+              @else
+              <option value="Delivery">Delivery</option>
+              @endif
+              @if(auth()->user()->preference->drive_thru == TRUE)
+              <option value="Drive Thru" selected>Drive Thru</option>
+              @else
+              <option value="Drive Thru">Drive Thru</option>
+              @endif
           </select>
         </div> @if ($errors->has('restaurant_type')) <div id="restaurant-type-error" class="error-message">
           {{$errors->first('restaurant-type')}}
@@ -103,10 +173,26 @@
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" name="price_range" onChange="priceRange(this)">
             <option value="" disabled></option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="Medium High">Medium High</option>
-            <option value="High">High</option>
+            @if(ucwords(auth()->user()->preference->price_range) == "Low")
+              <option value="Low" selected>Low</option>
+              @else
+              <option value="Low">Low</option>
+              @endif
+              @if(ucwords(auth()->user()->preference->price_range) == "Medium")
+
+              @else
+              <option value="Medium">Medium</option>
+              @endif
+              @if(ucwords(auth()->user()->preference->price_range) == "Medium High")
+              <option value="Medium High" selected>Medium High</option>
+              @else
+              <option value="Medium High">Medium High</option>
+              @endif
+              @if(ucwords(auth()->user()->preference->price_range) == "High")
+              <option value="High" selected>High</option>
+              @else
+              <option value="High">High</option>
+              @endif
           </select>
         </div> @if ($errors->has('price-range')) <div id="price-range-error" class="error-message">
           {{$errors->first('price-range')}}
