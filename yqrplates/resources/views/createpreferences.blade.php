@@ -52,6 +52,9 @@
             <option value="South West">South West</option>
             <option value="South East">South East</option>
           </select>
+        </div> @if ($errors->has('neighborhoods')) <div id="neighborhood-error" class="error-message">
+          {{$errors->first('neighborhood')}}
+        </div> @endif
       </label>
     </div>
     <div class="col-sm-4">
@@ -70,7 +73,9 @@
             <option value="Asian">Asian</option>
             <option value="Chinese">Chinese</option>
           </select>
-        </div> 
+        </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
+          {{$errors->first('food_type')}}
+        </div> @endif
       </label>
     </div>
     <div class="col-sm-2"></div>

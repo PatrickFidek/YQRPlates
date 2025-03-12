@@ -17,6 +17,9 @@ class PreferencesController extends Controller{
     }
 
     public function store(Request $request){
+        $neighborhood = $request->input('neighborhood', []);
+        $restaurantType = $request->input('restaurant_type', []);
+
         $south_east = in_array("South East", $request->input('neighborhood'));
         $south_west = in_array("South West", $request->input('neighborhood'));
         $north_east = in_array("North East", $request->input('neighborhood'));
@@ -46,6 +49,9 @@ class PreferencesController extends Controller{
 
     public function update(Request $request) {
         $preference = Preference::find($request->input('id'));
+
+        $neighborhood = $request->input('neighborhood', []);
+        $restaurantType = $request->input('restaurant_type', []);
 
         $south_east = in_array("South East", $request->input('neighborhood'));
         $south_west = in_array("South West", $request->input('neighborhood'));
