@@ -56,7 +56,7 @@
               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
               <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
               <div class="row d-flex justify-content-center mt-100">
-                <select id="choices-multiple-remove-button" name="neighborhood[]" multiple>
+                <select id="choices-multiple-remove-button" name="neighborhood" multiple>
                   <option value="North West">North West</option>
                   <option value="North East">North East</option>
                   <option value="South West">South West</option>
@@ -65,7 +65,7 @@
               </div> 
               
               @error('neighborhood')
-              <div id="neighborhood-error" class="error-message alert alert-danger">
+                <div id="neighborhood-error" class="error-message alert alert-danger">
                 {{ $message }}
               @enderror
               </div> 
