@@ -90,7 +90,7 @@
                 
               </div> 
               @error('food_type') <div id="food-type-error" class="error-message alert alert-danger">
-                {{ $message }}
+                {{ $message }}</div>
               @enderror
               </div> 
             </label>
