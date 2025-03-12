@@ -171,7 +171,7 @@
     <a class="btn btn-lg largebtn" href="dashboard">View Dashboard</a>
     <br>
     @if(auth()->user()->type == "restaurant owner")
-      <a class="btn btn-lg" href="promotions">Add Promotion</a>
+      <a class="btn btn-lg largebtn" href="promotions">Add Promotion</a>
     @endif
   </div>
 </div>
