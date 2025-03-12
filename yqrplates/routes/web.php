@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;  // trying this for route[login] issue if causing any problem you can remove
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ProfileController;
@@ -69,10 +70,17 @@ Route::get('/createrestaurant', [UploadRestaurantController::class,'create'])->m
 Route::post('/updaterestaurant', [UploadRestaurantController::class,'update'])->middleware('auth');
 Route::post('/storerestaurant', [UploadRestaurantController::class,'store'])->middleware('auth');
 
-Route::get('/dashboard', [DashboardController::class, 'seeDashboard'])->middleware('auth')->name('dashboard');
+
+// Auth::routes(); // i tried this earlier this breaks everything for some reason
+Auth::routes();  // tried this for route[login] error in my page please let me know if its breaking pages @dharmatejash
+
+Route::get('/promotions', [PromotionsController::class, 'index'])->middleware('auth');
+Route::post('/promotions', [PromotionsController::class, 'addPromotion'])->middleware('auth');
+Route::delete('/promotions', [PromotionsController::class, 'removePromotion'])->middleware('auth');
+
+Route::get('/dashboard', [DashboardController::class, 'seeDashboard'])->middleware('auth');
 
 Route::get('/suggestion', [SuggestionController::class, 'getSuggestion'])->middleware('auth')->name('suggestion');
-
 
 Route::post('/register', [RegisterController::class, 'register']);
 
@@ -81,7 +89,5 @@ Route::post('/signin', [SigninController::class, 'signin']);
 Route::post('/logout', [SigninController::class, 'logout']);
 
 Route::post('/profile', [ProfileController::class, 'seeProfile'])->middleware('auth');
-
-Route::post('/promotions', [PromotionsController::class, 'addPromotion']);
 
 Route::post('/resetpassword', [ResetPasswordController::class, 'resetPassword']);
