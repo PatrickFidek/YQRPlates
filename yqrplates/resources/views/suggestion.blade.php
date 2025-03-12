@@ -36,12 +36,14 @@
   </nav>
 </header>
 <div class="jumbotron text-center">
-  @auth
-  @if(auth()->user()->type == "customer")
+
+
   <h1>Pick Your Plate</h1>
+  
+  @if(auth()->user()->type == "customer")
 </div>
 <?php
-
+$generated;
 $userRestaurants = [];
 $allRestaurants = [];
 foreach($restaurants as $restaurant){
@@ -65,13 +67,17 @@ if(
 
 $arrayLength = count($userRestaurants);
 $randomIndex = rand(0, $arrayLength - 1);
-$randomUserRestaurant = $userRestaurants[$randomIndex];
+$randomUserRestaurant = $userRestaurants[$randomIndex]->id;
+
 
 $count = count($allRestaurants);
 $randomNumber = rand(0, $count);
-$randomRestaurant = $allRestaurants[$randomNumber];
-$generated = $randomRestaurant->id;
+$generated = $allRestaurants[$randomNumber]->id;
 ?> 
+
+<form id="testForm" method="POST" action="{{ url()->current() }}">
+  @csrf
+<input type="hidden" name="generated" id="generatedInput" value="{{ $generated }}">
 
 <div class="container-fluid">
   <div class="text-center">
@@ -80,26 +86,23 @@ $generated = $randomRestaurant->id;
     border: none;
     padding: 0;
     cursor: pointer;
-" onclick="window.location.href='/restaurants/details/{{ $generated}}';">
-    <img src="{{ asset('images/Generate.png') }}" alt="Click to Generate" height="325px">
+" onClick="updateButtonLink(event)" id="allButton">
+    <img src="{{ asset('images/Generate.png') }}" alt="Click to Generate" height="325px" id="allImage">
     </button>
+
+</form>
+    
   </div>
   <div style="text-align: center; padding-top: 15px">
-    @if(auth()->user())
+    @auth
     <p style="font-size: 18px">Use Prefrences</p>
-    @endif
+    @endauth
     <form action="POST" action="{{ url()->current() }}">
     <label class="switch">
-      <input type="checkbox" id="preferences">
+      <input type="checkbox" id="preferences" onchange="updateGeneratedValue()">
       <span class="slider round"></span>
     </label>
 </form>
-    <?php
-
-if (isset($_POST['preferences'])) {
-    $generated = $randomUserRestaurant->id;
-}
-?>
   </div>
 </div>
 @endif
@@ -107,7 +110,20 @@ if (isset($_POST['preferences'])) {
 <h1>Only Customers Can Use The Suggestion Generator</h1>
 </div>
 @endif
-@else
-<h1>Please sign in to use suggestion generator</h1>
 </div>
-@endauth
+
+<script>
+  function updateGeneratedValue() {
+    const checkbox = document.getElementById('preferences');
+    const generatedInput = document.getElementById('generatedInput');
+    if (checkbox.checked) 
+      generatedInput.value = "{{ $randomUserRestaurant }}";
+     else 
+      generatedInput.value = "{{ $generated }}";
+  }
+  function updateButtonLink(event) {
+    const generatedInput = document.getElementById('generatedInput').value;
+    window.location.href = '/restaurants/details/' + generatedInput;
+    event.preventDefault();
+  }
+</script>
