@@ -65,8 +65,7 @@
               </div> 
               
               @error('neighborhood')
-                <div id="neighborhood-error" class="error-message alert alert-danger">
-                {{ $message }}
+                <div id="neighborhood-error" class="error-message alert alert-danger"> {{ $message }} </div>
               @enderror
               </div> 
 
