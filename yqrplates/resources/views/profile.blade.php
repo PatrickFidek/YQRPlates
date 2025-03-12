@@ -176,7 +176,7 @@
   </div>
 </div>
   @else
-  <p>You need to be logged in the view your profile.</p>
+  <p>You need to be logged in order to view your profile.</p>
   <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
 
   @endauth
