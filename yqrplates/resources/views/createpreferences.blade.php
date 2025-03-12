@@ -68,9 +68,9 @@
                 <div id="neighborhood-error" class="error-message alert alert-danger"> {{ $message }} </div>
               @enderror
               </div> 
-
             </label>
           </div>
+
           <div class="col-sm-4">
             <label>
               <span>Food Type</span>
@@ -87,9 +87,12 @@
                   <option value="Asian">Asian</option>
                   <option value="Chinese">Chinese</option>
                 </select>
-              </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
+                
+              </div> 
+              @error('food_type') <div id="food-type-error" class="error-message">
                 {{$errors->first('food_type')}}
-              </div> @endif
+              @enderror
+              </div> 
             </label>
           </div>
           <div class="col-sm-2"></div>
