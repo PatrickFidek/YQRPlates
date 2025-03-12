@@ -56,7 +56,42 @@ class PreferenceObserver
      */
     public function updated(Preference $preference): void
     {
-        //
+        $restaurants = Restaurant::all();
+
+        $food_types = 0;
+        $restaurant_types = 0;
+        $neighborhoods = 0;
+        $price_ranges = 0;
+
+        foreach($restaurants as $restaurant){
+        if($restaurant->food_type == $preference->food_type)
+            $food_types++;
+        if($restaurant->price_range == $preference->price_range)
+                $price_ranges++;
+        if($restaurant->south_west && $preference->south_west)
+                $neighborhoods++;
+        elseif($restaurant->south_east && $preference->south_east)
+                $neighborhoods++;
+        elseif($restaurant->north_west && $preference->north_west)
+                $neighborhoods++;
+        elseif($restaurant->north_east && $preference->north_east)
+                $neighborhoods++;
+        if ($restaurant->dine_in && $preference->dine_in)
+                $restaurant_types++;
+        elseif ($restaurant->drive_thru && $preference->drive_thru)
+                $restaurant_types++;
+        elseif ($restaurant->delivery && $preference->delivery)
+                $restaurant_types++;
+        elseif ($restaurant->take_out && $preference->take_out)
+                $restaurant_types++;
+        }
+
+        $preference->d_food_type = $food_types;
+        $preference->d_price_range = $price_ranges;
+        $preference->d_restaurant_types = $restaurant_types;
+        $preference->d_neighborhoods = $neighborhoods;
+        
+        $preference->save();
     }
 
     /**
