@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class SuggestionController extends Controller
 {
+    public function index(){
+        return view('suggesiton');
+    }
     public function getSuggestion() {
         $restaurants = Restaurant::all();
         return view('suggestion', compact('restaurants'));
