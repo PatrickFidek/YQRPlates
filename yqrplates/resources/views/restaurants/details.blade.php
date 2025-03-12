@@ -20,6 +20,7 @@
       float: none;
       margin: 0 auto;
     }
+
     .largebtn:hover {
       background-color: #fff !important;
       border-width: 3px;
@@ -27,10 +28,8 @@
     }
   </style>
 </head>
-
 <!-- This could also be the restaurant name -->
 <title>{{ $restaurant->name }}</title>
-
 <html>
   <body>
     <header>
