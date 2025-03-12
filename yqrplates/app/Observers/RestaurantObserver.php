@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Restaurant;
 use App\Models\Preference;
+use App\Models\Dashboard;
 
 class RestaurantObserver
 {
@@ -45,40 +46,31 @@ class RestaurantObserver
                     $restaurant_types++;
             }
 
-            $preference->d_food_type = $food_types;
-            $preference->d_price_range = $price_ranges;
-            $preference->d_restaurant_types = $restaurant_types;
-            $preference->d_neighborhoods = $neighborhoods;
 
-            $preference->save();
-            // if ($preference->food_type == $restaurant->food_type){
-            //     $preference->d_food_type = $preference->d_food_type + 1;
-            // }
+            $dashboard = Dashboard::where('user_id', $preference->user_id)->first();
 
-            // if ($preference->price_range == $restaurant->price_range)
-            //     $preference->d_price_range = $preference->d_price_range + 1;
-
-            // if ($preference->south_west && $restaurant->south_west)
-            //     $preference->d_neighborhoods = $preference->d_neighborhoods + 1;
-            // elseif ($preference->south_east && $restaurant->south_east)
-            //     $preference->d_neighborhoods++;
-            // elseif ($preference->north_west && $restaurant->north_west)
-            //     $preference->d_neighborhoods++;
-            // elseif ($preference->north_east && $restaurant->north_east)
-            //     $preference->d_neighborhoods++;
-
-            // if ($preference->dine_in && $restaurant->dine_in)
-            //     $preference->d_restaurant_types++;
-            // elseif ($preference->drive_thru && $restaurant->drive_thru)
-            //     $preference->d_restaurant_types++;
-            // elseif ($preference->delivery && $restaurant->delivery)
-            //     $preference->d_restaurant_types++;
-            // elseif ($preference->take_out && $restaurant->take_out)
-            //     $preference->d_restaurant_types++;
-
-            // $preference->save();
-        }
+            if($dashboard){
+                $dashboard->update([
+                    'd_food_type' => $food_types,
+                    'd_neighborhoods' => $neighborhoods,
+                    'd_restaurant_types' => $restaurant_types,
+                    'd_price_range' => $price_ranges
+            ]);
+            }
+            else{
+                Dashboard::firstOrCreate(
+                    ['user_id' => $preference->user_id],
+                    [
+                    'user_id' => $preference->user_id,
+                    'd_food_type' => $food_types,
+                    'd_neighborhoods' => $neighborhoods,
+                    'd_restaurant_types' => $restaurant_types,
+                    'd_price_range' => $price_ranges
+            ]);
+    
+            }
     }
+}
 
     /**
      * Handle the Restaurant "updated" event.
