@@ -40,6 +40,3 @@ class RegisterController extends Controller
         return view ('/preferences');
     }
 }
-
-
-
