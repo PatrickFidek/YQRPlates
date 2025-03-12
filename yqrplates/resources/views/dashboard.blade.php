@@ -31,6 +31,7 @@
 <div class="jumbotron text-center">
 @auth
 <h2>{{ auth()->user()->name }}'s Dashboard</h2>
+<button class="btn btn-lg largebtn" onclick="window.location.href='/profile';">Profile</button>
 </div>
 @csrf
 @if(auth()->user()->type == "customer")
@@ -264,5 +265,6 @@ elseif ($preference->take_out && auth()->user()->restaurant->take_out)
 </div>
   @else
   <p>You need to be logged in order to view your dashboard</p>
+
   @endauth
 </div>
