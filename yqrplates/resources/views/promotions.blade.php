@@ -26,9 +26,11 @@
 </header>
 
 <title>Promotions</title><div class="jumbotron text-center">
-  <h1>Restaurant Name</h1>
+  <h1>{{ auth()->user()->restaurant->name }}</h1>
 </div>
-<div id="about" class="container-fluid" style="width: 400px">
+@auth
+<!--@if(auth()->user()->type == "restaurant owner")-->
+ <div id="about" class="container-fluid" style="width: 400px">
   <div class="row">
     <div class="panel panel-default text-center">
       <div class="panel-heading">
@@ -51,10 +53,18 @@
         </div>
       </form>
     </div>
+   </div>
+   </div>
   </div>
-</div>
-</div>
 <div>
+<!--@endif-->
+@endauth
+@guest
+<div class="container text-center">
+  <p>Please <a href="/signin">sigin in</a> to add or manage promotions.</p>
+</div>
+@endguest
+@auth
   <div id="pricing" class="container-fluid">
     <h2>Current Promotions</h2>
     <div class="row">
@@ -83,6 +93,8 @@
       @endforelse
     </div>
  </div>
+@endauth
+
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document" style="padding-top: 15%;">
