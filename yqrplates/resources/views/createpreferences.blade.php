@@ -89,7 +89,7 @@
                 </select>
                 
               </div> 
-              @error('food_type') <div id="food-type-error" class="error-message">
+              @error('food_type') <div id="food-type-error" class="error-message alert alert-danger">
                 {{$errors->first('food_type')}}
               @enderror
               </div> 
