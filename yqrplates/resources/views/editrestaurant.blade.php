@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/uploadrestaurant.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/editrestaurant.css') }}">
   <title>Edit Restaurant</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/uploadrestaurant.js') }}"></script>
@@ -30,10 +30,13 @@
 <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
 <div class="center">
-  <form action="/updaterestaurant" method="POST" id="restaurant-form"> @csrf <label>
+  <form action="/updaterestaurant" method="POST" id="restaurant-form" enctype="multipart/form-data"> 
+    @csrf 
+    <input class="hidden" name="restaurant_id" value={{ auth()->user()->restaurant->id }} />
+    <label>
       <span>Restaurant Name</span>
-      <input name="name" type="text" /> @if ($errors->has('name')) <div id="name-error" class="error-message">
-        {{$errors->first('name')}}
+      <input name="restaurant_name" type="text" value="{{ auth()->user()->restaurant->name }}"/> @if ($errors->has('restaurant_name')) <div id="name-error" class="error-message">
+        {{$errors->first('restaurant_name')}}
       </div> @endif 
     </label>
     <br>
@@ -45,11 +48,30 @@
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
           <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
           <div class="row d-flex justify-content-center mt-100">
-            <select id="choices-multiple-remove-button" multiple>
+            <select id="choices-multiple-remove-button" name="neighborhood[]" multiple>
+              @if (auth()->user()->restaurant->north_west == TRUE)
+              <option value="North West" selected>North West</option>
+              @else
               <option value="North West">North West</option>
+              @endif
+
+              @if (auth()->user()->restaurant->north_east == TRUE )
+              <option value="North East" selected>North East</option>
+              @else
               <option value="North East">North East</option>
+              @endif
+              @if  (auth()->user()->restaurant->south_west == TRUE )
+              <option value="South West" selected>South West</option>
+          
+              @else
               <option value="South West">South West</option>
+              @endif
+              @if ( auth()->user()->restaurant->south_east == TRUE )
+              <option value="South West" selected>South East</option>
+              
+              @else
               <option value="South West">South East</option>
+              @endif
             </select>
           </div> @if ($errors->has('neighborhoods')) <div id="neighborhood-error" class="error-message">
             {{$errors->first('neighborhood')}}
@@ -60,17 +82,53 @@
         <label>
           <span>Food Type</span>
           <div class="row d-flex justify-content-center mt-100">
-            <select id="choices-multiple-remove-button" onChange="foodType(this)">
+            <select id="choices-multiple-remove-button" name="food_type" onChange="foodType(this)">
               <option value="" disabled></option>
-              <option value="Fast Food">Fast Food</option>
+              @if(auth()->user()->restaurant->food_type == "Fast Food")
+              <option value="Fast Food" selected>Fast Food</option>
+              @else
+              <option value="Fast Food" selected>Fast Food</option>
+              @endif
+              @if(auth()->user()->restaurant->food_type === "Canadian")
+              <option value="Canadian" selected>Canadian</option>
+              @else
               <option value="Canadian">Canadian</option>
+              @endif
+              @if(auth()->user()->restaurant->food_type === "Pizza")
+              <option value="Pizza" selected>Pizza</option>
+              @else
               <option value="Pizza">Pizza</option>
+              @endif
+              @if(auth()->user()->restaurant->food_type === "Greek")
+              <option value="Greek" selected>Greek</option>
+              @else
               <option value="Greek">Greek</option>
+              @endif
+              @if(auth()->user()->restaurant->food_type === "Indian")
+              <option value="Indian" selected>Indian</option>
+              @else
               <option value="Indian">Indian</option>
+              @endif
+              @if(auth()->user()->restaurant->food_type === "Sushi")
+
+              @else
               <option value="Sushi">Sushi</option>
+              @endif
+              @if(auth()->user()->restaurant->food_type === "Italian")
+              <option value="Italian" selected>Italian</option>
+              @else
               <option value="Italian">Italian</option>
-            <option value="Asian">Asian</option>
-            <option value="Chinese">Chinese</option>
+              @endif
+              @if(auth()->user()->restaurant->food_type === "Asian")
+              <option value="Asian" selected>Asian</option>
+              @else
+              <option value="Asian">Asian</option>
+              @endif
+              @if(auth()->user()->restaurant->food_type === "Chinese")
+              <option value="Chinese" selected>Chinese<option>
+              @else
+              <option value="Chinese">Chinese<option>
+              @endif
             </select>
           </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
             {{$errors->first('food_type')}}
@@ -87,11 +145,27 @@
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
           <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
           <div class="row d-flex justify-content-center mt-100">
-            <select id="choices-multiple-remove-button" multiple>
+            <select id="choices-multiple-remove-button" name="restaurant_type[]" multiple>
+              @if(auth()->user()->restaurant->dine_in == TRUE)
+              <option value="Dine In" selected>Dine In</option>
+              @else
               <option value="Dine In">Dine In</option>
+              @endif
+              @if(auth()->user()->restaurant->take_out == TRUE)
+              <option value="Take Out" selected>Take Out</option>
+              @else
               <option value="Take Out">Take Out</option>
+              @endif
+              @if(auth()->user()->restaurant->delivery == TRUE)
+              <option value="Delivery" selected>Delivery</option>
+              @else
               <option value="Delivery">Delivery</option>
+              @endif
+              @if(auth()->user()->restaurant->drive_thru == TRUE)
+              <option value="Drive Thru" selected>Drive Thru</option>
+              @else
               <option value="Drive Thru">Drive Thru</option>
+              @endif
             </select>
           </div> @if ($errors->has('restaurant_type')) <div id="restaurant-type-error" class="error-message">
             {{$errors->first('restaurant-type')}}
@@ -102,12 +176,28 @@
         <label>
           <span>Price Range</span>
           <div class="row d-flex justify-content-center mt-100">
-            <select id="choices-multiple-remove-button" onChange="priceRange(this)">
+            <select id="choices-multiple-remove-button" name="price_range" onChange="priceRange(this)">
               <option value="" disabled></option>
+              @if(ucwords(auth()->user()->restaurant->price_range) == "Low")
+              <option value="Low" selected>Low</option>
+              @else
               <option value="Low">Low</option>
+              @endif
+              @if(ucwords(auth()->user()->restaurant->price_range) == "Medium")
+
+              @else
               <option value="Medium">Medium</option>
+              @endif
+              @if(ucwords(auth()->user()->restaurant->price_range) == "Medium High")
+              <option value="Medium High" selected>Medium High</option>
+              @else
               <option value="Medium High">Medium High</option>
+              @endif
+              @if(ucwords(auth()->user()->restaurant->price_range) == "High")
+              <option value="High" selected>High</option>
+              @else
               <option value="High">High</option>
+              @endif
             </select>
           </div> @if ($errors->has('price-range')) <div id="price-range-error" class="error-message">
             {{$errors->first('price-range')}}
@@ -117,7 +207,12 @@
       <div class="col-sm-2"></div>
     </div>
     <label>
-      <span id="noMenu">Upload Menu</span>
+    <div class="row text-center">
+              <div class="align-center">             
+              <a class="largebtn btn btn-lg" href="{{ auth()->user()->restaurant->menu_link }}" target="_blank">View Current Menu</a>           
+              </div>
+              <br>
+      <span id="noMenu">Update Menu</span>
       <div class="dropzone text-center" style="height: 20%; width: 100%" id="noMenu2">
         <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" id="displayImage" />
         <embed id="pdf" src="#" width="100%" height="100%" style="display: none" />
@@ -132,11 +227,11 @@
     </label>
     <label>
       <span>or paste URL link here</span>
-      <input name="name" type="text" /> @if ($errors->has('menu')) <div id="menu-error" class="error-message">
+      <input name="menulink" type="text" value="{{ auth()->user()->restaurant->menu_link}}"/> @if ($errors->has('menu')) <div id="menu-error" class="error-message">
             {{$errors->first('menu')}}
           </div> @endif
     </label>
-    <button type="button" class="submit" background-color:#fff>Continue</button>
+    <button type="submit" class="submit" background-color:#fff>Continue</button>
   </form>
 </div>
 <script>
