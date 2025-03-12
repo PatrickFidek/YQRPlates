@@ -11,6 +11,20 @@ h2 {
   font-weight: 600;
   margin-bottom: 30px;
 }
+
+.btn {
+  background-color: #79a263;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #416b2b;
+}
+
 .jumbotron {
   background-color: #ff7e2e;
   color: #fff;
