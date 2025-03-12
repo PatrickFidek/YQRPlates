@@ -39,7 +39,15 @@
   <form action="/storepreferences" method="POST" id="preferences-form"> 
       @csrf
       <input class="hidden" name="user_id" value={{ auth()->user()->id }}/>
-      
+      @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-4">
