@@ -17,16 +17,6 @@ class PreferencesController extends Controller{
     }
 
     public function store(Request $request){
-        $fields = $request->validate([
-            'user_id' => 'required|integer',
-            'price_range' => ['required', Rule::in(['Low', 'Medium', 'Medium High', 'High'])],
-            'food_type' => ['required', Rule::in(['Fast Food', 'Canadian', 'Pizza', 'Greek', 'Indian', 'Sushi', 'Italian', 'Asian', 'Chinese'])],
-            'neighborhood' => 'required|array',
-            'neighborhood.*' => 'required|string',
-            'restaurant_type' => 'required|array',
-            'restaurant_type.*' => 'required|string',
-        ]);   
-        
         $south_east = in_array("South East", $request->input('neighborhood'));
         $south_west = in_array("South West", $request->input('neighborhood'));
         $north_east = in_array("North East", $request->input('neighborhood'));
@@ -55,16 +45,6 @@ class PreferencesController extends Controller{
     }
 
     public function update(Request $request) {
-        $fields = $request->validate([
-            'id' => 'required|integer',
-            'price_range' => ['required', Rule::in(['Low', 'Medium', 'Medium High', 'High'])],
-            'food_type' => ['required', Rule::in(['Fast Food', 'Canadian', 'Pizza', 'Greek', 'Indian', 'Sushi', 'Italian', 'Asian', 'Chinese'])],
-            'neighborhood' => 'required|array',
-            'neighborhood.*' => 'required|string',
-            'restaurant_type' => 'required|array',
-            'restaurant_type.*' => 'required|string',
-        ]);
-
         $preference = Preference::find($request->input('id'));
 
         $south_east = in_array("South East", $request->input('neighborhood'));
