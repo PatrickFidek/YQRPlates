@@ -119,4 +119,6 @@ class UploadRestaurantController extends Controller
         
         return redirect('profile');
     }
+
+    
 }
