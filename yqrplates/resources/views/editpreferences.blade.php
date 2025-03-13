@@ -22,6 +22,13 @@
             <div class="navbar-header">
               <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
             </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a href="profile">PROFILE</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </nav>
       </div>
@@ -63,9 +70,9 @@
               <option value="South West">South West</option>
               @endif
               @if ( auth()->user()->preference->south_east == TRUE )
-              <option value="South West" selected>South East</option>
+              <option value="South East" selected>South East</option>
               @else
-              <option value="South West">South East</option>
+              <option value="South East">South East</option>
               @endif
           </select>
         </div> @if ($errors->has('neighborhoods')) <div id="neighborhood-error" class="error-message">
