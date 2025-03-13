@@ -23,9 +23,16 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-right">
+              @guest  
                 <li>
-                  <a href="signin">SIGN IN</a>
+                    <a href="signin">SIGN IN</a>
                 </li>
+              @endguest
+              @auth
+                <li>
+                  <a href="profile">PROFILE</a>
+                </li>
+              @endauth
               </ul>
             </div>
           </div>
