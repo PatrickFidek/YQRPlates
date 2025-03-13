@@ -20,6 +20,13 @@
             <div class="navbar-header">
               <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
             </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="profile">PROFILE</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </nav>
       </div>
