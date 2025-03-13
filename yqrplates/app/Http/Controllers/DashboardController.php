@@ -9,7 +9,6 @@ use App\Models\Preference;
 class DashboardController extends Controller
 {
 
-
     public function indexRestaurants()
     {
         $restaurants = Restaurant::all();
