@@ -34,15 +34,9 @@ class Restaurant extends Model
     {
         return $this->belongsTo(User::class);
     }
-   
-    public function promotions()
-    {
-        return $this->hasMany(Promotion::class);
-    }
-    /*
+
     public function promotions()
    {
     return $this->hasMany(Promotion::class);
    }
-    */
 }

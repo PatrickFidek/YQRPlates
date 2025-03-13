@@ -69,7 +69,7 @@
         <label>
           <span>Food Type</span>
           <div class="row d-flex justify-content-center mt-100">
-            <select id="choices-multiple-remove-button" name="food_type" onChange="foodType(this)">
+            <op id="choices-multiple-remove-button" name="food_type" onChange="foodType(this)">
             <option value="none" selected disabled hidden></option>
               <option value="Fast Food">Fast Food</option>
               <option value="Canadian">Canadian</option>
@@ -80,6 +80,8 @@
               <option value="Italian">Italian</option>
               <option value="Asian">Asian</option>
               <option value="Chinese">Chinese</option>
+              <option value="Thai">Thai</option>
+              <option value="Vietnamese">Vietnamese</option>
             </select>
           </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
             The food type field is required
