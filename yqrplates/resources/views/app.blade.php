@@ -10,7 +10,9 @@
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/app.css') }}">
   <script src="{{ asset('js/app.js') }}"></script>
 </head>
+
 <title>YQR Plates</title>
+
 <header>
   <nav class="p-6">
     <div class="flex justify-between items-center">
@@ -19,13 +21,17 @@
           <div class="container">
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-right">
-                @guest
+              @guest  
                 <li>
-                  <a href="signin">SIGN IN</a>
+                    <a href="signin">SIGN IN</a>
                 </li>
-                @endguest
-                </u>
-                <button class="btn" style="margin-top: 5px" onclick="window.location.href='/profile';"><i class="fa fa-home"></i></button>
+              @endguest
+              @auth
+                <li>
+                  <a href="profile">PROFILE</a>
+                </li>
+              @endauth
+              </ul>
             </div>
           </div>
         </nav>
