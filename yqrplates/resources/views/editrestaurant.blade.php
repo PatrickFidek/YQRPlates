@@ -136,6 +136,11 @@
               @else
               <option value="Chinese">Chinese<option>
               @endif
+              @if(auth()->user()->restaurant->food_type === "Thak")
+              <option value="Thai" selected>Thai</option>
+              @else
+              <option value="Thai" selected>Thai</option>
+              @endif
             </select>
           </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
             {{$errors->first('food_type')}}
