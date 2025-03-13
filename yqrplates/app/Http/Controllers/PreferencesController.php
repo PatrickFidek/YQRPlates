@@ -17,8 +17,7 @@ class PreferencesController extends Controller{
     }
 
     public function store(Request $request){
-        $neighborhood = $request->input('neighborhood', []);
-        $restaurantType = $request->input('restaurant_type', []);
+
 
         if (empty($neighborhood) && empty($restaurantType) && empty($request->input('price_range')) && empty($request->input('food_type'))) {
             return redirect('profile');
