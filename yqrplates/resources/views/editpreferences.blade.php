@@ -131,6 +131,7 @@
               @else
               <option value="Chinese">Chinese<option>
               @endif
+              <option value="Thai">Thai</option>
           </select>
         </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
           {{$errors->first('food_type')}}
