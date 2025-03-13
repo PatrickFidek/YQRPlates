@@ -25,7 +25,7 @@ class UploadRestaurantController extends Controller
             'neighborhood' => 'required',
             'restaurant_type' => 'required',
             'price_range' => ['required', Rule::in(['Low', 'Medium', 'Medium High', 'High'])],
-            'food_type' => ['required', Rule::in(['Fast Food', 'Canadian', 'Pizza', 'Greek', 'Indian', 'Sushi', 'Italian', 'Asian', 'Chinese'])],
+            'food_type' => ['required', Rule::in(['Fast Food', 'Canadian', 'Pizza', 'Greek', 'Indian', 'Sushi', 'Italian', 'Asian', 'Chinese','Thai'])],
         ]);
 
         $menu_link = '';
@@ -66,9 +66,7 @@ class UploadRestaurantController extends Controller
     }
 
     public function update(Request $request) {
-        //dd($request->all());
         $restaurant = Restaurant::find($request->input('restaurant_id'));
-        //dd($request->input('restaurant_id'));
             $request->validate([ 
                 'restaurant_name' => ['required', Rule::unique('restaurants', 'name')->ignore($request->input('restaurant_id'))],
                 'menulink' => 'nullable|url|required_without:menuimage',
@@ -76,7 +74,7 @@ class UploadRestaurantController extends Controller
                 'neighborhood' => 'required',
                 'restaurant_type' => 'required',
                 'price_range' => ['required', Rule::in(['Low', 'Medium', 'Medium High', 'High'])],
-                'food_type' => ['required', Rule::in(['Fast Food', 'Canadian', 'Pizza', 'Greek', 'Indian', 'Sushi', 'Italian', 'Asian', 'Chinese'])],
+                'food_type' => ['required', Rule::in(['Fast Food', 'Canadian', 'Pizza', 'Greek', 'Indian', 'Sushi', 'Italian', 'Asian', 'Chinese', 'Thai'])],
         ]); 
         
         $menu_link = '';
@@ -119,6 +117,4 @@ class UploadRestaurantController extends Controller
         
         return redirect('profile');
     }
-
-    
 }
