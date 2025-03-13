@@ -21,6 +21,13 @@
             <div class="navbar-header">
               <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
             </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="profile">PROFILE</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </nav>
       </div>
@@ -28,12 +35,10 @@
   </nav>
 </header>
 
-<div class="jumbotron text-center">
 @auth
-<h2>{{ auth()->user()->name }}'s Dashboard</h2>
-<button class="btn btn-lg largebtn" onclick="window.location.href='/profile';">Profile</button>
+<div class="jumbotron text-center">
+  <h2>{{ auth()->user()->name }}'s Dashboard</h2>
 </div>
-@csrf
 @if(auth()->user()->type == "customer")
   <?php
   $food_types = 0;
