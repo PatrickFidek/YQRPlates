@@ -70,9 +70,10 @@ Route::get('/createrestaurant', [UploadRestaurantController::class,'create'])->m
 Route::post('/updaterestaurant', [UploadRestaurantController::class,'update'])->middleware('auth');
 Route::post('/storerestaurant', [UploadRestaurantController::class,'store'])->middleware('auth');
 
-
-// Auth::routes(); // i tried this earlier this breaks everything for some reason
-Auth::routes();  // tried this for route[login] error in my page please let me know if its breaking pages @dharmatejash
+// Auth::routes();  // tried this for route[login] error in my page please let me know if its breaking pages @dharmatejash
+// You can not use the Auth::routes() as it gives a call to App\Http\Controllers\Auth\LoginController which we do not have. 
+// This will continue to error like this, and the route [login] error can be solved without it. Feel free to message me in 
+// the group if you have any further questions - Patrick
 
 Route::get('/promotions', [PromotionsController::class, 'index'])->middleware('auth');
 Route::post('/promotions', [PromotionsController::class, 'addPromotion'])->middleware('auth');
