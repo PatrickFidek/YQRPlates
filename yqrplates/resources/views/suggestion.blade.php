@@ -21,12 +21,18 @@
             <div class="navbar-header">
               <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
             </div>
-            <!-- THIS SHOULD ONLY SHOW SIGN IN IF THEY ARENT SIGNED IN IF NOT IT SHOULD HAVE A LINK TO THEIR PROFILE -->
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-right">
+              @guest  
                 <li>
-                  <a href="signin">SIGN IN</a>
+                    <a href="signin">SIGN IN</a>
                 </li>
+              @endguest
+              @auth
+                <li>
+                  <a href="profile">PROFILE</a>
+                </li>
+              @endauth
               </ul>
             </div>
           </div>
@@ -64,11 +70,11 @@ if(
   $userRestaurants[] = $restaurant;
 }
 }
-
-$arrayLength = count($userRestaurants);
-$randomIndex = rand(0, $arrayLength - 1);
-$randomUserRestaurant = $userRestaurants[$randomIndex]->id;
-
+if(!empty($userRestaurants)){
+  $arrayLength = count($userRestaurants);
+  $randomIndex = rand(0, $arrayLength - 1);
+  $randomUserRestaurant = $userRestaurants[$randomIndex]->id;
+}
 
 $count = count($allRestaurants);
 $randomNumber = rand(0, $count);
@@ -91,19 +97,25 @@ $generated = $allRestaurants[$randomNumber]->id;
     </button>
 
 </form>
-    
+@auth
+@if(!empty($userRestaurants))  
   </div>
   <div style="text-align: center; padding-top: 15px">
-    @auth
-    <p style="font-size: 18px">Use Prefrences</p>
-    @endauth
+
+    <p style="font-size: 18px">Use Preferences</p>
     <form action="POST" action="{{ url()->current() }}">
     <label class="switch">
+
       <input type="checkbox" id="preferences" onchange="updateGeneratedValue()">
       <span class="slider round"></span>
     </label>
 </form>
+
   </div>
+  @else
+  <p style="font-size: 18px">You have no restaurants that match your preferences</p>
+    @endif
+  @endauth
 </div>
 @endif
 @if(auth()->user()->type == "restaurant owner")
@@ -116,8 +128,10 @@ $generated = $allRestaurants[$randomNumber]->id;
   function updateGeneratedValue() {
     const checkbox = document.getElementById('preferences');
     const generatedInput = document.getElementById('generatedInput');
+    @if(!empty($userRestaurants))
     if (checkbox.checked) 
       generatedInput.value = "{{ $randomUserRestaurant }}";
+    @endif
      else 
       generatedInput.value = "{{ $generated }}";
   }
