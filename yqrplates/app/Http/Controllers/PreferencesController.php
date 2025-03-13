@@ -20,6 +20,13 @@ class PreferencesController extends Controller{
         $neighborhood = $request->input('neighborhood', []);
         $restaurantType = $request->input('restaurant_type', []);
 
+        if (empty($neighborhood) && empty($restaurantType) && empty($request->input('price_range')) && empty($request->input('food_type'))) {
+            return redirect('profile');
+        }
+
+        dd($neighborhood);
+        dd($restaurantType);
+
         $south_east = in_array("South East", $request->input('neighborhood'));
         $south_west = in_array("South West", $request->input('neighborhood'));
         $north_east = in_array("North East", $request->input('neighborhood'));
