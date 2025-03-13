@@ -12,14 +12,6 @@ use App\Models\Promotion;
 
 class PromotionsController extends Controller 
 {
-    /*
-    public function addPromotion(Request $request)
-    {
-        $fields = $request->validate([
-            'promotion-entry' => ['required', 'min:5', 'max:255']
-        ]);
-    }
-    */
 
     public function index()
     {
@@ -30,13 +22,11 @@ class PromotionsController extends Controller
         return redirect('/signin');
        }
 
-     //  if (!$user) { return redirect()->back()->with('error', 'No restaurant found for this user.');}
        $restaurant = $user->restaurant;
        
-     //if (!$restaurant) {return redirect()->back()->with('error', 'No restaurant associated with this user.');}
 
      $promotions = $restaurant->promotions;
-
+       
         return view('promotions', compact('promotions'));
     }
     
