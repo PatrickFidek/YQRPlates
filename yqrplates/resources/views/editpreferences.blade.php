@@ -40,6 +40,25 @@
   <h1>Enter Your Preferences</h1>
 </div>
 
+<div class="row">
+<div class="col-sm-2"></div>
+  <div class="col-sm-4 text-center">
+    <span><h5 style="font-size: 18px;">Neighbourhoods:</h5>
+    North East:&emsp;North of Victoria Ave. and East of Albert St.<br/>
+    North West:&emsp;North of Victoria Ave. and West of Albert St.<br/>
+    South East:&emsp;South of Victoria Ave. and East of Albert St.<br/>
+    South West:&emsp;South of Victoria Ave. and West of Albert St.</span>
+  </div>
+  <div class="col-sm-4 text-center">
+    <span><h5 style="font-size: 18px;">Price Ranges:</h5>
+    Low:&emsp;$5 - $20 / person<br/>
+    Medium:&emsp;$15 - $30 / person<br/>
+    Medium High:&emsp;$25 - $40 / person<br/>
+    High:&emsp;$40 or more / person</span>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+
 <form action="/updatepreferences" method="POST" id="preferences-form"> 
     @csrf
     <input class="hidden" name="user_id" value={{ auth()->user()->id }}/>
