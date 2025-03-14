@@ -117,7 +117,7 @@
               <option value="Indian">Indian</option>
               @endif
               @if(auth()->user()->restaurant->food_type === "Sushi")
-
+              <option value="Sushi" selected>Sushi</option>
               @else
               <option value="Sushi">Sushi</option>
               @endif
@@ -136,10 +136,15 @@
               @else
               <option value="Chinese">Chinese<option>
               @endif
-              @if(auth()->user()->restaurant->food_type === "Thak")
+              @if(auth()->user()->restaurant->food_type === "Thai")
               <option value="Thai" selected>Thai</option>
               @else
-              <option value="Thai" selected>Thai</option>
+              <option value="Thai">Thai</option>
+              @endif
+              @if(auth()->user()->restaurant->food_type === "Vietnamese")
+              <option value="Vietnamese" selected>Vietnamese</option>
+              @else
+              <option value="Vietnamese">Vietnamese</option>
               @endif
             </select>
           </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
