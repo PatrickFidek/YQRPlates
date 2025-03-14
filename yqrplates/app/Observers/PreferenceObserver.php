@@ -136,6 +136,9 @@ class PreferenceObserver
         elseif($decrease){
                 $dashboard->decrement('d_price_range');
         }
+        $current = false;
+        $increase = false;
+        $decrease = false;
         
                 if($oldPreference['south_west'] && $restaurant->south_west && $preference->south_west)
                         $current = true;
@@ -202,7 +205,7 @@ class PreferenceObserver
         elseif(!$oldPreference['delivery'] && $restaurant->delivery && $preference->delivery)
                 $increase = true;
         
-        if($current and !$increase) {
+        if($current) {
                 $restaurant_types++;
         }
         elseif($increase) {
