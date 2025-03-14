@@ -11,20 +11,8 @@ class PromotionsController extends Controller
 
     public function index()
     {
-       $user = auth()->user();
-
-       if(!$user)
-       {
-        return redirect('/signin');
-       }
-
-
-       $restaurant = $user->restaurant;
-       
-
-     $promotions = $restaurant->promotions;
-       
-        return view('promotions', compact('promotions'));
+        return view('promotions');
+ 
     }
     
     public function create() {
@@ -65,7 +53,7 @@ class PromotionsController extends Controller
              return redirect()->back()->with('error', 'Unauthorized.');
          }
  
-         $promotion->delete();         
+        $promotion->delete();         
         return redirect()->back()->with('success', 'Promotion removed successfully!');
 
     }
