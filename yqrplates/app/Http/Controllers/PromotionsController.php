@@ -3,11 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Restaurant;
 use App\Models\Promotion;
 
 class PromotionsController extends Controller 
@@ -21,6 +17,7 @@ class PromotionsController extends Controller
        {
         return redirect('/signin');
        }
+
 
        $restaurant = $user->restaurant;
        
