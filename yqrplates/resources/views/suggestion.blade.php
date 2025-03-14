@@ -56,7 +56,10 @@
   <div class="container-fluid">
     <div class="text-center">
 </div>
+@if(session('error'))
+<p style="color: red">{{ session('error') }}</p>
 <div style="text-align: center; padding-top: 15px">
+  @endif
   @guest
   <p style="font-size: 18px">Please <a href="/signin" style="text-decoration: none; color: black">Sign In </a>To Use Preferences</p>
   @endguest
@@ -67,9 +70,6 @@
       <input type="checkbox" id="preferences" name="preference">
       <span class="slider round"></span>
     </label>
-    @if(session('error'))
-    <p>{{ session('error') }}</p>
-    @endif
   </form>
   @endif
   @endauth
