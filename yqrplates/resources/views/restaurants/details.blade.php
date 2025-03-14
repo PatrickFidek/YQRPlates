@@ -44,13 +44,13 @@
               <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                   @guest
-                  <li>
-                  <a href="signin">SIGN IN</a>
-                  </li>
+                    <li>
+                      <a href="signin">SIGN IN</a>
+                    </li>
                   @endguest
                   @auth
                     <li>
-                    <a href="profile">PROFILE</a>
+                      <a href="https://yqrplates.com/profile">PROFILE</a>
                     </li>
                   @endauth
                 </ul>
