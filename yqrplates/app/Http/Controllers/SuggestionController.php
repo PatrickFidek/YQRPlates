@@ -15,14 +15,13 @@ class SuggestionController extends Controller
     }
     public function getSuggestion(Request $request): RedirectResponse {
         $user_id = (int)$request->input('user_id');
-
         $preference = Preference::where('user_id', $user_id)->first();
-        $usePrefernece = $request->input("preference", false);
+        $usePreferenece = $request->input("preference", false);
         $restaurants = Restaurant::all();
         $ids = [];
         foreach($restaurants as $restaurant){
             $ids[] = $restaurant->id;
-            if($user_id != null && $preference){
+            if($user_id != null && $preference && $usePreferenece){
             if
             (
                 (ucwords($restaurant->food_type) == ucwords($preference->food_type)) 
@@ -44,16 +43,17 @@ class SuggestionController extends Controller
         $userRandom = array_rand($userRestaurants);
         $randomUser = $userRestaurants[$userRandom];
         }
-        if(empty($userRestaurants) && $user_id != null)
+        if(empty($userRestaurants) && $user_id != null && $usePreferenece)
         {
-            return redirect('/suggestion')->with('error', 'Sorry, no restaurants match your preference.');
+            return redirect('/suggestion')->with('error', 'Sorry, no restaurants match your preferences.');
         }
+
         $randomNum = array_rand($ids);
         $randomRes = $ids[$randomNum];
 
-        if(!$usePrefernece)
+        if(!$usePreferenece)
         return redirect('restaurants/details/' . $randomRes);
-        else
+        elseif($usePreferenece && !empty($userRestaurants))
         return redirect('restaurants/details/' . $randomUser);
     }
 }
