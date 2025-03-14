@@ -73,6 +73,7 @@
             <option value="Asian">Asian</option>
             <option value="Chinese">Chinese</option>
             <option value="Thai">Thai</option>
+            <option value="Vietnamese">Vietnamese</option>
           </select>
         </div> @if ($errors->has('food_type')) <div id="food-type-error" class="error-message">
           {{$errors->first('food_type')}}
