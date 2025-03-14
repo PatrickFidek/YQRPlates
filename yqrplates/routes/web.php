@@ -85,7 +85,10 @@ Route::delete('/promotions', [PromotionsController::class, 'removePromotion'])->
 
 Route::post('/dashboard', [DashboardController::class, 'seeDashboard'])->middleware('auth');
 
-Route::post('/suggestion', [SuggestionController::class, 'getSuggestion'])->middleware('auth')->name('suggestion');
+
+Route::post('/suggestion', [SuggestionController::class, 'index'])->middleware('auth')->name('suggestion');
+Route::get('/getSuggestion', [SuggestionController::class,'getSuggestion']);
+Route::post('/getSuggestion', [SuggestionController::class,'getSuggestion']);
 
 Route::post('/register', [RegisterController::class, 'register']);
 
