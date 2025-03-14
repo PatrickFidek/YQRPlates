@@ -423,7 +423,7 @@ input {
     color: #d9534f;
   }
   .item h4 {
-    font-size: 19px;
+    font-size: 18px;
     line-height: 1.375em;
     font-weight: 400;
     font-style: italic;
@@ -475,7 +475,7 @@ input {
     background-color: #ff7e2e;
     z-index: 9999;
     border: 0;
-    font-size: 12px !important;
+    font-size: 18px !important;
     line-height: 1.42857143 !important;
     letter-spacing: 4px;
     border-radius: 0;
