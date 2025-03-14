@@ -25,7 +25,7 @@ class UploadRestaurantController extends Controller
             'neighborhood' => 'required',
             'restaurant_type' => 'required',
             'price_range' => ['required', Rule::in(['Low', 'Medium', 'Medium High', 'High'])],
-            'food_type' => ['required', Rule::in(['Fast Food', 'Canadian', 'Pizza', 'Greek', 'Indian', 'Sushi', 'Italian', 'Asian', 'Chinese','Thai'])],
+            'food_type' => ['required', Rule::in(['Fast Food', 'Canadian', 'Pizza', 'Greek', 'Indian', 'Sushi', 'Italian', 'Asian', 'Chinese','Thai','Vietnamese'])],
         ]);
 
         $menu_link = '';
