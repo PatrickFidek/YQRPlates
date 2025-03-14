@@ -64,13 +64,13 @@ Route::get('/suggestion', function () {
 Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
 Route::get('/restaurants/details/{restaurantid}', [RestaurantController::class, 'details'])->name(name: 'restaurants.details');
 
-Route::get('/editpreferences', [PreferencesController::class, 'index'])->middleware('auth');
-Route::get('/createpreferences', [PreferencesController::class,'create'])->middleware('auth');
+Route::post('/editpreferences', [PreferencesController::class, 'index'])->middleware('auth');
+Route::post('/createpreferences', [PreferencesController::class,'create'])->middleware('auth');
 Route::post('/updatepreferences', [PreferencesController::class,'update'])->middleware('auth');
 Route::post('/storepreferences', [PreferencesController::class,'store'])->middleware('auth');
 
-Route::get('/editrestaurant', [UploadRestaurantController::class, 'index'])->middleware('auth');
-Route::get('/createrestaurant', [UploadRestaurantController::class,'create'])->middleware('auth');
+Route::post('/editrestaurant', [UploadRestaurantController::class, 'index'])->middleware('auth');
+Route::post('/createrestaurant', [UploadRestaurantController::class,'create'])->middleware('auth');
 Route::post('/updaterestaurant', [UploadRestaurantController::class,'update'])->middleware('auth');
 Route::post('/storerestaurant', [UploadRestaurantController::class,'store'])->middleware('auth');
 
@@ -79,9 +79,8 @@ Route::post('/storerestaurant', [UploadRestaurantController::class,'store'])->mi
 // This will continue to error like this, and the route [login] error can be solved without it. Feel free to message me in 
 // the group if you have any further questions - Patrick
 
-Route::get('/promotions', [PromotionsController::class, 'index'])->middleware('auth');
-Route::post('/promotions', [PromotionsController::class, 'addPromotion'])->middleware('auth');
 Route::delete('/promotions', [PromotionsController::class, 'removePromotion'])->middleware('auth');
+Route::post('/promotions', [PromotionsController::class, 'addPromotion'])->middleware('auth');
 
 Route::post('/dashboard', [DashboardController::class, 'seeDashboard'])->middleware('auth');
 
