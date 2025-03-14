@@ -59,4 +59,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Restaurant::class);
     }
+
+    public function dashboard() {
+        return $this->hasOne(Dashboard::class);
+    }
 }
