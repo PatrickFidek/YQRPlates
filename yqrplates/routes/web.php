@@ -57,6 +57,10 @@ Route::get('/promotions', function () {
     return view('promotions');
 });
 
+Route::get('/suggestion', function () {
+    return view('suggestion');
+});
+
 Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
 Route::get('/restaurants/details/{restaurantid}', [RestaurantController::class, 'details'])->name(name: 'restaurants.details');
 
@@ -79,9 +83,9 @@ Route::get('/promotions', [PromotionsController::class, 'index'])->middleware('a
 Route::post('/promotions', [PromotionsController::class, 'addPromotion'])->middleware('auth');
 Route::delete('/promotions', [PromotionsController::class, 'removePromotion'])->middleware('auth');
 
-Route::get('/dashboard', [DashboardController::class, 'seeDashboard'])->middleware('auth');
+Route::post('/dashboard', [DashboardController::class, 'seeDashboard'])->middleware('auth');
 
-Route::get('/suggestion', [SuggestionController::class, 'getSuggestion'])->middleware('auth')->name('suggestion');
+Route::post('/suggestion', [SuggestionController::class, 'getSuggestion'])->middleware('auth')->name('suggestion');
 
 Route::post('/register', [RegisterController::class, 'register']);
 
