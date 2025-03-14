@@ -31,7 +31,6 @@
 
 <div class="jumbotron text-center">
 @auth
-@if(auth()->user()->type == "customer")
   <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
 
@@ -141,9 +140,6 @@
   <button type="submit" class="submit">Continue</button>
 </form>
 
-@elseif(auth()->user()->type == "restaurant owner")
-  <h1>Sorry only customers can add preferences<h1>
-@endif
 @else
   <h1>Please log in<h1>
 @endauth
