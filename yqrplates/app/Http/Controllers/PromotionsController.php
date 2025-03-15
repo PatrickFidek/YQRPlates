@@ -12,7 +12,20 @@ class PromotionsController extends Controller
     public function index()
     {
         return view('promotions');
- 
+    //    $user = auth()->user();
+
+    //    if(!$user)
+    //    {
+    //     return redirect('/signin');
+    //    }
+
+
+    //    $restaurant = $user->restaurant;
+       
+
+    //  $promotions = $restaurant->promotions;
+       
+    //     return view('promotions', compact('promotions'));
     }
     
     public function create() {
@@ -21,6 +34,7 @@ class PromotionsController extends Controller
 
     public function addPromotion(Request $request)
     {
+        
         $fields = $request->validate([
             'promotion_entry' => ['required', 'min:5', 'max:255']
         ]);
