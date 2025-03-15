@@ -8,7 +8,7 @@ class RestaurantController extends Controller
 {
     public function index()
     {
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::all()->sortBy('name');
         return view('restaurants.index', compact('restaurants'));
     }
 
