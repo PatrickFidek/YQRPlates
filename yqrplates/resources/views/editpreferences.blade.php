@@ -77,7 +77,6 @@
               @else
               <option value="North West">North West</option>
               @endif
-
               @if (auth()->user()->preference->north_east == TRUE )
               <option value="North East" selected>North East</option>
               @else
@@ -104,11 +103,15 @@
         <span>Food Type</span>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" name="food_type" onChange="foodType(this)">
-            <option value="" disabled></option>
+          @if(auth()->user()->preference->food_type == "None")
+            <option value="None" selected disabled></option>
+            @else
+            <option value="None" disabled></option>
+            @endif
             @if(auth()->user()->preference->food_type == "Fast Food")
               <option value="Fast Food" selected>Fast Food</option>
               @else
-              <option value="Fast Food" selected>Fast Food</option>
+              <option value="Fast Food">Fast Food</option>
               @endif
               @if(auth()->user()->preference->food_type === "Canadian")
               <option value="Canadian" selected>Canadian</option>
@@ -208,14 +211,17 @@
         <span>Price Range</span>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" name="price_range" onChange="priceRange(this)">
-            <option value="" disabled></option>
+          @if(ucwords(auth()->user()->preference->price_range) == "None")
+            <option value="None" selected disabled></option>
+            @else
+            <option value="None" disabled></option>
+            @endif
             @if(ucwords(auth()->user()->preference->price_range) == "Low")
               <option value="Low" selected>Low</option>
               @else
               <option value="Low">Low</option>
               @endif
               @if(ucwords(auth()->user()->preference->price_range) == "Medium")
-
               @else
               <option value="Medium">Medium</option>
               @endif
