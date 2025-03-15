@@ -402,6 +402,27 @@ h4 {
 }
 
 
+.btn-lg {
+  width: 100%;
+  margin-bottom: 35px;
+}
+.largebutn {
+  background-color: #79a263; 
+  color: #303030;
+  width: 250px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: none;
+  margin: 0 auto;
+}
+
+.butn:hover {
+  background: white;
+  box-shadow: 0 3px 0 0 #79a263; ;
+}
+
 
 .panel-heading {
   color: #fff !important;
@@ -748,6 +769,22 @@ footer .glyphicon {
   color: #fff;
   word-break: break-all;
   width: 50%;
+}
+
+.btn-lg {
+  width: 100%;
+  margin-bottom: 35px;
+}
+.largebtn {
+  background-color: #79a263; 
+  color: #303030;
+  width: 250px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: none;
+  margin: 0 auto;
 }
 
 .error-message {
