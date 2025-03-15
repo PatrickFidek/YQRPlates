@@ -56,7 +56,6 @@
 
 <form action="/storepreferences" method="POST" id="preferences-form"> 
     @csrf
-    
     <input class="hidden" name="user_id" value={{ auth()->user()->id }}/>
   <div class="row">
     <div class="col-sm-2"></div>
@@ -143,7 +142,8 @@
 </form>
 
 @else
-  <h1>Please log in<h1>
+<p>Please sign in to create preferences</p>
+<button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
 @endauth
 </div>
 
@@ -161,7 +161,7 @@
       e.preventDefault();
       $.ajax({
         url: $(this).attr('action'),
-        type: $(this).attr('method'),
+        type: 'POST',
         data: $(this).serialize(),
         success: function(response) {
           window.location.href = '/profile';
