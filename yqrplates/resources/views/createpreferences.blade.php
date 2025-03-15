@@ -10,7 +10,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/preferences.js') }}"></script>
 </head>
-
 <title>Create Preferences</title>
 
 <header>
@@ -30,7 +29,7 @@
 </header>
 
 <div class="jumbotron text-center">
-  @if(auth()->user()->type == "customer")
+  @if(auth()->user()->type == "customer" && !auth()->user()->preference)
 @auth
   <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
@@ -82,7 +81,7 @@
         <span>Food Type</span>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" name="food_type" onChange="foodType(this)">
-            <option value="None" selected disabled></option>
+            <option value="" hidden selected disabled style="display: none"></option>
             <option value="Fast Food">Fast Food</option>
             <option value="Canadian">Canadian</option>
             <option value="Pizza">Pizza</option>
@@ -126,7 +125,7 @@
         <span>Price Range</span>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" name="price_range" onChange="priceRange(this)">
-            <option value="None" selected disabled></option>
+            <option value="" selected disabled></option>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="Medium High">Medium High</option>
@@ -141,15 +140,19 @@
   </div>
   <button type="submit" class="submit">Continue</button>
 </form>
-
+@elseif(auth()->user()->type == "restaurant owner")
+<p>Sorry only customers can create preferences</p>
 @else
 <p>Please sign in to create preferences</p>
 <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
+@endif
 @endauth
+@if(auth()->user()->preference)
+<p>Sorry, you have already created your preferences please edit them.</p>
+<button class="btn btn-lg largebtn" onclick="window.location.href='/editpreferences'">Edit Preferences</button>
+@endif
 </div>
-@else
-<p>Sorry, only customers can create preferences</p>
-  @endif
+
 
 <script>
   $(document).ready(function() {
