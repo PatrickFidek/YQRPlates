@@ -11,6 +11,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/uploadrestaurant.js') }}"></script>
 </head>
+
+<style>
+option[value="None"]{
+  display: none;
+}
+  </style>
 <header>
   <nav class="p-6">
     <div class="flex justify-between items-center">
