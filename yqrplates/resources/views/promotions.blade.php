@@ -41,6 +41,7 @@
   <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
   @endguest
 @auth
+@if(auth()->user()->restaurant)
 <?php
 if(auth()->user()->type == "restaurant owner")
 $promotions = auth()->user()->restaurant->promotions;
@@ -111,7 +112,16 @@ $promotions = auth()->user()->restaurant->promotions;
     </div>
  @else
  @endif
-@endauth  
+@endauth 
+@endif 
+@auth
+@if(auth()->user()->type == "restaurant owner")
+<p style="color: white;">Please create your restaurant before viewing your dashboard.</p>
+  <button class="btn btn-lg largebtn" onclick="window.location.href='/createrestaurant'">Create Restaurant</button>
+@else
+  <p style="color: white">Sorry, only restaurant owners can create promotions</p>
+  @endif
+  @endauth
 </div>
  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document" style="padding-top: 15%;">
@@ -142,6 +152,7 @@ $promotions = auth()->user()->restaurant->promotions;
     </div>
   </div>
 </div>
+
   <script>
     $('#exampleModalCenter').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget);
