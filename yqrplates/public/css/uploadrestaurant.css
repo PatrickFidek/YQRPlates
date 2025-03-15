@@ -916,6 +916,27 @@ footer .glyphicon {
   cursor: pointer
 }
 
+.btn-lg {
+  width: 100%;
+  margin-bottom: 35px;
+}
+.largebtn {
+  background-color: #79a263; 
+  color: #303030;
+  width: 250px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: none;
+  margin: 0 auto;
+}
+
+.btn:hover {
+  background: white;
+  box-shadow: 0 3px 0 0 #79a263; ;
+}
+
 .choices__button:focus {
   outline: none
 }
@@ -999,22 +1020,25 @@ footer .glyphicon {
   opacity: 0;
 }
 
-.btn {
-  display: block;
-  width: 140px;
-  height: 40px;
-  background: darkmagenta;
-  color: #fff;
-  border-radius: 3px;
-  border: 0;
-  box-shadow: 0 3px 0 0 hotpink;
-  transition: all 0.3s ease-in-out;
-  font-size: 14px;
+.btn-lg {
+  width: 100%;
+  margin-bottom: 35px;
+}
+.largebtn {
+  background-color: #79a263; 
+  color: #303030;
+  width: 250px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: none;
+  margin: 0 auto;
 }
 
 .btn:hover {
-  background: rebeccapurple;
-  box-shadow: 0 3px 0 0 deeppink;
+  background: white;
+  box-shadow: 0 3px 0 0 #79a263; ;
 }
 
 .message {
