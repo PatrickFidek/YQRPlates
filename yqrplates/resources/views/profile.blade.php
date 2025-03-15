@@ -117,6 +117,8 @@
                 $types .= "Drive-thru";
                 $count++;
               }
+              if($types == "")
+                $types = "None";
             ?>
             {{ $types }}
           </p>
@@ -153,6 +155,8 @@
                 }
                 $areas .= "North-West";
               }
+              if($areas == "")
+                $areas = "None";
             ?>
             {{ $areas }}
           </p>
