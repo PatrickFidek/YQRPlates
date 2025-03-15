@@ -115,7 +115,7 @@ $promotions = auth()->user()->restaurant->promotions;
 @endauth 
 @endif 
 @auth
-@if(auth()->user()->type == "restaurant owner")
+@if(auth()->user()->type == "restaurant owner" && !auth()->user()->restaurant)
 <p style="color: white;">Please create your restaurant before viewing your dashboard.</p>
   <button class="btn btn-lg largebtn" onclick="window.location.href='/createrestaurant'">Create Restaurant</button>
 @else
