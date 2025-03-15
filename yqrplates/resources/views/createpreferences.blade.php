@@ -29,8 +29,9 @@
 </header>
 
 <div class="jumbotron text-center">
-  @if(auth()->user()->type == "customer" && !auth()->user()->preference)
+
 @auth
+@if(auth()->user()->type == "customer" && !auth()->user()->preference)
   <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
 
@@ -142,15 +143,21 @@
 </form>
 @elseif(auth()->user()->type == "restaurant owner")
 <p>Sorry only customers can create preferences</p>
+@elseif(auth()->user()->preference)
+<p>Sorry, you have already created your preferences please edit them.</p>
+<button class="btn btn-lg largebutn" onclick="window.location.href='/editpreferences'">Edit Preferences</button>
+@if(auth()->user()->type == "restaurant owner")
+<p>Sorry, only customers can edit their preferences</p>
+@endif
 @else
 <p>Please sign in to create preferences</p>
 <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
 @endif
 @endauth
-@if(auth()->user()->preference)
-<p>Sorry, you have already created your preferences please edit them.</p>
-<button class="btn btn-lg largebtn" onclick="window.location.href='/editpreferences'">Edit Preferences</button>
-@endif
+@guest
+<p>Please sign in to create preferences</p>
+<button class="btn btn-lg largebutn" onclick="window.location.href='/signin'">Sign in</button>
+@endguest
 </div>
 
 
