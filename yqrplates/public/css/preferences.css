@@ -998,7 +998,7 @@ footer .glyphicon {
   width: 100%;
   margin-bottom: 35px;
 }
-.largebtn {
+.largebutn {
   background-color: #79a263; 
   color: #303030;
   width: 250px;
@@ -1010,7 +1010,7 @@ footer .glyphicon {
   margin: 0 auto;
 }
 
-.btn:hover {
+.butn:hover {
   background: white;
   box-shadow: 0 3px 0 0 #79a263; ;
 }
