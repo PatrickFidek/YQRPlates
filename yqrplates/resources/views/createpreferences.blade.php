@@ -53,8 +53,10 @@
   <div class="col-sm-2"></div>
 </div>
 
+
 <form action="/storepreferences" method="POST" id="preferences-form"> 
     @csrf
+    
     <input class="hidden" name="user_id" value={{ auth()->user()->id }}/>
   <div class="row">
     <div class="col-sm-2"></div>
@@ -80,7 +82,7 @@
         <span>Food Type</span>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" name="food_type" onChange="foodType(this)">
-            <option value="" disabled></option>
+            <option value="None" selected disabled></option>
             <option value="Fast Food">Fast Food</option>
             <option value="Canadian">Canadian</option>
             <option value="Pizza">Pizza</option>
@@ -124,7 +126,7 @@
         <span>Price Range</span>
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" name="price_range" onChange="priceRange(this)">
-            <option value="" disabled></option>
+            <option value="None" selected disabled></option>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="Medium High">Medium High</option>
