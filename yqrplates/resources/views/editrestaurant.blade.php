@@ -36,6 +36,7 @@
   </nav>
 </header>
 <div class="jumbotron text-center">
+  @if(auth()->user()->restaurant)
   @auth
 <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
@@ -276,6 +277,14 @@
 <p>Please sign in to edit your restaurant</p>
 <button class="btn btn-lg largebutn" style="width: 250px" onclick="window.location.href='/signin'">Sign in</button>
 @endauth
+@else
+@if(auth()->user()->type == "restaurant owner")
+<p>You don't have an existing restaurant, please create one.</p>
+  <button class="btn btn-lg largebutn" onclick="window.location.href='/createrestaurant'">Create Restaurant</button>
+  @else
+  <p>Sorry, only restaurant owners can create restaurants</p>
+    @endif
+  @endif
 
 <script>
   function getExtension(filename) {
