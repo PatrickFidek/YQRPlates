@@ -65,12 +65,12 @@ Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restau
 Route::get('/restaurants/details/{restaurantid}', [RestaurantController::class, 'details'])->name(name: 'restaurants.details');
 
 Route::post('/editpreferences', [PreferencesController::class, 'index'])->middleware('auth');
-Route::post('/createpreferences', [PreferencesController::class,'create'])->middleware('auth');
+Route::get('/createpreferences', [PreferencesController::class,'create'])->middleware('auth');
 Route::post('/updatepreferences', [PreferencesController::class,'update'])->middleware('auth');
 Route::post('/storepreferences', [PreferencesController::class,'store'])->middleware('auth');
 
 Route::post('/editrestaurant', [UploadRestaurantController::class, 'index'])->middleware('auth');
-Route::post('/createrestaurant', [UploadRestaurantController::class,'create'])->middleware('auth');
+Route::get('/createrestaurant', [UploadRestaurantController::class,'create'])->middleware('auth');
 Route::post('/updaterestaurant', [UploadRestaurantController::class,'update'])->middleware('auth');
 Route::post('/storerestaurant', [UploadRestaurantController::class,'store'])->middleware('auth');
 
@@ -83,7 +83,6 @@ Route::delete('/promotions', [PromotionsController::class, 'removePromotion'])->
 Route::post('/promotions', [PromotionsController::class, 'addPromotion'])->middleware('auth');
 
 Route::post('/dashboard', [DashboardController::class, 'seeDashboard'])->middleware('auth');
-
 
 Route::post('/suggestion', [SuggestionController::class, 'index'])->middleware('auth')->name('suggestion');
 Route::get('/getSuggestion', [SuggestionController::class,'getSuggestion']);
