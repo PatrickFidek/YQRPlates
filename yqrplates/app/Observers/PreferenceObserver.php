@@ -18,7 +18,7 @@ class PreferenceObserver
         $restaurant_types = 0;
         $neighborhoods = 0;
         $price_ranges = 0;
-      
+        
         foreach($restaurants as $restaurant){
                 $dashboard = Dashboard::where('user_id', $restaurant->user_id)->first();
                 if($dashboard){
@@ -89,8 +89,9 @@ class PreferenceObserver
         $restaurant_types = 0;
         $neighborhoods = 0;
         $price_ranges = 0;
+        $count = 0;
         foreach($restaurants as $restaurant){
-
+        $count++;
         $dashboard = Dashboard::where('user_id', $restaurant->user_id)->first();
         $current = false;
         $increase = false;
@@ -217,6 +218,14 @@ class PreferenceObserver
         }
                 
         }
+        if($food_types == 0)
+                $food_types = $count;
+        if($neighborhoods == 0)
+                $neighborhoods = $count;
+        if($restaurant_types == 0)
+                $restaurant_types = $count;
+        if($price_ranges == 0)
+                $price_ranges = $count;
 
         $userDashboard->update([
                 'd_food_type' => $food_types,
