@@ -39,6 +39,7 @@
 </header>
 
 <div class="jumbotron text-center">
+  @if(auth()->user()->preference)
 @auth
   <h1>Enter Your Preferences</h1>
 </div>
@@ -252,6 +253,14 @@
 <p>Please sign in to edit your preferences</p>
 <button class="btn btn-lg largebutn" style="width: 250px" onclick="window.location.href='/signin'">Sign in</button>
 @endauth
+@else
+@if(auth()->user()->type == "customer")
+<p>You don't currently have preferences set, please create them before editting them</p>
+<button class="btn btn-lg largebutn" style="width: 250px" onclick="window.location.href='/createpreferences'">Create Preferences</button>
+@else
+<p>Sorry, only customers can create preferences</p>
+@endif
+@endif
 
 <script>
   $(document).ready(function() {
