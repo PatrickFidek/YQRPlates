@@ -14,6 +14,7 @@ class SuggestionController extends Controller
         return view('suggestion');
     }
     public function getSuggestion(Request $request): RedirectResponse {
+        
         $user_id = (int)$request->input('user_id');
         $preference = Preference::where('user_id', $user_id)->first();
         $usePreferenece = $request->input("preference", false);
@@ -67,6 +68,10 @@ class SuggestionController extends Controller
         if($user_id != null && $preference && !empty($userRestaurants)){
         $userRandom = array_rand($userRestaurants);
         $randomUser = $userRestaurants[$userRandom];
+        }
+        if(!$preference && $usePreferenece)
+        {
+            return redirect('/suggestion')->with('error', 'You currently have no preferences, please create prefernces to use them');
         }
         if(empty($userRestaurants) && $user_id != null && $usePreferenece)
         {
