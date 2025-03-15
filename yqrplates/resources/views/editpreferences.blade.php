@@ -10,7 +10,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/preferences.js') }}"></script>
 </head>
-
+<style>
+option[value="None"]{
+  display: none;
+}
+  </style>
 <title>Edit Preferences</title>
 
 <header>
@@ -108,9 +112,9 @@
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" name="food_type" onChange="foodType(this)">
           @if(auth()->user()->preference->food_type == "None")
-            <option value="None" selected disabled></option>
+            <option value="" hidden selected disabled></option>
             @else
-            <option value="None" disabled></option>
+            <option value="" hidden disabled></option>
             @endif
             @if(auth()->user()->preference->food_type == "Fast Food")
               <option value="Fast Food" selected>Fast Food</option>
@@ -138,7 +142,6 @@
               <option value="Indian">Indian</option>
               @endif
               @if(auth()->user()->preference->food_type === "Sushi")
-
               @else
               <option value="Sushi">Sushi</option>
               @endif
@@ -216,9 +219,9 @@
         <div class="row d-flex justify-content-center mt-100">
           <select id="choices-multiple-remove-button" name="price_range" onChange="priceRange(this)">
           @if(ucwords(auth()->user()->preference->price_range) == "None")
-            <option value="None" selected disabled></option>
+            <option value="" selected disabled></option>
             @else
-            <option value="None" disabled></option>
+            <option value="" disabled></option>
             @endif
             @if(ucwords(auth()->user()->preference->price_range) == "Low")
               <option value="Low" selected>Low</option>
