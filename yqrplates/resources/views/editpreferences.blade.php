@@ -10,11 +10,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/preferences.js') }}"></script>
 </head>
-<style>
-option[value="None"]{
-  display: none;
-}
-  </style>
 <title>Edit Preferences</title>
 
 <header>
@@ -43,8 +38,9 @@ option[value="None"]{
 </header>
 
 <div class="jumbotron text-center">
-  @if(auth()->user()->preference)
+
 @auth
+@if(auth()->user()->preference)
   <h1>Enter Your Preferences</h1>
 </div>
 
@@ -252,18 +248,20 @@ option[value="None"]{
   </div>
   <button type="submit" class="submit">Continue</button>
 </form>
-@else
-<p>Please sign in to edit your preferences</p>
-<button class="btn btn-lg largebutn" style="width: 250px" onclick="window.location.href='/signin'">Sign in</button>
-@endauth
-@else
-@if(auth()->user()->type == "customer")
+@if(auth()->user()->type == "customer" && !auth()->user()->preference)
 <p>You don't currently have preferences set, please create them before editting them</p>
 <button class="btn btn-lg largebutn" style="width: 250px" onclick="window.location.href='/createpreferences'">Create Preferences</button>
 @else
-<p>Sorry, only customers can create preferences</p>
 @endif
 @endif
+@if(auth()->user()->type == "restaurant owner")
+<p>Sorry, only customers can edit their preferences</p>
+@endif
+@endauth
+@guest
+<p>Please sign in to edit your preferences</p>
+<button class="btn btn-lg largebutn" style="width: 250px" onclick="window.location.href='/signin'">Sign in</button>
+@endguest
 
 <script>
   $(document).ready(function() {
