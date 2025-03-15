@@ -171,7 +171,7 @@
     <button type="submit" class="submit">Continue</button>
   </form>
 @elseif(auth()->user()->type == "customer")
-  <h1>Sorry only restaurant owners can create restaurants<h1>
+  <p>Sorry, only restaurant owners can create restaurants<p>
 @endif
   @else
   <p>Please sign in to create a restaurant</p>
