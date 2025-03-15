@@ -30,6 +30,7 @@
 </header>
 
 <div class="jumbotron text-center">
+  @if(auth()->user()->type == "customer")
 @auth
   <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
@@ -146,6 +147,9 @@
 <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
 @endauth
 </div>
+@else
+<p>Sorry, only customers can create preferences</p>
+  @endif
 
 <script>
   $(document).ready(function() {
