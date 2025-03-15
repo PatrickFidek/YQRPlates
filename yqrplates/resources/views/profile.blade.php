@@ -29,8 +29,9 @@
 </header>
 
 <div class="jumbotron text-center">
-@if(auth()->user()->preference || auth()->user()->restaurant)
+
 @auth
+@if(auth()->user()->preference || auth()->user()->restaurant)
   <h2>Welcome, {{ auth()->user()->name }}!</h2>
 <form action="/logout" method="POST">
   @csrf
@@ -180,13 +181,9 @@
     @endif
   </div>
 </div>
-  @else
-  <p>You need to be logged in order to view your profile.</p>
-  <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
-
-  @endauth
+  
 </div>
-@endif
+@else
 @if(auth()->user()->type == "customer")
 <p>Please create your preferences before viewing your profile.</p>
   <button class="btn btn-lg largebtn" onclick="window.location.href='/createpreferences'">Create Preferences</button>
@@ -194,3 +191,8 @@
 <p>Please create your restaurant before viewing your profile.</p>
   <button class="btn btn-lg largebtn" onclick="window.location.href='/createrestaurant'">Create Restaurant</button>
   @endif
+  @endif
+  @else
+  <p>You need to be logged in order to view your profile.</p>
+  <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
+  @endauth
