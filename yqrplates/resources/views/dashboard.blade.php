@@ -38,6 +38,7 @@
 </header>
 
 <div class="jumbotron text-center">
+  @if(auth()->user()->dashboard)
   @auth
       <h2>{{ auth()->user()->name }}'s Dashboard</h2>
     </div>
@@ -205,3 +206,11 @@
   <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
 </div>
 @endauth
+@endif
+@if(auth()->user()->type == "customer")
+<p>Please create your preferences before viewing your dashboard.</p>
+  <button class="btn btn-lg largebtn" onclick="window.location.href='/createpreferences'">Create Preferences</button>
+@else
+<p>Please create your restaurant before viewing your dashboard.</p>
+  <button class="btn btn-lg largebtn" onclick="window.location.href='/createrestaurant'">Create Restaurant</button>
+  @endif
