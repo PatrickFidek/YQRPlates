@@ -11,6 +11,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/uploadrestaurant.js') }}"></script>
 </head>
+<style>
+option[value="None"]{
+  display: none;
+}
+  </style>
 <header>
   <nav class="p-6">
     <div class="flex justify-between items-center">
@@ -28,7 +33,7 @@
 </header>
 <div class="jumbotron text-center">
 @auth
-@if(auth()->user()->type == "restaurant owner")
+@if(auth()->user()->type == "restaurant owner" && !auth()->user()->restaurant)
   <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
 <div class="center">
@@ -88,7 +93,7 @@
           <span>Food Type</span>
           <div class="row d-flex justify-content-center mt-100">
             <select id="choices-multiple-remove-button" name="food_type" onChange="foodType(this)">
-            <option value="none" selected disabled hidden></option>
+            <option value="" selected disabled hidden></option>
               <option value="Fast Food">Fast Food</option>
               <option value="Canadian">Canadian</option>
               <option value="Pizza">Pizza</option>
@@ -177,7 +182,12 @@
   <p>Please sign in to create a restaurant</p>
   <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
 @endauth
+@if(auth()->user()->restaurant)
+<p>You already own a restaurant, please go and edit it</p>
+<button class="btn btn-lg largebtn" onclick="window.location.href='/editrestaurant'">Edit Restaurant</button>
+@endif
 </div>
+
 
 
 
