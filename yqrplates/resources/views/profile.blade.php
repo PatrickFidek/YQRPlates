@@ -29,6 +29,7 @@
 </header>
 
 <div class="jumbotron text-center">
+@if(auth()->user()->preference || auth()->user()->restaurant)
 @auth
   <h2>Welcome, {{ auth()->user()->name }}!</h2>
 <form action="/logout" method="POST">
@@ -185,3 +186,11 @@
 
   @endauth
 </div>
+@endif
+@if(auth()->user()->type == "customer")
+<p>Please create your preferences before viewing your profile.</p>
+  <button class="btn btn-lg largebtn" onclick="window.location.href='/createpreferences'">Create Preferences</button>
+@else
+<p>Please create your restaurant before viewing your profile.</p>
+  <button class="btn btn-lg largebtn" onclick="window.location.href='/createrestaurant'">Create Restaurant</button>
+  @endif
