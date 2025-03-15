@@ -174,7 +174,8 @@
   <h1>Sorry only restaurant owners can create restaurants<h1>
 @endif
   @else
-  <h1>Please log in<h1>
+  <p>Please sign in to create a restaurant</p>
+  <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
 @endauth
 </div>
 
@@ -245,7 +246,7 @@ const prompt = document.getElementById('prompt');
       e.preventDefault();
       $.ajax({
         url: $(this).attr('action'),
-        type: $(this).attr('method'),
+        type: 'POST',
         data: $(this).serialize(),
         success: function(response) {
           window.location.href = '/profile';
