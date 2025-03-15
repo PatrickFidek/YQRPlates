@@ -12,11 +12,6 @@
   <script src="{{ asset('js/uploadrestaurant.js') }}"></script>
 </head>
 
-<style>
-option[value="None"]{
-  display: none;
-}
-  </style>
 <header>
   <nav class="p-6">
     <div class="flex justify-between items-center">
@@ -42,8 +37,9 @@ option[value="None"]{
   </nav>
 </header>
 <div class="jumbotron text-center">
-  @if(auth()->user()->restaurant)
+
   @auth
+  @if(auth()->user()->restaurant)
 <h1>Welcome, {{ auth()->user()->name }}!</h1>
 </div>
 <div class="center">
@@ -280,10 +276,8 @@ option[value="None"]{
   </form>
 </div>
 @else
-<p>Please sign in to edit your restaurant</p>
-<button class="btn btn-lg largebutn" style="width: 250px" onclick="window.location.href='/signin'">Sign in</button>
-@endauth
-@else
+
+
 @if(auth()->user()->type == "restaurant owner")
 <p>You don't have an existing restaurant, please create one.</p>
   <button class="btn btn-lg largebutn" onclick="window.location.href='/createrestaurant'">Create Restaurant</button>
@@ -291,6 +285,12 @@ option[value="None"]{
   <p>Sorry, only restaurant owners can create restaurants</p>
     @endif
   @endif
+@endauth
+@guest
+<p>Please sign in to edit your restaurant</p>
+<button class="btn btn-lg largebutn" style="width: 250px" onclick="window.location.href='/signin'">Sign in</button>
+@endguest
+
 
 <script>
   function getExtension(filename) {
