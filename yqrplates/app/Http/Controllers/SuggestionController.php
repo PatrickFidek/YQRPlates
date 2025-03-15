@@ -21,20 +21,45 @@ class SuggestionController extends Controller
         $ids = [];
         foreach($restaurants as $restaurant){
             $ids[] = $restaurant->id;
+            $food_type = true;
+            $price_range = true;
+            $neighborhood = false;
+            $restaurant_type = false;
             if($user_id != null && $preference && $usePreferenece){
-            if
-            (
-                (ucwords($restaurant->food_type) == ucwords($preference->food_type)) 
-                && (ucwords($restaurant->price_range) == ucwords($preference->price_range))
-                && (($restaurant->south_east && $preference->south_east) || 
-                ($restaurant->south_west && $preference->south_west) ||
-                ($restaurant->north_east && $preference->north_east) || 
-                ($restaurant->north_west && $preference->north_west)) 
-                && (($restaurant->dine_in && $preference->dine_in) ||
-                ($restaurant->take_out && $preference->take_out) ||
-                ($restaurant->delivery && $preference->delivery) ||
-                ($restaurant->drive_thru && $preference->drive_thru))
-            ) $userRestaurants[] = $restaurant->id;
+            if($preference->food_type == "None"){
+                $food_type = true;
+            }
+            elseif((ucwords($restaurant->food_type) != ucwords($preference->food_type))){
+                $food_type = false;
+            }
+            if($preference->price_range == "None"){
+                $price_range = true;
+            }
+            elseif((ucwords($restaurant->price_range) != ucwords($preference->price_range))){
+                $price_range = false;
+            }
+            if(!$preference->south_east && !$preference->south_west && !$preference->north_west && !$preference->north_east){
+                $neighborhood = true;
+            }
+            elseif(($restaurant->south_east && $preference->south_east) || 
+            ($restaurant->south_west && $preference->south_west) ||
+            ($restaurant->north_east && $preference->north_east) || 
+            ($restaurant->north_west && $preference->north_west)) {
+                $neighborhood = true;
+            }
+            if(!$preference->dine_in && !$preference->take_out && !$preference->delivery && !$preference->drive_thru){
+                $restaurant_type = true;
+            }
+            elseif(($restaurant->dine_in && $preference->dine_in) ||
+            ($restaurant->take_out && $preference->take_out) ||
+            ($restaurant->delivery && $preference->delivery) ||
+            ($restaurant->drive_thru && $preference->drive_thru)){
+                $restaurant_type = true;
+            }
+            if($food_type && $price_range && $neighborhood && $restaurant_type){
+                $userRestaurants[] = $restaurant->id;
+            }
+
 
             }
               
