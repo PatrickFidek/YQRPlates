@@ -23,11 +23,13 @@
               <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
+              @auth
               <ul class="nav navbar-nav navbar-right">
                 <li>
                   <a href="profile">PROFILE</a>
                 </li>
               </ul>
+              @endauth
             </div>
           </div>
         </nav>
@@ -37,6 +39,7 @@
 </header>
 
 <div class="jumbotron text-center">
+@auth
   <h1>Enter Your Preferences</h1>
 </div>
 
@@ -245,6 +248,10 @@
   </div>
   <button type="submit" class="submit">Continue</button>
 </form>
+@else
+<p>Please sign in to edit your preferences</p>
+<button class="btn btn-lg largebutn" style="width: 250px" onclick="window.location.href='/signin'">Sign in</button>
+@endauth
 
 <script>
   $(document).ready(function() {
