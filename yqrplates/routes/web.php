@@ -33,12 +33,20 @@ Route::get('/resetpassword', function () {
     return view('resetpassword');
 });
 
+Route::get('/createpreferences', function () {
+    return view('createpreferences');
+});
+
 Route::get('/editpreferences', function () {
     return view('editpreferences');
 });
 
 Route::get('/suggestion', function () {
     return view('suggestion');
+});
+
+Route::get('/createrestaurant', function () {
+    return view('createrestaurant');
 });
 
 Route::get('/editrestaurant', function () {
@@ -64,20 +72,17 @@ Route::get('/suggestion', function () {
 Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
 Route::get('/restaurants/details/{restaurantid}', [RestaurantController::class, 'details'])->name(name: 'restaurants.details');
 
-Route::post('/editpreferences', [PreferencesController::class, 'index'])->middleware('auth');
-Route::get('/createpreferences', [PreferencesController::class,'create'])->middleware('auth');
-Route::post('/updatepreferences', [PreferencesController::class,'update'])->middleware('auth');
+Route::post('/createpreferences', [PreferencesController::class,'create'])->middleware('auth');
 Route::post('/storepreferences', [PreferencesController::class,'store'])->middleware('auth');
 
-Route::post('/editrestaurant', [UploadRestaurantController::class, 'index'])->middleware('auth');
-Route::get('/createrestaurant', [UploadRestaurantController::class,'create'])->middleware('auth');
-Route::post('/updaterestaurant', [UploadRestaurantController::class,'update'])->middleware('auth');
+Route::post('/editpreferences', [PreferencesController::class, 'index'])->middleware('auth');
+Route::post('/updatepreferences', [PreferencesController::class,'update'])->middleware('auth');
+
+Route::post('/createrestaurant', [UploadRestaurantController::class,'create'])->middleware('auth');
 Route::post('/storerestaurant', [UploadRestaurantController::class,'store'])->middleware('auth');
 
-// Auth::routes();  // tried this for route[login] error in my page please let me know if its breaking pages @dharmatejash
-// You can not use the Auth::routes() as it gives a call to App\Http\Controllers\Auth\LoginController which we do not have. 
-// This will continue to error like this, and the route [login] error can be solved without it. Feel free to message me in 
-// the group if you have any further questions - Patrick
+Route::post('/editrestaurant', [UploadRestaurantController::class, 'index'])->middleware('auth');
+Route::post('/updaterestaurant', [UploadRestaurantController::class,'update'])->middleware('auth');
 
 Route::delete('/promotions', [PromotionsController::class, 'removePromotion'])->middleware('auth');
 Route::post('/promotions', [PromotionsController::class, 'addPromotion'])->middleware('auth');
