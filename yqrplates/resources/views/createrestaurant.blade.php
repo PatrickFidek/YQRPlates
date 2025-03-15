@@ -11,11 +11,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="{{ asset('js/uploadrestaurant.js') }}"></script>
 </head>
-<style>
-option[value="None"]{
-  display: none;
-}
-  </style>
 <header>
   <nav class="p-6">
     <div class="flex justify-between items-center">
@@ -177,19 +172,15 @@ option[value="None"]{
   </form>
 @elseif(auth()->user()->type == "customer")
   <p>Sorry, only restaurant owners can create restaurants<p>
-@endif
-  @else
-  <p>Please sign in to create a restaurant</p>
-  <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
-@endauth
-@if(auth()->user()->restaurant)
+@elseif(auth()->user()->restaurant)
 <p>You already own a restaurant, please go and edit it</p>
 <button class="btn btn-lg largebtn" onclick="window.location.href='/editrestaurant'">Edit Restaurant</button>
 @endif
+  @else
+  <p>Please sign in to create a restaurant</p>
+  <button class="btn btn-lg largebutn" style="background-color: 79a263; width: 250px" onclick="window.location.href='/signin'">Sign in</button>
+@endauth
 </div>
-
-
-
 
 <script>
   const pdf = document.getElementById('pdf');
