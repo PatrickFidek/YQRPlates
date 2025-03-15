@@ -38,8 +38,8 @@
 </header>
 
 <div class="jumbotron text-center">
-  @if(auth()->user()->dashboard)
   @auth
+  @if(auth()->user()->dashboard && auth()->user()->preference || auth()->user()->restaurant)
       <h2>{{ auth()->user()->name }}'s Dashboard</h2>
     </div>
     <div id="portfolio" class="container-fluid text-center">
@@ -201,12 +201,8 @@
         </div>
       </div>
     </div>
-@else
-  <p>You need to be logged in order to view your dashboard</p>
-  <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
 </div>
-@endauth
-@endif
+@else
 @if(auth()->user()->type == "customer")
 <p>Please create your preferences before viewing your dashboard.</p>
   <button class="btn btn-lg largebtn" onclick="window.location.href='/createpreferences'">Create Preferences</button>
@@ -214,3 +210,8 @@
 <p>Please create your restaurant before viewing your dashboard.</p>
   <button class="btn btn-lg largebtn" onclick="window.location.href='/createrestaurant'">Create Restaurant</button>
   @endif
+  @endif
+  @else
+  <p>You need to be logged in order to view your dashboard</p>
+  <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
+  @endauth
