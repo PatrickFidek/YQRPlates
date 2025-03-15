@@ -22,10 +22,12 @@
               <a class="navbar-brand" href="http://yqrplates.com">YQR PLATES</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
+              @auth
               <ul class="nav navbar-nav navbar-right">
                 <li>
                   <a href="profile">PROFILE</a>
                 </li>
+                @endauth
               </ul>
             </div>
           </div>
@@ -84,6 +86,8 @@
                   }
                   $areas .= "North-West";
                 }
+                if($areas == "")
+                  $areas = "None";
                 ?>
                 {{ $areas }}
               </strong></p>
@@ -162,6 +166,8 @@
                   $types .= "Drive-thru";
                   $count++;
                 }
+                if($types == "")
+                  $types = "None";
                 ?>
                 {{ $types }}
               </strong></p>
