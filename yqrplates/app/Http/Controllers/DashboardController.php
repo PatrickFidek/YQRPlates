@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use App\Models\Preference;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+
 
 class DashboardController extends Controller
 {
@@ -26,5 +29,21 @@ class DashboardController extends Controller
         $preferences = Preference::all();
         return view('dashboard', compact('preferences', 'restaurants'));
 
+    }
+
+    public function viewMatches(Request $request)  {
+
+        $storedRestaurants = Restaurant::all();
+        $restaurants = [];
+        $matches = collect(json_decode($request->input("matches"), true));
+        foreach($storedRestaurants as $restaurant){
+            foreach ($matches as $match) {
+                if ($match['name'] == $restaurant->name){
+                $restaurants[] = $restaurant;
+                }
+        }
+    }
+        
+        return view('restaurants.index', compact('restaurants'));
     }
 }
