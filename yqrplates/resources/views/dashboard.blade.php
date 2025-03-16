@@ -202,6 +202,79 @@
       </div>
     </div>
 </div>
+@if(auth()->user()->type == "customer")
+  <div class="text-center">
+    <div class="col-sm-6 col-xs-12" style="width: 100%;">
+      <div class="panel panel-default text-center" style="width: 50%; margin: 0 auto">
+        <div class="panel-heading">
+        @php
+          $userRestaurants = [];
+          $preference = auth()->user()->preference;
+          $perfectMatches = 0;
+          foreach($restaurants as $restaurant){
+
+            $food_type = true;
+            $price_range = true;
+            $neighborhood = false;
+            $restaurant_type = false;
+
+            if($preference->food_type == "None"){
+            $food_type = true;
+            }
+            elseif((ucwords($restaurant->food_type) != ucwords($preference->food_type))){
+            $food_type = false;
+            }
+            if($preference->price_range == "None"){
+            $price_range = true;
+            }
+            elseif((ucwords($restaurant->price_range) != ucwords($preference->price_range))){
+            $price_range = false;
+            }
+            if(!$preference->south_east && !$preference->south_west && !$preference->north_west && !$preference->north_east){
+            $neighborhood = true;
+            }
+            elseif(($restaurant->south_east && $preference->south_east) || 
+            ($restaurant->south_west && $preference->south_west) ||
+            ($restaurant->north_east && $preference->north_east) || 
+            ($restaurant->north_west && $preference->north_west)) {
+            $neighborhood = true;
+            }
+            if(!$preference->dine_in && !$preference->take_out && !$preference->delivery && !$preference->drive_thru){
+            $restaurant_type = true;
+            }
+            elseif(($restaurant->dine_in && $preference->dine_in) ||
+            ($restaurant->take_out && $preference->take_out) ||
+            ($restaurant->delivery && $preference->delivery) ||
+            ($restaurant->drive_thru && $preference->drive_thru)){
+            $restaurant_type = true;
+            }
+            if($food_type && $price_range && $neighborhood && $restaurant_type){
+            $userRestaurants[] = $restaurant;
+            }
+        }
+      if($userRestaurants)        
+        $perfectMatches = sizeof($userRestaurants);
+      @endphp
+        <h1>{{ $perfectMatches }}</h1>
+      @if(auth()->user()->type == "customer")
+        <p>Restaurants</p>
+      @endif
+      </div>
+      <div class="panel-body">
+        <h3><strong>Perfect Matches</strong></h3>
+        <p><strong>{{ auth()->user()->preference->food_type  }}, {{ auth()->user()->preference->price_range  }}, {{ $areas }}, {{ $types }}</strong></p>
+      @if($perfectMatches > 0)
+        <form action="viewMatches" method="POST">
+          @csrf
+          <input name="matches" value="{{ json_encode($userRestaurants) }}" hidden/>
+          <button class="btn btn-lg largebtn" type="submit">View Perfect Matches</button>
+        </form>
+      @endif
+      </div>
+    </div>
+  </div>
+</div>
+@endif
 @else
 @if(auth()->user()->type == "customer")
 <p>Please create your preferences before viewing your dashboard.</p>
