@@ -22,11 +22,11 @@ class PreferenceObserver
         foreach($restaurants as $restaurant){
                 $dashboard = Dashboard::where('user_id', $restaurant->user_id)->first();
                 if($dashboard){
-                if($restaurant->food_type == $preference->food_type){
+                if($restaurant->food_type == $preference->food_type || $preference->food_type == "None"){
                         $food_types++;
                         $dashboard->update(['d_food_type' => $dashboard->d_food_type + 1]);
                 }
-                if($restaurant->price_range == $preference->price_range){
+                if($restaurant->price_range == $preference->price_range || $preference->price_range == "None"){
                         $price_ranges++;
                         $dashboard->update(['d_price_range' => $dashboard->d_price_range + 1]);
                 }
@@ -46,6 +46,9 @@ class PreferenceObserver
                         $neighborhoods++;
                        $dashboard->update(['d_neighborhoods' => $dashboard->d_neighborhoods + 1]);
                 }
+                if(!$preference->north_east && !$preference->south_east && !$preference->soutH_west && !$preference->north_west){
+                        $neighborhoods++;
+                }
                 if ($restaurant->dine_in && $preference->dine_in){
                         $restaurant_types++;
                        $dashboard->update(['d_restaurant_types' => $dashboard->d_restaurant_types + 1]);
@@ -61,6 +64,9 @@ class PreferenceObserver
                 elseif ($restaurant->take_out && $preference->take_out){
                         $restaurant_types++;
                        $dashboard->update(['d_restaurant_types' => $dashboard->d_restaurant_types + 1]);
+                }
+                if(!$preference->dine_in && !$preference->drive_thru && !$preference->take_out && !$preference->delivery){
+                        $restaurant_types++;
                 }
                 $dashboard->save();
         }
@@ -165,6 +171,7 @@ class PreferenceObserver
                         $decrease = true;
                 elseif(!$oldPreference['north_east'] && $restaurant->north_east && $preference->north_east)
                         $increase = true;
+                
                 
                 if($current) {
                         $neighborhoods = $neighborhoods + 1;
