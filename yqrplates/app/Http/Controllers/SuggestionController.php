@@ -82,9 +82,9 @@ class SuggestionController extends Controller
         $randomRes = $ids[$randomNum];
 
         $endTime = microtime(true);
-        $executionTime = $endTime - $startTime;
+        $execTime = $endTime - $startTime;
 
-        Log::info('Time to get suggestion: ' . round($executionTime, 4) . ' seconds');
+        Log::info('Time to get suggestion: ' . round($execTime, 4) . ' seconds');
 
 
         if(!$usePreferenece)

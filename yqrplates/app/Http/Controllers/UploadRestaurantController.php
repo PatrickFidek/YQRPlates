@@ -67,9 +67,9 @@ class UploadRestaurantController extends Controller
         ]);
 
         $endTime = microtime(true);
-        $executionTime = $endTime - $startTime;
+        $execTime = $endTime - $startTime;
 
-        Log::info('Time to create restaurant: ' . round($executionTime, 4) . ' seconds');
+        Log::info('Time to create restaurant: ' . round($execTime, 4) . ' seconds');
 
         return redirect('profile');
     }
