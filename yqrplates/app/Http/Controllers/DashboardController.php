@@ -34,16 +34,17 @@ class DashboardController extends Controller
     public function viewMatches(Request $request)  {
 
         $storedRestaurants = Restaurant::all();
-        $restaurants = [];
+        $restaurants = collect();
         $matches = collect(json_decode($request->input("matches"), true));
         foreach($storedRestaurants as $restaurant){
             foreach ($matches as $match) {
                 if ($match['name'] == $restaurant->name){
-                $restaurants[] = $restaurant;
+                    $restaurants->push($restaurant);
                 }
         }
     }
-        
+        $restaurants = $restaurants->sortBy('name');
+
         return view('restaurants.index', compact('restaurants'));
     }
 }
