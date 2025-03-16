@@ -6,7 +6,7 @@ use App\Models\Preference;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use Log;
 
 class SuggestionController extends Controller
 {
@@ -14,7 +14,7 @@ class SuggestionController extends Controller
         return view('suggestion');
     }
     public function getSuggestion(Request $request): RedirectResponse {
-        
+        $startTime = microtime(true);
         $user_id = (int)$request->input('user_id');
         $preference = Preference::where('user_id', $user_id)->first();
         $usePreferenece = $request->input("preference", false);
@@ -80,6 +80,12 @@ class SuggestionController extends Controller
 
         $randomNum = array_rand($ids);
         $randomRes = $ids[$randomNum];
+
+        $endTime = microtime(true);
+        $executionTime = $endTime - $startTime;
+
+        Log::info('Time to get suggestion: ' . round($executionTime, 4) . ' seconds');
+
 
         if(!$usePreferenece)
         return redirect('restaurants/details/' . $randomRes);
