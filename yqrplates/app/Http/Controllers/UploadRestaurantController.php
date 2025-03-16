@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use Log;
 
 class UploadRestaurantController extends Controller
 {
@@ -17,6 +18,8 @@ class UploadRestaurantController extends Controller
     }
 
     public function store(Request $request){
+        $startTime = microtime(true);
+
         $request->validate([ 
             'restaurant_name' => ['required', Rule::unique('restaurants', 'name')],
             'user_id' => ['required', Rule::unique('restaurants', 'user_id')],
@@ -62,6 +65,12 @@ class UploadRestaurantController extends Controller
             'delivery' => $delivery,
             'drive_thru' => $drive_thru,
         ]);
+
+        $endTime = microtime(true);
+        $executionTime = $endTime - $startTime;
+
+        Log::info('Time to create restaurant: ' . round($executionTime, 4) . ' seconds');
+
         return redirect('profile');
     }
 
