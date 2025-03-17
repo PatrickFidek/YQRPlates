@@ -1,7 +1,5 @@
 <?php
-use App\Factories\LimitedTimeFactory;
-use App\Factories\DailyDealFactory;
-use App\Factories\HappyHourFactory;
+use App\Factories\PromotionDisplayFactory;
 ?>
 
 <head>
@@ -162,10 +160,11 @@ if ($restaurant->north_west) {
           
             
             @php
+              $factory = new PromotionDisplayFactory($restaurant->promotions);
               $count = 0;
               if ($restaurant->promotions->where('promotion_type', 'daily deal')->count() > 0) {
                 $count++;
-                $dailyDeal = new DailyDealFactory($restaurant->promotions->where('promotion_type', 'daily deal'));
+                $dailyDeal = $factory->create('daily deal');
                 echo $dailyDeal->displayRestaurantPromotions();
               }
               if ($restaurant->promotions->where('promotion_type', 'limited time')->count() > 0) {
@@ -175,7 +174,7 @@ if ($restaurant->north_west) {
                 }
                 $count++;
                 
-              $limitedTime = new LimitedTimeFactory($restaurant->promotions->where('promotion_type', 'limited time'));
+              $limitedTime = $factory->create('limited time');
               echo $limitedTime->displayRestaurantPromotions();
               }
             if ($restaurant->promotions->where('promotion_type', 'happy hour')->count() > 0) {
@@ -185,7 +184,7 @@ if ($restaurant->north_west) {
                 }
                 $count++;
               
-              $happyHour = new HappyHourFactory($restaurant->promotions->where('promotion_type', 'happy hour'));
+              $happyHour = $factory->create('happy hour');
               echo $happyHour->displayRestaurantPromotions();
               }
             @endphp
