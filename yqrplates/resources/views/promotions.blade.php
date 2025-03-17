@@ -1,3 +1,9 @@
+<?php
+use App\Factories\LimitedTimeFactory;
+use App\Factories\DailyDealFactory;
+use App\Factories\HappyHourFactory;
+?>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,12 +26,12 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
               @auth
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="profile">PROFILE</a>
-                </li>
-              </ul>
-              @endauth
+          <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="profile">PROFILE</a>
+          </li>
+          </ul>
+        @endauth
             </div>
           </div>
         </nav>
@@ -35,101 +41,123 @@
 </header>
 
 <title>Promotions</title>
- <div class="jumbotron text-center">
+<div class="jumbotron text-center">
   @guest
-  <p style="color: white">You need to be logged in order to add a promotion</p>
-  <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
+    <p style="color: white">You need to be logged in order to add a promotion</p>
+    <button class="btn btn-lg largebtn" onclick="window.location.href='/signin'">Sign in</button>
   @endguest
-@auth
-@if(auth()->user()->restaurant)
-<?php
-if(auth()->user()->type == "restaurant owner")
-$promotions = auth()->user()->restaurant->promotions;
+  @auth
+  @if(auth()->user()->restaurant)
+    <?php
+    if (auth()->user()->type == "restaurant owner")
+      $promotions = auth()->user()->restaurant->promotions;
 
-?>
-  @if(auth()->user()->type == "restaurant owner")
-  <h1>{{ auth()->user()->restaurant->name }}</h1>
+  ?>
+    @if(auth()->user()->type == "restaurant owner")
+    <h1>{{ auth()->user()->restaurant->name }}</h1>
   @elseif(auth()->user()->type == "customer")
   <h2 style="color: white;">Sorry, only restaurant owners can add promotions</h2>
-  @endif
- </div>
- @if(auth()->user()->type == "restaurant owner")
- <div id="about" class="container-fluid" style="width: 400px">
-  <div class="row">
+@endif
+  </div>
+  @if(auth()->user()->type == "restaurant owner")
+    <div id="about" class="container-fluid" style="width: 400px">
+    <div class="row">
     <div class="panel panel-default text-center">
       <div class="panel-heading">
-        <h1>Add Promotion</h1>
+      <h1>Add Promotion</h1>
       </div>
-      <form action="{{ url('/promotions') }}" method="POST"> 
-        @csrf
-        <div class="panel-body">
-          <p>
-            <textarea name="promotion_entry" value="{{ old('promotion_entry')}}" class="form-control" id="exampleFormControlTextarea1" rows="3" style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea>
-            @if ($errors->has('promotion_entry')) 
-              <div id="promotion-error" class="error-message">
-                {{$errors->first('promotion_entry')}}
-              </div> 
-            @endif 
-          </p>
+      <form action="{{ url('/promotions') }}" method="POST">
+      @csrf
+      <div class="panel-body">
+      <input hidden name="restaurant_id" value="{{ auth()->user()->restaurant->id }}"/>
+      <p>
+      <textarea name="promotion_entry" value="{{ old('promotion_entry')}}" class="form-control"
+        id="exampleFormControlTextarea1" rows="3"
+        style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;"></textarea>
+      @if ($errors->has('promotion_entry'))
+      <div id="promotion-error" class="error-message">
+        <p style="color: red">Please enter a promotion</p>
+      </div>
+    @endif
+
+      <label>   
+        <span style="width: 200px">Promotion Type</span>
+          <br>
+          <select name="promotion_type" id="type" class="select" style="width: 200px">
+          <option value="none" selected disabled hidden></option>
+          <option value="limited time">Limited Time</option>
+          <option value="daily deal">Daily Deal</option>
+          <option value="happy hour">Happy Hour</option>
+        </select>
+        @if($errors->has('promotion_type'))
+        <div class="error-message">
+          <p style="color: red">Please select a promotion type</p>
         </div>
-        <div class="panel-footer">
-          <button type="submit" class="submit" background-color:#fff>Add Promotion</button>
-        </div>
+        @endif
+      </label>
+      </p>
+      </div>
+      <div class="panel-footer">
+      <button type="submit" class="submit" background-color:#fff>Add Promotion</button>
+      </div>
       </form>
     </div>
-   </div>
-   </div>
-  </div>
-<div>
-  <div id="pricing" class="container-fluid">
-    <h2>Current Promotions</h2>
-    <div class="row">
-    @if(auth()->user()->type == "restaurant owner")
-     @forelse($promotions as $promotion)
-      <div class="col-sm-4 col-xs-12">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">
-            <h1>Promotions</h1>
-          </div>
-          <div class="panel-body">
-            <p>
-              <strong>{{ $promotion->promotion }}</strong>
-            </p>
-          </div>
-          <div class="panel-footer">
-            <button type="button" class="submit" data-toggle="modal" data-target="#exampleModalCenter"  data-id="{{ $promotion->id }}" 
-            data-text="{{ $promotion->promotion }}" style="width: 100%"> Remove Promotion </button>
-           </form>
-          </div>
-        </div>
-      </div>
-      @empty
-        <div class="col-xs-12 text-center">
-          <p>No promotions added yet.</p>
-        </div>
-      @endforelse
-      @endif
     </div>
- @else
- @endif
-@endauth 
-@endif 
-@auth
-@if(auth()->user()->type == "restaurant owner" && !auth()->user()->restaurant)
-<p style="color: white;">Please create your restaurant before viewing your dashboard.</p>
-  <button class="btn btn-lg largebtn" onclick="window.location.href='/createrestaurant'">Create Restaurant</button>
-@else
+    </div>
+    </div>
+    <div>
+    <div id="pricing" class="container-fluid">
+    <h2>Current Promotions</h2>
+
+    @if(auth()->user()->type == "restaurant owner")
+      <div class="row">
+      <div style="background-color: #79a263; height: 50px; margin-bottom: 10px;text-align: center;">
+        <h3 style="color: white; line-height: 50px">Limited Time Promotions</h3>
+        </div>
+        @php
+          $limitedTime = new LimitedTimeFactory($promotions->where('promotion_type', 'limited time'));
+          echo $limitedTime->displayPromotions();
+        @endphp
+      </div>
+      <div class="row">
+        <div style="background-color: #79a263; height: 50px; margin-bottom: 10px;text-align: center;">
+        <h3 style="color: white; line-height: 50px">Happy Hour Promotions</h3>
+        </div>
+        @php
+          $happyHour = new HappyHourFactory($promotions->where('promotion_type', 'happy hour'));
+          echo $happyHour->displayPromotions();
+        @endphp
+      </div>
+      <div class="row">
+        <div style="background-color: #79a263; height: 50px; margin-bottom: 10px;text-align: center;">
+        <h3 style="color: white; line-height: 50px">Daily Deal Promotions</h3>
+        </div>
+        @php
+          $dailyDeal = new DailyDealFactory($promotions->where('promotion_type', 'daily deal'));
+          echo $dailyDeal->displayPromotions();
+        @endphp
+      </div>
+    @endif
+@endif
+    @endauth
+@endif
+    @auth
+    @if(auth()->user()->type == "restaurant owner" && !auth()->user()->restaurant)
+    <p style="color: white;">Please create your restaurant before creating promotions.</p>
+    <button class="btn btn-lg largebtn" onclick="window.location.href='/createrestaurant'">Create Restaurant</button>
+  @else
   <p style="color: white">Sorry, only restaurant owners can create promotions</p>
-  @endif
+@endif
   @endauth
-</div>
- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document" style="padding-top: 15%;">
-        <div class="modal-content">
+  </div>
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="padding-top: 15%;">
+      <div class="modal-content">
         <form method="POST" action="{{ url('/promotions')}}">
           @csrf
           @method('DELETE')
-          <input type="hidden" name="promotion_id" id="deletePromotionId"> 
+          <input type="hidden" name="promotion_id" id="deletePromotionId">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="width: 10px">
               <span aria-hidden="true">&times;</span>
@@ -147,22 +175,20 @@ $promotions = auth()->user()->restaurant->promotions;
             <button type="submit" class="submit" style="width: 40%">Confirm Removal</button>
           </div>
         </form>
-        </div>
       </div>
     </div>
   </div>
 </div>
+</div>
 
-  <script>
-    $('#exampleModalCenter').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget);
-      var id = button.data('id');
-      var text = button.data('text');
-      
-      var modal = $(this);
-      modal.find('#deletePromotionId').val(id);
-      modal.find('#promotionText').text(text);
-    });
-  </script>
+<script>
+  $('#exampleModalCenter').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var id = button.data('id');
+    var text = button.data('text');
 
-
+    var modal = $(this);
+    modal.find('#deletePromotionId').val(id);
+    modal.find('#promotionText').text(text);
+  });
+</script>
