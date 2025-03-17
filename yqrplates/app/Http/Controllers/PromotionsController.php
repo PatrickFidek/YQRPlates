@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Promotion;
+use Illuminate\Validation\Rule;
 
 class PromotionsController extends Controller 
 {
@@ -19,10 +20,11 @@ class PromotionsController extends Controller
     }
 
     public function addPromotion(Request $request)
-    {
+    {   
         
         $fields = $request->validate([
-            'promotion_entry' => ['required', 'min:5', 'max:255']
+            'promotion_entry' => ['required', 'min:5', 'max:255'],
+            'promotion_type' => ['required', Rule::in(['happy hour', 'limited time', 'daily deal'])],
         ]);
         
         $promotiontext = '';
@@ -30,12 +32,11 @@ class PromotionsController extends Controller
             $promotiontext = $request->input('promotion_entry');
         }
 
-        $user = auth()->user();
-        $restaurant = $user->restaurant;
 
         Promotion::create([
-            'restaurant_id' => $restaurant->id,
-            'promotion' => $request->promotion_entry
+            'restaurant_id' => $request->restaurant_id,
+            'promotion' => $request->promotion_entry,
+            'promotion_type' => $request->promotion_type
         ]);
 
         return redirect()->back()->with('added', 'Successful action.');
@@ -46,12 +47,9 @@ class PromotionsController extends Controller
         $request->validate([
             'promotion_id' => 'required|exists:promotions,id',
         ]);
-         $promotion = Promotion::find($request->promotion_id);
-         $userRestaurantId = auth()->user()->restaurant->id;
 
-         if ($promotion->restaurant_id !== $userRestaurantId) {
-             return redirect()->back()->with('error', 'Unauthorized.');
-         }
+         $promotion = Promotion::find($request->promotion_id);
+
  
         $promotion->delete();         
         return redirect()->back()->with('success', 'Promotion removed successfully!');
