@@ -8,7 +8,14 @@ use App\Factories\PromotionTemplateFactory;
 class DailyDealFactory extends PromotionTemplateFactory{
 
     public function displayPromotions(){
-        $html = "";
+        $html = 
+        <<<HTML
+        <div class="row">
+            <div style="background-color: #79a263; height: 50px; margin-bottom: 10px;text-align: center;">
+                <h3 style="color: white; line-height: 50px">Daily Deal Promotions</h3>
+            </div>                   
+    HTML;
+
         if(count($this->promotions) > 0){
             foreach($this->promotions as $promotion){
                 $html .= 
@@ -37,11 +44,19 @@ class DailyDealFactory extends PromotionTemplateFactory{
                 </div>
           HTML;
         }
+        $html .= 
+        <<<HTML
+        </div>
+        HTML;
         return $html;
     }
 
     public function displayRestaurantPromotions() {
-        $html = "";
+        $html = 
+        <<<HTML
+            <div class="row text-center bg-grey">
+            <h3>Daily Deals</h3>
+        HTML;
         $i = 0;
         if(count($this->promotions) > 0){
             $html .= 
@@ -98,6 +113,10 @@ class DailyDealFactory extends PromotionTemplateFactory{
                 </div>
                 HTML;
         }
+        $html .=
+        <<<HTML
+            </div>
+        HTML;
         return $html;
     }
     
