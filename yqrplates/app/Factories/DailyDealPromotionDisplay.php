@@ -2,19 +2,19 @@
 
 namespace App\Factories;
 
-use App\Models\Promotion;
-use App\Factories\PromotionTemplateFactory;
+use App\Factories\PromotionDisplay;
 
-class HappyHourFactory extends PromotionTemplateFactory{
+class DailyDealPromotionDisplay extends PromotionDisplay{
 
     public function displayPromotions(){
         $html = 
         <<<HTML
         <div class="row">
             <div style="background-color: #79a263; height: 50px; margin-bottom: 10px;text-align: center;">
-                <h3 style="color: white; line-height: 50px">Happy Hour Promotions</h3>
+                <h3 style="color: white; line-height: 50px">Daily Deal Promotions</h3>
             </div>                   
     HTML;
+
         if(count($this->promotions) > 0){
             foreach($this->promotions as $promotion){
                 $html .= 
@@ -39,13 +39,13 @@ class HappyHourFactory extends PromotionTemplateFactory{
         else{
             $html .= <<<HTML
                 <div class="col-xs-12">
-                    <p>No happy hour promotions added yet.</p>
+                    <p>No daily deal promotions added yet.</p>
                 </div>
           HTML;
         }
-        $html .=
+        $html .= 
         <<<HTML
-            </div>
+        </div>
         HTML;
         return $html;
     }
@@ -54,24 +54,24 @@ class HappyHourFactory extends PromotionTemplateFactory{
         $html = 
         <<<HTML
             <div class="row text-center bg-grey">
-            <h3>Happy Hour</h3>
+            <h3>Daily Deals</h3>
         HTML;
         $i = 0;
         if(count($this->promotions) > 0){
             $html .= 
             <<<HTML
-                <div id="happycarousel" class="carousel slide text-center" data-ride="carousel">
+                <div id="dailycarousel" class="carousel slide text-center" data-ride="carousel">
                 <ol class="carousel-indicators">
             HTML;
                     for($i = 0; $i < count($this->promotions); $i++){
                         if($i == 0){
                             $html .= <<<HTML
-                                <li data-target="#happycarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#dailycarousel" data-slide-to="0" class="active"></li>
                             HTML;
                         }
                         else{
                             $html .= <<<HTML
-                                <li data-target="#happycarousel" data-slide-to="{{ $i }}"></li>
+                                <li data-target="#dailycarousel" data-slide-to="{{ $i }}"></li>
                             HTML;
                         }
                     }
@@ -99,16 +99,16 @@ class HappyHourFactory extends PromotionTemplateFactory{
                 }
                 $html .= <<<HTML
                 </div>
-                    <a class="left carousel-control" href="#happycarousel" role="button" data-slide="prev">
+                    <a class="left carousel-control" href="#dailycarousel" role="button" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="right carousel-control" href="#happycarousel" role="button" data-slide="next">
+                    <a class="right carousel-control" href="#dailycarousel" role="button" data-slide="next">
                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
                     </div>
-                 
+                  
                 </div>
                 HTML;
         }
@@ -118,5 +118,5 @@ class HappyHourFactory extends PromotionTemplateFactory{
         HTML;
         return $html;
     }
-
+    
 }

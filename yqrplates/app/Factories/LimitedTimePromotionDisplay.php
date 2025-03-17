@@ -2,10 +2,9 @@
 
 namespace App\Factories;
 
-use App\Models\Promotion;
-use App\Factories\PromotionTemplateFactory;
+use App\Factories\PromotionDisplay;
 
-class LimitedTimeFactory extends PromotionTemplateFactory{
+class LimitedTimePromotionDisplay extends PromotionDisplay {
 
     public function displayPromotions(){
         $html = 
