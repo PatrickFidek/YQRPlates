@@ -164,7 +164,7 @@ if ($restaurant->north_west) {
               $count = 0;
               if ($restaurant->promotions->where('promotion_type', 'daily deal')->count() > 0) {
                 $count++;
-                $dailyDeal = $factory->create('daily deal');
+                $dailyDeal = $factory->renderPromotionDisplay('daily deal');
                 echo $dailyDeal->displayRestaurantPromotions();
               }
               if ($restaurant->promotions->where('promotion_type', 'limited time')->count() > 0) {
@@ -174,7 +174,7 @@ if ($restaurant->north_west) {
                 }
                 $count++;
                 
-              $limitedTime = $factory->create('limited time');
+              $limitedTime = $factory->renderPromotionDisplay('limited time');
               echo $limitedTime->displayRestaurantPromotions();
               }
             if ($restaurant->promotions->where('promotion_type', 'happy hour')->count() > 0) {
@@ -184,7 +184,7 @@ if ($restaurant->north_west) {
                 }
                 $count++;
               
-              $happyHour = $factory->create('happy hour');
+              $happyHour = $factory->renderPromotionDisplay('happy hour');
               echo $happyHour->displayRestaurantPromotions();
               }
             @endphp

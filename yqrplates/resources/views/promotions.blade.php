@@ -110,11 +110,11 @@ use App\Factories\PromotionDisplayFactory;
     @if(auth()->user()->type == "restaurant owner")
         @php
           $factory = new PromotionDisplayFactory($promotions);
-          $limitedTime = $factory->create('limited time');
+          $limitedTime = $factory->renderPromotionDisplay('limited time');
           echo $limitedTime->displayPromotions();
-          $happyHour = $factory->create('happy hour');
+          $happyHour = $factory->renderPromotionDisplay('happy hour');
           echo $happyHour->displayPromotions();
-          $dailyDeal = $factory->create('daily deal');
+          $dailyDeal = $factory->renderPromotionDisplay('daily deal');
           echo $dailyDeal->displayPromotions();
         @endphp
     @endif

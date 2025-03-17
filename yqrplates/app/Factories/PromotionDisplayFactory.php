@@ -13,7 +13,7 @@ class PromotionDisplayFactory {
         $this->promotions = $promotions;
     }
 
-    public function create($type): PromotionDisplay  {
+    public function renderPromotionDisplay($type): PromotionDisplay  {
         if($type == 'limited time'){
             return new LimitedTimePromotionDisplay($this->promotions->where('promotion_type', 'limited time'));
         }
