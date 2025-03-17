@@ -13,6 +13,7 @@ class Promotion extends Model
     protected $fillable = [
         'restaurant_id',
         'promotion',
+        'promotion_type',
     ];
 
     public function restaurant()
