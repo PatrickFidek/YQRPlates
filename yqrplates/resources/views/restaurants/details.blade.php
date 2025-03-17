@@ -191,10 +191,11 @@ if ($restaurant->north_west) {
             
             @php
             if ($restaurant->promotions->where('promotion_type', 'happy hour')->count() > 0) {
-             $count++;
+             
               if($count > 0){
                   echo '<br> <hr style="border-color: #79a263">';
                 }
+                $count++;
                 echo '<h3>Happy Hour</h3>';
               $happyHour = new HappyHourFactory($restaurant->promotions->where('promotion_type', 'happy hour'));
               echo $happyHour->displayRestaurantPromotions();
