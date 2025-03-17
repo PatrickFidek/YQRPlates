@@ -160,28 +160,45 @@ if ($restaurant->north_west) {
       <h4>No Promotions Available</h4>
       @else
           <div class="row text-center bg-grey">
-            <h3>Daily Deals</h3>
+            
             @php
-              $dailyDeal = new DailyDealFactory($restaurant->promotions->where('promotion_type', 'daily deal'));
-              echo $dailyDeal->displayRestaurantPromotions();
+              $count = 0;
+              if ($restaurant->promotions->where('promotion_type', 'daily deal')->count() > 0) {
+                $count++;
+                echo '<h3>Daily Deals</h3>';
+                $dailyDeal = new DailyDealFactory($restaurant->promotions->where('promotion_type', 'daily deal'));
+                echo $dailyDeal->displayRestaurantPromotions();
+              }
             @endphp
           </div>
-          <br>
-          <hr style="border-color: #79a263">
           <div class="row text-center bg-grey">
-            <h3>Limited Time</h3>
+        
             @php
+              if ($restaurant->promotions->where('promotion_type', 'limited time')->count() > 0) {
+                
+                if($count > 0){
+                  echo '<br> <hr style="border-color: #79a263">';
+                }
+                $count++;
+                echo '<h3>Limited Time</h3>';
               $limitedTime = new LimitedTimeFactory($restaurant->promotions->where('promotion_type', 'limited time'));
               echo $limitedTime->displayRestaurantPromotions();
+              }
             @endphp
           </div>
-          <br>
-          <hr style="border-color: #79a263">
+
           <div class="row text-center bg-grey">
-            <h3>Happy Hour</h3>
+            
             @php
+            if ($restaurant->promotions->where('promotion_type', 'happy hour')->count() > 0) {
+             $count++;
+              if($count > 0){
+                  echo '<br> <hr style="border-color: #79a263">';
+                }
+                echo '<h3>Happy Hour</h3>';
               $happyHour = new HappyHourFactory($restaurant->promotions->where('promotion_type', 'happy hour'));
               echo $happyHour->displayRestaurantPromotions();
+              }
             @endphp
           </div>
     @endif
