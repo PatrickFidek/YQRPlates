@@ -1,3 +1,9 @@
+<?php
+use App\Factories\LimitedTimeFactory;
+use App\Factories\DailyDealFactory;
+use App\Factories\HappyHourFactory;
+?>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -152,44 +158,34 @@ if ($restaurant->north_west) {
       <h2>Promotions</h2>
       @if($restaurant->promotions->isEmpty())
       <h4>No Promotions Available</h4>
-    @else
-        <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-        <ol class="carousel-indicators">
-          @for($i = 0; $i < count($restaurant->promotions); $i++)
-        @if($i == 0)
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    @else
-    <li data-target="#myCarousel" data-slide-to="{{ $i }}"></li>
-  @endif
-      @endfor
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          @foreach($restaurant->promotions as $promotion)
-        @if($loop->first)
-      <div class="item active">
-      <h4>{{ $promotion->promotion }}</h4>
-      </div>
-    @else
-    <div class="item">
-    <h4>{{ $promotion->promotion }}
-    </div>
-  @endif
-      @endforeach
-
-        </div>
-
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-        </div>
-      </div>
-      </div>
+      @else
+          <div class="row text-center bg-grey">
+            <h3>Daily Deals</h3>
+            @php
+              $dailyDeal = new DailyDealFactory($restaurant->promotions->where('promotion_type', 'daily deal'));
+              echo $dailyDeal->displayRestaurantPromotions();
+            @endphp
+          </div>
+          <br>
+          <hr style="border-color: #79a263">
+          <div class="row text-center bg-grey">
+            <h3>Limited Time</h3>
+            @php
+              $limitedTime = new LimitedTimeFactory($restaurant->promotions->where('promotion_type', 'limited time'));
+              echo $limitedTime->displayRestaurantPromotions();
+            @endphp
+          </div>
+          <br>
+          <hr style="border-color: #79a263">
+          <div class="row text-center bg-grey">
+            <h3>Happy Hour</h3>
+            @php
+              $happyHour = new HappyHourFactory($restaurant->promotions->where('promotion_type', 'happy hour'));
+              echo $happyHour->displayRestaurantPromotions();
+            @endphp
+          </div>
     @endif
+    </div>
   </div>
 </body>
 
