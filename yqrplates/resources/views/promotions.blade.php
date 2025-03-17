@@ -110,33 +110,14 @@ use App\Factories\HappyHourFactory;
     <h2>Current Promotions</h2>
 
     @if(auth()->user()->type == "restaurant owner")
-      <div class="row">
-      <div style="background-color: #79a263; height: 50px; margin-bottom: 10px;text-align: center;">
-        <h3 style="color: white; line-height: 50px">Limited Time Promotions</h3>
-        </div>
         @php
           $limitedTime = new LimitedTimeFactory($promotions->where('promotion_type', 'limited time'));
           echo $limitedTime->displayPromotions();
-        @endphp
-      </div>
-      <div class="row">
-        <div style="background-color: #79a263; height: 50px; margin-bottom: 10px;text-align: center;">
-        <h3 style="color: white; line-height: 50px">Happy Hour Promotions</h3>
-        </div>
-        @php
           $happyHour = new HappyHourFactory($promotions->where('promotion_type', 'happy hour'));
           echo $happyHour->displayPromotions();
-        @endphp
-      </div>
-      <div class="row">
-        <div style="background-color: #79a263; height: 50px; margin-bottom: 10px;text-align: center;">
-        <h3 style="color: white; line-height: 50px">Daily Deal Promotions</h3>
-        </div>
-        @php
           $dailyDeal = new DailyDealFactory($promotions->where('promotion_type', 'daily deal'));
           echo $dailyDeal->displayPromotions();
         @endphp
-      </div>
     @endif
 @endif
     @endauth
