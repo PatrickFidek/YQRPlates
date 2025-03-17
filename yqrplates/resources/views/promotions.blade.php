@@ -1,7 +1,5 @@
 <?php
-use App\Factories\LimitedTimeFactory;
-use App\Factories\DailyDealFactory;
-use App\Factories\HappyHourFactory;
+use App\Factories\PromotionDisplayFactory;
 ?>
 
 <head>
@@ -111,11 +109,12 @@ use App\Factories\HappyHourFactory;
 
     @if(auth()->user()->type == "restaurant owner")
         @php
-          $limitedTime = new LimitedTimeFactory($promotions->where('promotion_type', 'limited time'));
+          $factory = new PromotionDisplayFactory($promotions);
+          $limitedTime = $factory->create('limited time');
           echo $limitedTime->displayPromotions();
-          $happyHour = new HappyHourFactory($promotions->where('promotion_type', 'happy hour'));
+          $happyHour = $factory->create('happy hour');
           echo $happyHour->displayPromotions();
-          $dailyDeal = new DailyDealFactory($promotions->where('promotion_type', 'daily deal'));
+          $dailyDeal = $factory->create('daily deal');
           echo $dailyDeal->displayPromotions();
         @endphp
     @endif
