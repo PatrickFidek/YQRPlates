@@ -41,7 +41,7 @@
 
 @auth
 @if(auth()->user()->preference)
-  <h1>Enter Your Preferences</h1>
+  <h1>Update Your Preferences</h1>
 </div>
 
 <div class="row">

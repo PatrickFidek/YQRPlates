@@ -32,7 +32,7 @@
 
 @auth
 @if(auth()->user()->preference || auth()->user()->restaurant)
-  <h2>Welcome, {{ auth()->user()->name }}!</h2>
+  <h2 style="color: white">Hello, {{ auth()->user()->name }}!</h2>
 <form action="/logout" method="POST">
   @csrf
   <button class="btn btn-lg largebtn" type="submit">Log Out</button>

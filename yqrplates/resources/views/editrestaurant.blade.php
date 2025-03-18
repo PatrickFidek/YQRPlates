@@ -40,7 +40,7 @@
 
   @auth
   @if(auth()->user()->restaurant)
-<h1>Welcome, {{ auth()->user()->name }}!</h1>
+<h1>Update Your Restaurant</h1>
 </div>
 <div class="center">
   <form action="/updaterestaurant" method="POST" id="restaurant-form" enctype="multipart/form-data"> 

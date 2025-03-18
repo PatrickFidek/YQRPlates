@@ -29,7 +29,8 @@
 <div class="jumbotron text-center">
 @auth
 @if(auth()->user()->type == "restaurant owner" && !auth()->user()->restaurant)
-  <h1>Welcome, {{ auth()->user()->name }}!</h1>
+  <h2>Welcome, {{ auth()->user()->name }}!</h2>
+  <h2>Enter Your Restaurant</h2>
 </div>
 <div class="center">
   <form action="/storerestaurant" method="POST" id="restaurant-form" enctype="multipart/form-data"> 

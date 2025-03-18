@@ -32,7 +32,8 @@
 
 @auth
 @if(auth()->user()->type == "customer" && !auth()->user()->preference)
-  <h1>Welcome, {{ auth()->user()->name }}!</h1>
+  <h2 style="color: white">Welcome, {{ auth()->user()->name }}!</h2>
+  <h2 style="color: white">Enter Your Preferences</h2>
 </div>
 
 <div class="row">

@@ -55,7 +55,7 @@
             <h1>{{ $restaurant->name }}</h1>
           </div>
           <div class="panel-footer">
-            <a class="btn btn-lg" href="{{ url('/restaurants/details/' . $restaurant->id) }}">View Details</a>
+            <a class="btn btn-lg" href="{{ url('/restaurants/details/' . $restaurant->id) }}">View Details & Promotions</a>
           </div>
         </div>
       </div>
