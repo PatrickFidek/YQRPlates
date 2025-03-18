@@ -49,7 +49,7 @@ use App\Factories\PromotionDisplayFactory;
                 <ul class="nav navbar-nav navbar-right">
                   @guest
                     <li>
-                      <a href="signin">SIGN IN</a>
+                      <a href="https://yqrplates.com/signin">SIGN IN</a>
                     </li>
                   @endguest
                   @auth
