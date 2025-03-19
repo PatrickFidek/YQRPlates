@@ -241,28 +241,4 @@ class PreferenceObserver
                 'd_price_range' => $price_ranges
         ]);
     }
-
-    /**
-     * Handle the Preference "deleted" event.
-     */
-    public function deleted(Preference $preference): void
-    {
-        //
-    }
-
-    /**
-     * Handle the Preference "restored" event.
-     */
-    public function restored(Preference $preference): void
-    {
-        //
-    }
-
-    /**
-     * Handle the Preference "force deleted" event.
-     */
-    public function forceDeleted(Preference $preference): void
-    {
-        //
-    }
 }

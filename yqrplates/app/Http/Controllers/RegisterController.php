@@ -34,8 +34,4 @@ class RegisterController extends Controller
             return redirect('/createrestaurant');
         }
     }
-
-    public function index() {
-        return view ('/preferences');
-    }
 }
