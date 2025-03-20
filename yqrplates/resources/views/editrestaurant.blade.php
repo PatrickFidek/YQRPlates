@@ -98,10 +98,10 @@
               <option value="South West">South West</option>
               @endif
               @if ( auth()->user()->restaurant->south_east == TRUE )
-              <option value="South West" selected>South East</option>
+              <option value="South East" selected>South East</option>
               
               @else
-              <option value="South West">South East</option>
+              <option value="South East">South East</option>
               @endif
             </select>
           </div> @if ($errors->has('neighborhoods')) <div id="neighborhood-error" class="error-message">
