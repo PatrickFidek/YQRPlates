@@ -95,7 +95,7 @@
           $.each(errors, function(key, value) {
             $('#' + key + '-error').text(value[0]);
           });
-          $('input[name="email"]').val($('input[name="email"]').val());
+         
         }
       });
     });
