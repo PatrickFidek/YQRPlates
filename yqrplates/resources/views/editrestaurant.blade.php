@@ -63,11 +63,11 @@
     South West:&emsp;South of Victoria Ave. and West of Albert St.</span>
   </div>
   <div class="col-sm-4 text-center">
-    <span><h5 style="font-size: 18px;">Price Ranges:</h5>
-    Low:&emsp;$5 - $20 / person<br/>
+  <span><h5 style="font-size: 18px;">Price Ranges:</h5>
+    Low:&emsp;Under $15 / person<br/>
     Medium:&emsp;$15 - $30 / person<br/>
-    Medium High:&emsp;$25 - $40 / person<br/>
-    High:&emsp;$40 or more / person</span>
+    Medium High:&emsp;$30 - $45 / person<br/>
+    High:&emsp;$45 or more / person</span>
   </div>
   <div class="col-sm-2"></div>
 </div>
@@ -93,13 +93,11 @@
               @endif
               @if  (auth()->user()->restaurant->south_west == TRUE )
               <option value="South West" selected>South West</option>
-          
               @else
               <option value="South West">South West</option>
               @endif
               @if ( auth()->user()->restaurant->south_east == TRUE )
               <option value="South East" selected>South East</option>
-              
               @else
               <option value="South East">South East</option>
               @endif
