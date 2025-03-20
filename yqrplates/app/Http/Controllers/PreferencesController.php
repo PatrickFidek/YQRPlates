@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Preference;
-use Illuminate\Validation\Rule;
-
 
 class PreferencesController extends Controller{
     public function index() {
