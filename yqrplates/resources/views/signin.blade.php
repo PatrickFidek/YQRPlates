@@ -32,7 +32,8 @@
     <div class="signin--container">
         <div class="left">
             <h2>WELCOME TO YQR PLATES</h2>
-            <form action="/signin" method="POST"> @csrf 
+            <form action="/signin" id="signin-form" method="POST"> 
+              @csrf
                 <label>
                   <span>Email</span>
                   <input name="email" type="email" value="{{ old('email')}}"/> 
@@ -74,3 +75,30 @@
     </div>
 </body>
 </html>
+
+<script>
+  $(document).ready(function() {
+    $('signin-form').submit(function(e) {
+      e.preventDefault();
+
+      $.ajax({
+        url: $(this).attr('action'),
+        type: $(this).attr('method'),
+        data: $(this).serialize(),
+        success: function(response) {
+          window.location.href = '/profile';
+        },
+        error: function(xhr) {
+          var errors = xhr.responseJSON.errors;
+          $('.error-message').empty();
+
+          $.each(errors, function(key, value) {
+            $('#' + key + '-error').text(value[0]);
+          });
+          $('input[name="email"]').val($('input[name="email"]').val());
+        }
+      });
+    });
+  });
+  
+</script>
