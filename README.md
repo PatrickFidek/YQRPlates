@@ -12,17 +12,17 @@ CS476 Software Development Project
 - Dharma Tejash Surapaneni (dharmatejash) *dsq274@uregina.ca*
 ---
 
-### Problem Defintion 
-> 1.0: Problem Description
+### 1.0: Problem Defintion 
+> 1.1: Problem Description
 >   - Develop a web-based software application that provides dining suggestions within the city of Regina for indecisive customers. The software application allows customers to input preferences and based on the customer’s input, the  application outputs restaurant suggestions. Restaurant owners can also utilize the application to promote their business  and provide customers with information.
 >
-> 1.1: Problem Definition
+> 1.2: Problem Definition
 > - The functional requirements of customers include creating an account; providing their preferences such as type of food, price range, and location; viewing restaurants and menus; generating customized restaurant suggestions; viewing promotions; and viewing a custom dashboard of restaurants based on preference categories. The functional requirements of restaurant owners include creating an account; advertising their restaurant; providing restaurant details such as food types, hours, and location; uploading menus; and viewing a custom dashboard with customer insights. The quality requirements for both user roles include user-friendliness, correctness, time-efficiency, and robustness.
 > 
-> 1.2: Application Domain
+> 1.3: Application Domain
 > - The YQR Plates application belongs to the matchmaking system domain which matches consumers of information with producers of information. YQR Plates enables customers (consumers) and restaurant owners (producers) to effectively share their preferences and capabilities (information), respectively. The YQR Plates application processes the customers’ and restaurant owners’ shared information to identify matching information and outputs restaurant suggestions accordingly.
 >   
-> 1.3: Project Motivation:
+> 1.4: Project Motivation:
 > - When looking for a specific type of restaurant or food, it can be difficult to find good suggestions that accurately align with user preferences. The hope for this application is that the individually curated results based on the user’s input will leave the user satisfied and wanting to use the application again for their next meal. YQR Plates aims to fill the industry gap of being able to receive dining suggestions without any decision-making required from the user - almost as easy as rolling a dice.
 ### 2.0: Application Benefits
 > - To differentiate YQR plates from other competitor applications in the restaurant selector/matchmaking category, Google Reviews (google.com) and DoorDash (https://www.doordash.com/) were analyzed and compared to YQR Plates. Google Reviews is an application that enables customers to search for reviews or leave reviews of a customer’s experience at a restaurant to facilitate dining decisions. DoorDash is an online system that enables customers to order food from a restaurant and have it delivered. Table 1 and Table 2 illustrate the results of the comparison between YQR Plates and these two related systems.
