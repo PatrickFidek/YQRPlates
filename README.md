@@ -140,7 +140,7 @@ JavaScript: Used to handle form validation as well as utilizing AJAX requests to
   - Draw.io: Used to design and document our MVC architecture case diagram, use case diagrams and hardware deployment diagram.
 FileZilla: A fast and reliable tool used to upload files to the server. It became another tool used to reliably manage server files remotely.
   - Git: Allowed collaboration with our team members via code merge branches and kept a history of changes we could reference as YQR Plates grew.
-GitHub: Provided a space that allowed us to collaborate, share code, and manage our growing repository. Commits and code changes were reviewed by our group here.
+  - GitHub: Provided a space that allowed us to collaborate, share code, and manage our growing repository. Commits and code changes were reviewed by our group here.
   - Laravel: A powerful MVC framework that allowed us to focus on the design and implementation of YQR Plates, while abstracting less significant details, allowing us to focus on the development process. Laravel made it easy to maintain and scale our project by utilizing its controller methods, blade files, and database migration. 
   - Lucidchart: Used to design and document our use activity case diagrams.
   - MySQL/MariaDB: MySql-Laravel integration efficiently stores our website’s data. 
