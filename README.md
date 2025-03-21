@@ -90,7 +90,7 @@ CS476 Software Development Project
 > 5.1.1: Customer
 > ![image](https://github.com/PatrickFidek/YQRPlates/blob/main/Diagrams/CustomerUseCase.png)
 >
-> 5.1.2: Restuarant oWner
+> 5.1.2: Restuarant Owner
 > ![image](https://github.com/PatrickFidek/YQRPlates/blob/main/Diagrams/RestaurantOwnerUseCase.png)
 >
 > 5.2.2: 
