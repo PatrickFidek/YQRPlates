@@ -49,7 +49,7 @@ CS476 Software Development Project
 >   - View Custom Dashboard: Restaurant owner views dashboard with statistics demonstrating how customer preferences match with the restaurant.
 >   - Update Restaurant Details: Restaurant owner inputs information necessitated by any changes, ie. menu changes.
 >   - Log Out: After interacting with YQR Plates, the restaurant owner discontinues the session by selecting logout. 
-
+>
 > 3.2: Software Qualities
 >
 > 3.2.1: Correctness
@@ -57,7 +57,7 @@ CS476 Software Development Project
 > 3.2.1.1: Customer
 > - When using the suggestion generator, YQR Plates will suggest the correct restaurants based on the customer’s preferences. If the customer has not logged in and provided preferences, the software application will suggest any available restaurant at random. If the customer has logged in and provided preferences, YQR Plates will filter the list of available restaurants by comparing the user’s preferences against restaurants’ details. The suggestion generator will suggest a restaurant from the filtered list after the comparison is complete, ensuring the customer will get an appropriate suggestion that considers their preferences. 
 > - Customers can view a custom dashboard that provides an accurate breakdown of how many available restaurants match customer’s preferences. The dashboard will display a statistic for each preference category. The number displayed in these categories will be determined by comparing and matching the customer’s preference selection from each category to the details of available restaurants.
-
+>
 > 3.2.1.2: Restaurant Owner
 >  - Restaurant owners have access to a custom dashboard that provides accurate customer statistics relating to their restaurant details. The dashboard allows owners to see how many customers’ preferences align with their restaurant details. The preference categories that customers can use to filter their suggestions correspond to the categories of information restaurant owners provide about their restaurants. The numbers displayed on the dashboard are produced by comparing how many customers’ preferences match the restaurant owner’s details for each category. 
 > - When restaurant owners go to update their restaurant details, the software application will show the current information provided about the restaurant. The listed information will update accordingly if the owner changes any of the values from what is currently saved. Correctly displaying the information allows restaurant owners to see what is currently being shown to customers and updating the list to reflect any changes made lets owners know their changes have been saved and applied.
