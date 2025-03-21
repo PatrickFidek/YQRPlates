@@ -1,5 +1,7 @@
 # YQRPlates
 CS476 Software Development Project
+
+![image](https://github.com/PatrickFidek/YQRPlates/blob/main/Diagrams/YQRPlates.png)
 ---
 
 ## Group Members
