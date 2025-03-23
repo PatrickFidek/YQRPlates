@@ -115,7 +115,7 @@ class RestaurantObserver
             if(($oldRestaurant['price_range'] == $preference->price_range) && ($preference->price_range == $restaurant->price_range)) {
                     $current = true;
             }
-            elseif(($oldRestaurant['price_range'] == $preference->food_type) && ($preference->price_range != $restaurant->price_range)) {
+            elseif(($oldRestaurant['price_range'] == $preference->price_range) && ($preference->price_range != $restaurant->price_range)) {
                     $decrease = true;
             }
             elseif(($oldRestaurant['price_range'] != $preference->price_range) && ($preference->price_range == $restaurant->price_range)) {
