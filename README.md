@@ -94,7 +94,8 @@ CS476 Software Development Project
   4.2.2: 
  
   4.2.1: View Menus of Perfect Match Restaurants
-  ![image]()
+  
+  ![image](https://github.com/PatrickFidek/YQRPlates/blob/main/Diagrams/View%20Menu%20Use%20Case%20Activity.png)
   
   4.2.2: Update Restaurant’s Menu
   
