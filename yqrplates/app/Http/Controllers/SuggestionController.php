@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Restaurant;
 use App\Models\Preference;
-
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Log;
-
 class SuggestionController extends Controller
 {
     public function index(){

@@ -21,7 +21,6 @@ class PromotionsController extends Controller
 
     public function addPromotion(Request $request)
     {   
-        
         $fields = $request->validate([
             'promotion_entry' => ['required', 'min:5', 'max:255'],
             'promotion_type' => ['required', Rule::in(['happy hour', 'limited time', 'daily deal'])],
@@ -31,7 +30,6 @@ class PromotionsController extends Controller
         if($request->input('promotion_entry') != NULL) {
             $promotiontext = $request->input('promotion_entry');
         }
-
 
         Promotion::create([
             'restaurant_id' => $request->restaurant_id,
@@ -48,9 +46,8 @@ class PromotionsController extends Controller
             'promotion_id' => 'required|exists:promotions,id',
         ]);
 
-         $promotion = Promotion::find($request->promotion_id);
+        $promotion = Promotion::find($request->promotion_id);
 
- 
         $promotion->delete();         
         return redirect()->back()->with('success', 'Promotion removed successfully!');
 

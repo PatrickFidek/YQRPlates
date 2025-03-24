@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;  // trying this for route[login] issue if causing any problem you can remove
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\ProfileController;
@@ -87,7 +86,9 @@ Route::post('/updaterestaurant', [UploadRestaurantController::class,'update'])->
 Route::delete('/promotions', [PromotionsController::class, 'removePromotion'])->middleware('auth');
 Route::post('/promotions', [PromotionsController::class, 'addPromotion'])->middleware('auth');
 
+Route::get('/dashboard', [DashboardController::class, 'seeDashboard'])->name('dashboard');
 Route::post('/dashboard', [DashboardController::class, 'seeDashboard'])->middleware('auth');
+Route::post('/viewMatches', [DashboardController::class,'viewMatches'])->middleware('auth');
 
 Route::post('/suggestion', [SuggestionController::class, 'index'])->middleware('auth')->name('suggestion');
 Route::get('/getSuggestion', [SuggestionController::class,'getSuggestion']);

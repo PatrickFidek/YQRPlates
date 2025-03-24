@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use Log;
 
 class UploadRestaurantController extends Controller
 {
